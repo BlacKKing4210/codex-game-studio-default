@@ -1,0 +1,125 @@
+version: 1
+name: codex-game-studio-default
+summary: Godot-first Codex Game Studio workflow with CSV data config, Sprite Forge art, procedural motion, QA, and Git version finish.
+
+agents:
+  - id: producer
+    tier: direction
+    owns: [scope, milestones, risks, task_owners, acceptance_criteria, git_version_finish]
+    skills: [sprint_planning, milestone_review, scope_control, delivery_reporting]
+  - id: creative-director
+    tier: direction
+    owns: [game_identity, pillars, target_fantasy, references, anti_copying_constraints]
+    skills: [concept_review, pillar_alignment, reference_interpretation, creative_gate]
+  - id: technical-director
+    tier: direction
+    owns: [architecture, engine_decisions, dependencies, performance_budget, technical_risk]
+    skills: [architecture_review, dependency_risk, performance_budgeting, technical_gate]
+  - id: game-designer
+    tier: lead
+    owns: [core_loop, mechanics, weapons, enemies, upgrades, progression, difficulty]
+    skills: [system_design, gameplay_rules, player_motivation, acceptance_criteria]
+  - id: systems-designer
+    tier: lead
+    owns: [economy, formulas, progression_curves, wave_pressure, upgrade_value]
+    skills: [balance_math, tuning_models, economy_loops, data_table_design]
+  - id: data-config-specialist
+    tier: specialist
+    owns: [csv_schemas, ids, references, starter_rows, validation_rules, loading_path]
+    skills: [csv_schema_design, reference_validation, type_validation, godot_data_handoff]
+  - id: prototyper
+    tier: specialist
+    owns: [risky_assumptions, throwaway_tests, proceed_pivot_cut_verdicts]
+    skills: [minimum_tests, fast_iteration, prototype_scope, learning_reports]
+  - id: lead-programmer
+    tier: lead
+    owns: [implementation_plan, integration, code_review, done_criteria]
+    skills: [architecture_to_tasks, code_review, integration_planning, regression_risk]
+  - id: godot-specialist
+    tier: specialist
+    owns: [scenes, nodes, resources, signals, autoloads, exports]
+    skills: [godot_4_patterns, scene_integration, resource_design, export_checks]
+  - id: gdscript-specialist
+    tier: specialist
+    owns: [typed_gdscript, signals, resources, component_patterns, hot_paths]
+    skills: [typed_gdscript, idiomatic_signals, performance_in_hot_paths, script_organization]
+  - id: gameplay-programmer
+    tier: specialist
+    owns: [movement, combat, spawning, weapons, pickups, run_state, procedural_feedback]
+    skills: [gameplay_loops, object_pooling, combat_feedback, dense_arena_logic]
+  - id: ui-programmer
+    tier: specialist
+    owns: [reusable_controls, theme_resources, screen_shells, touch_ergonomics, ui_motion]
+    skills: [brawler_arcade_ui_core, godot_control_nodes, responsive_layouts, tweened_ui_feedback]
+  - id: performance-analyst
+    tier: specialist
+    owns: [frame_time, collision_cost, memory, stress_checks]
+    skills: [profiling_plans, pooling_analysis, dense_combat_budgets, bottleneck_reports]
+  - id: art-director
+    tier: lead
+    owns: [visual_identity, readability, ui_tone, asset_specs, generated_art_direction]
+    skills: [silhouette_readability, palette_separation, prompt_direction, originality_gate]
+  - id: sprite-forge-specialist
+    tier: specialist
+    owns: [sprites, fx, props, maps, qc, godot_asset_handoff]
+    skills: [generate2dsprite, generate2dmap, chroma_key_qc, frame_metadata, layered_map_handoff]
+  - id: qa-lead
+    tier: lead
+    owns: [smoke_checks, playtest_plans, bug_triage, regression_risk, milestone_readiness]
+    skills: [test_plans, acceptance_checks, playtest_reports, release_readiness]
+  - id: reverse-engineering-specialist
+    tier: specialist
+    owns: [authorized_binary_analysis, strings, xrefs, decompile, save_resource_formats]
+    skills: [ghidra_mcp, evidence_notes, compatibility_research, original_development_actions]
+
+workflow_lanes:
+  - id: git-startup
+    route: [producer, technical-director]
+    outputs: [git_repo, gitignore, readme, initial_commit, origin_status]
+  - id: concept
+    route: [producer, creative-director, game-designer]
+    outputs: [promise, target_player, pillars, anti_pillars, reference_principles]
+  - id: prototype
+    route: [producer, prototyper, qa-lead]
+    outputs: [risky_assumption, minimum_test, verdict]
+  - id: system-design
+    route: [game-designer, systems-designer, qa-lead]
+    outputs: [core_loop, systems, formulas, acceptance_criteria]
+  - id: csv-data-config
+    route: [systems-designer, data-config-specialist, technical-director, godot-specialist, qa-lead]
+    outputs: [schemas, starter_rows, ids, validation_rules, loading_path]
+  - id: technical-architecture
+    route: [technical-director, lead-programmer, godot-specialist]
+    outputs: [scene_model, resource_model, signal_boundaries, performance_budget]
+  - id: brawler-arcade-ui
+    route: [art-director, ui-programmer, godot-specialist, qa-lead]
+    outputs: [screen_spec, reusable_controls, theme_notes, qa_checklist]
+  - id: sprite-forge-assets
+    route: [art-director, sprite-forge-specialist, godot-specialist, qa-lead]
+    outputs: [asset_spec, prompt, qc_report, godot_handoff]
+  - id: implementation
+    route: [lead-programmer, relevant_specialist, qa-lead]
+    outputs: [code_changes, data_changes, verification]
+  - id: qa-tuning
+    route: [qa-lead, systems-designer, performance-analyst]
+    outputs: [smoke_check, playtest_notes, bug_list, balance_notes]
+  - id: reverse-engineering
+    route: [technical-director, lead-programmer, reverse-engineering-specialist, qa-lead]
+    outputs: [authorization_basis, evidence, behavior_summary, original_action]
+  - id: version-finish
+    route: [producer, lead-programmer, qa-lead]
+    outputs: [verification_summary, commit_hash, pushed_branch_or_blocker]
+
+gates:
+  - id: creative
+    verdicts: [approve, concerns, reject]
+  - id: technical
+    verdicts: [approve, concerns, reject]
+  - id: production
+    verdicts: [approve, concerns, reject]
+  - id: qa
+    verdicts: [approve, concerns, reject]
+  - id: performance
+    verdicts: [approve, concerns, reject]
+  - id: art
+    verdicts: [approve, concerns, reject]

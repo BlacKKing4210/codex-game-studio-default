@@ -1,0 +1,7 @@
+interface:
+  display_name: "Codex Game Studio Default"
+  short_description: "Default workflow for game design, Godot implementation, CSV config, QA, and Sprite Forge assets."
+  default_prompt: "Use $codex-game-studio-default for this game development task."
+
+policy:
+  allow_implicit_invocation: true

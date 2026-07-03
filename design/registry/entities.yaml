@@ -1,0 +1,10 @@
+version: 1
+entities:
+  weapons: []
+  enemies: []
+  upgrades: []
+  waves: []
+  loot_tables: []
+  ui_screens: []
+  sprite_assets: []
+  map_assets: []

@@ -1,0 +1,11 @@
+version: 1
+architecture:
+  default_engine: godot_4
+  default_language: gdscript
+  data_config: csv_first
+  runtime_patterns:
+    - reusable_scenes
+    - resources_for_data
+    - signals_for_decoupling
+    - object_pooling_for_repeated_runtime_objects
+    - procedural_motion_first
