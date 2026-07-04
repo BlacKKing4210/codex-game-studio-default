@@ -1,6 +1,6 @@
 version: 1
 name: codex-game-studio-default
-summary: Godot-first Codex Game Studio workflow with professional design artifacts, CSV data config, Sprite Forge art, procedural motion, QA, and Git version finish.
+summary: Godot-first Codex Game Studio workflow with professional design artifacts, modular implementation, CSV data config, Sprite Forge art, procedural motion, QA, and Git version finish.
 
 agents:
   - id: producer
@@ -13,8 +13,8 @@ agents:
     skills: [concept_review, pillar_alignment, reference_interpretation, creative_gate]
   - id: technical-director
     tier: direction
-    owns: [architecture, engine_decisions, dependencies, performance_budget, technical_risk]
-    skills: [architecture_review, dependency_risk, performance_budgeting, technical_gate]
+    owns: [architecture, module_boundaries, engine_decisions, dependencies, performance_budget, technical_risk]
+    skills: [architecture_review, module_boundary_review, dependency_risk, performance_budgeting, technical_gate]
   - id: game-designer
     tier: lead
     owns: [core_loop, mechanics, weapons, enemies, upgrades, progression, difficulty, gameplay_flowcharts]
@@ -33,8 +33,8 @@ agents:
     skills: [minimum_tests, fast_iteration, prototype_scope, learning_reports]
   - id: lead-programmer
     tier: lead
-    owns: [implementation_plan, integration, code_review, done_criteria]
-    skills: [architecture_to_tasks, code_review, integration_planning, regression_risk]
+    owns: [implementation_plan, module_breakdown, module_contracts, integration, code_review, done_criteria]
+    skills: [architecture_to_tasks, modular_task_breakdown, code_review, integration_planning, regression_risk]
   - id: godot-specialist
     tier: specialist
     owns: [scenes, nodes, resources, signals, autoloads, exports]
@@ -90,7 +90,7 @@ workflow_lanes:
     outputs: [schemas, starter_rows, ids, validation_rules, loading_path]
   - id: technical-architecture
     route: [technical-director, lead-programmer, godot-specialist]
-    outputs: [scene_model, resource_model, signal_boundaries, performance_budget]
+    outputs: [module_boundaries, module_contracts, scene_model, resource_model, signal_boundaries, performance_budget]
   - id: brawler-arcade-ui
     route: [art-director, ui-programmer, godot-specialist, qa-lead]
     outputs: [uiue_diagram_source, exported_uiue_review_copy, screen_spec, reusable_controls, theme_notes, qa_checklist]
@@ -99,7 +99,7 @@ workflow_lanes:
     outputs: [asset_spec, prompt, qc_report, godot_handoff]
   - id: implementation
     route: [lead-programmer, relevant_specialist, qa-lead]
-    outputs: [code_changes, data_changes, verification]
+    outputs: [module_breakdown, module_contracts, code_changes, data_changes, per_module_verification, integration_verification]
   - id: qa-tuning
     route: [qa-lead, systems-designer, performance-analyst]
     outputs: [smoke_check, playtest_notes, bug_list, balance_notes]
@@ -124,4 +124,6 @@ gates:
   - id: art
     verdicts: [approve, concerns, reject]
   - id: design-document-artifacts
+    verdicts: [approve, concerns, reject]
+  - id: modular-implementation
     verdicts: [approve, concerns, reject]

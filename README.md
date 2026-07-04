@@ -2,7 +2,7 @@
 
 Turn a single Codex session into a focused indie game studio workflow.
 
-17 core agents. 12 workflow lanes. Professional design artifacts. Godot-first defaults. CSV-driven game data. Sprite Forge art handoff. Git version finish.
+17 core agents. 12 workflow lanes. Professional design artifacts. Modular implementation. Godot-first defaults. CSV-driven game data. Sprite Forge art handoff. Git version finish.
 
 <p align="center">
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT License"></a>
@@ -16,7 +16,7 @@ Turn a single Codex session into a focused indie game studio workflow.
 
 ## Why This Exists
 
-Solo game development with AI is powerful, but a general chat can drift: hardcoded tuning values, unclear ownership, missing professional design diagrams, missing QA, weak asset handoff, and no clean version finish.
+Solo game development with AI is powerful, but a general chat can drift: hardcoded tuning values, unclear ownership, monolithic scripts, missing professional design diagrams, missing QA, weak asset handoff, and no clean version finish.
 
 **Codex Game Studio Default** gives Codex a small but useful studio structure for game work. It keeps the user as final decision maker while routing tasks through production, design, programming, art, QA, Godot, GDScript, CSV data, UI, procedural motion, Sprite Forge asset generation, and authorized reverse-engineering gates.
 
@@ -29,7 +29,7 @@ This repository is modeled after the studio-template idea of Claude Code Game St
 | Category | Count | Description |
 |---|---:|---|
 | **Core Agents** | 17 | Producer, directors, designers, programmers, Godot/GDScript/UI specialists, Sprite Forge, QA, and reverse engineering |
-| **Workflow Lanes** | 12 | Concept, prototype, system design, professional design artifacts, CSV config, architecture, vertical slice, implementation, QA, UI, Sprite Forge, reverse engineering, version finish |
+| **Workflow Lanes** | 12 | Concept, prototype, system design, professional design artifacts, CSV config, architecture, vertical slice, modular implementation, QA, UI, Sprite Forge, reverse engineering, version finish |
 | **Codex Skill** | 1 | Root-level `SKILL.md` with Codex-triggering metadata and progressive references |
 | **References** | 5 | Detailed guides for game studio routing, Sprite Forge, CSV config, UI core, and authorized reverse engineering |
 | **Framework Docs** | 1 catalog | Agent and workflow registry for review, extension, and future testing |
@@ -83,9 +83,9 @@ See [docs/AGENT-CATALOG.md](docs/AGENT-CATALOG.md) for each agent's responsibili
 3. **Prototype** - one risky assumption, minimum test, proceed/pivot/cut verdict.
 4. **System Design** - core loop, mechanics, content rules, economy, difficulty, professional flowcharts, and UI/UE diagrams for formal design docs.
 5. **CSV Data Config** - schemas, starter rows, IDs, validation rules, loading path.
-6. **Technical Architecture** - Godot architecture, data/resources, scene model, performance budget.
+6. **Technical Architecture** - Godot architecture, module boundaries, data/resources, scene model, performance budget.
 7. **Vertical Slice** - playable slice plan, tasks, owners, acceptance criteria.
-8. **Implementation** - code, assets, data, and integration.
+8. **Implementation** - modular code, assets, data, per-module verification, and integration.
 9. **QA and Tuning** - smoke checks, playtest notes, bugs, balance notes.
 10. **Milestone Review** - ship/iterate/pivot decision and next sprint.
 11. **Git Version Finish** - verify, commit, push, report commit hash.
@@ -128,6 +128,7 @@ Codex Game Studio Framework/        # Agent/workflow catalog for testing and ext
 - **Engine**: Godot 4 unless the project already uses another engine.
 - **Language**: GDScript unless the project already uses C# or the user chooses it.
 - **Design docs**: formal 策划案/GDD/system specs require professional gameplay/system flowcharts and UI/UE diagrams; Markdown-only diagrams are drafts, not final artifacts.
+- **Implementation**: substantial features must be split into modules with boundaries, contracts, per-module verification, and small integration steps.
 - **Game config**: CSV by default under `config/csv/` or equivalent.
 - **UI**: mobile-first arcade UI through `brawler-arcade-ui-core`.
 - **Motion**: procedural motion first for common feedback.

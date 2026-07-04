@@ -42,6 +42,24 @@ For Godot, prefer Godot 4 and GDScript unless the project already uses another l
 
 For game configuration, use CSV files by default under `config/csv/` or the project equivalent. Treat user-edited CSV files as the source of truth.
 
+## Modular Implementation Default
+
+During Technical Architecture and Implementation, development must be split into clear modules before code changes begin. Do not implement substantial features as one large script, scene, prefab, widget, or monolithic change.
+
+Route modular implementation through:
+
+Technical Director -> Lead Programmer -> relevant Specialist -> QA Lead.
+
+Each implementation task must define:
+
+- Module boundary: what this module owns and what it must not own.
+- Module contract: public API, signals/events, input/output data, dependencies, and error handling.
+- Files likely touched: kept inside the module boundary unless integration requires a small adapter.
+- Module verification: unit test, scene test, smoke path, or focused manual check before cross-module integration.
+- Integration check: only after the module passes its own verification.
+
+Prefer small modules such as input, movement, combat, interaction, inventory, economy, UI screen, data loading, save/load, audio, VFX, spawning, AI, level logic, and platform services. Keep Gameplay, UI, Data, Audio, VFX, tools, and platform code separated unless a thin integration layer is explicitly needed.
+
 ## Design Document Visual Artifact Default
 
 For any formal 策划案, GDD, system design document, feature specification, UI flow, onboarding flow, shop flow, combat flow, economy flow, or progression flow, route through:

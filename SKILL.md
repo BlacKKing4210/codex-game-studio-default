@@ -42,9 +42,9 @@ Use the smallest useful subset of these roles:
 2. Prototype: one risky assumption, minimum test, proceed/pivot/cut verdict.
 3. System Design: core loop, mechanics, content rules, economy, difficulty ramp, professional flowcharts, and UI/UE diagrams when the output is a formal 策划案/GDD.
 3A. CSV Data Config: schemas, starter rows, IDs, validation rules, runtime loading path.
-4. Technical Architecture: engine architecture, data/resources, scene model, performance budget.
+4. Technical Architecture: engine architecture, module boundaries, data/resources, scene model, performance budget.
 5. Vertical Slice: playable slice plan, tasks, owners, acceptance criteria.
-6. Implementation: code/assets/data changes with focused verification.
+6. Implementation: modular code/assets/data changes with per-module verification before integration.
 7. QA and Tuning: smoke checks, playtest notes, bug list, balance notes.
 8. Milestone Review: ship/iterate/pivot decision and next sprint.
 9. Git Version Finish: verify, commit, push current branch to origin, and report commit hash when possible.
@@ -56,10 +56,30 @@ For implementation tasks, use:
 - Goal
 - Owner agent
 - Input docs/files
+- Module boundary
+- Module contract
 - Files likely touched
 - Acceptance criteria
 - Verification
 - Risks
+
+## Modular Implementation Defaults
+
+During Technical Architecture and Implementation, substantial feature work must be split into clear modules before code changes begin. Avoid large scripts, scenes, prefabs, widgets, or PR-sized blobs that mix unrelated responsibilities.
+
+Route modular implementation through:
+
+Technical Director -> Lead Programmer -> relevant Specialist -> QA Lead.
+
+Each module must define:
+
+- Boundary: what it owns and what it must not own.
+- Contract: public API, signals/events, input/output data, dependencies, and error handling.
+- Files: expected files kept inside the module boundary, plus any thin integration adapters.
+- Verification: unit test, scene test, smoke path, or focused manual check that proves the module works before cross-module integration.
+- Integration: small connection step after module verification passes.
+
+Prefer separated modules for input, movement, combat, interaction, inventory, economy, UI screens, data loading, save/load, audio, VFX, spawning, AI, level logic, tools, and platform services. Keep Gameplay, UI, Data, Audio, VFX, tools, and platform code separated unless an explicit integration layer is required.
 
 ## Design Document Visual Artifact Defaults
 

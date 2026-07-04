@@ -118,6 +118,8 @@ Gate:
 Outputs:
 
 - Godot scene model.
+- Module boundaries and ownership.
+- Module contracts for public APIs, signals/events, input/output data, dependencies, and error handling.
 - Resource/data architecture.
 - Signal/autoload boundaries.
 - Performance budget.
@@ -126,6 +128,7 @@ Outputs:
 Gate:
 
 - Implementation can start without guessing key architecture.
+- Feature work is split into modules small enough to verify independently.
 
 ## Phase 5: Vertical Slice
 
@@ -145,20 +148,36 @@ Gate:
 
 Outputs:
 
+- Module breakdown.
+- Module contracts.
 - Code changes.
 - Data table changes.
 - Asset integration.
-- Focused verification.
+- Per-module verification.
+- Integration verification.
 
 Implementation task format:
 
 - Goal.
 - Owner agent.
 - Input docs/files.
+- Module boundary.
+- Module contract.
 - Files likely touched.
 - Acceptance criteria.
 - Verification.
 - Risks.
+
+Rules:
+
+- Substantial feature work must be split into modules before coding.
+- Do not implement major features as one large script, scene, prefab, widget, or mixed-responsibility change.
+- Each module must pass its own focused verification before cross-module integration.
+- Keep Gameplay, UI, Data, Audio, VFX, tools, and platform code separated unless a thin integration layer is explicitly required.
+
+Gate:
+
+- A module can be integrated only after its boundary, contract, files, and verification path are clear.
 
 ## Phase 7: QA and Tuning
 

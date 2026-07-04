@@ -21,6 +21,7 @@ A first playable slice should prove:
 
 - Creative gate: does this serve pillars and target fantasy?
 - Technical gate: is it simple, maintainable, and feasible in the engine?
+- Modular implementation gate: is the feature split into independently verifiable modules with clear boundaries and contracts?
 - Production gate: can it fit the current milestone?
 - QA gate: can it be verified clearly?
 - Performance gate: can it survive dense enemies/projectiles?
@@ -32,6 +33,7 @@ A first playable slice should prove:
 - Scope/planning: Producer.
 - Game identity: Creative Director.
 - Architecture or dependencies: Technical Director.
+- Module boundaries and contracts: Technical Director + Lead Programmer.
 - Mechanics/content: Game Designer + Systems Designer.
 - Formal design docs, flowcharts, and UI/UE diagrams: Producer + Game Designer + Art Director + UI Programmer + QA Lead.
 - Config tables: Systems Designer + Data Config Specialist.
@@ -49,12 +51,26 @@ For substantial work, produce:
 - owner agent or route
 - files/docs involved
 - professional diagram sources/exports when producing a formal 策划案, GDD, system spec, or UI/UE spec
+- module boundaries, contracts, and verification paths when producing implementation work
 - decisions made
 - implementation notes
 - verification performed
 - risks and next step
 
 For feature work, keep acceptance criteria testable and small enough to verify in the current milestone.
+
+## Modular Implementation Rules
+
+Substantial implementation work must be split into modules before code changes begin.
+
+Each module should define:
+
+- Boundary: what the module owns and what it must not own.
+- Contract: public API, signals/events, input/output data, dependencies, and error handling.
+- Files: likely touched files and any thin integration adapters.
+- Verification: unit test, scene test, smoke path, or focused manual check before integration.
+
+Do not build major features as one large script, scene, prefab, widget, or mixed-responsibility change. Keep Gameplay, UI, Data, Audio, VFX, tools, and platform services separated unless a thin integration layer is explicitly needed.
 
 ## Formal Design Document Artifact Rules
 
