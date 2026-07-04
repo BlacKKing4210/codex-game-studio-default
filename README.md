@@ -2,7 +2,7 @@
 
 Turn a single Codex session into a focused indie game studio workflow.
 
-17 core agents. 12 workflow lanes. Godot-first defaults. CSV-driven game data. Sprite Forge art handoff. Git version finish.
+17 core agents. 12 workflow lanes. Professional design artifacts. Godot-first defaults. CSV-driven game data. Sprite Forge art handoff. Git version finish.
 
 <p align="center">
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT License"></a>
@@ -16,7 +16,7 @@ Turn a single Codex session into a focused indie game studio workflow.
 
 ## Why This Exists
 
-Solo game development with AI is powerful, but a general chat can drift: hardcoded tuning values, unclear ownership, missing QA, weak asset handoff, and no clean version finish.
+Solo game development with AI is powerful, but a general chat can drift: hardcoded tuning values, unclear ownership, missing professional design diagrams, missing QA, weak asset handoff, and no clean version finish.
 
 **Codex Game Studio Default** gives Codex a small but useful studio structure for game work. It keeps the user as final decision maker while routing tasks through production, design, programming, art, QA, Godot, GDScript, CSV data, UI, procedural motion, Sprite Forge asset generation, and authorized reverse-engineering gates.
 
@@ -29,7 +29,7 @@ This repository is modeled after the studio-template idea of Claude Code Game St
 | Category | Count | Description |
 |---|---:|---|
 | **Core Agents** | 17 | Producer, directors, designers, programmers, Godot/GDScript/UI specialists, Sprite Forge, QA, and reverse engineering |
-| **Workflow Lanes** | 12 | Concept, prototype, system design, CSV config, architecture, vertical slice, implementation, QA, UI, Sprite Forge, reverse engineering, version finish |
+| **Workflow Lanes** | 12 | Concept, prototype, system design, professional design artifacts, CSV config, architecture, vertical slice, implementation, QA, UI, Sprite Forge, reverse engineering, version finish |
 | **Codex Skill** | 1 | Root-level `SKILL.md` with Codex-triggering metadata and progressive references |
 | **References** | 5 | Detailed guides for game studio routing, Sprite Forge, CSV config, UI core, and authorized reverse engineering |
 | **Framework Docs** | 1 catalog | Agent and workflow registry for review, extension, and future testing |
@@ -66,6 +66,7 @@ Tier 3 - Specialists
 | Work Type | Route |
 |---|---|
 | Broad game project | Producer -> relevant leads -> QA Lead |
+| Formal 策划案/GDD | Producer -> Game Designer -> Art Director -> UI Programmer -> QA Lead |
 | Godot implementation | Lead Programmer -> Godot Specialist -> GDScript Specialist -> QA Lead |
 | Configurable game systems | Systems Designer -> Data Config Specialist -> Technical Director -> Godot Specialist -> QA Lead |
 | Mobile arcade UI | Art Director -> UI Programmer -> Godot Specialist -> QA Lead |
@@ -80,7 +81,7 @@ See [docs/AGENT-CATALOG.md](docs/AGENT-CATALOG.md) for each agent's responsibili
 1. **Git and GitHub Startup** - initialize or verify Git, ignore files, README, first commit, private GitHub origin where possible.
 2. **Concept** - promise, target player, pillars, anti-pillars, reference principles.
 3. **Prototype** - one risky assumption, minimum test, proceed/pivot/cut verdict.
-4. **System Design** - core loop, weapons, enemies, upgrades, economy, difficulty.
+4. **System Design** - core loop, mechanics, content rules, economy, difficulty, professional flowcharts, and UI/UE diagrams for formal design docs.
 5. **CSV Data Config** - schemas, starter rows, IDs, validation rules, loading path.
 6. **Technical Architecture** - Godot architecture, data/resources, scene model, performance budget.
 7. **Vertical Slice** - playable slice plan, tasks, owners, acceptance criteria.
@@ -126,6 +127,7 @@ Codex Game Studio Framework/        # Agent/workflow catalog for testing and ext
 
 - **Engine**: Godot 4 unless the project already uses another engine.
 - **Language**: GDScript unless the project already uses C# or the user chooses it.
+- **Design docs**: formal 策划案/GDD/system specs require professional gameplay/system flowcharts and UI/UE diagrams; Markdown-only diagrams are drafts, not final artifacts.
 - **Game config**: CSV by default under `config/csv/` or equivalent.
 - **UI**: mobile-first arcade UI through `brawler-arcade-ui-core`.
 - **Motion**: procedural motion first for common feedback.

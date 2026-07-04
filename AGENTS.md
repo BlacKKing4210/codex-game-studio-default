@@ -42,6 +42,21 @@ For Godot, prefer Godot 4 and GDScript unless the project already uses another l
 
 For game configuration, use CSV files by default under `config/csv/` or the project equivalent. Treat user-edited CSV files as the source of truth.
 
+## Design Document Visual Artifact Default
+
+For any formal 策划案, GDD, system design document, feature specification, UI flow, onboarding flow, shop flow, combat flow, economy flow, or progression flow, route through:
+
+Producer -> Game Designer -> Art Director -> UI Programmer -> QA Lead.
+
+A formal design document is not complete unless it includes professional visual artifacts:
+
+- Gameplay/system flowchart: player actions, system states, decisions, rewards, failure/retry, and end conditions.
+- UI/UE diagram: screen map, user journey, wireframes, interaction states, entry/exit paths, and key feedback.
+
+These diagrams must be created in professional planning, product, UX, or diagram software such as Axure RP, Figma/FigJam, Miro, diagrams.net/draw.io, ProcessOn, Visio, MasterGo, Mockplus, or the project's approved equivalent.
+
+Do not treat Markdown ASCII lines, Markdown tables, or Mermaid-only diagrams as final 策划图. They are allowed only as temporary communication drafts. Keep editable source files under `design/flows/` and `design/uiue/`, export PNG/PDF review copies under `design/exports/` or `docs/assets/`, and link the exports from the design document.
+
 ## UI Default
 
 For reusable game UI, mobile-first arcade UI, lobby/menu/shop/upgrade/result screens, Brawl Stars-like broad UI direction, or 荒野乱斗 UI references, route through:

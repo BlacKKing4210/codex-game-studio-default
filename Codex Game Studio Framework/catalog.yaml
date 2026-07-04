@@ -1,6 +1,6 @@
 version: 1
 name: codex-game-studio-default
-summary: Godot-first Codex Game Studio workflow with CSV data config, Sprite Forge art, procedural motion, QA, and Git version finish.
+summary: Godot-first Codex Game Studio workflow with professional design artifacts, CSV data config, Sprite Forge art, procedural motion, QA, and Git version finish.
 
 agents:
   - id: producer
@@ -17,8 +17,8 @@ agents:
     skills: [architecture_review, dependency_risk, performance_budgeting, technical_gate]
   - id: game-designer
     tier: lead
-    owns: [core_loop, mechanics, weapons, enemies, upgrades, progression, difficulty]
-    skills: [system_design, gameplay_rules, player_motivation, acceptance_criteria]
+    owns: [core_loop, mechanics, weapons, enemies, upgrades, progression, difficulty, gameplay_flowcharts]
+    skills: [system_design, gameplay_rules, player_motivation, acceptance_criteria, professional_flowchart_spec]
   - id: systems-designer
     tier: lead
     owns: [economy, formulas, progression_curves, wave_pressure, upgrade_value]
@@ -49,8 +49,8 @@ agents:
     skills: [gameplay_loops, object_pooling, combat_feedback, dense_arena_logic]
   - id: ui-programmer
     tier: specialist
-    owns: [reusable_controls, theme_resources, screen_shells, touch_ergonomics, ui_motion]
-    skills: [brawler_arcade_ui_core, godot_control_nodes, responsive_layouts, tweened_ui_feedback]
+    owns: [reusable_controls, theme_resources, screen_shells, touch_ergonomics, ui_motion, uiue_diagram_review]
+    skills: [brawler_arcade_ui_core, godot_control_nodes, responsive_layouts, tweened_ui_feedback, uiue_implementability_review]
   - id: performance-analyst
     tier: specialist
     owns: [frame_time, collision_cost, memory, stress_checks]
@@ -78,13 +78,13 @@ workflow_lanes:
     outputs: [git_repo, gitignore, readme, initial_commit, origin_status]
   - id: concept
     route: [producer, creative-director, game-designer]
-    outputs: [promise, target_player, pillars, anti_pillars, reference_principles]
+    outputs: [promise, target_player, pillars, anti_pillars, reference_principles, design_visual_artifact_plan]
   - id: prototype
     route: [producer, prototyper, qa-lead]
     outputs: [risky_assumption, minimum_test, verdict]
   - id: system-design
     route: [game-designer, systems-designer, qa-lead]
-    outputs: [core_loop, systems, formulas, acceptance_criteria]
+    outputs: [core_loop, systems, formulas, acceptance_criteria, professional_flowchart_source, uiue_diagram_source, exported_diagram_review_copies]
   - id: csv-data-config
     route: [systems-designer, data-config-specialist, technical-director, godot-specialist, qa-lead]
     outputs: [schemas, starter_rows, ids, validation_rules, loading_path]
@@ -93,7 +93,7 @@ workflow_lanes:
     outputs: [scene_model, resource_model, signal_boundaries, performance_budget]
   - id: brawler-arcade-ui
     route: [art-director, ui-programmer, godot-specialist, qa-lead]
-    outputs: [screen_spec, reusable_controls, theme_notes, qa_checklist]
+    outputs: [uiue_diagram_source, exported_uiue_review_copy, screen_spec, reusable_controls, theme_notes, qa_checklist]
   - id: sprite-forge-assets
     route: [art-director, sprite-forge-specialist, godot-specialist, qa-lead]
     outputs: [asset_spec, prompt, qc_report, godot_handoff]
@@ -122,4 +122,6 @@ gates:
   - id: performance
     verdicts: [approve, concerns, reject]
   - id: art
+    verdicts: [approve, concerns, reject]
+  - id: design-document-artifacts
     verdicts: [approve, concerns, reject]

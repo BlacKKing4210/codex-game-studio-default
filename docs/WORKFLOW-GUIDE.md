@@ -8,7 +8,8 @@ This is the default Codex Game Studio delivery flow.
 2. If it is a new game, initialize Git, `.gitignore`, README, and remote when possible.
 3. Establish concept, engine, and first playable target.
 4. Keep configuration CSV-first where practical.
-5. Implement in small feature batches with QA and version finish.
+5. For formal design docs, create professional flowcharts and UI/UE diagrams before implementation handoff.
+6. Implement in small feature batches with QA and version finish.
 
 ## Phase 0: Git and GitHub Startup
 
@@ -35,10 +36,12 @@ Outputs:
 - 3-5 pillars.
 - Anti-pillars.
 - Reference principles without copying protected content.
+- Visual-artifact plan for any formal 策划案/GDD: required gameplay/system flowcharts and UI/UE diagrams.
 
 Gate:
 
 - The concept is clear enough to prototype one risky assumption.
+- Formal design-document work has identified which professional diagrams are required.
 
 ## Phase 2: Prototype
 
@@ -59,10 +62,41 @@ Outputs:
 - Core loop.
 - Weapons, enemies, upgrades, economy, difficulty.
 - Tuning knobs and acceptance criteria.
+- Gameplay/system flowchart source file and exported review image/PDF.
+- UI/UE diagram source file and exported review image/PDF when the system has any screen, HUD, menu, onboarding, shop, progression, or decision interface.
 
 Gate:
 
 - Major gameplay systems have testable rules and known dependencies.
+- A formal 策划案/GDD cannot move to architecture or implementation while its required flowchart or UI/UE diagram is missing.
+
+## Design Document Visual Artifact Gate
+
+This gate applies to any formal 策划案, GDD, system design document, feature specification, UI flow, onboarding flow, shop flow, combat flow, economy flow, or progression flow.
+
+Required artifacts:
+
+- Gameplay/system flowchart: player actions, system states, decision branches, rewards, failure/retry paths, and end conditions.
+- UI/UE diagram: screen map, user journey, wireframes, interaction states, entry/exit paths, and key feedback.
+
+Tooling rule:
+
+- Use professional planning, product, UX, or diagram software such as Axure RP, Figma/FigJam, Miro, diagrams.net/draw.io, ProcessOn, Visio, MasterGo, Mockplus, or the project's approved equivalent.
+- Markdown ASCII lines, Markdown tables, and Mermaid-only diagrams are temporary drafts only. They do not satisfy the final design-document gate.
+
+Delivery rule:
+
+- Editable source files live under `design/flows/` and `design/uiue/`.
+- Exported PNG/PDF review files live under `design/exports/` or `docs/assets/`.
+- The design document links to the exported diagrams and names the editable source files.
+
+Review rule:
+
+- Producer checks scope and completeness.
+- Game Designer checks gameplay and system correctness.
+- Art Director checks visual communication and readability.
+- UI Programmer checks implementability of UI/UE flow.
+- QA Lead checks whether the diagrams expose testable paths and edge cases.
 
 ## Phase 3A: CSV Data Config
 
