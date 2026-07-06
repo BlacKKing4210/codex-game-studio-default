@@ -4,7 +4,7 @@ Adapted from `0x0funky/agent-sprite-forge` for Codex Game Studio.
 
 ## What The Sprite Forge Specialist Learned
 
-The Sprite Forge Specialist uses agent-sprite-forge as a production pipeline for generated 2D game art.
+The Sprite Forge Specialist uses agent-sprite-forge as a production pipeline for generated 2D game art. It receives approved art direction from Art Director and the relevant professional art specialist; it does not replace concept, environment, UI, or visual development judgment.
 
 The key separation is:
 

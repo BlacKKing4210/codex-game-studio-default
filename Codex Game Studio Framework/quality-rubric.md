@@ -20,6 +20,7 @@ Use this rubric when reviewing changes to the Codex Game Studio workflow.
 
 - Godot 4 and GDScript remain the default unless project context says otherwise.
 - CSV remains default for designer-editable content.
+- Professional art work routes through Art Director plus the relevant art specialist before Sprite Forge, UI implementation, or engine handoff.
 - Procedural motion is preferred before new sequence-frame art for common feedback.
 - Sprite Forge outputs include QC and Godot handoff notes.
 - UI work uses the brawler arcade UI kit without copying proprietary assets.

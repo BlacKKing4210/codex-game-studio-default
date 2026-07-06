@@ -20,6 +20,10 @@ Use the smallest useful subset of the Codex Game Studio roles:
 - UI Programmer
 - Performance Analyst
 - Art Director
+- Visual Development Artist
+- Concept Artist
+- Environment Artist
+- UI Artist
 - Sprite Forge Specialist
 - QA Lead
 - Reverse Engineering Specialist
@@ -64,7 +68,7 @@ Prefer small modules such as input, movement, combat, interaction, inventory, ec
 
 For any formal 策划案, GDD, system design document, feature specification, UI flow, onboarding flow, shop flow, combat flow, economy flow, or progression flow, route through:
 
-Producer -> Game Designer -> Art Director -> UI Programmer -> QA Lead.
+Producer -> Game Designer -> Art Director -> UI Artist -> UI Programmer -> QA Lead.
 
 A formal design document is not complete unless it includes professional visual artifacts:
 
@@ -79,7 +83,7 @@ Do not treat Markdown ASCII lines, Markdown tables, or Mermaid-only diagrams as 
 
 For reusable game UI, mobile-first arcade UI, lobby/menu/shop/upgrade/result screens, Brawl Stars-like broad UI direction, or 荒野乱斗 UI references, route through:
 
-Art Director -> UI Programmer -> Godot Specialist -> QA Lead.
+Art Director -> UI Artist -> UI Programmer -> Godot Specialist -> QA Lead.
 
 Use the shared UI kit at `C:\Users\76398\Documents\Codex\ui-kits\brawler-arcade-ui-core`.
 
@@ -99,13 +103,30 @@ Use Tween, AnimationPlayer, shader/material modulation, particles, scale, rotati
 
 For any generated 2D game art, sprite sheet, pixel-art-style asset, prop pack, survivor arena, layered map, projectile, impact FX, enemy/player sprite, or Godot art handoff, route through:
 
-Art Director -> Sprite Forge Specialist -> Godot Specialist -> QA Lead.
+Art Director -> relevant professional art specialist -> Sprite Forge Specialist -> Godot Specialist -> QA Lead.
 
 Use AI image generation for visible artwork. Use deterministic scripts only for cleanup, chroma-key removal, slicing, alignment, metadata, previews, and QC.
 
 For processable sheets, require solid `#FF00FF` magenta background, exact grid count, no text/labels/UI/watermark, stable identity, stable scale, full subject inside each cell, and no edge crossing.
 
 For survivor-like maps, prefer `scene_mode`: foundation-only base, separate props/blockers, spawn zones/rings, camera bounds, collision metadata, QA layered preview, and Godot handoff notes.
+
+## Professional Art Production Default
+
+For art quality, concept art, character/prop design, scene design, UI visual design, atmosphere, lighting, mood, art bible, or visual polish, route through professional art roles before asset generation or engine handoff:
+
+Producer -> Creative Director -> Art Director -> Visual Development Artist -> Concept Artist / Environment Artist / UI Artist -> QA Lead.
+
+Role ownership:
+
+- Art Director: owns the final visual direction, art bible, quality bar, originality gate, and sign-off.
+- Visual Development Artist: owns overall mood, atmosphere, color script, lighting direction, key art, composition, and style exploration.
+- Concept Artist: owns characters, enemies, props, weapons, silhouettes, shape language, turnarounds, expressions, and pose sheets.
+- Environment Artist: owns scenes, maps, arenas, rooms, props/blockers, set dressing, perspective, depth, and environment storytelling.
+- UI Artist: owns UI visual language, iconography, panels, buttons, typography direction, HUD/menu presentation, and visual states.
+- Sprite Forge Specialist: owns generated asset execution, cleanup, slicing, metadata, previews, QC, and Godot handoff after professional art direction is approved.
+
+Professional art deliverables must include an art brief, reference board with anti-copying notes, visual direction, production sheets, readability pass, engine handoff notes, and QC verdict.
 
 ## Authorized Reverse Engineering Default
 

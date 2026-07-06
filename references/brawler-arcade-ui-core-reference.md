@@ -4,7 +4,9 @@ Use this reference for reusable game UI, mobile-first arcade UI, lobby/menu/shop
 
 ## Default Route
 
-Art Director -> UI Programmer -> Godot Specialist -> QA Lead.
+Art Director -> UI Artist -> UI Programmer -> Godot Specialist -> QA Lead.
+
+UI Artist owns the visual style frames, icons, component states, typography direction, and readability checks. UI Programmer owns implementation, layout behavior, input states, animation hooks, and engine integration.
 
 ## Shared Kit
 

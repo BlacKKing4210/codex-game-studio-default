@@ -1,6 +1,6 @@
 version: 1
 name: codex-game-studio-default
-summary: Godot-first Codex Game Studio workflow with professional design artifacts, modular implementation, CSV data config, Sprite Forge art, procedural motion, QA, and Git version finish.
+summary: Godot-first Codex Game Studio workflow with professional design artifacts, professional art production, modular implementation, CSV data config, Sprite Forge art, procedural motion, QA, and Git version finish.
 
 agents:
   - id: producer
@@ -57,12 +57,28 @@ agents:
     skills: [profiling_plans, pooling_analysis, dense_combat_budgets, bottleneck_reports]
   - id: art-director
     tier: lead
-    owns: [visual_identity, readability, ui_tone, asset_specs, generated_art_direction]
-    skills: [silhouette_readability, palette_separation, prompt_direction, originality_gate]
+    owns: [visual_identity, art_bible, quality_bar, readability, ui_tone, asset_specs, generated_art_direction, final_art_signoff]
+    skills: [art_direction, style_cohesion, originality_gate, visual_quality_review]
+  - id: visual-development-artist
+    tier: specialist
+    owns: [mood, atmosphere, color_script, lighting_direction, key_art, composition, style_exploration]
+    skills: [mood_boards, color_scripting, lighting_notes, composition_design, key_art_direction]
+  - id: concept-artist
+    tier: specialist
+    owns: [characters, enemies, props, weapons, silhouettes, turnarounds, expression_pose_sheets]
+    skills: [shape_language, silhouette_design, concept_sheets, production_callouts]
+  - id: environment-artist
+    tier: specialist
+    owns: [scenes, maps, arenas, rooms, props_blockers, set_dressing, perspective, depth, environment_storytelling]
+    skills: [scene_composition, environment_storytelling, map_readability, prop_layering, atmosphere_handoff]
+  - id: ui-artist
+    tier: specialist
+    owns: [ui_visual_language, iconography, panels, buttons, typography_direction, visual_states, hud_menu_presentation]
+    skills: [ui_style_frames, icon_sets, state_sheets, visual_hierarchy, contrast_readability]
   - id: sprite-forge-specialist
     tier: specialist
     owns: [sprites, fx, props, maps, qc, godot_asset_handoff]
-    skills: [generate2dsprite, generate2dmap, chroma_key_qc, frame_metadata, layered_map_handoff]
+    skills: [generate2dsprite, generate2dmap, chroma_key_qc, frame_metadata, layered_map_handoff, approved_art_direction_execution]
   - id: qa-lead
     tier: lead
     owns: [smoke_checks, playtest_plans, bug_triage, regression_risk, milestone_readiness]
@@ -91,12 +107,15 @@ workflow_lanes:
   - id: technical-architecture
     route: [technical-director, lead-programmer, godot-specialist]
     outputs: [module_boundaries, module_contracts, scene_model, resource_model, signal_boundaries, performance_budget]
+  - id: professional-art-production
+    route: [creative-director, art-director, visual-development-artist, concept-artist, environment-artist, ui-artist, qa-lead]
+    outputs: [art_brief, reference_board, anti_copying_notes, art_bible, mood_board, color_script, concept_sheets, environment_sheets, ui_style_frames, readability_pass, qc_verdict]
   - id: brawler-arcade-ui
-    route: [art-director, ui-programmer, godot-specialist, qa-lead]
+    route: [art-director, ui-artist, ui-programmer, godot-specialist, qa-lead]
     outputs: [uiue_diagram_source, exported_uiue_review_copy, screen_spec, reusable_controls, theme_notes, qa_checklist]
   - id: sprite-forge-assets
-    route: [art-director, sprite-forge-specialist, godot-specialist, qa-lead]
-    outputs: [asset_spec, prompt, qc_report, godot_handoff]
+    route: [art-director, relevant_art_specialist, sprite-forge-specialist, godot-specialist, qa-lead]
+    outputs: [approved_art_direction, asset_spec, prompt, qc_report, godot_handoff]
   - id: implementation
     route: [lead-programmer, relevant_specialist, qa-lead]
     outputs: [module_breakdown, module_contracts, code_changes, data_changes, per_module_verification, integration_verification]
@@ -122,6 +141,8 @@ gates:
   - id: performance
     verdicts: [approve, concerns, reject]
   - id: art
+    verdicts: [approve, concerns, reject]
+  - id: professional-art-quality
     verdicts: [approve, concerns, reject]
   - id: design-document-artifacts
     verdicts: [approve, concerns, reject]

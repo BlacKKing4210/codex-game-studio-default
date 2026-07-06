@@ -28,7 +28,11 @@ Use the smallest useful subset of these roles:
 - GDScript Specialist: typed GDScript, signals, resources, component patterns, performance in hot paths.
 - Gameplay Programmer: movement, combat, spawning, weapons, pickups, upgrades, run state.
 - UI Programmer: reusable Godot UI components, Theme resources, screen shells, touch ergonomics, UI motion presets.
-- Art Director: visual identity, readability, UI tone, asset specs, generated-art direction.
+- Art Director: visual identity, art bible, quality bar, readability, asset specs, generated-art direction, final art sign-off.
+- Visual Development Artist: overall mood, atmosphere, color script, lighting direction, key art, composition, style exploration.
+- Concept Artist: characters, props, creatures, weapons, silhouettes, shape language, turnarounds, expression/pose sheets.
+- Environment Artist: scene concepts, level mood, maps, props/blockers, set dressing, perspective, depth, environment storytelling.
+- UI Artist: UI visual language, iconography, panels, buttons, typography direction, visual states, HUD/menu presentation.
 - Sprite Forge Specialist: generated 2D sprites, FX, props, maps, asset QC, and Godot asset handoff.
 - Prototyper: risky-assumption tests, throwaway prototypes, proceed/pivot/cut verdicts.
 - Performance Analyst: frame time, object pooling, collision cost, memory, dense-combat stress.
@@ -85,7 +89,7 @@ Prefer separated modules for input, movement, combat, interaction, inventory, ec
 
 For any formal 策划案, GDD, system design document, feature specification, UI flow, onboarding flow, shop flow, combat flow, economy flow, or progression flow, route through:
 
-Producer -> Game Designer -> Art Director -> UI Programmer -> QA Lead.
+Producer -> Game Designer -> Art Director -> UI Artist -> UI Programmer -> QA Lead.
 
 A formal design document is not done unless it contains:
 
@@ -104,6 +108,33 @@ For generated art tasks, also include:
 - Prompt constraints
 - QC checklist
 - Godot import/handoff notes
+
+## Professional Art Production Defaults
+
+For any request involving art quality, concept art, characters, props, scene art, maps, UI visual design, atmosphere, mood, lighting, art bible, visual polish, or generated art direction, route through a professional art chain instead of using Sprite Forge alone.
+
+Default art direction route:
+
+Producer -> Creative Director -> Art Director -> Visual Development Artist -> Concept Artist / Environment Artist / UI Artist -> QA Lead.
+
+Use the smallest needed branch:
+
+- Overall style, art bible, mood, palette, lighting, key art: Art Director -> Visual Development Artist -> QA Lead.
+- Character, enemy, weapon, prop, icon concept art: Art Director -> Concept Artist -> Sprite Forge Specialist -> Engine Specialist -> QA Lead.
+- Scene, map, arena, room, background, props/blockers, environmental storytelling: Art Director -> Visual Development Artist -> Environment Artist -> Sprite Forge Specialist -> Engine Specialist -> QA Lead.
+- UI visual design, HUD/menu/shop/result visual language, icons, panels, typography, button states: Art Director -> UI Artist -> UI Programmer -> Engine Specialist -> QA Lead.
+
+Professional art deliverables must include:
+
+- Art brief: gameplay purpose, target player, camera/view, platform, mood, readability constraints.
+- Reference board: approved references and explicit anti-copying notes.
+- Visual direction: shape language, palette, lighting, materials, texture density, composition, and atmosphere.
+- Production sheets: character/prop/environment/UI sheets with variants, callouts, scale, and usage notes.
+- Readability pass: silhouette, value grouping, color separation, UI contrast, small-screen checks.
+- Engine handoff: file format, resolution, layers, pivots/anchors, collision or safe-area notes, import path, naming.
+- QC verdict: approve, revise, or reject with concrete reasons.
+
+Sprite Forge uses approved art direction, prompt constraints, and QC criteria to generate or process assets. It must not replace Art Director, Concept Artist, Environment Artist, UI Artist, or Visual Development Artist judgment.
 
 ## Godot Defaults
 
@@ -133,7 +164,7 @@ Validate required columns, duplicate IDs, missing references, empty required val
 
 For reusable high-energy arcade UI, mobile-first lobby/menu UI, shop/upgrade/result screens, Brawl Stars-like broad visual direction, or requests mentioning 荒野乱斗 UI, route through:
 
-Art Director -> UI Programmer -> Godot Specialist -> QA Lead.
+Art Director -> UI Artist -> UI Programmer -> Godot Specialist -> QA Lead.
 
 Use the shared UI kit at `C:\Users\76398\Documents\Codex\ui-kits\brawler-arcade-ui-core`.
 
@@ -157,7 +188,7 @@ Use sequence-frame sprites only when the silhouette or pose must visibly change,
 
 When the user asks for 美术资源, characters, enemies, weapons, projectiles, props, FX, maps, arenas, sprite sheets, pixel art, or generated game art, route the work through:
 
-Art Director -> Sprite Forge Specialist -> Godot Specialist -> QA Lead.
+Art Director -> relevant professional art specialist -> Sprite Forge Specialist -> Godot Specialist -> QA Lead.
 
 The Sprite Forge Specialist has learned the 0x0funky/agent-sprite-forge workflow:
 
@@ -185,13 +216,14 @@ Local GhidraMCP source is at `C:\Users\76398\Documents\Codex\tools\GhidraMCP`; C
 
 Never copy protected game names, art, UI, exact item lists, economy, logos, or commercial content. Use references as design lessons only.
 
-If the user asks for broad work, start with Producer framing. If the user asks for code, implement with the relevant technical agents. If they ask for art, use Art Director plus Sprite Forge Specialist. If they ask for review, lead with findings and risks.
+If the user asks for broad work, start with Producer framing. If the user asks for code, implement with the relevant technical agents. If they ask for art, use the professional art chain first and then Sprite Forge or engine handoff when assets are needed. If they ask for review, lead with findings and risks.
 
 ## Optional References
 
 When more detail is needed, read these files in this skill folder:
 
 - `references/game-studio-reference.md`
+- `references/professional-art-production-reference.md`
 - `references/agent-sprite-forge-reference.md`
 - `references/csv-data-config-reference.md`
 - `references/brawler-arcade-ui-core-reference.md`

@@ -25,7 +25,8 @@ A first playable slice should prove:
 - Production gate: can it fit the current milestone?
 - QA gate: can it be verified clearly?
 - Performance gate: can it survive dense enemies/projectiles?
-- Art gate: are silhouettes, palettes, animation frames, and map layers readable during dense combat?
+- Art gate: are silhouettes, palettes, UI visuals, animation frames, scene composition, atmosphere, and map layers readable and professional?
+- Professional art quality gate: do concept art, environment art, UI art, and mood/lighting pass the art bible, originality, readability, and engine handoff standards?
 - Design-document gate: does every formal 策划案/GDD contain professional gameplay/system flowcharts and UI/UE diagrams, with editable source files and exported review copies?
 
 ## Role Routing
@@ -39,7 +40,11 @@ A first playable slice should prove:
 - Config tables: Systems Designer + Data Config Specialist.
 - Code: Lead Programmer + relevant specialist.
 - Godot/GDScript: Godot Specialist + GDScript Specialist.
-- Art assets: Art Director + Sprite Forge Specialist.
+- Art direction: Art Director + Visual Development Artist.
+- Concept art: Art Director + Concept Artist.
+- Scene/environment art: Art Director + Visual Development Artist + Environment Artist.
+- UI visual design: Art Director + UI Artist + UI Programmer.
+- Art assets: Art Director + relevant professional art specialist + Sprite Forge Specialist.
 - Art integration: Sprite Forge Specialist + Godot Specialist.
 - Verification: QA Lead + Performance Analyst.
 
@@ -71,6 +76,19 @@ Each module should define:
 - Verification: unit test, scene test, smoke path, or focused manual check before integration.
 
 Do not build major features as one large script, scene, prefab, widget, or mixed-responsibility change. Keep Gameplay, UI, Data, Audio, VFX, tools, and platform services separated unless a thin integration layer is explicitly needed.
+
+## Professional Art Production
+
+Art quality is owned by professional art roles before Sprite Forge generation or engine integration.
+
+Use these routes:
+
+- Overall style, art bible, mood, palette, lighting, and key art: Creative Director -> Art Director -> Visual Development Artist -> QA Lead.
+- Character, enemy, prop, weapon, and icon concepts: Art Director -> Concept Artist -> Sprite Forge Specialist -> Engine Specialist -> QA Lead.
+- Scenes, maps, rooms, arenas, backgrounds, props/blockers, and environmental storytelling: Art Director -> Visual Development Artist -> Environment Artist -> Sprite Forge Specialist -> Engine Specialist -> QA Lead.
+- UI visual design, HUD, menus, shops, cards, result screens, icons, panels, typography, and visual states: Art Director -> UI Artist -> UI Programmer -> Engine Specialist -> QA Lead.
+
+Professional art deliverables include an art brief, reference board with anti-copying notes, visual direction, production sheets, readability pass, engine handoff notes, and QC verdict.
 
 ## Formal Design Document Artifact Rules
 
