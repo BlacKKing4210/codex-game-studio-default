@@ -41,4 +41,5 @@ Use this rubric when reviewing changes to the Codex Game Studio workflow.
 - README explains what the repo does.
 - AGENTS.md matches SKILL.md.
 - Catalog and docs agree on agent names and routes.
+- Formal design docs require Figma/FigJam source links or `.fig` source references for UI/UE diagrams.
 - Migration notes exist for breaking workflow changes.

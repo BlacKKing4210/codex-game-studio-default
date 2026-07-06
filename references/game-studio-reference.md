@@ -26,7 +26,7 @@ A first playable slice should prove the smallest complete player experience for 
 - Performance gate: can it survive dense enemies/projectiles?
 - Art gate: are silhouettes, palettes, UI visuals, animation frames, scene composition, atmosphere, and map layers readable and professional?
 - Professional art quality gate: do concept art, environment art, UI art, and mood/lighting pass the art bible, originality, readability, and engine handoff standards?
-- Design-document gate: does every formal 策划案/GDD contain professional gameplay/system flowcharts and UI/UE diagrams, with editable source files and exported review copies?
+- Design-document gate: does every formal 策划案/GDD contain professional gameplay/system flowcharts and Figma/FigJam UI/UE diagrams, with editable source links/files and exported review copies?
 
 ## Role Routing
 
@@ -35,7 +35,7 @@ A first playable slice should prove the smallest complete player experience for 
 - Architecture or dependencies: Technical Director.
 - Module boundaries and contracts: Technical Director + Lead Programmer.
 - Mechanics/content: Game Designer + Systems Designer.
-- Formal design docs, flowcharts, and UI/UE diagrams: Producer + Game Designer + Art Director + UI Artist + UI Programmer + QA Lead.
+- Formal design docs, flowcharts, and Figma/FigJam UI/UE diagrams: Producer + Game Designer + Art Director + UI Artist + UI Programmer + QA Lead.
 - Config tables: Systems Designer + Data Config Specialist.
 - Code: Lead Programmer + relevant specialist.
 - Godot/GDScript: Godot Specialist + GDScript Specialist.
@@ -58,7 +58,7 @@ For substantial work, produce:
 - goal
 - owner agent or route
 - files/docs involved
-- professional diagram sources/exports when producing a formal 策划案, GDD, system spec, or UI/UE spec
+- professional flowchart sources/exports and Figma/FigJam UI/UE source links/exports when producing a formal 策划案, GDD, system spec, or UI/UE spec
 - module boundaries, contracts, and verification paths when producing implementation work
 - decisions made
 - implementation notes
@@ -120,9 +120,11 @@ Any formal 策划案, GDD, system design document, feature specification, UI flo
 - Gameplay/system flowchart: player actions, states, branches, rewards, failure/retry, and completion paths.
 - UI/UE diagram: screen map, user journey, wireframes, interaction states, entry/exit paths, and key feedback.
 
-Use professional planning, product, UX, or diagram tools such as Axure RP, Figma/FigJam, Miro, diagrams.net/draw.io, ProcessOn, Visio, MasterGo, Mockplus, or the project's approved equivalent.
+Gameplay/system flowcharts use professional planning, product, UX, or diagram tools such as Axure RP, Miro, diagrams.net/draw.io, ProcessOn, Visio, MasterGo, Mockplus, FigJam, or the project's approved equivalent.
 
-Markdown ASCII lines, Markdown tables, and Mermaid-only diagrams are drafts only. They do not count as final design artifacts. Store editable files in `design/flows/` and `design/uiue/`, export PNG/PDF review copies to `design/exports/` or `docs/assets/`, and link them from the design document.
+UI/UE diagrams use Figma or FigJam by default, so the user can directly edit them. Store editable Figma/FigJam URLs or exported `.fig` source references in `design/uiue/`, export PNG/PDF review copies to `design/exports/` or `docs/assets/`, and link both the editable source and review exports from the design document.
+
+Markdown ASCII lines, Markdown tables, and Mermaid-only diagrams are drafts only. They do not count as final design artifacts.
 
 ## Brownfield Adoption
 

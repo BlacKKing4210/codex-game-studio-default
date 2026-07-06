@@ -108,7 +108,7 @@ workflow_lanes:
     outputs: [risky_assumption, minimum_test, verdict]
   - id: system-design
     route: [game-designer, systems-designer, qa-lead]
-    outputs: [core_loop, systems, formulas, acceptance_criteria, professional_flowchart_source, uiue_diagram_source, exported_diagram_review_copies]
+    outputs: [core_loop, systems, formulas, acceptance_criteria, professional_flowchart_source, figma_uiue_source, exported_diagram_review_copies]
   - id: csv-data-config
     route: [systems-designer, data-config-specialist, technical-director, godot-specialist, qa-lead]
     outputs: [schemas, starter_rows, ids, validation_rules, loading_path]
@@ -129,7 +129,7 @@ workflow_lanes:
     outputs: [visual_sentence, complexity_budget, famous_company_reference_decomposition, readability_target, reusable_asset_plan, anti_copying_notes, revision_notes]
   - id: brawler-arcade-ui
     route: [art-director, ui-artist, ui-programmer, godot-specialist, qa-lead]
-    outputs: [uiue_diagram_source, exported_uiue_review_copy, screen_spec, reusable_controls, theme_notes, qa_checklist]
+    outputs: [figma_uiue_source, exported_uiue_review_copy, screen_spec, reusable_controls, theme_notes, qa_checklist]
   - id: sprite-forge-assets
     route: [art-director, relevant_art_specialist, sprite-forge-specialist, 2d-technical-artist, godot-specialist, qa-lead]
     outputs: [approved_art_direction, asset_spec, prompt, qc_report, sprite_specs, atlas_import_notes, godot_handoff]

@@ -96,7 +96,7 @@ See [docs/AGENT-CATALOG.md](docs/AGENT-CATALOG.md) for each agent's responsibili
 1. **Git and GitHub Startup** - initialize or verify Git, ignore files, README, first commit, private GitHub origin where possible.
 2. **Concept** - promise, target player, pillars, anti-pillars, reference principles.
 3. **Prototype** - one risky assumption, minimum test, proceed/pivot/cut verdict.
-4. **System Design** - core loop, mechanics, content rules, economy, difficulty, professional flowcharts, and UI/UE diagrams for formal design docs.
+4. **System Design** - core loop, mechanics, content rules, economy, difficulty, professional flowcharts, and Figma/FigJam UI/UE diagrams for formal design docs.
 5. **CSV Data Config** - schemas, starter rows, IDs, validation rules, loading path.
 6. **Technical Architecture** - Godot architecture, module boundaries, data/resources, 2D scene/layer model by default, performance budget.
 7. **Vertical Slice** - playable slice plan, tasks, owners, acceptance criteria.
@@ -144,7 +144,7 @@ Codex Game Studio Framework/        # Agent/workflow catalog for testing and ext
 - **Visual design**: simple premium 2D by default: clear silhouettes, controlled palettes, restrained detail, reusable UI/components, and polish through timing, spacing, contrast, and feedback.
 - **Engine**: Godot 4 unless the project already uses another engine.
 - **Language**: GDScript unless the project already uses C# or the user chooses it.
-- **Design docs**: formal 策划案/GDD/system specs require professional gameplay/system flowcharts and UI/UE diagrams; Markdown-only diagrams are drafts, not final artifacts.
+- **Design docs**: formal 策划案/GDD/system specs require professional gameplay/system flowcharts and Figma/FigJam UI/UE diagrams; Markdown-only diagrams are drafts, not final artifacts.
 - **Implementation**: substantial features must be split into modules with boundaries, contracts, per-module verification, and small integration steps.
 - **Game config**: CSV by default under `config/csv/` or equivalent.
 - **Art direction**: master-level art roles own original concept art, scene art, UI visual design, atmosphere, art bible, readability, market reference decomposition, complexity budgets, and final visual quality before Sprite Forge execution.

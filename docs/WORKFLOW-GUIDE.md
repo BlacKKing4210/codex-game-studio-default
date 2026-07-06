@@ -9,7 +9,7 @@ This is the default Codex Game Studio delivery flow.
 3. Establish concept, engine, first playable target, and confirm the default 2D-first production model unless the project requires another rendering model.
 4. For 2D or art-heavy work, define the simple premium visual sentence, complexity budget, reference lessons, and anti-copying notes before asset production.
 5. Keep configuration CSV-first where practical.
-6. For formal design docs, create professional flowcharts and UI/UE diagrams before implementation handoff.
+6. For formal design docs, create professional flowcharts and Figma/FigJam UI/UE diagrams before implementation handoff.
 7. For 2D work, define sprite specs, animation specs, layer/y-sort/collision rules, atlas/import settings, and QA previews before asset integration.
 8. Implement in small feature batches with QA and version finish.
 
@@ -39,7 +39,7 @@ Outputs:
 - Anti-pillars.
 - Reference principles without copying protected content.
 - Simple premium 2D visual sentence and complexity budget when the project uses 2D visuals.
-- Visual-artifact plan for any formal 策划案/GDD: required gameplay/system flowcharts and UI/UE diagrams.
+- Visual-artifact plan for any formal 策划案/GDD: required gameplay/system flowcharts and Figma/FigJam UI/UE diagrams.
 
 Gate:
 
@@ -67,12 +67,12 @@ Outputs:
 - Weapons, enemies, upgrades, economy, difficulty.
 - Tuning knobs and acceptance criteria.
 - Gameplay/system flowchart source file and exported review image/PDF.
-- UI/UE diagram source file and exported review image/PDF when the system has any screen, HUD, menu, onboarding, shop, progression, or decision interface.
+- Figma/FigJam UI/UE source link or exported `.fig` reference plus exported review image/PDF when the system has any screen, HUD, menu, onboarding, shop, progression, or decision interface.
 
 Gate:
 
 - Major gameplay systems have testable rules and known dependencies.
-- A formal 策划案/GDD cannot move to architecture or implementation while its required flowchart or UI/UE diagram is missing.
+- A formal 策划案/GDD cannot move to architecture or implementation while its required flowchart or Figma/FigJam UI/UE diagram is missing.
 
 ## Design Document Visual Artifact Gate
 
@@ -85,14 +85,16 @@ Required artifacts:
 
 Tooling rule:
 
-- Use professional planning, product, UX, or diagram software such as Axure RP, Figma/FigJam, Miro, diagrams.net/draw.io, ProcessOn, Visio, MasterGo, Mockplus, or the project's approved equivalent.
+- Gameplay/system flowcharts use professional planning, product, UX, or diagram software such as Axure RP, Miro, diagrams.net/draw.io, ProcessOn, Visio, MasterGo, Mockplus, FigJam, or the project's approved equivalent.
+- UI/UE diagrams use Figma or FigJam by default, so the user can directly edit screen maps, user journeys, wireframes, interaction states, and key feedback.
 - Markdown ASCII lines, Markdown tables, and Mermaid-only diagrams are temporary drafts only. They do not satisfy the final design-document gate.
 
 Delivery rule:
 
-- Editable source files live under `design/flows/` and `design/uiue/`.
+- Gameplay/system flowchart editable sources live under `design/flows/`.
+- UI/UE editable Figma/FigJam URLs or exported `.fig` source references live under `design/uiue/`.
 - Exported PNG/PDF review files live under `design/exports/` or `docs/assets/`.
-- The design document links to the exported diagrams and names the editable source files.
+- The design document links to the exported diagrams and names the editable source files or Figma/FigJam URLs.
 
 Review rule:
 

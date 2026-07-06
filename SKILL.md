@@ -50,7 +50,7 @@ Use the smallest useful subset of these roles:
 0. Git and GitHub Startup: initialize or verify Git, `.gitignore`, README, initial checkpoint commit for new projects, and private GitHub origin when possible.
 1. Concept: promise, target player, pillars, anti-pillars, reference principles, and visual-artifact requirements for formal design docs.
 2. Prototype: one risky assumption, minimum test, proceed/pivot/cut verdict.
-3. System Design: core loop, mechanics, content rules, economy, difficulty ramp, professional flowcharts, and UI/UE diagrams when the output is a formal 策划案/GDD.
+3. System Design: core loop, mechanics, content rules, economy, difficulty ramp, professional flowcharts, and Figma/FigJam UI/UE diagrams when the output is a formal 策划案/GDD.
 3A. CSV Data Config: schemas, starter rows, IDs, validation rules, runtime loading path.
 4. Technical Architecture: engine architecture, module boundaries, data/resources, 2D scene/layer model by default, performance budget.
 5. Vertical Slice: playable slice plan, tasks, owners, acceptance criteria.
@@ -102,9 +102,11 @@ A formal design document is not done unless it contains:
 - Gameplay/system flowchart: player actions, system states, branches, rewards, failure/retry, and end conditions.
 - UI/UE diagram: screen map, user journey, wireframes, interaction states, entry/exit paths, and key feedback.
 
-Use professional planning, product, UX, or diagram tools such as Axure RP, Figma/FigJam, Miro, diagrams.net/draw.io, ProcessOn, Visio, MasterGo, Mockplus, or the project's approved equivalent.
+Gameplay/system flowcharts must use professional planning, product, UX, or diagram tools such as Axure RP, Miro, diagrams.net/draw.io, ProcessOn, Visio, MasterGo, Mockplus, FigJam, or the project's approved equivalent.
 
-Markdown ASCII lines, Markdown tables, and Mermaid-only diagrams are temporary drafts, not final planning artifacts. Store editable source files under `design/flows/` and `design/uiue/`, export PNG/PDF review copies under `design/exports/` or `docs/assets/`, and link those exports from the design document.
+UI/UE diagrams must use Figma or FigJam by default, so the user can directly edit them. Store the editable Figma/FigJam URL or exported `.fig` source reference under `design/uiue/`, export PNG/PDF review copies under `design/exports/` or `docs/assets/`, and link both the editable source and review exports from the design document.
+
+Markdown ASCII lines, Markdown tables, and Mermaid-only diagrams are temporary drafts, not final planning artifacts.
 
 For generated art tasks, also include:
 

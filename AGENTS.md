@@ -106,9 +106,11 @@ A formal design document is not complete unless it includes professional visual 
 - Gameplay/system flowchart: player actions, system states, decisions, rewards, failure/retry, and end conditions.
 - UI/UE diagram: screen map, user journey, wireframes, interaction states, entry/exit paths, and key feedback.
 
-These diagrams must be created in professional planning, product, UX, or diagram software such as Axure RP, Figma/FigJam, Miro, diagrams.net/draw.io, ProcessOn, Visio, MasterGo, Mockplus, or the project's approved equivalent.
+Gameplay/system flowcharts must be created in professional planning, product, UX, or diagram software such as Axure RP, Miro, diagrams.net/draw.io, ProcessOn, Visio, MasterGo, Mockplus, FigJam, or the project's approved equivalent.
 
-Do not treat Markdown ASCII lines, Markdown tables, or Mermaid-only diagrams as final 策划图. They are allowed only as temporary communication drafts. Keep editable source files under `design/flows/` and `design/uiue/`, export PNG/PDF review copies under `design/exports/` or `docs/assets/`, and link the exports from the design document.
+UI/UE diagrams must use Figma or FigJam by default, so the user can directly edit them. Keep editable Figma/FigJam URLs or exported `.fig` source references under `design/uiue/`, export PNG/PDF review copies under `design/exports/` or `docs/assets/`, and link both editable sources and exports from the design document.
+
+Do not treat Markdown ASCII lines, Markdown tables, or Mermaid-only diagrams as final 策划图. They are allowed only as temporary communication drafts.
 
 ## UI Default
 
