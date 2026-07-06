@@ -1,6 +1,6 @@
 ---
 name: codex-game-studio-default
-description: Default Codex Game Studio workflow for all game development projects. Use automatically whenever the user asks to make, design, prototype, modify, review, test, balance, generate assets for, or plan any game project in Godot, Unity, Unreal, browser games, roguelikes, survivorlikes, Brotato-like arena shooters, or any other game-development context. Also use for Chinese game-development requests such as 游戏开发, 做游戏, 制作游戏, Godot游戏, 复刻土豆兄弟, 土豆兄弟like, 类土豆兄弟, 幸存者like, 肉鸽, roguelike, 美术资源, 生成美术, 角色精灵, sprite sheet, pixel art, 地图生成, generate2dsprite, generate2dmap, Sprite Forge, agent-sprite-forge, 数值设计, 游戏原型, 游戏测试. Applies even when the user does not explicitly mention agents or the Codex Game Studio.
+description: Default 2D-first Codex Game Studio workflow for all game development projects. Use automatically whenever the user asks to make, design, prototype, modify, review, test, balance, generate assets for, or plan any game project in Godot, Unity, Unreal, browser games, roguelikes, survivorlikes, Brotato-like arena shooters, sprite-based games, pixel-art-style games, TileMap games, side scrollers, top-down games, or any other game-development context. Also use for Chinese game-development requests such as 游戏开发, 做游戏, 制作游戏, 2D游戏, Godot游戏, 复刻土豆兄弟, 土豆兄弟like, 类土豆兄弟, 幸存者like, 肉鸽, roguelike, 美术资源, 生成美术, 角色精灵, sprite sheet, pixel art, TileMap, 2D动画, 地图生成, generate2dsprite, generate2dmap, Sprite Forge, agent-sprite-forge, 数值设计, 游戏原型, 游戏测试. Applies even when the user does not explicitly mention agents or the Codex Game Studio.
 ---
 
 # Codex Game Studio Default
@@ -10,6 +10,8 @@ Use this skill as the default operating model for game development.
 ## Core Rule
 
 When the task is game development, silently adopt the Codex Game Studio structure unless the user asks for a different workflow.
+
+Default to 2D-first production unless the user or existing project explicitly chooses 3D, 2.5D, VR/AR, or another rendering model.
 
 Treat the user as final producer and decision maker. Provide role framing, options, recommendations, implementation, verification, and concise status updates.
 
@@ -34,6 +36,8 @@ Use the smallest useful subset of these roles:
 - Environment Artist: scene concepts, level mood, maps, props/blockers, set dressing, perspective, depth, environment storytelling.
 - UI Artist: UI visual language, iconography, panels, buttons, typography direction, visual states, HUD/menu presentation.
 - Sprite Forge Specialist: generated 2D sprites, FX, props, maps, asset QC, and Godot asset handoff.
+- 2D Animation Specialist: sprite animation states, timing charts, frame budgets, hit reactions, action readability, procedural-motion blend.
+- 2D Technical Artist: sprite import, atlases, TileMaps, y-sort, 2D collision, shader/material/VFX rules, Godot 2D handoff.
 - Prototyper: risky-assumption tests, throwaway prototypes, proceed/pivot/cut verdicts.
 - Performance Analyst: frame time, object pooling, collision cost, memory, dense-combat stress.
 - QA Lead: smoke checks, playtest plans, bug triage, regression risk, milestone readiness.
@@ -46,7 +50,7 @@ Use the smallest useful subset of these roles:
 2. Prototype: one risky assumption, minimum test, proceed/pivot/cut verdict.
 3. System Design: core loop, mechanics, content rules, economy, difficulty ramp, professional flowcharts, and UI/UE diagrams when the output is a formal 策划案/GDD.
 3A. CSV Data Config: schemas, starter rows, IDs, validation rules, runtime loading path.
-4. Technical Architecture: engine architecture, module boundaries, data/resources, scene model, performance budget.
+4. Technical Architecture: engine architecture, module boundaries, data/resources, 2D scene/layer model by default, performance budget.
 5. Vertical Slice: playable slice plan, tasks, owners, acceptance criteria.
 6. Implementation: modular code/assets/data changes with per-module verification before integration.
 7. QA and Tuning: smoke checks, playtest notes, bug list, balance notes.
@@ -120,8 +124,8 @@ Producer -> Creative Director -> Art Director -> Visual Development Artist -> Co
 Use the smallest needed branch:
 
 - Overall style, art bible, mood, palette, lighting, key art: Art Director -> Visual Development Artist -> QA Lead.
-- Character, enemy, weapon, prop, icon concept art: Art Director -> Concept Artist -> Sprite Forge Specialist -> Engine Specialist -> QA Lead.
-- Scene, map, arena, room, background, props/blockers, environmental storytelling: Art Director -> Visual Development Artist -> Environment Artist -> Sprite Forge Specialist -> Engine Specialist -> QA Lead.
+- Character, enemy, weapon, prop, icon concept art: Art Director -> Concept Artist -> 2D Animation Specialist -> Sprite Forge Specialist -> 2D Technical Artist -> Engine Specialist -> QA Lead.
+- Scene, map, arena, room, background, props/blockers, environmental storytelling: Art Director -> Visual Development Artist -> Environment Artist -> Sprite Forge Specialist -> 2D Technical Artist -> Engine Specialist -> QA Lead.
 - UI visual design, HUD/menu/shop/result visual language, icons, panels, typography, button states: Art Director -> UI Artist -> UI Programmer -> Engine Specialist -> QA Lead.
 
 Professional art deliverables must include:
@@ -136,6 +140,27 @@ Professional art deliverables must include:
 
 Sprite Forge uses approved art direction, prompt constraints, and QC criteria to generate or process assets. It must not replace Art Director, Concept Artist, Environment Artist, UI Artist, or Visual Development Artist judgment.
 
+## 2D Game Production Defaults
+
+Use 2D as the default production model for new game projects unless project context says otherwise.
+
+Default 2D production route:
+
+Producer -> Creative Director -> Art Director -> Technical Director -> 2D Technical Artist -> relevant art/programming specialist -> Godot Specialist -> QA Lead.
+
+Use the smallest needed branch:
+
+- 2D project setup, asset import rules, TileMap/layer model, atlas plan: Technical Director -> 2D Technical Artist -> Godot Specialist -> QA Lead.
+- 2D character, enemy, prop, weapon production: Art Director -> Concept Artist -> 2D Animation Specialist -> Sprite Forge Specialist -> 2D Technical Artist -> Godot Specialist -> QA Lead.
+- 2D scene, map, arena, room, TileMap, parallax, blockers, spawn zones: Art Director -> Visual Development Artist -> Environment Artist -> Sprite Forge Specialist -> 2D Technical Artist -> Godot Specialist -> QA Lead.
+- 2D animation, combat feedback, hit reaction, attack timing, pickup/death feedback: Art Director -> 2D Animation Specialist -> Gameplay Programmer -> Godot Specialist -> QA Lead.
+- 2D UI and HUD: Art Director -> UI Artist -> UI Programmer -> Godot Specialist -> QA Lead.
+- 2D performance: Technical Director -> 2D Technical Artist -> Performance Analyst -> Godot Specialist -> QA Lead.
+
+2D deliverables should include camera/view, target resolution, intended on-screen size, sprite specs, animation specs, layer order, y-sort rules, collision layers, atlas/import settings, VFX/material rules, and QA previews.
+
+Default Godot 2D nodes and concepts include Sprite2D, AnimatedSprite2D, AnimationPlayer, TileMapLayer, CanvasLayer, Control, Area2D, CharacterBody2D, CollisionShape2D, Resource, Signal, object pooling, and camera bounds.
+
 ## Godot Defaults
 
 For Godot games, prefer:
@@ -147,6 +172,7 @@ For Godot games, prefer:
 - Scenes as reusable gameplay units.
 - Signals for decoupled events.
 - Autoloads only for true global systems.
+- 2D-first scene/layer planning unless the project context says otherwise.
 - Object pooling for repeated projectiles, pickups, damage numbers, particles, and enemy bursts.
 - `rg --glob "*.gd"` for GDScript search.
 
@@ -188,7 +214,7 @@ Use sequence-frame sprites only when the silhouette or pose must visibly change,
 
 When the user asks for 美术资源, characters, enemies, weapons, projectiles, props, FX, maps, arenas, sprite sheets, pixel art, or generated game art, route the work through:
 
-Art Director -> relevant professional art specialist -> Sprite Forge Specialist -> Godot Specialist -> QA Lead.
+Art Director -> relevant professional art specialist -> Sprite Forge Specialist -> 2D Technical Artist -> Godot Specialist -> QA Lead.
 
 The Sprite Forge Specialist has learned the 0x0funky/agent-sprite-forge workflow:
 
@@ -201,6 +227,8 @@ The Sprite Forge Specialist has learned the 0x0funky/agent-sprite-forge workflow
 - Separate player/enemy bodies from projectiles, impacts, slash arcs, muzzle flashes, dust, and wide FX unless the engine plan explicitly supports wide cells and custom origins.
 - For playable maps, never ship a single flattened image when runtime control is needed. Keep base, props, actors, foreground, collision, zones, previews, and Godot integration metadata separate.
 - For survivor-like or Brotato-like arenas, prefer `scene_mode`: foundation-only base, separate props/blockers, spawn rings or zones, camera bounds, and a QA layered preview.
+
+For final 2D assets, involve 2D Animation Specialist when motion/readability matters and 2D Technical Artist before engine import.
 
 ## Authorized Reverse Engineering Defaults
 
@@ -223,10 +251,13 @@ If the user asks for broad work, start with Producer framing. If the user asks f
 When more detail is needed, read these files in this skill folder:
 
 - `references/game-studio-reference.md`
+- `references/2d-game-production-reference.md`
 - `references/professional-art-production-reference.md`
 - `references/agent-sprite-forge-reference.md`
 - `references/csv-data-config-reference.md`
 - `references/brawler-arcade-ui-core-reference.md`
 - `references/reverse-engineering-reference.md`
 - `agents/sprite-forge-specialist.md`
+- `agents/2d-animation-specialist.md`
+- `agents/2d-technical-artist.md`
 - `agents/reverse-engineering-specialist.md`

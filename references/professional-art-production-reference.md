@@ -8,7 +8,7 @@ Sprite Forge is an execution and handoff pipeline, not a replacement for profess
 
 Before generating or integrating final art, route visual decisions through the relevant professional art roles:
 
-Producer -> Creative Director -> Art Director -> Visual Development Artist -> Concept Artist / Environment Artist / UI Artist -> Sprite Forge Specialist -> Engine Specialist -> QA Lead.
+Producer -> Creative Director -> Art Director -> Visual Development Artist -> Concept Artist / Environment Artist / UI Artist -> Sprite Forge Specialist -> 2D Technical Artist -> Engine Specialist -> QA Lead.
 
 Use the smallest needed route for the task.
 
@@ -21,6 +21,8 @@ Use the smallest needed route for the task.
 | Concept Artist | Characters, enemies, props, weapons, silhouettes, shape language, turnarounds | Silhouette design, shape language, production callouts, pose/expression sheets | Concept sheets, variants, turnarounds, callouts |
 | Environment Artist | Scenes, maps, arenas, rooms, background, props/blockers, set dressing | Scene composition, environmental storytelling, perspective, depth, prop layering | Environment sheets, map/scene breakdowns, prop plans |
 | UI Artist | UI visual language, icons, panels, buttons, typography direction, visual states | UI style frames, iconography, contrast/readability, state sheets | UI style frames, icon sets, component visual states |
+| 2D Animation Specialist | Sprite animation states, frame timing, action readability, procedural-motion blend | Timing charts, frame budgets, anticipation/recovery, hit reaction | Animation list, timing chart, transition notes |
+| 2D Technical Artist | Sprite import, atlases, TileMaps, y-sort, collision, materials, VFX, engine handoff | Atlas planning, import settings, TileMap/layer rules, runtime readability | 2D technical spec, atlas plan, import notes |
 | Sprite Forge Specialist | Generated asset execution, cleanup, slicing, metadata, previews, QC, engine handoff | generate2dsprite, generate2dmap, chroma-key QC, frame metadata | Generated assets, previews, metadata, handoff notes |
 
 ## Required Art Deliverables
@@ -40,10 +42,10 @@ For professional visual work, produce:
 | Work Type | Route |
 |---|---|
 | Overall art style / art bible | Creative Director -> Art Director -> Visual Development Artist -> QA Lead |
-| Character / enemy / prop / weapon concept | Art Director -> Concept Artist -> Sprite Forge Specialist -> Engine Specialist -> QA Lead |
-| Scene / map / environment / atmosphere | Art Director -> Visual Development Artist -> Environment Artist -> Sprite Forge Specialist -> Engine Specialist -> QA Lead |
+| Character / enemy / prop / weapon concept | Art Director -> Concept Artist -> 2D Animation Specialist -> Sprite Forge Specialist -> 2D Technical Artist -> Engine Specialist -> QA Lead |
+| Scene / map / environment / atmosphere | Art Director -> Visual Development Artist -> Environment Artist -> Sprite Forge Specialist -> 2D Technical Artist -> Engine Specialist -> QA Lead |
 | UI visual design / HUD / menu / shop / result screen | Art Director -> UI Artist -> UI Programmer -> Engine Specialist -> QA Lead |
-| Generated asset pack | Art Director -> relevant art specialist -> Sprite Forge Specialist -> Engine Specialist -> QA Lead |
+| Generated asset pack | Art Director -> relevant art specialist -> Sprite Forge Specialist -> 2D Technical Artist -> Engine Specialist -> QA Lead |
 | Art quality review | Art Director -> relevant art specialist -> QA Lead |
 
 ## Quality Gates
@@ -57,7 +59,7 @@ Professional art work is not done until:
 - Scene composition supports gameplay, navigation, collision, and spawn readability.
 - UI visual states are clear: default, hover, pressed, selected, disabled, locked, loading, error, success.
 - Mood, color, and lighting are consistent across screens and scenes.
-- Engine handoff notes are clear enough for implementation without guessing.
+- 2D animation and technical-art notes are clear enough for implementation without guessing.
 
 ## Sprite Forge Handoff
 
@@ -72,5 +74,6 @@ Minimum handoff into Sprite Forge:
 - Canvas size, frame size, grid, transparent or magenta background requirements.
 - Layering and naming rules.
 - QC checklist.
+- 2D technical handoff requirements.
 
 If art direction is missing, route back to Art Director and the relevant professional art specialist before generation.

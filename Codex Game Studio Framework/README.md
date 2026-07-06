@@ -9,5 +9,6 @@ Use this folder for:
 - agent role specs
 - workflow lane specs
 - quality rubrics
+- 2D-first production audits
 - future skill or agent tests
 - structured audits before changing the workflow

@@ -21,6 +21,7 @@ A first playable slice should prove:
 
 - Creative gate: does this serve pillars and target fantasy?
 - Technical gate: is it simple, maintainable, and feasible in the engine?
+- 2D production gate: are sprites, atlases, layers, TileMaps, pivots, collision, y-sort, animation timing, and target resolution defined?
 - Modular implementation gate: is the feature split into independently verifiable modules with clear boundaries and contracts?
 - Production gate: can it fit the current milestone?
 - QA gate: can it be verified clearly?
@@ -36,16 +37,19 @@ A first playable slice should prove:
 - Architecture or dependencies: Technical Director.
 - Module boundaries and contracts: Technical Director + Lead Programmer.
 - Mechanics/content: Game Designer + Systems Designer.
-- Formal design docs, flowcharts, and UI/UE diagrams: Producer + Game Designer + Art Director + UI Programmer + QA Lead.
+- Formal design docs, flowcharts, and UI/UE diagrams: Producer + Game Designer + Art Director + UI Artist + UI Programmer + QA Lead.
 - Config tables: Systems Designer + Data Config Specialist.
 - Code: Lead Programmer + relevant specialist.
 - Godot/GDScript: Godot Specialist + GDScript Specialist.
+- 2D project setup: Technical Director + 2D Technical Artist + Godot Specialist.
+- 2D animation: Art Director + 2D Animation Specialist + Gameplay Programmer.
+- 2D technical art: Art Director + 2D Technical Artist + Godot Specialist.
 - Art direction: Art Director + Visual Development Artist.
 - Concept art: Art Director + Concept Artist.
 - Scene/environment art: Art Director + Visual Development Artist + Environment Artist.
 - UI visual design: Art Director + UI Artist + UI Programmer.
 - Art assets: Art Director + relevant professional art specialist + Sprite Forge Specialist.
-- Art integration: Sprite Forge Specialist + Godot Specialist.
+- Art integration: Sprite Forge Specialist + 2D Technical Artist + Godot Specialist.
 - Verification: QA Lead + Performance Analyst.
 
 ## Output Contract
@@ -77,6 +81,22 @@ Each module should define:
 
 Do not build major features as one large script, scene, prefab, widget, or mixed-responsibility change. Keep Gameplay, UI, Data, Audio, VFX, tools, and platform services separated unless a thin integration layer is explicitly needed.
 
+## 2D Game Production
+
+New projects default to 2D-first unless the user or existing project explicitly chooses 3D, 2.5D, VR/AR, or another rendering model.
+
+Use these routes:
+
+- 2D project setup, import settings, layer model, atlas plan: Technical Director -> 2D Technical Artist -> Godot Specialist -> QA Lead.
+- 2D character, enemy, prop, and weapon production: Art Director -> Concept Artist -> 2D Animation Specialist -> Sprite Forge Specialist -> 2D Technical Artist -> Godot Specialist -> QA Lead.
+- 2D scene, map, TileMap, parallax, blockers, and spawn zones: Art Director -> Visual Development Artist -> Environment Artist -> Sprite Forge Specialist -> 2D Technical Artist -> Godot Specialist -> QA Lead.
+- 2D animation and action feedback: Art Director -> 2D Animation Specialist -> Gameplay Programmer -> Godot Specialist -> QA Lead.
+- 2D performance: Technical Director -> 2D Technical Artist -> Performance Analyst -> Godot Specialist -> QA Lead.
+
+2D deliverables include camera/view, target resolution, intended on-screen size, sprite specs, animation specs, layer order, y-sort rules, collision layers, atlas/import settings, VFX/material rules, and QA previews.
+
+2D quality is not done until silhouettes are readable at gameplay size, pivots/feet lines are stable, animation timing communicates action beats, layer order and collision are clear, UI remains readable over gameplay, and texture memory/draw calls fit the target platform.
+
 ## Professional Art Production
 
 Art quality is owned by professional art roles before Sprite Forge generation or engine integration.
@@ -84,8 +104,8 @@ Art quality is owned by professional art roles before Sprite Forge generation or
 Use these routes:
 
 - Overall style, art bible, mood, palette, lighting, and key art: Creative Director -> Art Director -> Visual Development Artist -> QA Lead.
-- Character, enemy, prop, weapon, and icon concepts: Art Director -> Concept Artist -> Sprite Forge Specialist -> Engine Specialist -> QA Lead.
-- Scenes, maps, rooms, arenas, backgrounds, props/blockers, and environmental storytelling: Art Director -> Visual Development Artist -> Environment Artist -> Sprite Forge Specialist -> Engine Specialist -> QA Lead.
+- Character, enemy, prop, weapon, and icon concepts: Art Director -> Concept Artist -> 2D Animation Specialist -> Sprite Forge Specialist -> 2D Technical Artist -> Engine Specialist -> QA Lead.
+- Scenes, maps, rooms, arenas, backgrounds, props/blockers, and environmental storytelling: Art Director -> Visual Development Artist -> Environment Artist -> Sprite Forge Specialist -> 2D Technical Artist -> Engine Specialist -> QA Lead.
 - UI visual design, HUD, menus, shops, cards, result screens, icons, panels, typography, and visual states: Art Director -> UI Artist -> UI Programmer -> Engine Specialist -> QA Lead.
 
 Professional art deliverables include an art brief, reference board with anti-copying notes, visual direction, production sheets, readability pass, engine handoff notes, and QC verdict.

@@ -1,6 +1,6 @@
 version: 1
 name: codex-game-studio-default
-summary: Godot-first Codex Game Studio workflow with professional design artifacts, professional art production, modular implementation, CSV data config, Sprite Forge art, procedural motion, QA, and Git version finish.
+summary: 2D-first, Godot-first Codex Game Studio workflow with professional design artifacts, professional art production, modular implementation, CSV data config, Sprite Forge art, procedural motion, QA, and Git version finish.
 
 agents:
   - id: producer
@@ -75,10 +75,18 @@ agents:
     tier: specialist
     owns: [ui_visual_language, iconography, panels, buttons, typography_direction, visual_states, hud_menu_presentation]
     skills: [ui_style_frames, icon_sets, state_sheets, visual_hierarchy, contrast_readability]
+  - id: 2d-animation-specialist
+    tier: specialist
+    owns: [sprite_animation_states, frame_timing, frame_budgets, hit_reactions, action_readability, procedural_motion_blend]
+    skills: [sprite_animation, frame_timing, animation_states, squash_stretch, anticipation_recovery, hit_reaction, vfx_timing, procedural_motion_blend]
+  - id: 2d-technical-artist
+    tier: specialist
+    owns: [sprite_import, sprite_atlases, tilemaps, y_sort, collision_2d, shader_material_rules, particle_vfx, godot_2d_handoff]
+    skills: [sprite_import, sprite_atlas, tilemap_pipeline, y_sort, collision_2d, shader_materials, particle_vfx, godot_2d_handoff]
   - id: sprite-forge-specialist
     tier: specialist
     owns: [sprites, fx, props, maps, qc, godot_asset_handoff]
-    skills: [generate2dsprite, generate2dmap, chroma_key_qc, frame_metadata, layered_map_handoff, approved_art_direction_execution]
+    skills: [generate2dsprite, generate2dmap, chroma_key_qc, frame_metadata, layered_map_handoff, approved_art_direction_execution, sprite_sheet_qc]
   - id: qa-lead
     tier: lead
     owns: [smoke_checks, playtest_plans, bug_triage, regression_risk, milestone_readiness]
@@ -106,7 +114,10 @@ workflow_lanes:
     outputs: [schemas, starter_rows, ids, validation_rules, loading_path]
   - id: technical-architecture
     route: [technical-director, lead-programmer, godot-specialist]
-    outputs: [module_boundaries, module_contracts, scene_model, resource_model, signal_boundaries, performance_budget]
+    outputs: [module_boundaries, module_contracts, scene_model, resource_model, signal_boundaries, default_2d_layer_model, performance_budget]
+  - id: 2d-game-production
+    route: [producer, creative-director, art-director, technical-director, 2d-technical-artist, relevant_specialist, godot-specialist, qa-lead]
+    outputs: [camera_view, target_resolution, sprite_specs, animation_specs, layer_order, y_sort_rules, collision_layers, atlas_plan, import_settings, vfx_material_rules, qa_previews]
   - id: professional-art-production
     route: [creative-director, art-director, visual-development-artist, concept-artist, environment-artist, ui-artist, qa-lead]
     outputs: [art_brief, reference_board, anti_copying_notes, art_bible, mood_board, color_script, concept_sheets, environment_sheets, ui_style_frames, readability_pass, qc_verdict]
@@ -114,8 +125,8 @@ workflow_lanes:
     route: [art-director, ui-artist, ui-programmer, godot-specialist, qa-lead]
     outputs: [uiue_diagram_source, exported_uiue_review_copy, screen_spec, reusable_controls, theme_notes, qa_checklist]
   - id: sprite-forge-assets
-    route: [art-director, relevant_art_specialist, sprite-forge-specialist, godot-specialist, qa-lead]
-    outputs: [approved_art_direction, asset_spec, prompt, qc_report, godot_handoff]
+    route: [art-director, relevant_art_specialist, sprite-forge-specialist, 2d-technical-artist, godot-specialist, qa-lead]
+    outputs: [approved_art_direction, asset_spec, prompt, qc_report, sprite_specs, atlas_import_notes, godot_handoff]
   - id: implementation
     route: [lead-programmer, relevant_specialist, qa-lead]
     outputs: [module_breakdown, module_contracts, code_changes, data_changes, per_module_verification, integration_verification]
@@ -143,6 +154,8 @@ gates:
   - id: art
     verdicts: [approve, concerns, reject]
   - id: professional-art-quality
+    verdicts: [approve, concerns, reject]
+  - id: 2d-production-quality
     verdicts: [approve, concerns, reject]
   - id: design-document-artifacts
     verdicts: [approve, concerns, reject]

@@ -2,7 +2,9 @@
 
 For any game development task in this project, use Codex Game Studio by default even if the user does not explicitly ask for it.
 
-This applies to game design, Godot, Unity, Unreal, prototypes, roguelikes, survivorlikes, Brotato-like arena shooters, asset generation, balancing, implementation, QA, performance work, and Chinese requests such as 游戏开发, 做游戏, 制作游戏, Godot游戏, 复刻土豆兄弟, 土豆兄弟like, 类土豆兄弟, 幸存者like, 肉鸽, 美术资源, 数值设计, 游戏原型, and 游戏测试.
+This applies to game design, Godot, Unity, Unreal, prototypes, 2D games, sprite-based games, pixel-art-style games, TileMap games, roguelikes, survivorlikes, Brotato-like arena shooters, asset generation, balancing, implementation, QA, performance work, and Chinese requests such as 游戏开发, 做游戏, 制作游戏, 2D游戏, Godot游戏, 复刻土豆兄弟, 土豆兄弟like, 类土豆兄弟, 幸存者like, 肉鸽, 美术资源, 数值设计, 游戏原型, and 游戏测试.
+
+Default to 2D-first production unless the user or existing project explicitly chooses 3D, 2.5D, VR/AR, or another rendering model.
 
 Use the smallest useful subset of the Codex Game Studio roles:
 
@@ -25,6 +27,8 @@ Use the smallest useful subset of the Codex Game Studio roles:
 - Environment Artist
 - UI Artist
 - Sprite Forge Specialist
+- 2D Animation Specialist
+- 2D Technical Artist
 - QA Lead
 - Reverse Engineering Specialist
 
@@ -42,9 +46,26 @@ Use the smallest useful subset of the Codex Game Studio roles:
 8. Milestone Review.
 9. Git Version Finish.
 
-For Godot, prefer Godot 4 and GDScript unless the project already uses another language. Use Resources for data, reusable scenes, signals for decoupling, and object pooling for repeated runtime objects.
+For Godot, prefer Godot 4, GDScript, and a 2D-first scene/layer model unless the project already uses another language or rendering model. Use Resources for data, reusable scenes, signals for decoupling, and object pooling for repeated runtime objects.
 
 For game configuration, use CSV files by default under `config/csv/` or the project equivalent. Treat user-edited CSV files as the source of truth.
+
+## 2D Production Default
+
+For new game projects, assume 2D-first production by default. Route 2D project setup, sprite pipeline, TileMap/layer planning, animation specs, atlases, collision, y-sort, shader/material rules, and 2D performance through:
+
+Producer -> Creative Director -> Art Director -> Technical Director -> 2D Technical Artist -> relevant art/programming specialist -> Godot Specialist -> QA Lead.
+
+Use the smallest useful 2D branch:
+
+- 2D project setup/import/layers/atlases: Technical Director -> 2D Technical Artist -> Godot Specialist -> QA Lead.
+- 2D character/enemy/prop/weapon production: Art Director -> Concept Artist -> 2D Animation Specialist -> Sprite Forge Specialist -> 2D Technical Artist -> Godot Specialist -> QA Lead.
+- 2D scene/map/TileMap/parallax/blockers/spawn zones: Art Director -> Visual Development Artist -> Environment Artist -> Sprite Forge Specialist -> 2D Technical Artist -> Godot Specialist -> QA Lead.
+- 2D animation/action feedback: Art Director -> 2D Animation Specialist -> Gameplay Programmer -> Godot Specialist -> QA Lead.
+- 2D UI/HUD: Art Director -> UI Artist -> UI Programmer -> Godot Specialist -> QA Lead.
+- 2D performance: Technical Director -> 2D Technical Artist -> Performance Analyst -> Godot Specialist -> QA Lead.
+
+Required 2D deliverables include camera/view, target resolution, intended on-screen size, sprite specs, animation specs, layer order, y-sort rules, collision layers, atlas/import settings, VFX/material rules, and QA previews.
 
 ## Modular Implementation Default
 
@@ -103,7 +124,7 @@ Use Tween, AnimationPlayer, shader/material modulation, particles, scale, rotati
 
 For any generated 2D game art, sprite sheet, pixel-art-style asset, prop pack, survivor arena, layered map, projectile, impact FX, enemy/player sprite, or Godot art handoff, route through:
 
-Art Director -> relevant professional art specialist -> Sprite Forge Specialist -> Godot Specialist -> QA Lead.
+Art Director -> relevant professional art specialist -> Sprite Forge Specialist -> 2D Technical Artist -> Godot Specialist -> QA Lead.
 
 Use AI image generation for visible artwork. Use deterministic scripts only for cleanup, chroma-key removal, slicing, alignment, metadata, previews, and QC.
 
@@ -125,6 +146,8 @@ Role ownership:
 - Environment Artist: owns scenes, maps, arenas, rooms, props/blockers, set dressing, perspective, depth, and environment storytelling.
 - UI Artist: owns UI visual language, iconography, panels, buttons, typography direction, HUD/menu presentation, and visual states.
 - Sprite Forge Specialist: owns generated asset execution, cleanup, slicing, metadata, previews, QC, and Godot handoff after professional art direction is approved.
+- 2D Animation Specialist: owns sprite animation states, timing charts, frame budgets, hit reactions, action readability, and procedural-motion blending.
+- 2D Technical Artist: owns sprite import, atlases, TileMaps, y-sort, 2D collision, shader/material/VFX rules, and Godot 2D handoff.
 
 Professional art deliverables must include an art brief, reference board with anti-copying notes, visual direction, production sheets, readability pass, engine handoff notes, and QC verdict.
 

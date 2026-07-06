@@ -18,9 +18,11 @@ Use this rubric when reviewing changes to the Codex Game Studio workflow.
 
 ## Game Development Defaults
 
+- 2D-first is the default rendering/production model unless project context explicitly chooses 3D, 2.5D, VR/AR, or another model.
 - Godot 4 and GDScript remain the default unless project context says otherwise.
 - CSV remains default for designer-editable content.
 - Professional art work routes through Art Director plus the relevant art specialist before Sprite Forge, UI implementation, or engine handoff.
+- 2D work includes sprite specs, animation specs, atlas/import settings, TileMap/layer rules, y-sort, collision, and target-resolution checks.
 - Procedural motion is preferred before new sequence-frame art for common feedback.
 - Sprite Forge outputs include QC and Godot handoff notes.
 - UI work uses the brawler arcade UI kit without copying proprietary assets.

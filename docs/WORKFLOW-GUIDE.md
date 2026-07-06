@@ -6,10 +6,11 @@ This is the default Codex Game Studio delivery flow.
 
 1. Confirm whether this is a new project or an existing project.
 2. If it is a new game, initialize Git, `.gitignore`, README, and remote when possible.
-3. Establish concept, engine, and first playable target.
+3. Establish concept, engine, first playable target, and confirm the default 2D-first production model unless the project requires another rendering model.
 4. Keep configuration CSV-first where practical.
 5. For formal design docs, create professional flowcharts and UI/UE diagrams before implementation handoff.
-6. Implement in small feature batches with QA and version finish.
+6. For 2D work, define sprite specs, animation specs, layer/y-sort/collision rules, atlas/import settings, and QA previews before asset integration.
+7. Implement in small feature batches with QA and version finish.
 
 ## Phase 0: Git and GitHub Startup
 
@@ -95,6 +96,7 @@ Review rule:
 - Producer checks scope and completeness.
 - Game Designer checks gameplay and system correctness.
 - Art Director checks visual communication and readability.
+- UI Artist checks UI visual language, hierarchy, icon/state clarity, and screen readability.
 - UI Programmer checks implementability of UI/UE flow.
 - QA Lead checks whether the diagrams expose testable paths and edge cases.
 
@@ -124,11 +126,13 @@ Outputs:
 - Signal/autoload boundaries.
 - Performance budget.
 - Object pooling plan where needed.
+- 2D scene/layer model, y-sort rules, TileMap/layer rules, sprite atlas/import settings, collision layers, and camera bounds by default.
 
 Gate:
 
 - Implementation can start without guessing key architecture.
 - Feature work is split into modules small enough to verify independently.
+- 2D assets can be imported without guessing pivots, anchors, animation timing, collision, or layer order.
 
 ## Phase 5: Vertical Slice
 

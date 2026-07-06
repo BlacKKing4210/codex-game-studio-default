@@ -22,7 +22,9 @@ Codex Game Studio uses the smallest useful subset of agents for each task. These
 | Concept Artist | Specialist | Characters, enemies, props, weapons, silhouettes, turnarounds, expression/pose sheets | shape language, silhouette design, production callouts, concept sheets |
 | Environment Artist | Specialist | Scenes, maps, arenas, rooms, props/blockers, set dressing, perspective, depth | environment storytelling, scene composition, map readability, prop layering |
 | UI Artist | Specialist | UI visual language, iconography, panels, buttons, typography direction, visual states | UI style frames, icon sets, HUD/menu presentation, state sheets |
-| Sprite Forge Specialist | Specialist | Generated 2D sprites, FX, props, maps, asset QC | generate2dsprite, generate2dmap, Godot asset handoff |
+| 2D Animation Specialist | Specialist | Sprite animation states, frame timing, frame budgets, hit reactions, action readability | sprite animation, timing charts, anticipation/recovery, procedural-motion blend |
+| 2D Technical Artist | Specialist | Sprite import, atlases, TileMaps, y-sort, 2D collision, materials, VFX, Godot 2D handoff | sprite atlas planning, tilemap pipeline, import presets, runtime readability |
+| Sprite Forge Specialist | Specialist | Generated 2D sprites, FX, props, maps, asset QC | generate2dsprite, generate2dmap, sprite sheet QC, Godot asset handoff |
 | QA Lead | Lead | Smoke checks, playtest plans, bug triage, regression risk | test planning, acceptance criteria, milestone readiness |
 | Reverse Engineering Specialist | Specialist | Authorized binary/resource/save-format analysis | GhidraMCP, strings, xrefs, decompile, evidence notes |
 
@@ -53,6 +55,8 @@ Specialists
   concept-artist
   environment-artist
   ui-artist
+  2d-animation-specialist
+  2d-technical-artist
   sprite-forge-specialist
   reverse-engineering-specialist
 ```
@@ -66,10 +70,15 @@ Specialists
 | Break down implementation modules | Technical Director -> Lead Programmer -> relevant Specialist -> QA Lead |
 | Build a Godot gameplay feature | Lead Programmer -> Gameplay Programmer -> Godot Specialist -> GDScript Specialist -> QA Lead |
 | Add data-driven weapons/enemies/upgrades | Systems Designer -> Data Config Specialist -> Technical Director -> Godot Specialist -> QA Lead |
+| Start a 2D-first project | Producer -> Creative Director -> Art Director -> Technical Director -> 2D Technical Artist -> Godot Specialist -> QA Lead |
+| Define 2D asset pipeline | Technical Director -> 2D Technical Artist -> Godot Specialist -> QA Lead |
+| Create 2D character/enemy/prop animation | Art Director -> Concept Artist -> 2D Animation Specialist -> Sprite Forge Specialist -> 2D Technical Artist -> Godot Specialist -> QA Lead |
+| Create 2D TileMap/scene pipeline | Art Director -> Visual Development Artist -> Environment Artist -> Sprite Forge Specialist -> 2D Technical Artist -> Godot Specialist -> QA Lead |
+| Review 2D performance | Technical Director -> 2D Technical Artist -> Performance Analyst -> Godot Specialist -> QA Lead |
 | Define professional art direction | Creative Director -> Art Director -> Visual Development Artist -> QA Lead |
-| Create character/prop concept art | Art Director -> Concept Artist -> Sprite Forge Specialist -> Godot Specialist -> QA Lead |
-| Create scene/environment art | Art Director -> Visual Development Artist -> Environment Artist -> Sprite Forge Specialist -> Godot Specialist -> QA Lead |
+| Create character/prop concept art | Art Director -> Concept Artist -> 2D Animation Specialist -> Sprite Forge Specialist -> 2D Technical Artist -> Godot Specialist -> QA Lead |
+| Create scene/environment art | Art Director -> Visual Development Artist -> Environment Artist -> Sprite Forge Specialist -> 2D Technical Artist -> Godot Specialist -> QA Lead |
 | Create UI visual design | Art Director -> UI Artist -> UI Programmer -> Godot Specialist -> QA Lead |
 | Create arcade mobile UI | Art Director -> UI Artist -> UI Programmer -> Godot Specialist -> QA Lead |
-| Generate sprite sheets or maps | Art Director -> relevant professional art specialist -> Sprite Forge Specialist -> Godot Specialist -> QA Lead |
+| Generate sprite sheets or maps | Art Director -> relevant professional art specialist -> Sprite Forge Specialist -> 2D Technical Artist -> Godot Specialist -> QA Lead |
 | Investigate an owned binary/resource format | Technical Director -> Lead Programmer -> Reverse Engineering Specialist -> QA Lead |

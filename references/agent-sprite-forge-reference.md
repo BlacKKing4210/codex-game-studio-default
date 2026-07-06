@@ -4,13 +4,14 @@ Adapted from `0x0funky/agent-sprite-forge` for Codex Game Studio.
 
 ## What The Sprite Forge Specialist Learned
 
-The Sprite Forge Specialist uses agent-sprite-forge as a production pipeline for generated 2D game art. It receives approved art direction from Art Director and the relevant professional art specialist; it does not replace concept, environment, UI, or visual development judgment.
+The Sprite Forge Specialist uses agent-sprite-forge as a production pipeline for generated 2D game art. It receives approved art direction from Art Director and the relevant professional art specialist; it does not replace concept, environment, UI, visual development, 2D animation, or 2D technical-art judgment.
 
 The key separation is:
 
 - Image generation creates the visible artwork.
 - Local deterministic tools clean, slice, align, extract, preview, validate, and package generated artwork.
 - Godot integration uses metadata, frame sizes, anchors, collision notes, spawn zones, and scene import notes rather than guessing from a flattened image.
+- 2D Technical Artist reviews final sprite specs, atlas/import notes, y-sort/collision requirements, and target-resolution readability before Godot integration.
 
 ## generate2dsprite
 

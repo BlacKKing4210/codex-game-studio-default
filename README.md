@@ -2,13 +2,13 @@
 
 Turn a single Codex session into a focused indie game studio workflow.
 
-21 core agents. 14 workflow lanes. Professional design artifacts. Professional art production. Modular implementation. Godot-first defaults. CSV-driven game data. Sprite Forge art handoff. Git version finish.
+23 core agents. 15 workflow lanes. 2D-first production. Professional design artifacts. Professional art production. Modular implementation. Godot-first defaults. CSV-driven game data. Sprite Forge art handoff. Git version finish.
 
 <p align="center">
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT License"></a>
   <a href="SKILL.md"><img src="https://img.shields.io/badge/Codex%20Skill-ready-green" alt="Codex Skill Ready"></a>
-  <a href="docs/AGENT-CATALOG.md"><img src="https://img.shields.io/badge/agents-17-blueviolet" alt="17 Agents"></a>
-  <a href="docs/WORKFLOW-GUIDE.md"><img src="https://img.shields.io/badge/workflows-12-orange" alt="12 Workflows"></a>
+  <a href="docs/AGENT-CATALOG.md"><img src="https://img.shields.io/badge/agents-23-blueviolet" alt="23 Agents"></a>
+  <a href="docs/WORKFLOW-GUIDE.md"><img src="https://img.shields.io/badge/workflows-15-orange" alt="15 Workflows"></a>
   <a href="docs/CSV-DATA-CONFIG.md"><img src="https://img.shields.io/badge/data-CSV%20first-yellow" alt="CSV First"></a>
 </p>
 
@@ -16,9 +16,9 @@ Turn a single Codex session into a focused indie game studio workflow.
 
 ## Why This Exists
 
-Solo game development with AI is powerful, but a general chat can drift: hardcoded tuning values, unclear ownership, monolithic scripts, weak art direction, flat atmosphere, generic UI visuals, missing professional design diagrams, missing QA, weak asset handoff, and no clean version finish.
+Solo game development with AI is powerful, but a general chat can drift: hardcoded tuning values, unclear ownership, monolithic scripts, weak 2D production rules, weak art direction, flat atmosphere, generic UI visuals, missing professional design diagrams, missing QA, weak asset handoff, and no clean version finish.
 
-**Codex Game Studio Default** gives Codex a small but useful studio structure for game work. It keeps the user as final decision maker while routing tasks through production, design, programming, professional art direction, concept art, environment art, UI art, QA, Godot, GDScript, CSV data, UI implementation, procedural motion, Sprite Forge asset generation, and authorized reverse-engineering gates.
+**Codex Game Studio Default** gives Codex a small but useful studio structure for game work. It defaults to 2D-first production while keeping the user as final decision maker and routing tasks through production, design, programming, professional art direction, concept art, environment art, UI art, 2D animation, 2D technical art, QA, Godot, GDScript, CSV data, UI implementation, procedural motion, Sprite Forge asset generation, and authorized reverse-engineering gates.
 
 This repository is modeled after the studio-template idea of Claude Code Game Studios, adapted for Codex Skill usage and the local `codex-game-studio-default` workflow.
 
@@ -28,10 +28,10 @@ This repository is modeled after the studio-template idea of Claude Code Game St
 
 | Category | Count | Description |
 |---|---:|---|
-| **Core Agents** | 21 | Producer, directors, designers, programmers, Godot/GDScript/UI specialists, professional art specialists, Sprite Forge, QA, and reverse engineering |
-| **Workflow Lanes** | 14 | Concept, prototype, system design, professional design artifacts, professional art production, CSV config, architecture, vertical slice, modular implementation, QA, UI, Sprite Forge, reverse engineering, version finish |
+| **Core Agents** | 23 | Producer, directors, designers, programmers, Godot/GDScript/UI specialists, professional art specialists, 2D specialists, Sprite Forge, QA, and reverse engineering |
+| **Workflow Lanes** | 15 | Concept, prototype, system design, professional design artifacts, 2D production, professional art production, CSV config, architecture, vertical slice, modular implementation, QA, UI, Sprite Forge, reverse engineering, version finish |
 | **Codex Skill** | 1 | Root-level `SKILL.md` with Codex-triggering metadata and progressive references |
-| **References** | 6 | Detailed guides for game studio routing, professional art production, Sprite Forge, CSV config, UI core, and authorized reverse engineering |
+| **References** | 7 | Detailed guides for game studio routing, 2D production, professional art production, Sprite Forge, CSV config, UI core, and authorized reverse engineering |
 | **Framework Docs** | 1 catalog | Agent and workflow registry for review, extension, and future testing |
 
 ## Studio Hierarchy
@@ -61,6 +61,8 @@ Tier 3 - Specialists
   concept-artist
   environment-artist
   ui-artist
+  2d-animation-specialist
+  2d-technical-artist
   sprite-forge-specialist
   reverse-engineering-specialist
 ```
@@ -73,13 +75,17 @@ Tier 3 - Specialists
 | Formal 策划案/GDD | Producer -> Game Designer -> Art Director -> UI Artist -> UI Programmer -> QA Lead |
 | Godot implementation | Lead Programmer -> Godot Specialist -> GDScript Specialist -> QA Lead |
 | Configurable game systems | Systems Designer -> Data Config Specialist -> Technical Director -> Godot Specialist -> QA Lead |
+| 2D project setup | Technical Director -> 2D Technical Artist -> Godot Specialist -> QA Lead |
+| 2D character/prop/animation production | Art Director -> Concept Artist -> 2D Animation Specialist -> Sprite Forge Specialist -> 2D Technical Artist -> Godot Specialist -> QA Lead |
+| 2D scene/TileMap production | Art Director -> Visual Development Artist -> Environment Artist -> Sprite Forge Specialist -> 2D Technical Artist -> Godot Specialist -> QA Lead |
+| 2D animation/action feedback | Art Director -> 2D Animation Specialist -> Gameplay Programmer -> Godot Specialist -> QA Lead |
 | Professional art direction | Creative Director -> Art Director -> Visual Development Artist -> QA Lead |
-| Character/prop concept art | Art Director -> Concept Artist -> Sprite Forge Specialist -> Godot Specialist -> QA Lead |
-| Scene/environment art | Art Director -> Visual Development Artist -> Environment Artist -> Sprite Forge Specialist -> Godot Specialist -> QA Lead |
+| Character/prop concept art | Art Director -> Concept Artist -> 2D Animation Specialist -> Sprite Forge Specialist -> 2D Technical Artist -> Godot Specialist -> QA Lead |
+| Scene/environment art | Art Director -> Visual Development Artist -> Environment Artist -> Sprite Forge Specialist -> 2D Technical Artist -> Godot Specialist -> QA Lead |
 | UI visual design | Art Director -> UI Artist -> UI Programmer -> Godot Specialist -> QA Lead |
 | Mobile arcade UI | Art Director -> UI Artist -> UI Programmer -> Godot Specialist -> QA Lead |
 | Procedural gameplay feedback | Art Director -> Gameplay Programmer -> Godot Specialist -> QA Lead |
-| Generated 2D art | Art Director -> relevant professional art specialist -> Sprite Forge Specialist -> Godot Specialist -> QA Lead |
+| Generated 2D art | Art Director -> relevant professional art specialist -> Sprite Forge Specialist -> 2D Technical Artist -> Godot Specialist -> QA Lead |
 | Authorized binary analysis | Technical Director -> Lead Programmer -> Reverse Engineering Specialist -> QA Lead |
 
 See [docs/AGENT-CATALOG.md](docs/AGENT-CATALOG.md) for each agent's responsibilities and skills.
@@ -91,7 +97,7 @@ See [docs/AGENT-CATALOG.md](docs/AGENT-CATALOG.md) for each agent's responsibili
 3. **Prototype** - one risky assumption, minimum test, proceed/pivot/cut verdict.
 4. **System Design** - core loop, mechanics, content rules, economy, difficulty, professional flowcharts, and UI/UE diagrams for formal design docs.
 5. **CSV Data Config** - schemas, starter rows, IDs, validation rules, loading path.
-6. **Technical Architecture** - Godot architecture, module boundaries, data/resources, scene model, performance budget.
+6. **Technical Architecture** - Godot architecture, module boundaries, data/resources, 2D scene/layer model by default, performance budget.
 7. **Vertical Slice** - playable slice plan, tasks, owners, acceptance criteria.
 8. **Implementation** - modular code, assets, data, per-module verification, and integration.
 9. **QA and Tuning** - smoke checks, playtest notes, bugs, balance notes.
@@ -133,12 +139,14 @@ Codex Game Studio Framework/        # Agent/workflow catalog for testing and ext
 
 ## Core Defaults
 
+- **Dimension**: 2D-first unless the project explicitly chooses 3D, 2.5D, VR/AR, or another rendering model.
 - **Engine**: Godot 4 unless the project already uses another engine.
 - **Language**: GDScript unless the project already uses C# or the user chooses it.
 - **Design docs**: formal 策划案/GDD/system specs require professional gameplay/system flowcharts and UI/UE diagrams; Markdown-only diagrams are drafts, not final artifacts.
 - **Implementation**: substantial features must be split into modules with boundaries, contracts, per-module verification, and small integration steps.
 - **Game config**: CSV by default under `config/csv/` or equivalent.
 - **Art direction**: professional art roles own original concept art, scene art, UI visual design, atmosphere, art bible, readability, and final visual quality before Sprite Forge execution.
+- **2D production**: 2D Animation Specialist and 2D Technical Artist own sprite animation, frame timing, atlases, TileMaps, y-sort, collision, import settings, materials, VFX, and Godot 2D handoff.
 - **UI**: UI Artist owns visual design; UI Programmer implements mobile-first arcade UI through `brawler-arcade-ui-core` when appropriate.
 - **Motion**: procedural motion first for common feedback.
 - **2D art**: AI image generation plus deterministic cleanup/QC through Sprite Forge.
