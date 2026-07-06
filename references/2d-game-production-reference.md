@@ -25,14 +25,14 @@ Use the smallest needed branch:
 
 | Agent | 2D Learned Skills |
 |---|---|
-| Art Director | 2D style bible, silhouette readability, palette control, sprite quality gate |
-| Visual Development Artist | 2D mood boards, color scripts, lighting/value grouping, parallax atmosphere |
-| Concept Artist | sprite-ready silhouettes, front/side/back callouts, small-size readability |
-| Environment Artist | TileMap planning, layered scene composition, parallax, blockers, spawn readability |
-| UI Artist | 2D HUD/menu style frames, iconography, readable states, mobile-safe layouts |
-| Sprite Forge Specialist | generate2dsprite, generate2dmap, sheet cleanup, slicing, metadata, previews |
-| 2D Animation Specialist | sprite animation, timing charts, action states, procedural-motion blend |
-| 2D Technical Artist | sprite import, atlas planning, TileMap pipeline, y-sort, collision, materials, VFX |
+| Art Director | master-level 2D style bible, silhouette readability, palette control, market reference decomposition, sprite quality gate |
+| Visual Development Artist | master-level 2D mood boards, color scripts, lighting/value grouping, parallax atmosphere |
+| Concept Artist | master-level sprite-ready silhouettes, front/side/back callouts, small-size readability |
+| Environment Artist | master-level TileMap planning, layered scene composition, parallax, blockers, spawn readability |
+| UI Artist | master-level 2D HUD/menu style frames, iconography, readable states, mobile-safe layouts |
+| Sprite Forge Specialist | generate2dsprite, generate2dmap, prompt discipline, sheet cleanup, slicing, metadata, previews |
+| 2D Animation Specialist | master-level sprite animation, timing charts, action states, pose readability, procedural-motion blend |
+| 2D Technical Artist | master-level sprite import, atlas planning, TileMap pipeline, y-sort, collision, materials, VFX |
 | Godot Specialist | Sprite2D, AnimatedSprite2D, AnimationPlayer, TileMapLayer, CanvasLayer, Control, Resource, Signal |
 | Gameplay Programmer | 2D movement, hitboxes/hurtboxes, kinematic collision, pickups, camera feedback |
 | Performance Analyst | draw calls, texture memory, overdraw, object pooling, dense sprite stress checks |
@@ -57,3 +57,4 @@ Use the smallest needed branch:
 - UI stays readable over gameplay backgrounds.
 - Texture memory, draw calls, particles, and object counts fit the target platform.
 - Generated assets follow approved art direction and have deterministic cleanup/QC.
+- The design learns from market-leading examples without copying exact silhouettes, palettes, UI layouts, icons, or proprietary assets.

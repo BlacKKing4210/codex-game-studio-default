@@ -2,6 +2,8 @@
 
 Use this reference when a task involves art direction, concept art, scene art, UI visual design, mood, atmosphere, key art, art bible, visual polish, generated art direction, or asset quality review.
 
+For master-level visual standards, also use `master-game-visual-design-reference.md`.
+
 ## Core Rule
 
 Sprite Forge is an execution and handoff pipeline, not a replacement for professional art judgment.
@@ -17,10 +19,10 @@ Use the smallest needed route for the task.
 | Agent | Owns | Professional Skills | Outputs |
 |---|---|---|---|
 | Art Director | Visual identity, art bible, originality gate, readability, quality bar, final sign-off | Style cohesion, visual hierarchy, production constraints, art critique | Art bible, quality rubric, asset standards, sign-off notes |
-| Visual Development Artist | Mood, atmosphere, palette, lighting, key art, composition, style exploration | Mood boards, color scripts, lighting direction, composition design | Mood board, color script, key art, lighting notes |
-| Concept Artist | Characters, enemies, props, weapons, silhouettes, shape language, turnarounds | Silhouette design, shape language, production callouts, pose/expression sheets | Concept sheets, variants, turnarounds, callouts |
-| Environment Artist | Scenes, maps, arenas, rooms, background, props/blockers, set dressing | Scene composition, environmental storytelling, perspective, depth, prop layering | Environment sheets, map/scene breakdowns, prop plans |
-| UI Artist | UI visual language, icons, panels, buttons, typography direction, visual states | UI style frames, iconography, contrast/readability, state sheets | UI style frames, icon sets, component visual states |
+| Visual Development Artist | Mood, atmosphere, palette, lighting, key art, composition, style exploration | Mood boards, color scripts, value grouping, lighting direction, composition design | Mood board, color script, key art, lighting notes |
+| Concept Artist | Characters, enemies, props, weapons, silhouettes, shape language, turnarounds | Silhouette design, shape language, character readability, production callouts, pose/expression sheets | Concept sheets, variants, turnarounds, callouts |
+| Environment Artist | Scenes, maps, arenas, rooms, background, props/blockers, set dressing | Scene composition, environmental storytelling, perspective, depth, prop layering, navigation cues | Environment sheets, map/scene breakdowns, prop plans |
+| UI Artist | UI visual language, icons, panels, buttons, typography direction, visual states | UI style frames, UI identity, iconography, contrast/readability, state sheets | UI style frames, icon sets, component visual states |
 | 2D Animation Specialist | Sprite animation states, frame timing, action readability, procedural-motion blend | Timing charts, frame budgets, anticipation/recovery, hit reaction | Animation list, timing chart, transition notes |
 | 2D Technical Artist | Sprite import, atlases, TileMaps, y-sort, collision, materials, VFX, engine handoff | Atlas planning, import settings, TileMap/layer rules, runtime readability | 2D technical spec, atlas plan, import notes |
 | Sprite Forge Specialist | Generated asset execution, cleanup, slicing, metadata, previews, QC, engine handoff | generate2dsprite, generate2dmap, chroma-key QC, frame metadata | Generated assets, previews, metadata, handoff notes |
@@ -30,6 +32,7 @@ Use the smallest needed route for the task.
 For professional visual work, produce:
 
 - Art brief: gameplay purpose, target player, platform, camera/view, intended size, and constraints.
+- Master reference decomposition: what each top reference teaches, what must be avoided, and how the project stays original.
 - Reference board: approved references plus explicit anti-copying notes.
 - Visual direction: shape language, palette, lighting, material, texture density, composition, mood, and atmosphere.
 - Production sheets: variants, scale, callouts, layers, states, and usage notes.
@@ -52,6 +55,7 @@ For professional visual work, produce:
 
 Professional art work is not done until:
 
+- The master-level learning object has been decomposed into principles, not copied as surface style.
 - The visual direction matches the game's promise and target player.
 - The style is original and does not copy commercial names, logos, characters, icons, exact layouts, or proprietary assets.
 - The asset is readable at intended gameplay size and camera distance.
@@ -60,6 +64,13 @@ Professional art work is not done until:
 - UI visual states are clear: default, hover, pressed, selected, disabled, locked, loading, error, success.
 - Mood, color, and lighting are consistent across screens and scenes.
 - 2D animation and technical-art notes are clear enough for implementation without guessing.
+
+## Design Philosophy
+
+- Art direction is taste plus production discipline.
+- A game should be recognizable from one screenshot without logo or text.
+- A reference is a teacher, not a template.
+- Every beautiful asset must still be readable, original, performant, and shippable.
 
 ## Sprite Forge Handoff
 

@@ -1,6 +1,6 @@
 version: 1
 name: codex-game-studio-default
-summary: 2D-first, Godot-first Codex Game Studio workflow with professional design artifacts, professional art production, modular implementation, CSV data config, Sprite Forge art, procedural motion, QA, and Git version finish.
+summary: 2D-first, Godot-first Codex Game Studio workflow with master-level visual design, professional design artifacts, professional art production, modular implementation, CSV data config, Sprite Forge art, procedural motion, QA, and Git version finish.
 
 agents:
   - id: producer
@@ -58,35 +58,35 @@ agents:
   - id: art-director
     tier: lead
     owns: [visual_identity, art_bible, quality_bar, readability, ui_tone, asset_specs, generated_art_direction, final_art_signoff]
-    skills: [art_direction, style_cohesion, originality_gate, visual_quality_review]
+    skills: [art_direction, art_bible, visual_identity, style_cohesion, originality_gate, market_reference_decomposition, readability_review, production_quality_bar]
   - id: visual-development-artist
     tier: specialist
     owns: [mood, atmosphere, color_script, lighting_direction, key_art, composition, style_exploration]
-    skills: [mood_boards, color_scripting, lighting_notes, composition_design, key_art_direction]
+    skills: [mood_boards, color_scripting, lighting_notes, composition_design, value_grouping, atmosphere_design, emotional_color_progression, key_art_direction]
   - id: concept-artist
     tier: specialist
     owns: [characters, enemies, props, weapons, silhouettes, turnarounds, expression_pose_sheets]
-    skills: [shape_language, silhouette_design, concept_sheets, production_callouts]
+    skills: [shape_language, silhouette_design, character_readability, enemy_readability, prop_language, costume_material_callouts, concept_sheets, production_callouts]
   - id: environment-artist
     tier: specialist
     owns: [scenes, maps, arenas, rooms, props_blockers, set_dressing, perspective, depth, environment_storytelling]
-    skills: [scene_composition, environment_storytelling, map_readability, prop_layering, atmosphere_handoff]
+    skills: [scene_composition, environment_storytelling, map_readability, prop_layering, tilemap_composition, parallax_design, navigation_cues, blocker_readability, atmosphere_handoff]
   - id: ui-artist
     tier: specialist
     owns: [ui_visual_language, iconography, panels, buttons, typography_direction, visual_states, hud_menu_presentation]
-    skills: [ui_style_frames, icon_sets, state_sheets, visual_hierarchy, contrast_readability]
+    skills: [ui_style_frames, icon_sets, state_sheets, ui_identity, card_panel_systems, motion_language, visual_hierarchy, contrast_readability, localization_tolerance]
   - id: 2d-animation-specialist
     tier: specialist
     owns: [sprite_animation_states, frame_timing, frame_budgets, hit_reactions, action_readability, procedural_motion_blend]
-    skills: [sprite_animation, frame_timing, animation_states, squash_stretch, anticipation_recovery, hit_reaction, vfx_timing, procedural_motion_blend]
+    skills: [sprite_animation, frame_timing, animation_states, squash_stretch, anticipation_recovery, hit_reaction, vfx_timing, pose_readability, frame_economy, contact_frames, cancel_windows, procedural_motion_blend]
   - id: 2d-technical-artist
     tier: specialist
     owns: [sprite_import, sprite_atlases, tilemaps, y_sort, collision_2d, shader_material_rules, particle_vfx, godot_2d_handoff]
-    skills: [sprite_import, sprite_atlas, tilemap_pipeline, y_sort, collision_2d, shader_materials, particle_vfx, godot_2d_handoff]
+    skills: [sprite_import, sprite_atlas, tilemap_pipeline, y_sort, collision_2d, shader_materials, particle_vfx, pivot_discipline, texture_budgeting, overdraw_control, runtime_readability, godot_2d_handoff]
   - id: sprite-forge-specialist
     tier: specialist
     owns: [sprites, fx, props, maps, qc, godot_asset_handoff]
-    skills: [generate2dsprite, generate2dmap, chroma_key_qc, frame_metadata, layered_map_handoff, approved_art_direction_execution, sprite_sheet_qc]
+    skills: [generate2dsprite, generate2dmap, prompt_discipline, sheet_consistency, chroma_key_qc, frame_metadata, layered_map_handoff, approved_art_direction_execution, sprite_sheet_qc]
   - id: qa-lead
     tier: lead
     owns: [smoke_checks, playtest_plans, bug_triage, regression_risk, milestone_readiness]
@@ -120,7 +120,10 @@ workflow_lanes:
     outputs: [camera_view, target_resolution, sprite_specs, animation_specs, layer_order, y_sort_rules, collision_layers, atlas_plan, import_settings, vfx_material_rules, qa_previews]
   - id: professional-art-production
     route: [creative-director, art-director, visual-development-artist, concept-artist, environment-artist, ui-artist, qa-lead]
-    outputs: [art_brief, reference_board, anti_copying_notes, art_bible, mood_board, color_script, concept_sheets, environment_sheets, ui_style_frames, readability_pass, qc_verdict]
+    outputs: [art_brief, master_reference_decomposition, reference_board, anti_copying_notes, art_bible, mood_board, color_script, concept_sheets, environment_sheets, ui_style_frames, readability_pass, qc_verdict]
+  - id: master-visual-design-review
+    route: [creative-director, art-director, relevant_master_art_specialist, qa-lead]
+    outputs: [master_learning_objects, knowledge_reserve, design_philosophy, originality_gate, visual_quality_rubric, revision_notes]
   - id: brawler-arcade-ui
     route: [art-director, ui-artist, ui-programmer, godot-specialist, qa-lead]
     outputs: [uiue_diagram_source, exported_uiue_review_copy, screen_spec, reusable_controls, theme_notes, qa_checklist]
@@ -154,6 +157,8 @@ gates:
   - id: art
     verdicts: [approve, concerns, reject]
   - id: professional-art-quality
+    verdicts: [approve, concerns, reject]
+  - id: master-visual-design-quality
     verdicts: [approve, concerns, reject]
   - id: 2d-production-quality
     verdicts: [approve, concerns, reject]

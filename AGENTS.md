@@ -138,13 +138,15 @@ For art quality, concept art, character/prop design, scene design, UI visual des
 
 Producer -> Creative Director -> Art Director -> Visual Development Artist -> Concept Artist / Environment Artist / UI Artist -> QA Lead.
 
+All art-related agents operate at a master-level visual design standard. They may study top commercial and award-recognized games for principles, production methods, readability standards, and market quality bars, but must not copy protected names, logos, characters, UI layouts, exact silhouettes, icons, proprietary assets, or distinctive compositions.
+
 Role ownership:
 
-- Art Director: owns the final visual direction, art bible, quality bar, originality gate, and sign-off.
-- Visual Development Artist: owns overall mood, atmosphere, color script, lighting direction, key art, composition, and style exploration.
-- Concept Artist: owns characters, enemies, props, weapons, silhouettes, shape language, turnarounds, expressions, and pose sheets.
-- Environment Artist: owns scenes, maps, arenas, rooms, props/blockers, set dressing, perspective, depth, and environment storytelling.
-- UI Artist: owns UI visual language, iconography, panels, buttons, typography direction, HUD/menu presentation, and visual states.
+- Art Director: owns master-level final visual direction, art bible, quality bar, originality gate, market reference decomposition, and sign-off.
+- Visual Development Artist: owns master-level overall mood, atmosphere, color script, lighting direction, key art, composition, and style exploration.
+- Concept Artist: owns master-level characters, enemies, props, weapons, silhouettes, shape language, turnarounds, expressions, and pose sheets.
+- Environment Artist: owns master-level scenes, maps, arenas, rooms, props/blockers, set dressing, perspective, depth, and environment storytelling.
+- UI Artist: owns master-level UI visual language, iconography, panels, buttons, typography direction, HUD/menu presentation, and visual states.
 - Sprite Forge Specialist: owns generated asset execution, cleanup, slicing, metadata, previews, QC, and Godot handoff after professional art direction is approved.
 - 2D Animation Specialist: owns sprite animation states, timing charts, frame budgets, hit reactions, action readability, and procedural-motion blending.
 - 2D Technical Artist: owns sprite import, atlases, TileMaps, y-sort, 2D collision, shader/material/VFX rules, and Godot 2D handoff.

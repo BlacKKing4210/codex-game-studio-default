@@ -30,11 +30,11 @@ Use the smallest useful subset of these roles:
 - GDScript Specialist: typed GDScript, signals, resources, component patterns, performance in hot paths.
 - Gameplay Programmer: movement, combat, spawning, weapons, pickups, upgrades, run state.
 - UI Programmer: reusable Godot UI components, Theme resources, screen shells, touch ergonomics, UI motion presets.
-- Art Director: visual identity, art bible, quality bar, readability, asset specs, generated-art direction, final art sign-off.
-- Visual Development Artist: overall mood, atmosphere, color script, lighting direction, key art, composition, style exploration.
-- Concept Artist: characters, props, creatures, weapons, silhouettes, shape language, turnarounds, expression/pose sheets.
-- Environment Artist: scene concepts, level mood, maps, props/blockers, set dressing, perspective, depth, environment storytelling.
-- UI Artist: UI visual language, iconography, panels, buttons, typography direction, visual states, HUD/menu presentation.
+- Art Director: master-level visual identity, art bible, quality bar, readability, market reference decomposition, asset specs, generated-art direction, final art sign-off.
+- Visual Development Artist: master-level mood, atmosphere, color script, lighting direction, key art, composition, style exploration.
+- Concept Artist: master-level characters, props, creatures, weapons, silhouettes, shape language, turnarounds, expression/pose sheets.
+- Environment Artist: master-level scene concepts, level mood, maps, props/blockers, set dressing, perspective, depth, environment storytelling.
+- UI Artist: master-level UI visual language, iconography, panels, buttons, typography direction, visual states, HUD/menu presentation.
 - Sprite Forge Specialist: generated 2D sprites, FX, props, maps, asset QC, and Godot asset handoff.
 - 2D Animation Specialist: sprite animation states, timing charts, frame budgets, hit reactions, action readability, procedural-motion blend.
 - 2D Technical Artist: sprite import, atlases, TileMaps, y-sort, 2D collision, shader/material/VFX rules, Godot 2D handoff.
@@ -117,6 +117,8 @@ For generated art tasks, also include:
 
 For any request involving art quality, concept art, characters, props, scene art, maps, UI visual design, atmosphere, mood, lighting, art bible, visual polish, or generated art direction, route through a professional art chain instead of using Sprite Forge alone.
 
+Art-related agents operate at a master-level visual design standard. They may study top commercial and award-recognized games for principles, production methods, readability, taste calibration, and market quality bars, but must not copy names, logos, characters, UI layouts, exact silhouettes, icons, proprietary assets, or distinctive compositions.
+
 Default art direction route:
 
 Producer -> Creative Director -> Art Director -> Visual Development Artist -> Concept Artist / Environment Artist / UI Artist -> QA Lead.
@@ -139,6 +141,8 @@ Professional art deliverables must include:
 - QC verdict: approve, revise, or reject with concrete reasons.
 
 Sprite Forge uses approved art direction, prompt constraints, and QC criteria to generate or process assets. It must not replace Art Director, Concept Artist, Environment Artist, UI Artist, or Visual Development Artist judgment.
+
+When high visual quality is important, read `references/master-game-visual-design-reference.md` before final art decisions.
 
 ## 2D Game Production Defaults
 
@@ -252,11 +256,13 @@ When more detail is needed, read these files in this skill folder:
 
 - `references/game-studio-reference.md`
 - `references/2d-game-production-reference.md`
+- `references/master-game-visual-design-reference.md`
 - `references/professional-art-production-reference.md`
 - `references/agent-sprite-forge-reference.md`
 - `references/csv-data-config-reference.md`
 - `references/brawler-arcade-ui-core-reference.md`
 - `references/reverse-engineering-reference.md`
+- `agents/art-director.md`
 - `agents/sprite-forge-specialist.md`
 - `agents/2d-animation-specialist.md`
 - `agents/2d-technical-artist.md`

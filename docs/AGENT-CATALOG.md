@@ -17,11 +17,11 @@ Codex Game Studio uses the smallest useful subset of agents for each task. These
 | Gameplay Programmer | Specialist | Movement, combat, spawning, pickups, run state | gameplay loops, object pooling, procedural feedback |
 | UI Programmer | Specialist | Reusable UI components, screen shells, Theme resources, UI/UE implementability review | arcade UI kit, touch ergonomics, UI motion, UI/UE diagram review |
 | Performance Analyst | Specialist | Frame time, collision cost, memory, stress checks | profiling plans, dense-combat budgets, pooling analysis |
-| Art Director | Lead | Visual identity, art bible, quality bar, readability, asset specs, final art sign-off | art direction, originality gate, style cohesion, visual QA |
-| Visual Development Artist | Specialist | Mood, atmosphere, color script, lighting direction, key art, composition, style exploration | mood boards, color scripts, lighting notes, key art direction |
-| Concept Artist | Specialist | Characters, enemies, props, weapons, silhouettes, turnarounds, expression/pose sheets | shape language, silhouette design, production callouts, concept sheets |
-| Environment Artist | Specialist | Scenes, maps, arenas, rooms, props/blockers, set dressing, perspective, depth | environment storytelling, scene composition, map readability, prop layering |
-| UI Artist | Specialist | UI visual language, iconography, panels, buttons, typography direction, visual states | UI style frames, icon sets, HUD/menu presentation, state sheets |
+| Art Director | Lead | Master-level visual identity, art bible, quality bar, readability, asset specs, final art sign-off | art direction, market reference decomposition, originality gate, style cohesion, visual QA |
+| Visual Development Artist | Specialist | Master-level mood, atmosphere, color script, lighting direction, key art, composition, style exploration | mood boards, color scripts, lighting notes, value grouping, key art direction |
+| Concept Artist | Specialist | Master-level characters, enemies, props, weapons, silhouettes, turnarounds, expression/pose sheets | shape language, silhouette design, character readability, production callouts, concept sheets |
+| Environment Artist | Specialist | Master-level scenes, maps, arenas, rooms, props/blockers, set dressing, perspective, depth | environment storytelling, scene composition, map readability, prop layering, navigation cues |
+| UI Artist | Specialist | Master-level UI visual language, iconography, panels, buttons, typography direction, visual states | UI style frames, icon sets, UI identity, HUD/menu presentation, state sheets |
 | 2D Animation Specialist | Specialist | Sprite animation states, frame timing, frame budgets, hit reactions, action readability | sprite animation, timing charts, anticipation/recovery, procedural-motion blend |
 | 2D Technical Artist | Specialist | Sprite import, atlases, TileMaps, y-sort, 2D collision, materials, VFX, Godot 2D handoff | sprite atlas planning, tilemap pipeline, import presets, runtime readability |
 | Sprite Forge Specialist | Specialist | Generated 2D sprites, FX, props, maps, asset QC | generate2dsprite, generate2dmap, sprite sheet QC, Godot asset handoff |
@@ -76,6 +76,7 @@ Specialists
 | Create 2D TileMap/scene pipeline | Art Director -> Visual Development Artist -> Environment Artist -> Sprite Forge Specialist -> 2D Technical Artist -> Godot Specialist -> QA Lead |
 | Review 2D performance | Technical Director -> 2D Technical Artist -> Performance Analyst -> Godot Specialist -> QA Lead |
 | Define professional art direction | Creative Director -> Art Director -> Visual Development Artist -> QA Lead |
+| Upgrade visual design quality bar | Creative Director -> Art Director -> relevant master art specialist -> QA Lead |
 | Create character/prop concept art | Art Director -> Concept Artist -> 2D Animation Specialist -> Sprite Forge Specialist -> 2D Technical Artist -> Godot Specialist -> QA Lead |
 | Create scene/environment art | Art Director -> Visual Development Artist -> Environment Artist -> Sprite Forge Specialist -> 2D Technical Artist -> Godot Specialist -> QA Lead |
 | Create UI visual design | Art Director -> UI Artist -> UI Programmer -> Godot Specialist -> QA Lead |
