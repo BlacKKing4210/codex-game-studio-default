@@ -10,6 +10,8 @@ Outputs:
 
 - Asset spec.
 - Approved art direction.
+- Simple premium visual sentence.
+- Complexity budget.
 - Generation prompt.
 - Raw image.
 - Cleaned transparent sheet.

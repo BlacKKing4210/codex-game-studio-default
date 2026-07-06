@@ -8,6 +8,23 @@ Codex Game Studio defaults to 2D-first production unless the user or existing pr
 
 2D-first does not mean low quality. It means production decisions optimize for sprites, layered scenes, readable silhouettes, efficient atlases, 2D animation, TileMaps, parallax, UI clarity, collision shapes, and mobile-friendly performance.
 
+## Simple High-Quality 2D Default
+
+For most projects, aim for simple premium 2D: clean silhouettes, controlled color roles, clear UI hierarchy, restrained scene detail, efficient animation, and reusable production components.
+
+Do not increase complexity to look professional. Use professional craft to make simple decisions feel intentional:
+
+- Fewer shapes, better proportions.
+- Fewer colors, clearer roles.
+- Fewer layers, stronger focal hierarchy.
+- Fewer animation states, stronger timing.
+- Fewer UI component families, stronger consistency.
+- Fewer custom assets, stronger reuse and polish.
+
+Primary learning references should come from well-known companies and durable 2D games: Nintendo for broad-audience readability and playful polish; Supercell for mobile-scale silhouettes and chunky UI clarity; Ubisoft Montpellier's Rayman Legends for expressive 2D motion; Blizzard's Hearthstone for tactile UI hierarchy; King for casual icon/readability systems; SEGA and Capcom for action clarity; Monument Valley, Hollow Knight, Celeste, and Dead Cells for high-identity 2D with constrained production.
+
+References are principle studies only. Do not copy exact characters, UI layouts, icons, colors, level motifs, effects, or proprietary assets.
+
 ## Default 2D Route
 
 Producer -> Creative Director -> Art Director -> Technical Director -> 2D Technical Artist -> relevant art/programming specialist -> Godot Specialist -> QA Lead.
@@ -25,14 +42,14 @@ Use the smallest needed branch:
 
 | Agent | 2D Learned Skills |
 |---|---|
-| Art Director | master-level 2D style bible, silhouette readability, palette control, market reference decomposition, sprite quality gate |
-| Visual Development Artist | master-level 2D mood boards, color scripts, lighting/value grouping, parallax atmosphere |
-| Concept Artist | master-level sprite-ready silhouettes, front/side/back callouts, small-size readability |
-| Environment Artist | master-level TileMap planning, layered scene composition, parallax, blockers, spawn readability |
-| UI Artist | master-level 2D HUD/menu style frames, iconography, readable states, mobile-safe layouts |
+| Art Director | simple-premium 2D style bible, famous-company reference decomposition, silhouette readability, palette control, complexity budget, sprite quality gate |
+| Visual Development Artist | simple-premium 2D mood boards, color scripts, lighting/value grouping, focal hierarchy, parallax atmosphere |
+| Concept Artist | simple-premium sprite-ready silhouettes, small shape vocabularies, front/side/back callouts, small-size readability |
+| Environment Artist | simple-premium TileMap planning, layered scene composition, prop-density control, parallax, blockers, spawn readability |
+| UI Artist | simple-premium 2D HUD/menu style frames, iconography, readable states, mobile-safe component systems |
 | Sprite Forge Specialist | generate2dsprite, generate2dmap, prompt discipline, sheet cleanup, slicing, metadata, previews |
-| 2D Animation Specialist | master-level sprite animation, timing charts, action states, pose readability, procedural-motion blend |
-| 2D Technical Artist | master-level sprite import, atlas planning, TileMap pipeline, y-sort, collision, materials, VFX |
+| 2D Animation Specialist | simple-premium sprite animation, essential state budgets, timing charts, action states, pose readability, procedural-motion blend |
+| 2D Technical Artist | simple-premium sprite import, atlas planning, TileMap pipeline, y-sort, collision, materials, VFX, runtime complexity checks |
 | Godot Specialist | Sprite2D, AnimatedSprite2D, AnimationPlayer, TileMapLayer, CanvasLayer, Control, Resource, Signal |
 | Gameplay Programmer | 2D movement, hitboxes/hurtboxes, kinematic collision, pickups, camera feedback |
 | Performance Analyst | draw calls, texture memory, overdraw, object pooling, dense sprite stress checks |
@@ -49,6 +66,9 @@ Use the smallest needed branch:
 
 ## 2D Quality Gates
 
+- The visual idea can be explained in one sentence.
+- The design passes the simple-premium gate: readable, memorable, original, reusable, and not overcomplicated.
+- Reference decomposition focuses on principles, not visual complexity or surface style.
 - Silhouettes stay readable at gameplay size.
 - Player, enemy, projectile, pickup, hazard, and UI colors are separated.
 - Sprite pivots, anchors, and feet lines are stable.

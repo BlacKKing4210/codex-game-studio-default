@@ -2,25 +2,23 @@
 
 This reference expands the default Codex Game Studio workflow.
 
-## Survivorlike / Brotato-like First Slice
+## First Playable Slice
 
-A first playable slice should prove:
+A first playable slice should prove the smallest complete player experience for the current genre. For 2D projects, keep it simple, readable, and high quality before expanding scope.
 
-- Player movement feels responsive.
-- Camera framing supports arena combat.
-- Enemies spawn in waves or pressure bands.
-- Player uses multiple weapons or auto/aimed attacks depending on the design.
-- Enemies die, drop currency/XP/materials, and feed progression.
-- Between-wave or level-up choices create build direction.
-- Shop/upgrade/equipment UI is usable.
-- At least one stat or weapon upgrade visibly changes gameplay.
-- HUD shows health, wave/time, currency/XP, selected weapons, and run status.
-- Five minutes of dense combat does not collapse performance.
+- The core player input is responsive and understandable.
+- The camera/view supports the chosen 2D format.
+- The main challenge, interaction, or decision loop is visible.
+- One reward, consequence, or progression beat changes player behavior.
+- HUD or screen UI shows only the information required for the slice.
+- Art, UI, motion, and feedback pass the simple premium 2D gate.
+- The slice can run on the target device without obvious performance collapse.
 
 ## Gate Checks
 
 - Creative gate: does this serve pillars and target fantasy?
 - Technical gate: is it simple, maintainable, and feasible in the engine?
+- Simple premium 2D gate: is the design readable in three seconds, visually memorable, original, reusable, and not overcomplicated?
 - 2D production gate: are sprites, atlases, layers, TileMaps, pivots, collision, y-sort, animation timing, and target resolution defined?
 - Modular implementation gate: is the feature split into independently verifiable modules with clear boundaries and contracts?
 - Production gate: can it fit the current milestone?
@@ -42,6 +40,7 @@ A first playable slice should prove:
 - Code: Lead Programmer + relevant specialist.
 - Godot/GDScript: Godot Specialist + GDScript Specialist.
 - 2D project setup: Technical Director + 2D Technical Artist + Godot Specialist.
+- Simple premium 2D visual direction: Creative Director + Art Director + relevant master art specialist + 2D Technical Artist.
 - 2D animation: Art Director + 2D Animation Specialist + Gameplay Programmer.
 - 2D technical art: Art Director + 2D Technical Artist + Godot Specialist.
 - Art direction: Art Director + Visual Development Artist.
@@ -85,6 +84,8 @@ Do not build major features as one large script, scene, prefab, widget, or mixed
 
 New projects default to 2D-first unless the user or existing project explicitly chooses 3D, 2.5D, VR/AR, or another rendering model.
 
+2D visual direction defaults to simple premium design: clear silhouettes, controlled color roles, restrained detail, reusable UI/asset families, and polish through timing, spacing, contrast, and feedback. Complexity must earn its place by improving readability, emotion, reward, or gameplay information.
+
 Use these routes:
 
 - 2D project setup, import settings, layer model, atlas plan: Technical Director -> 2D Technical Artist -> Godot Specialist -> QA Lead.
@@ -95,7 +96,7 @@ Use these routes:
 
 2D deliverables include camera/view, target resolution, intended on-screen size, sprite specs, animation specs, layer order, y-sort rules, collision layers, atlas/import settings, VFX/material rules, and QA previews.
 
-2D quality is not done until silhouettes are readable at gameplay size, pivots/feet lines are stable, animation timing communicates action beats, layer order and collision are clear, UI remains readable over gameplay, and texture memory/draw calls fit the target platform.
+2D quality is not done until the visual idea can be explained in one sentence, silhouettes are readable at gameplay size, pivots/feet lines are stable, animation timing communicates action beats, layer order and collision are clear, UI remains readable over gameplay, and texture memory/draw calls fit the target platform.
 
 ## Professional Art Production
 
@@ -109,6 +110,8 @@ Use these routes:
 - UI visual design, HUD, menus, shops, cards, result screens, icons, panels, typography, and visual states: Art Director -> UI Artist -> UI Programmer -> Engine Specialist -> QA Lead.
 
 Professional art deliverables include an art brief, reference board with anti-copying notes, visual direction, production sheets, readability pass, engine handoff notes, and QC verdict.
+
+For simple premium 2D work, also include a visual sentence, complexity budget, famous-company reference decomposition, readability target, and reusable asset/component plan. Prefer principle studies from Nintendo, Supercell, Ubisoft/Rayman, Blizzard/Hearthstone, King, SEGA, Capcom, Monument Valley, Hollow Knight, Celeste, and Dead Cells without copying their protected designs.
 
 ## Formal Design Document Artifact Rules
 

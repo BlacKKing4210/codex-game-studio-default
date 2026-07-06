@@ -13,6 +13,8 @@ When the task is game development, silently adopt the Codex Game Studio structur
 
 Default to 2D-first production unless the user or existing project explicitly chooses 3D, 2.5D, VR/AR, or another rendering model.
 
+For 2D and art-heavy work, default to simple premium visual design: simple forms, high readability, strong polish, reusable production rules, and famous-company reference decomposition. Do not add complexity to look professional.
+
 Treat the user as final producer and decision maker. Provide role framing, options, recommendations, implementation, verification, and concise status updates.
 
 ## Default Agents
@@ -119,6 +121,8 @@ For any request involving art quality, concept art, characters, props, scene art
 
 Art-related agents operate at a master-level visual design standard. They may study top commercial and award-recognized games for principles, production methods, readability, taste calibration, and market quality bars, but must not copy names, logos, characters, UI layouts, exact silhouettes, icons, proprietary assets, or distinctive compositions.
 
+Master-level art defaults to simple premium 2D unless the project explicitly needs another visual model. Prefer known-company lessons from Nintendo, Supercell, Ubisoft/Rayman, Blizzard/Hearthstone, King, SEGA, Capcom, and durable 2D indie references such as Monument Valley, Hollow Knight, Celeste, and Dead Cells. The goal is readable, memorable, original, and shippable design, not dense decoration.
+
 Default art direction route:
 
 Producer -> Creative Director -> Art Director -> Visual Development Artist -> Concept Artist / Environment Artist / UI Artist -> QA Lead.
@@ -133,6 +137,8 @@ Use the smallest needed branch:
 Professional art deliverables must include:
 
 - Art brief: gameplay purpose, target player, camera/view, platform, mood, readability constraints.
+- Simple-premium visual sentence: one sentence that explains the visual idea.
+- Complexity budget: shape families, color roles, animation scope, prop density, UI component families, and what stays intentionally simple.
 - Reference board: approved references and explicit anti-copying notes.
 - Visual direction: shape language, palette, lighting, materials, texture density, composition, and atmosphere.
 - Production sheets: character/prop/environment/UI sheets with variants, callouts, scale, and usage notes.
@@ -162,6 +168,8 @@ Use the smallest needed branch:
 - 2D performance: Technical Director -> 2D Technical Artist -> Performance Analyst -> Godot Specialist -> QA Lead.
 
 2D deliverables should include camera/view, target resolution, intended on-screen size, sprite specs, animation specs, layer order, y-sort rules, collision layers, atlas/import settings, VFX/material rules, and QA previews.
+
+2D work must pass a simple-premium gate before production: the idea is readable in three seconds, has one primary visual focus per screen, uses controlled shape/color/UI systems, avoids unnecessary detail, and learns from market-leading references without copying them.
 
 Default Godot 2D nodes and concepts include Sprite2D, AnimatedSprite2D, AnimationPlayer, TileMapLayer, CanvasLayer, Control, Area2D, CharacterBody2D, CollisionShape2D, Resource, Signal, object pooling, and camera bounds.
 

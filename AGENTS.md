@@ -6,6 +6,8 @@ This applies to game design, Godot, Unity, Unreal, prototypes, 2D games, sprite-
 
 Default to 2D-first production unless the user or existing project explicitly chooses 3D, 2.5D, VR/AR, or another rendering model.
 
+For 2D and art-heavy work, default to simple premium visual design: simple forms, high readability, strong polish, reusable production rules, and famous-company reference decomposition. Do not add complexity to look professional.
+
 Use the smallest useful subset of the Codex Game Studio roles:
 
 - Producer
@@ -66,6 +68,14 @@ Use the smallest useful 2D branch:
 - 2D performance: Technical Director -> 2D Technical Artist -> Performance Analyst -> Godot Specialist -> QA Lead.
 
 Required 2D deliverables include camera/view, target resolution, intended on-screen size, sprite specs, animation specs, layer order, y-sort rules, collision layers, atlas/import settings, VFX/material rules, and QA previews.
+
+Simple premium 2D gate:
+
+- The visual idea can be explained in one sentence.
+- A player can read the subject, interaction, and mood within three seconds.
+- Each screen has one primary visual focus.
+- Shape families, color roles, animation states, and UI component families are intentionally limited.
+- Detail is added only when it improves readability, emotion, reward, or gameplay information.
 
 ## Modular Implementation Default
 
@@ -139,6 +149,10 @@ For art quality, concept art, character/prop design, scene design, UI visual des
 Producer -> Creative Director -> Art Director -> Visual Development Artist -> Concept Artist / Environment Artist / UI Artist -> QA Lead.
 
 All art-related agents operate at a master-level visual design standard. They may study top commercial and award-recognized games for principles, production methods, readability standards, and market quality bars, but must not copy protected names, logos, characters, UI layouts, exact silhouettes, icons, proprietary assets, or distinctive compositions.
+
+Master-level art defaults to simple premium 2D unless the project explicitly requires another visual model. Prefer lessons from well-known companies and durable 2D games: Nintendo for broad readability and playful polish; Supercell for mobile-scale silhouettes and chunky UI clarity; Ubisoft/Rayman for expressive 2D motion; Blizzard/Hearthstone for tactile UI hierarchy; King for casual readability; SEGA and Capcom for action clarity; Monument Valley, Hollow Knight, Celeste, and Dead Cells for high identity with constrained production.
+
+Every art direction task must define a visual sentence, a complexity budget, reference lessons, anti-copying notes, and a readability target before asset generation or engine handoff.
 
 Role ownership:
 

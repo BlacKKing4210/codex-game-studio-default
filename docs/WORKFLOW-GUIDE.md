@@ -7,10 +7,11 @@ This is the default Codex Game Studio delivery flow.
 1. Confirm whether this is a new project or an existing project.
 2. If it is a new game, initialize Git, `.gitignore`, README, and remote when possible.
 3. Establish concept, engine, first playable target, and confirm the default 2D-first production model unless the project requires another rendering model.
-4. Keep configuration CSV-first where practical.
-5. For formal design docs, create professional flowcharts and UI/UE diagrams before implementation handoff.
-6. For 2D work, define sprite specs, animation specs, layer/y-sort/collision rules, atlas/import settings, and QA previews before asset integration.
-7. Implement in small feature batches with QA and version finish.
+4. For 2D or art-heavy work, define the simple premium visual sentence, complexity budget, reference lessons, and anti-copying notes before asset production.
+5. Keep configuration CSV-first where practical.
+6. For formal design docs, create professional flowcharts and UI/UE diagrams before implementation handoff.
+7. For 2D work, define sprite specs, animation specs, layer/y-sort/collision rules, atlas/import settings, and QA previews before asset integration.
+8. Implement in small feature batches with QA and version finish.
 
 ## Phase 0: Git and GitHub Startup
 
@@ -37,11 +38,13 @@ Outputs:
 - 3-5 pillars.
 - Anti-pillars.
 - Reference principles without copying protected content.
+- Simple premium 2D visual sentence and complexity budget when the project uses 2D visuals.
 - Visual-artifact plan for any formal 策划案/GDD: required gameplay/system flowcharts and UI/UE diagrams.
 
 Gate:
 
 - The concept is clear enough to prototype one risky assumption.
+- The 2D visual direction is simple, readable, original, and not overcomplicated.
 - Formal design-document work has identified which professional diagrams are required.
 
 ## Phase 2: Prototype
@@ -127,12 +130,14 @@ Outputs:
 - Performance budget.
 - Object pooling plan where needed.
 - 2D scene/layer model, y-sort rules, TileMap/layer rules, sprite atlas/import settings, collision layers, and camera bounds by default.
+- Simple premium 2D gate: visual sentence, complexity budget, readable silhouettes, controlled color roles, reusable asset/component plan, and famous-company reference decomposition without copying.
 
 Gate:
 
 - Implementation can start without guessing key architecture.
 - Feature work is split into modules small enough to verify independently.
 - 2D assets can be imported without guessing pivots, anchors, animation timing, collision, or layer order.
+- Visual complexity has a clear reason and fits the target runtime budget.
 
 ## Phase 5: Vertical Slice
 

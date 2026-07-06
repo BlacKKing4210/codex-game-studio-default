@@ -6,6 +6,8 @@ Adapted from `0x0funky/agent-sprite-forge` for Codex Game Studio.
 
 The Sprite Forge Specialist uses agent-sprite-forge as a production pipeline for generated 2D game art. It receives approved art direction from Art Director and the relevant professional art specialist; it does not replace concept, environment, UI, visual development, 2D animation, or 2D technical-art judgment.
 
+For Codex Game Studio, Sprite Forge follows the simple premium 2D default. Prompts and generated outputs should favor clean silhouettes, controlled palette roles, stable scale, readable motion, restrained detail, and engine-ready layers. Do not chase single-image impressiveness if it harms slicing, animation, import, collision, or gameplay-size readability.
+
 The key separation is:
 
 - Image generation creates the visible artwork.
@@ -30,6 +32,9 @@ Use this for:
 
 Required prompt constraints for processable sheets:
 
+- simple readable shape language
+- limited palette roles approved by Art Director
+- restrained texture and no tiny decorative noise
 - solid flat `#FF00FF` background
 - no gradients, text, labels, UI, watermark, borders, or frame lines
 - exact grid count
@@ -78,6 +83,9 @@ Playable maps should not be one flattened image unless the user explicitly asks 
 
 Reject or regenerate sprite output when:
 
+- the asset is over-detailed for gameplay size
+- the silhouette is weaker than the surface rendering
+- color roles conflict with player/enemy/projectile/pickup/hazard readability
 - frames touch cell edges
 - identity changes between frames
 - scale drifts
@@ -89,6 +97,7 @@ Reject or regenerate sprite output when:
 
 Reject or regenerate map output when:
 
+- prop density hides paths, blockers, pickups, hazards, or interactables
 - base layer includes runtime props, actors, pickups, labels, or blockers
 - props are clipped or lack alpha
 - collision metadata cannot parse

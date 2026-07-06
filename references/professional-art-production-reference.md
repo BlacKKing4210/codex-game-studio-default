@@ -8,6 +8,8 @@ For master-level visual standards, also use `master-game-visual-design-reference
 
 Sprite Forge is an execution and handoff pipeline, not a replacement for professional art judgment.
 
+Professional art defaults to simple premium 2D unless the project context explicitly requires another direction. "Professional" means simple choices handled with excellent taste, readability, and production discipline, not extra visual noise.
+
 Before generating or integrating final art, route visual decisions through the relevant professional art roles:
 
 Producer -> Creative Director -> Art Director -> Visual Development Artist -> Concept Artist / Environment Artist / UI Artist -> Sprite Forge Specialist -> 2D Technical Artist -> Engine Specialist -> QA Lead.
@@ -32,6 +34,8 @@ Use the smallest needed route for the task.
 For professional visual work, produce:
 
 - Art brief: gameplay purpose, target player, platform, camera/view, intended size, and constraints.
+- Simple-premium visual sentence: the core visual idea in one sentence.
+- Complexity budget: shape families, color roles, animation-state scope, prop density, UI component families, and what will intentionally stay simple.
 - Master reference decomposition: what each top reference teaches, what must be avoided, and how the project stays original.
 - Reference board: approved references plus explicit anti-copying notes.
 - Visual direction: shape language, palette, lighting, material, texture density, composition, mood, and atmosphere.
@@ -55,6 +59,9 @@ For professional visual work, produce:
 
 Professional art work is not done until:
 
+- The design is simple enough to build, animate, test, reuse, and extend.
+- Added detail improves readability, emotion, reward, or gameplay information.
+- The reference board includes well-known company or durable-market examples when useful, such as Nintendo, Supercell, Ubisoft/Rayman, Blizzard/Hearthstone, King, SEGA, Capcom, Monument Valley, Hollow Knight, Celeste, and Dead Cells.
 - The master-level learning object has been decomposed into principles, not copied as surface style.
 - The visual direction matches the game's promise and target player.
 - The style is original and does not copy commercial names, logos, characters, icons, exact layouts, or proprietary assets.
@@ -69,6 +76,7 @@ Professional art work is not done until:
 
 - Art direction is taste plus production discipline.
 - A game should be recognizable from one screenshot without logo or text.
+- Simple is not cheap. Simple is harder: fewer elements must carry identity, readability, and emotion.
 - A reference is a teacher, not a template.
 - Every beautiful asset must still be readable, original, performant, and shippable.
 
