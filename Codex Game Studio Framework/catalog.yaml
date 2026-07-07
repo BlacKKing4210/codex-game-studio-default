@@ -17,8 +17,8 @@ agents:
     skills: [architecture_review, module_boundary_review, dependency_risk, performance_budgeting, technical_gate]
   - id: game-designer
     tier: lead
-    owns: [core_loop, mechanics, weapons, enemies, upgrades, progression, difficulty, gameplay_flowcharts]
-    skills: [system_design, gameplay_rules, player_motivation, acceptance_criteria, professional_flowchart_spec]
+    owns: [core_loop, mechanics, weapons, enemies, upgrades, progression, difficulty, gameplay_flowcharts, player_feedback_synthesis]
+    skills: [system_design, gameplay_rules, player_motivation, player_feedback_discovery, feedback_synthesis, acceptance_criteria, professional_flowchart_spec]
   - id: systems-designer
     tier: lead
     owns: [economy, formulas, progression_curves, wave_pressure, upgrade_value]
@@ -29,8 +29,8 @@ agents:
     skills: [csv_schema_design, reference_validation, type_validation, godot_data_handoff]
   - id: prototyper
     tier: specialist
-    owns: [risky_assumptions, throwaway_tests, proceed_pivot_cut_verdicts]
-    skills: [minimum_tests, fast_iteration, prototype_scope, learning_reports]
+    owns: [risky_assumptions, throwaway_tests, demo_placeholders, proceed_pivot_cut_verdicts]
+    skills: [minimum_tests, fast_iteration, emoji_demo_placeholders, svg_placeholder_assets, prototype_scope, learning_reports]
   - id: lead-programmer
     tier: lead
     owns: [implementation_plan, module_breakdown, module_contracts, integration, code_review, done_criteria]
@@ -102,13 +102,13 @@ workflow_lanes:
     outputs: [git_repo, gitignore, readme, initial_commit, origin_status]
   - id: concept
     route: [producer, creative-director, game-designer]
-    outputs: [promise, target_player, pillars, anti_pillars, reference_principles, design_visual_artifact_plan]
+    outputs: [promise, target_player, player_feedback_sources, feedback_synthesis, design_hypotheses, pillars, anti_pillars, reference_principles, design_visual_artifact_plan]
   - id: prototype
     route: [producer, prototyper, qa-lead]
-    outputs: [risky_assumption, minimum_test, verdict]
+    outputs: [risky_assumption, minimum_test, emoji_demo_placeholders, svg_placeholder_assets, verdict]
   - id: system-design
     route: [game-designer, systems-designer, qa-lead]
-    outputs: [core_loop, systems, formulas, acceptance_criteria, professional_flowchart_source, figma_uiue_source, exported_diagram_review_copies]
+    outputs: [core_loop, systems, formulas, player_feedback_synthesis, direction_decision, acceptance_criteria, professional_flowchart_source, figma_uiue_source, exported_diagram_review_copies]
   - id: csv-data-config
     route: [systems-designer, data-config-specialist, technical-director, godot-specialist, qa-lead]
     outputs: [schemas, starter_rows, ids, validation_rules, loading_path]
@@ -149,7 +149,11 @@ workflow_lanes:
 gates:
   - id: creative
     verdicts: [approve, concerns, reject]
+  - id: player-feedback
+    verdicts: [approve, concerns, reject]
   - id: technical
+    verdicts: [approve, concerns, reject]
+  - id: demo-placeholder
     verdicts: [approve, concerns, reject]
   - id: production
     verdicts: [approve, concerns, reject]

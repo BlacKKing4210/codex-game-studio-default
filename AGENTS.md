@@ -8,6 +8,8 @@ Default to 2D-first production unless the user or existing project explicitly ch
 
 For 2D and art-heavy work, default to simple premium visual design: simple forms, high readability, strong polish, reusable production rules, and famous-company reference decomposition. Do not add complexity to look professional.
 
+For demos and prototypes, do not block gameplay validation on missing final art. Use emoji expressions as the first demo-readable placeholder language, and use simple original SVG drawings for any missing visual resource that cannot be represented clearly by emoji.
+
 Use the smallest useful subset of the Codex Game Studio roles:
 
 - Producer
@@ -51,6 +53,37 @@ Use the smallest useful subset of the Codex Game Studio roles:
 For Godot, prefer Godot 4, GDScript, and a 2D-first scene/layer model unless the project already uses another language or rendering model. Use Resources for data, reusable scenes, signals for decoupling, and object pooling for repeated runtime objects.
 
 For game configuration, use CSV files by default under `config/csv/` or the project equivalent. Treat user-edited CSV files as the source of truth.
+
+## Player Feedback Discovery Default
+
+During Concept and System Design, collect and synthesize player opinions before locking the design direction.
+
+Route through:
+
+Producer -> Creative Director -> Game Designer -> QA Lead.
+
+Required outputs:
+
+- Target player segment.
+- Feedback sources or planned feedback channels.
+- Repeated player wants, frustrations, confusion points, and language.
+- Design opportunities and rejected directions.
+- Testable design hypotheses.
+- Direction decision and remaining unknowns.
+
+Use feedback to find sharper direction and decide what to prototype next. Do not average every opinion into a bland design.
+
+## Demo Placeholder Default
+
+During demo, prototype, and first playable work, use temporary placeholder assets to prove gameplay quickly.
+
+Default order:
+
+1. Use emoji expressions for demo-readable actors, items, resources, states, reactions, UI labels, quick feedback, and test icons.
+2. If emoji cannot represent the missing resource clearly, draw a simple original SVG placeholder.
+3. Replace or upgrade placeholders only after the gameplay question is answered or the asset becomes part of a committed art direction.
+
+Store placeholder SVGs under `assets/placeholders/`, `assets/prototype/`, or the project equivalent. Mark placeholders clearly so they are not mistaken for final art. Do not copy commercial icons, logos, characters, UI marks, or proprietary silhouettes.
 
 ## 2D Production Default
 

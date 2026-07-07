@@ -18,7 +18,7 @@ Turn a single Codex session into a focused indie game studio workflow.
 
 Solo game development with AI is powerful, but a general chat can drift: hardcoded tuning values, unclear ownership, monolithic scripts, weak 2D production rules, weak art direction, flat atmosphere, generic UI visuals, missing professional design diagrams, missing QA, weak asset handoff, and no clean version finish.
 
-**Codex Game Studio Default** gives Codex a small but useful studio structure for game work. It defaults to 2D-first production and simple premium visual design while keeping the user as final decision maker and routing tasks through production, design, programming, master-level art direction, concept art, environment art, UI art, 2D animation, 2D technical art, QA, Godot, GDScript, CSV data, UI implementation, procedural motion, Sprite Forge asset generation, and authorized reverse-engineering gates.
+**Codex Game Studio Default** gives Codex a small but useful studio structure for game work. It defaults to 2D-first production, player-feedback-informed design, simple premium visual design, and fast demo placeholders while keeping the user as final decision maker and routing tasks through production, design, programming, master-level art direction, concept art, environment art, UI art, 2D animation, 2D technical art, QA, Godot, GDScript, CSV data, UI implementation, procedural motion, Sprite Forge asset generation, and authorized reverse-engineering gates.
 
 This repository is modeled after the studio-template idea of Claude Code Game Studios, adapted for Codex Skill usage and the local `codex-game-studio-default` workflow.
 
@@ -94,8 +94,8 @@ See [docs/AGENT-CATALOG.md](docs/AGENT-CATALOG.md) for each agent's responsibili
 ## Default Workflow
 
 1. **Git and GitHub Startup** - initialize or verify Git, ignore files, README, first commit, private GitHub origin where possible.
-2. **Concept** - promise, target player, pillars, anti-pillars, reference principles.
-3. **Prototype** - one risky assumption, minimum test, proceed/pivot/cut verdict.
+2. **Concept** - promise, target player, player feedback discovery, pillars, anti-pillars, reference principles.
+3. **Prototype** - one risky assumption, minimum test, emoji/SVG demo placeholders where assets are missing, proceed/pivot/cut verdict.
 4. **System Design** - core loop, mechanics, content rules, economy, difficulty, professional flowcharts, and Figma/FigJam UI/UE diagrams for formal design docs.
 5. **CSV Data Config** - schemas, starter rows, IDs, validation rules, loading path.
 6. **Technical Architecture** - Godot architecture, module boundaries, data/resources, 2D scene/layer model by default, performance budget.
@@ -145,6 +145,8 @@ Codex Game Studio Framework/        # Agent/workflow catalog for testing and ext
 - **Engine**: Godot 4 unless the project already uses another engine.
 - **Language**: GDScript unless the project already uses C# or the user chooses it.
 - **Design docs**: formal 策划案/GDD/system specs require professional gameplay/system flowcharts and Figma/FigJam UI/UE diagrams; Markdown-only diagrams are drafts, not final artifacts.
+- **Player feedback**: Concept and System Design collect player opinions, playtest notes, review patterns, community comments, or planned feedback channels before locking direction.
+- **Demo placeholders**: demos and prototypes use emoji expressions first; missing resources that emoji cannot represent clearly use simple original SVG drawings.
 - **Implementation**: substantial features must be split into modules with boundaries, contracts, per-module verification, and small integration steps.
 - **Game config**: CSV by default under `config/csv/` or equivalent.
 - **Art direction**: master-level art roles own original concept art, scene art, UI visual design, atmosphere, art bible, readability, market reference decomposition, complexity budgets, and final visual quality before Sprite Forge execution.

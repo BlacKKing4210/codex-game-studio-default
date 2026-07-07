@@ -25,6 +25,16 @@ Primary learning references should come from well-known companies and durable 2D
 
 References are principle studies only. Do not copy exact characters, UI layouts, icons, colors, level motifs, effects, or proprietary assets.
 
+## Demo Placeholder Rule
+
+For demos and prototypes, missing final art should not block gameplay validation.
+
+- Use emoji expressions first for readable demo actors, items, rewards, dangers, states, reactions, buttons, and quick UI icons.
+- Use simple original SVG placeholders when emoji cannot represent a needed resource clearly.
+- Keep SVG placeholders flat, high-contrast, easy to edit, and clearly marked as temporary.
+- Store placeholders under `assets/placeholders/`, `assets/prototype/`, or the project equivalent.
+- Replace placeholders after the gameplay question is answered or after art direction commits to production assets.
+
 ## Default 2D Route
 
 Producer -> Creative Director -> Art Director -> Technical Director -> 2D Technical Artist -> relevant art/programming specialist -> Godot Specialist -> QA Lead.

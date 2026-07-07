@@ -8,6 +8,8 @@ The Sprite Forge Specialist uses agent-sprite-forge as a production pipeline for
 
 For Codex Game Studio, Sprite Forge follows the simple premium 2D default. Prompts and generated outputs should favor clean silhouettes, controlled palette roles, stable scale, readable motion, restrained detail, and engine-ready layers. Do not chase single-image impressiveness if it harms slicing, animation, import, collision, or gameplay-size readability.
 
+Sprite Forge is not required for every demo placeholder. During early demos, use emoji first and simple original SVG placeholders when emoji is unclear. Route to Sprite Forge only when generated raster art is needed for a committed asset direction or a higher-fidelity prototype.
+
 The key separation is:
 
 - Image generation creates the visible artwork.

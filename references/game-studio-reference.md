@@ -11,13 +11,17 @@ A first playable slice should prove the smallest complete player experience for 
 - The main challenge, interaction, or decision loop is visible.
 - One reward, consequence, or progression beat changes player behavior.
 - HUD or screen UI shows only the information required for the slice.
+- Emoji placeholders communicate demo actors, items, states, reactions, and quick UI feedback where final assets are missing.
+- Simple original SVG placeholders cover missing resources that emoji cannot represent clearly.
 - Art, UI, motion, and feedback pass the simple premium 2D gate.
 - The slice can run on the target device without obvious performance collapse.
 
 ## Gate Checks
 
 - Creative gate: does this serve pillars and target fantasy?
+- Player feedback gate: has the design direction used real player opinions, playtest notes, review patterns, community comments, or an explicit feedback plan with testable assumptions?
 - Technical gate: is it simple, maintainable, and feasible in the engine?
+- Demo placeholder gate: are missing demo resources represented with readable emoji or simple original SVG placeholders instead of blocking gameplay validation?
 - Simple premium 2D gate: is the design readable in three seconds, visually memorable, original, reusable, and not overcomplicated?
 - 2D production gate: are sprites, atlases, layers, TileMaps, pivots, collision, y-sort, animation timing, and target resolution defined?
 - Modular implementation gate: is the feature split into independently verifiable modules with clear boundaries and contracts?
@@ -32,6 +36,7 @@ A first playable slice should prove the smallest complete player experience for 
 
 - Scope/planning: Producer.
 - Game identity: Creative Director.
+- Player feedback discovery: Producer + Creative Director + Game Designer + QA Lead.
 - Architecture or dependencies: Technical Director.
 - Module boundaries and contracts: Technical Director + Lead Programmer.
 - Mechanics/content: Game Designer + Systems Designer.
@@ -59,6 +64,8 @@ For substantial work, produce:
 - owner agent or route
 - files/docs involved
 - professional flowchart sources/exports and Figma/FigJam UI/UE source links/exports when producing a formal 策划案, GDD, system spec, or UI/UE spec
+- player feedback sources, synthesis, direction decision, and remaining assumptions when producing design work
+- emoji/SVG placeholder plan when producing demos or prototypes with missing assets
 - module boundaries, contracts, and verification paths when producing implementation work
 - decisions made
 - implementation notes
@@ -66,6 +73,43 @@ For substantial work, produce:
 - risks and next step
 
 For feature work, keep acceptance criteria testable and small enough to verify in the current milestone.
+
+## Player Feedback Discovery
+
+Concept and System Design should collect player opinions before the direction is locked.
+
+Useful sources:
+
+- target-player interviews
+- playtest notes
+- survey answers
+- community comments
+- store or review patterns from comparable games
+- user pain points and confusion reports
+- the user's own audience knowledge
+
+Outputs:
+
+- target player segment
+- feedback sources or planned feedback channels
+- repeated wants, frustrations, confusion points, and player language
+- design opportunities and rejected directions
+- testable design hypotheses
+- direction decision and remaining unknowns
+
+Do not average every opinion into a bland design. Use feedback to find sharper direction, prioritize risk, and choose the next prototype.
+
+## Demo Placeholder Assets
+
+Demo and prototype work should validate gameplay before waiting for final art.
+
+Default order:
+
+1. Use emoji expressions for actors, items, resources, states, reactions, UI labels, quick feedback, and test icons.
+2. Use simple original SVG drawings when emoji cannot represent a missing resource clearly.
+3. Replace placeholders after the gameplay question is answered or after art direction commits to production assets.
+
+Placeholder SVGs should be flat, high-contrast, original, and stored under `assets/placeholders/`, `assets/prototype/`, or the project equivalent. Mark placeholders clearly so they are not mistaken for final art.
 
 ## Modular Implementation Rules
 

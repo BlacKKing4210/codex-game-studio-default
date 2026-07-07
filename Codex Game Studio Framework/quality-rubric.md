@@ -21,6 +21,8 @@ Use this rubric when reviewing changes to the Codex Game Studio workflow.
 - 2D-first is the default rendering/production model unless project context explicitly chooses 3D, 2.5D, VR/AR, or another model.
 - Godot 4 and GDScript remain the default unless project context says otherwise.
 - CSV remains default for designer-editable content.
+- Concept and System Design include player feedback discovery, feedback synthesis, or a clear feedback plan with testable assumptions.
+- Demo and prototype work uses emoji placeholders first, then simple original SVG placeholders for missing visual resources that emoji cannot represent clearly.
 - Art-related agents use master-level visual design references as principle studies, with explicit anti-copying constraints.
 - 2D visual direction defaults to simple premium design: readable in seconds, controlled shape/color/UI systems, reusable production pieces, and no added complexity unless it improves gameplay, emotion, or reward.
 - Famous-company references such as Nintendo, Supercell, Ubisoft/Rayman, Blizzard/Hearthstone, King, SEGA, and Capcom are decomposed into design principles, not copied as surface style.
@@ -29,6 +31,7 @@ Use this rubric when reviewing changes to the Codex Game Studio workflow.
 - Procedural motion is preferred before new sequence-frame art for common feedback.
 - Sprite Forge outputs include QC and Godot handoff notes.
 - UI work uses the brawler arcade UI kit without copying proprietary assets.
+- Placeholder SVGs are marked temporary, original, simple, and not copied from commercial icons, logos, characters, or UI marks.
 
 ## Safety
 

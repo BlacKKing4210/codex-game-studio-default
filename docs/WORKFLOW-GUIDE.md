@@ -7,11 +7,13 @@ This is the default Codex Game Studio delivery flow.
 1. Confirm whether this is a new project or an existing project.
 2. If it is a new game, initialize Git, `.gitignore`, README, and remote when possible.
 3. Establish concept, engine, first playable target, and confirm the default 2D-first production model unless the project requires another rendering model.
-4. For 2D or art-heavy work, define the simple premium visual sentence, complexity budget, reference lessons, and anti-copying notes before asset production.
-5. Keep configuration CSV-first where practical.
-6. For formal design docs, create professional flowcharts and Figma/FigJam UI/UE diagrams before implementation handoff.
-7. For 2D work, define sprite specs, animation specs, layer/y-sort/collision rules, atlas/import settings, and QA previews before asset integration.
-8. Implement in small feature batches with QA and version finish.
+4. During design, collect player opinions or define a feedback plan before locking the direction.
+5. For demos and prototypes, use emoji placeholders first, then simple original SVG placeholders for missing resources.
+6. For 2D or art-heavy work, define the simple premium visual sentence, complexity budget, reference lessons, and anti-copying notes before asset production.
+7. Keep configuration CSV-first where practical.
+8. For formal design docs, create professional flowcharts and Figma/FigJam UI/UE diagrams before implementation handoff.
+9. For 2D work, define sprite specs, animation specs, layer/y-sort/collision rules, atlas/import settings, and QA previews before asset integration.
+10. Implement in small feature batches with QA and version finish.
 
 ## Phase 0: Git and GitHub Startup
 
@@ -35,6 +37,8 @@ Outputs:
 
 - Game promise.
 - Target player.
+- Player feedback sources, planned channels, or assumptions to test.
+- Repeated player wants, frustrations, confusion points, and language.
 - 3-5 pillars.
 - Anti-pillars.
 - Reference principles without copying protected content.
@@ -44,6 +48,7 @@ Outputs:
 Gate:
 
 - The concept is clear enough to prototype one risky assumption.
+- The design direction is grounded in player feedback, planned feedback, or explicit assumptions to test.
 - The 2D visual direction is simple, readable, original, and not overcomplicated.
 - Formal design-document work has identified which professional diagrams are required.
 
@@ -53,11 +58,14 @@ Outputs:
 
 - One risky assumption.
 - Minimum playable or testable experiment.
+- Emoji placeholders for demo-readable actors, items, UI states, feedback, and quick icons where useful.
+- Simple original SVG placeholders for missing visual resources that emoji cannot represent clearly.
 - Proceed/pivot/cut verdict.
 
 Gate:
 
 - The result answers the assumption clearly enough to continue or adjust.
+- Placeholder art did not block gameplay validation and is clearly marked as temporary.
 
 ## Phase 3: System Design
 
@@ -65,6 +73,7 @@ Outputs:
 
 - Core loop.
 - Weapons, enemies, upgrades, economy, difficulty.
+- Player feedback synthesis and direction decision.
 - Tuning knobs and acceptance criteria.
 - Gameplay/system flowchart source file and exported review image/PDF.
 - Figma/FigJam UI/UE source link or exported `.fig` reference plus exported review image/PDF when the system has any screen, HUD, menu, onboarding, shop, progression, or decision interface.

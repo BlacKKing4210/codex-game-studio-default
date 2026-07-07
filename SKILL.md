@@ -15,6 +15,8 @@ Default to 2D-first production unless the user or existing project explicitly ch
 
 For 2D and art-heavy work, default to simple premium visual design: simple forms, high readability, strong polish, reusable production rules, and famous-company reference decomposition. Do not add complexity to look professional.
 
+For demos and prototypes, do not block gameplay validation on missing final art. Use emoji expressions as the first demo-readable placeholder language, and use simple original SVG drawings for any missing visual resource that cannot be represented well by emoji.
+
 Treat the user as final producer and decision maker. Provide role framing, options, recommendations, implementation, verification, and concise status updates.
 
 ## Default Agents
@@ -48,8 +50,8 @@ Use the smallest useful subset of these roles:
 ## Default Workflow
 
 0. Git and GitHub Startup: initialize or verify Git, `.gitignore`, README, initial checkpoint commit for new projects, and private GitHub origin when possible.
-1. Concept: promise, target player, pillars, anti-pillars, reference principles, and visual-artifact requirements for formal design docs.
-2. Prototype: one risky assumption, minimum test, proceed/pivot/cut verdict.
+1. Concept: promise, target player, player-feedback discovery, pillars, anti-pillars, reference principles, and visual-artifact requirements for formal design docs.
+2. Prototype: one risky assumption, minimum test, emoji/SVG demo placeholders where assets are missing, proceed/pivot/cut verdict.
 3. System Design: core loop, mechanics, content rules, economy, difficulty ramp, professional flowcharts, and Figma/FigJam UI/UE diagrams when the output is a formal 策划案/GDD.
 3A. CSV Data Config: schemas, starter rows, IDs, validation rules, runtime loading path.
 4. Technical Architecture: engine architecture, module boundaries, data/resources, 2D scene/layer model by default, performance budget.
@@ -72,6 +74,45 @@ For implementation tasks, use:
 - Acceptance criteria
 - Verification
 - Risks
+
+## Player Feedback Discovery Defaults
+
+During Concept and System Design, collect and synthesize player opinions before locking the design direction.
+
+Route feedback discovery through:
+
+Producer -> Creative Director -> Game Designer -> QA Lead.
+
+Use available evidence such as target-player interviews, playtest notes, survey answers, community comments, store/review patterns, comparable-game feedback, user pain points, and the user's own audience knowledge. When live feedback is not available yet, define a feedback plan and testable assumptions instead of pretending certainty.
+
+Required outputs:
+
+- Target player segment.
+- Feedback sources or planned feedback channels.
+- Repeated player wants, frustrations, confusion points, and language.
+- Design opportunities and rejected directions.
+- Testable design hypotheses.
+- Direction decision and remaining unknowns.
+
+Do not average every opinion into a bland design. Use feedback to find sharper direction, validate risks, and decide what to prototype next.
+
+## Demo Placeholder Defaults
+
+During demo, prototype, and first playable work, use temporary placeholder assets to prove gameplay quickly.
+
+Default order:
+
+1. Use emoji expressions for demo-readable actors, items, resources, states, reactions, UI labels, quick feedback, and test icons.
+2. If emoji cannot represent the missing resource clearly, draw a simple original SVG placeholder.
+3. Replace or upgrade placeholders only after the gameplay question is answered or the asset becomes part of a committed art direction.
+
+Placeholder rules:
+
+- Emoji placeholders should stay readable at gameplay size and communicate role or emotion fast, such as player, enemy, reward, danger, dialogue, mood, status, and reaction.
+- SVG placeholders should be simple, original, flat, high-contrast, and easy to edit.
+- Store placeholder SVGs under `assets/placeholders/`, `assets/prototype/`, or the project equivalent.
+- Mark placeholders clearly in docs or code comments so they are not mistaken for final art.
+- Do not copy commercial icons, logos, characters, UI marks, or proprietary silhouettes.
 
 ## Modular Implementation Defaults
 
