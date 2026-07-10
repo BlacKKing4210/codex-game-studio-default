@@ -15,7 +15,7 @@ Codex Game Studio uses the smallest useful subset of agents for each task. These
 | Godot Specialist | Specialist | Godot scenes, nodes, resources, signals, autoloads, export | Godot 4 workflow, scene/resource integration |
 | GDScript Specialist | Specialist | Typed GDScript, signals, Resources, component patterns | typed scripts, hot-path performance, idiomatic Godot code |
 | Gameplay Programmer | Specialist | Movement, combat, spawning, pickups, run state | gameplay loops, object pooling, procedural feedback |
-| UI Programmer | Specialist | Reusable UI components, screen shells, Theme resources, UI/UE implementability review | arcade UI kit, touch ergonomics, UI motion, UI/UE diagram review |
+| UI Programmer | Specialist | Reusable UI components, screen shells, Theme resources, UI/UE implementability review, design tokens, component states, screenshot parity | arcade UI kit, `ui-ux-pro-max` game adaptation, Figma/mockup-to-engine handoff, touch ergonomics, accessibility/contrast, responsive layout, UI motion |
 | Performance Analyst | Specialist | Frame time, collision cost, memory, stress checks | profiling plans, dense-combat budgets, pooling analysis |
 | Art Director | Lead | Master-level simple premium 2D visual identity, art bible, quality bar, readability, asset specs, final art sign-off | art direction, famous-company reference decomposition, complexity budget, originality gate, style cohesion, visual QA |
 | Visual Development Artist | Specialist | Simple premium mood, atmosphere, color script, lighting direction, key art, composition, style exploration | mood boards, color scripts, lighting notes, value grouping, focal hierarchy, key art direction |
@@ -84,5 +84,6 @@ Specialists
 | Create scene/environment art | Art Director -> Visual Development Artist -> Environment Artist -> Sprite Forge Specialist -> 2D Technical Artist -> Godot Specialist -> QA Lead |
 | Create UI visual design | Art Director -> UI Artist -> UI Programmer -> Godot Specialist -> QA Lead |
 | Create arcade mobile UI | Art Director -> UI Artist -> UI Programmer -> Godot Specialist -> QA Lead |
+| Implement UI effect images or Figma screens | Art Director -> UI Artist -> UI Programmer -> Godot Specialist -> QA Lead |
 | Generate sprite sheets or maps | Art Director -> relevant professional art specialist -> Sprite Forge Specialist -> 2D Technical Artist -> Godot Specialist -> QA Lead |
 | Investigate an owned binary/resource format | Technical Director -> Lead Programmer -> Reverse Engineering Specialist -> QA Lead |

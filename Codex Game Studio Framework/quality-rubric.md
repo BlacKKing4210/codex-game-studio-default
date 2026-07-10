@@ -31,6 +31,8 @@ Use this rubric when reviewing changes to the Codex Game Studio workflow.
 - Procedural motion is preferred before new sequence-frame art for common feedback.
 - Sprite Forge outputs include QC and Godot handoff notes.
 - UI work uses the brawler arcade UI kit without copying proprietary assets.
+- UI效果图/Figma implementation uses the UI Programmer's `ui-ux-pro-max` adaptation: design tokens, component state matrix, reusable controls, responsive/safe-area layout, accessibility/contrast checks, motion rules, and screenshot parity review.
+- Production UI uses SVG/icons or approved UI assets; emoji is limited to temporary demo/prototype placeholders unless deliberately chosen as final UI identity.
 - Placeholder SVGs are marked temporary, original, simple, and not copied from commercial icons, logos, characters, or UI marks.
 
 ## Safety

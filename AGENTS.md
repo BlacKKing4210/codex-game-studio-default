@@ -155,6 +155,24 @@ Use the shared UI kit at `C:\Users\76398\Documents\Codex\ui-kits\brawler-arcade-
 
 Use chunky panels, thick dark outlines, hard offset shadows, saturated blue/purple bases, yellow/orange CTAs, red/green badges, resource pills, progress tracks, card menus, and procedural pop/bounce feedback. Do not copy Brawl Stars names, logos, icons, characters, exact layouts, typography, currencies, or proprietary assets.
 
+## UI Implementation From Mockups Default
+
+For UI效果图落地, Figma/FigJam screens, exported UI screenshots, HUD/menu mockups, lobby/shop/upgrade/result screens, UI polish, or UI效果不理想, route through:
+
+Art Director -> UI Artist -> UI Programmer -> Godot Specialist -> QA Lead.
+
+The UI Programmer has learned `nextlevelbuilder/ui-ux-pro-max-skill` and adapts it for game UI implementation. Use it for design-system tokens, component states, accessibility, touch interaction, responsive/safe-area layout, animation timing, screenshot parity, and pre-delivery UI review.
+
+Required outputs:
+
+- Figma/FigJam or screenshot source reference.
+- Design token map: colors, typography, spacing, radius, outlines, shadows, icon style, motion, and safe areas.
+- Component state matrix: default, hover, pressed, focused, selected, disabled, locked, loading, success, warning, error, empty, and notification as relevant.
+- Engine implementation plan: reusable Control scenes, Theme resources or equivalent, signals/events, anchors/containers, input focus, and motion hooks.
+- Screenshot parity report and UI QA checklist across target resolutions.
+
+Production UI should use SVG/icons or approved UI assets. Emoji is allowed only as temporary demo/prototype UI placeholder unless the project intentionally chooses an emoji UI identity.
+
 ## Procedural Motion Default
 
 For owned prototype assets, simple gameplay actions, combat feedback, pickups, damage, attacks, deaths, and UI/gameplay feedback, prefer procedural motion before requesting new sequence-frame art.

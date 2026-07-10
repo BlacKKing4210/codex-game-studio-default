@@ -12,8 +12,9 @@ This is the default Codex Game Studio delivery flow.
 6. For 2D or art-heavy work, define the simple premium visual sentence, complexity budget, reference lessons, and anti-copying notes before asset production.
 7. Keep configuration CSV-first where practical.
 8. For formal design docs, create professional flowcharts and Figma/FigJam UI/UE diagrams before implementation handoff.
-9. For 2D work, define sprite specs, animation specs, layer/y-sort/collision rules, atlas/import settings, and QA previews before asset integration.
-10. Implement in small feature batches with QA and version finish.
+9. For UI mockups or Figma screens, require UI Programmer handoff: design tokens, component state matrix, reusable controls, responsive/safe-area rules, screenshot parity, and UI QA checklist.
+10. For 2D work, define sprite specs, animation specs, layer/y-sort/collision rules, atlas/import settings, and QA previews before asset integration.
+11. Implement in small feature batches with QA and version finish.
 
 ## Phase 0: Git and GitHub Startup
 
@@ -113,6 +114,29 @@ Review rule:
 - UI Artist checks UI visual language, hierarchy, icon/state clarity, and screen readability.
 - UI Programmer checks implementability of UI/UE flow.
 - QA Lead checks whether the diagrams expose testable paths and edge cases.
+
+## UI Implementation From Mockups Gate
+
+This gate applies when implementing UI效果图, Figma/FigJam screens, exported screenshots, HUD/menu mockups, lobby/shop/upgrade/result screens, or UI polish requests.
+
+Route:
+
+Art Director -> UI Artist -> UI Programmer -> Godot Specialist -> QA Lead.
+
+Required outputs:
+
+- Source reference: Figma/FigJam URL, exported `.fig`, or screenshot export.
+- Design token map: color roles, typography scale, spacing rhythm, radius, outlines, shadows, icon style, motion timing, and safe-area rules.
+- Component state matrix: default, hover, pressed, focused, selected, disabled, locked, loading, success, warning, error, empty, and notification states as relevant.
+- Engine UI plan: reusable controls, Theme resources or equivalent style assets, signals/events, anchors/containers, focus behavior, input modes, and motion hooks.
+- Screenshot parity report at target resolutions and gameplay overlay conditions.
+- UI QA checklist for contrast, touch target size, focus order, text wrapping, localization tolerance, loading/error/empty states, reduced motion, and no layout jumps.
+
+Rules:
+
+- UI Programmer uses the `nextlevelbuilder/ui-ux-pro-max-skill` ideas as a design-to-implementation quality system adapted for game UI.
+- Production UI uses SVG/icons or approved UI assets. Emoji is only a temporary demo/prototype placeholder unless the project intentionally chooses emoji as final UI identity.
+- The implementation must remain original and project-specific; do not copy commercial UI layouts, icons, fonts, currencies, or proprietary screen compositions.
 
 ## Phase 3A: CSV Data Config
 

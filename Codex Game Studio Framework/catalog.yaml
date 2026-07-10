@@ -49,8 +49,8 @@ agents:
     skills: [gameplay_loops, object_pooling, combat_feedback, dense_arena_logic]
   - id: ui-programmer
     tier: specialist
-    owns: [reusable_controls, theme_resources, screen_shells, touch_ergonomics, ui_motion, uiue_diagram_review]
-    skills: [brawler_arcade_ui_core, godot_control_nodes, responsive_layouts, tweened_ui_feedback, uiue_implementability_review]
+    owns: [reusable_controls, theme_resources, screen_shells, touch_ergonomics, ui_motion, uiue_diagram_review, design_tokens, component_state_matrix, screenshot_parity]
+    skills: [brawler_arcade_ui_core, ui_ux_pro_max_adaptation, design_system_tokens, godot_control_nodes, responsive_layouts, safe_area_layouts, accessibility_contrast, tweened_ui_feedback, uiue_implementability_review, figma_to_engine_handoff, screenshot_parity_review]
   - id: performance-analyst
     tier: specialist
     owns: [frame_time, collision_cost, memory, stress_checks]
@@ -129,7 +129,10 @@ workflow_lanes:
     outputs: [visual_sentence, complexity_budget, famous_company_reference_decomposition, readability_target, reusable_asset_plan, anti_copying_notes, revision_notes]
   - id: brawler-arcade-ui
     route: [art-director, ui-artist, ui-programmer, godot-specialist, qa-lead]
-    outputs: [figma_uiue_source, exported_uiue_review_copy, screen_spec, reusable_controls, theme_notes, qa_checklist]
+    outputs: [figma_uiue_source, exported_uiue_review_copy, screen_spec, design_tokens, component_state_matrix, reusable_controls, theme_notes, screenshot_parity_report, qa_checklist]
+  - id: ui-implementation
+    route: [art-director, ui-artist, ui-programmer, godot-specialist, qa-lead]
+    outputs: [figma_or_screenshot_source, design_token_map, component_state_matrix, engine_ui_plan, reusable_controls, theme_resources, responsive_safe_area_notes, motion_feedback_notes, screenshot_parity_report, ui_qa_checklist]
   - id: sprite-forge-assets
     route: [art-director, relevant_art_specialist, sprite-forge-specialist, 2d-technical-artist, godot-specialist, qa-lead]
     outputs: [approved_art_direction, asset_spec, prompt, qc_report, sprite_specs, atlas_import_notes, godot_handoff]
@@ -172,6 +175,8 @@ gates:
   - id: 2d-production-quality
     verdicts: [approve, concerns, reject]
   - id: design-document-artifacts
+    verdicts: [approve, concerns, reject]
+  - id: ui-implementation-quality
     verdicts: [approve, concerns, reject]
   - id: modular-implementation
     verdicts: [approve, concerns, reject]

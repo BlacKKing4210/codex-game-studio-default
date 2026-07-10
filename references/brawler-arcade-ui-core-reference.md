@@ -8,6 +8,8 @@ Art Director -> UI Artist -> UI Programmer -> Godot Specialist -> QA Lead.
 
 UI Artist owns the visual style frames, icons, component states, typography direction, and readability checks. UI Programmer owns implementation, layout behavior, input states, animation hooks, and engine integration.
 
+For UI效果图落地 or Figma/screenshot implementation, also use `references/ui-implementation-reference.md`. The brawler arcade kit provides a reusable style base; the UI implementation reference provides the fidelity, state, responsive, accessibility, and QA handoff process.
+
 ## Shared Kit
 
 Local kit path:
@@ -37,6 +39,8 @@ Do not copy Brawl Stars names, logos, icons, characters, exact layouts, typograp
 
 - Use reusable Control scenes for buttons, resource pills, progress tracks, cards, tabs, and modal panels.
 - Prefer Theme resources and styleboxes over per-node styling.
+- Extract design tokens before coding: color roles, typography scale, spacing rhythm, radius, outline, shadow, motion, icon style, and safe-area rules.
+- Define a component state matrix before coding screens.
 - Keep mobile touch targets comfortable.
 - Add button press/hover/disabled states.
 - Use tweened scale/position/color feedback for pop and bounce.
@@ -51,4 +55,5 @@ Do not copy Brawl Stars names, logos, icons, characters, exact layouts, typograp
 - Disabled and locked states are readable.
 - Resource counters update without layout shifts.
 - Animation feedback does not block input.
+- Implementation has screenshot parity notes against Figma/exported mockups.
 - Screens remain original and project-specific.

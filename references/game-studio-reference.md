@@ -22,6 +22,7 @@ A first playable slice should prove the smallest complete player experience for 
 - Player feedback gate: has the design direction used real player opinions, playtest notes, review patterns, community comments, or an explicit feedback plan with testable assumptions?
 - Technical gate: is it simple, maintainable, and feasible in the engine?
 - Demo placeholder gate: are missing demo resources represented with readable emoji or simple original SVG placeholders instead of blocking gameplay validation?
+- UI implementation gate: did UI效果图/Figma/screenshots become reusable, state-complete, responsive, accessible, and screenshot-checked engine UI rather than a one-off visual approximation?
 - Simple premium 2D gate: is the design readable in three seconds, visually memorable, original, reusable, and not overcomplicated?
 - 2D production gate: are sprites, atlases, layers, TileMaps, pivots, collision, y-sort, animation timing, and target resolution defined?
 - Modular implementation gate: is the feature split into independently verifiable modules with clear boundaries and contracts?
@@ -52,6 +53,7 @@ A first playable slice should prove the smallest complete player experience for 
 - Concept art: Art Director + Concept Artist.
 - Scene/environment art: Art Director + Visual Development Artist + Environment Artist.
 - UI visual design: Art Director + UI Artist + UI Programmer.
+- UI效果图落地 / Figma-to-engine implementation: Art Director + UI Artist + UI Programmer + Godot Specialist + QA Lead.
 - Art assets: Art Director + relevant professional art specialist + Sprite Forge Specialist.
 - Art integration: Sprite Forge Specialist + 2D Technical Artist + Godot Specialist.
 - Verification: QA Lead + Performance Analyst.
@@ -66,6 +68,7 @@ For substantial work, produce:
 - professional flowchart sources/exports and Figma/FigJam UI/UE source links/exports when producing a formal 策划案, GDD, system spec, or UI/UE spec
 - player feedback sources, synthesis, direction decision, and remaining assumptions when producing design work
 - emoji/SVG placeholder plan when producing demos or prototypes with missing assets
+- UI source reference, design tokens, component state matrix, engine UI plan, screenshot parity report, and UI QA checklist when implementing UI mockups or Figma screens
 - module boundaries, contracts, and verification paths when producing implementation work
 - decisions made
 - implementation notes

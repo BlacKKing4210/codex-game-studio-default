@@ -2,13 +2,13 @@
 
 Turn a single Codex session into a focused indie game studio workflow.
 
-23 core agents. 16 workflow lanes. 2D-first production. Simple premium visual design. Professional design artifacts. Professional art production. Modular implementation. Godot-first defaults. CSV-driven game data. Sprite Forge art handoff. Git version finish.
+23 core agents. 17 workflow lanes. 2D-first production. Simple premium visual design. Professional design artifacts. Professional art production. UI mockup-to-engine implementation. Modular implementation. Godot-first defaults. CSV-driven game data. Sprite Forge art handoff. Git version finish.
 
 <p align="center">
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT License"></a>
   <a href="SKILL.md"><img src="https://img.shields.io/badge/Codex%20Skill-ready-green" alt="Codex Skill Ready"></a>
   <a href="docs/AGENT-CATALOG.md"><img src="https://img.shields.io/badge/agents-23-blueviolet" alt="23 Agents"></a>
-  <a href="docs/WORKFLOW-GUIDE.md"><img src="https://img.shields.io/badge/workflows-16-orange" alt="16 Workflows"></a>
+  <a href="docs/WORKFLOW-GUIDE.md"><img src="https://img.shields.io/badge/workflows-17-orange" alt="17 Workflows"></a>
   <a href="docs/CSV-DATA-CONFIG.md"><img src="https://img.shields.io/badge/data-CSV%20first-yellow" alt="CSV First"></a>
 </p>
 
@@ -18,7 +18,7 @@ Turn a single Codex session into a focused indie game studio workflow.
 
 Solo game development with AI is powerful, but a general chat can drift: hardcoded tuning values, unclear ownership, monolithic scripts, weak 2D production rules, weak art direction, flat atmosphere, generic UI visuals, missing professional design diagrams, missing QA, weak asset handoff, and no clean version finish.
 
-**Codex Game Studio Default** gives Codex a small but useful studio structure for game work. It defaults to 2D-first production, player-feedback-informed design, simple premium visual design, and fast demo placeholders while keeping the user as final decision maker and routing tasks through production, design, programming, master-level art direction, concept art, environment art, UI art, 2D animation, 2D technical art, QA, Godot, GDScript, CSV data, UI implementation, procedural motion, Sprite Forge asset generation, and authorized reverse-engineering gates.
+**Codex Game Studio Default** gives Codex a small but useful studio structure for game work. It defaults to 2D-first production, player-feedback-informed design, simple premium visual design, UI mockup-to-engine implementation, and fast demo placeholders while keeping the user as final decision maker and routing tasks through production, design, programming, master-level art direction, concept art, environment art, UI art, 2D animation, 2D technical art, QA, Godot, GDScript, CSV data, UI implementation, procedural motion, Sprite Forge asset generation, and authorized reverse-engineering gates.
 
 This repository is modeled after the studio-template idea of Claude Code Game Studios, adapted for Codex Skill usage and the local `codex-game-studio-default` workflow.
 
@@ -29,9 +29,9 @@ This repository is modeled after the studio-template idea of Claude Code Game St
 | Category | Count | Description |
 |---|---:|---|
 | **Core Agents** | 23 | Producer, directors, designers, programmers, Godot/GDScript/UI specialists, professional art specialists, 2D specialists, Sprite Forge, QA, and reverse engineering |
-| **Workflow Lanes** | 16 | Concept, prototype, system design, professional design artifacts, simple premium 2D visual design, 2D production, professional art production, CSV config, architecture, vertical slice, modular implementation, QA, UI, Sprite Forge, reverse engineering, version finish |
+| **Workflow Lanes** | 17 | Concept, prototype, system design, professional design artifacts, UI implementation, simple premium 2D visual design, 2D production, professional art production, CSV config, architecture, vertical slice, modular implementation, QA, UI, Sprite Forge, reverse engineering, version finish |
 | **Codex Skill** | 1 | Root-level `SKILL.md` with Codex-triggering metadata and progressive references |
-| **References** | 8 | Detailed guides for game studio routing, master-level visual design, 2D production, professional art production, Sprite Forge, CSV config, UI core, and authorized reverse engineering |
+| **References** | 9 | Detailed guides for game studio routing, master-level visual design, 2D production, professional art production, UI implementation, Sprite Forge, CSV config, UI core, and authorized reverse engineering |
 | **Framework Docs** | 1 catalog | Agent and workflow registry for review, extension, and future testing |
 
 ## Studio Hierarchy
@@ -83,6 +83,7 @@ Tier 3 - Specialists
 | Character/prop concept art | Art Director -> Concept Artist -> 2D Animation Specialist -> Sprite Forge Specialist -> 2D Technical Artist -> Godot Specialist -> QA Lead |
 | Scene/environment art | Art Director -> Visual Development Artist -> Environment Artist -> Sprite Forge Specialist -> 2D Technical Artist -> Godot Specialist -> QA Lead |
 | UI visual design | Art Director -> UI Artist -> UI Programmer -> Godot Specialist -> QA Lead |
+| UI mockup/effect implementation | Art Director -> UI Artist -> UI Programmer -> Godot Specialist -> QA Lead |
 | Simple premium 2D visual direction | Creative Director -> Art Director -> relevant master art specialist -> 2D Technical Artist -> QA Lead |
 | Mobile arcade UI | Art Director -> UI Artist -> UI Programmer -> Godot Specialist -> QA Lead |
 | Procedural gameplay feedback | Art Director -> Gameplay Programmer -> Godot Specialist -> QA Lead |
@@ -153,6 +154,7 @@ Codex Game Studio Framework/        # Agent/workflow catalog for testing and ext
 - **References**: prefer well-known company lessons from Nintendo, Supercell, Ubisoft/Rayman, Blizzard/Hearthstone, King, SEGA, Capcom, and durable 2D references such as Monument Valley, Hollow Knight, Celeste, and Dead Cells; never copy proprietary designs.
 - **2D production**: 2D Animation Specialist and 2D Technical Artist own sprite animation, frame timing, atlases, TileMaps, y-sort, collision, import settings, materials, VFX, and Godot 2D handoff.
 - **UI**: UI Artist owns visual design; UI Programmer implements mobile-first arcade UI through `brawler-arcade-ui-core` when appropriate.
+- **UI implementation**: UI Programmer has learned `nextlevelbuilder/ui-ux-pro-max-skill` as a game-adapted design-to-implementation quality system for design tokens, component states, responsive/safe-area layout, accessibility, motion, and screenshot parity.
 - **Motion**: procedural motion first for common feedback.
 - **2D art**: AI image generation plus deterministic cleanup/QC through Sprite Forge.
 - **Maps**: layered scene mode for survivorlike arenas when collision, props, y-sort, or spawn zones matter.

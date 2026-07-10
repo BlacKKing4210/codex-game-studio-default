@@ -33,7 +33,7 @@ Use the smallest useful subset of these roles:
 - Godot Specialist: Godot scenes, nodes, resources, signals, autoloads, export, engine-specific checks.
 - GDScript Specialist: typed GDScript, signals, resources, component patterns, performance in hot paths.
 - Gameplay Programmer: movement, combat, spawning, weapons, pickups, upgrades, run state.
-- UI Programmer: reusable Godot UI components, Theme resources, screen shells, touch ergonomics, UI motion presets.
+- UI Programmer: reusable Godot UI components, Theme resources, screen shells, touch ergonomics, UI motion presets, design-system tokens, and Figma/mockup-to-engine implementation.
 - Art Director: master-level visual identity, art bible, quality bar, readability, market reference decomposition, asset specs, generated-art direction, final art sign-off.
 - Visual Development Artist: master-level mood, atmosphere, color script, lighting direction, key art, composition, style exploration.
 - Concept Artist: master-level characters, props, creatures, weapons, silhouettes, shape language, turnarounds, expression/pose sheets.
@@ -149,6 +149,25 @@ UI/UE diagrams must use Figma or FigJam by default, so the user can directly edi
 
 Markdown ASCII lines, Markdown tables, and Mermaid-only diagrams are temporary drafts, not final planning artifacts.
 
+## UI Implementation From Mockups Defaults
+
+When UI效果图, UI style frames, exported screenshots, Figma/FigJam screens, HUD/menu mockups, lobby/shop/upgrade/result screens, or any request to improve UI fidelity appears, route through:
+
+Art Director -> UI Artist -> UI Programmer -> Godot Specialist -> QA Lead.
+
+The UI Programmer has learned `nextlevelbuilder/ui-ux-pro-max-skill` as a design-to-implementation quality system. Apply its design-system, UX, accessibility, responsive, animation, interaction-state, and pre-delivery review ideas to game UI, while preserving the approved game art direction.
+
+Required UI implementation outputs:
+
+- Figma/FigJam or screenshot source reference.
+- Design token map: color roles, typography, spacing, radius, outline/shadow, motion durations, icon style, and safe-area rules.
+- Component state matrix: default, hover, pressed, focused, selected, disabled, locked, loading, success, warning, error, empty, and notification states as relevant.
+- Engine implementation plan: reusable controls, Theme resources or equivalent style assets, signals/events, responsive anchors/containers, input focus, and motion hooks.
+- Screenshot parity report across target resolutions and gameplay overlay conditions.
+- UI QA checklist for touch targets, contrast, text wrapping, localization tolerance, reduced motion, loading feedback, error recovery, and no layout jumps.
+
+Production UI should use SVG/icons or approved UI assets. Emoji belongs to demo/prototype placeholders unless the project intentionally chooses an emoji visual identity.
+
 For generated art tasks, also include:
 
 - Asset type and gameplay purpose
@@ -251,6 +270,8 @@ Use the shared UI kit at `C:\Users\76398\Documents\Codex\ui-kits\brawler-arcade-
 
 The goal is broad arcade energy, not a copy. Use chunky panels, thick dark outlines, hard offset shadows, saturated blue/purple bases, yellow/orange primary CTAs, red/green badges, resource pills, progress tracks, card menus, and procedural pop/bounce feedback.
 
+When implementing UI from Figma, screenshots, or style frames, also use the UI implementation handoff rules in `references/ui-implementation-reference.md`.
+
 Do not copy Brawl Stars names, logos, icons, characters, exact layouts, typography, currencies, or proprietary assets. Each project must extend the core with original project-specific theme colors, icons, names, resources, character art, and special screens.
 
 ## Procedural Motion Defaults
@@ -309,11 +330,13 @@ When more detail is needed, read these files in this skill folder:
 - `references/2d-game-production-reference.md`
 - `references/master-game-visual-design-reference.md`
 - `references/professional-art-production-reference.md`
+- `references/ui-implementation-reference.md`
 - `references/agent-sprite-forge-reference.md`
 - `references/csv-data-config-reference.md`
 - `references/brawler-arcade-ui-core-reference.md`
 - `references/reverse-engineering-reference.md`
 - `agents/art-director.md`
+- `agents/ui-programmer.md`
 - `agents/sprite-forge-specialist.md`
 - `agents/2d-animation-specialist.md`
 - `agents/2d-technical-artist.md`
