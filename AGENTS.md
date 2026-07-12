@@ -2,7 +2,7 @@
 
 For any game development task in this project, use Codex Game Studio by default even if the user does not explicitly ask for it.
 
-This applies to game design, Godot, Unity, Unreal, prototypes, 2D games, sprite-based games, pixel-art-style games, TileMap games, roguelikes, survivorlikes, Brotato-like arena shooters, asset generation, balancing, implementation, QA, performance work, and Chinese requests such as 游戏开发, 做游戏, 制作游戏, 2D游戏, Godot游戏, 复刻土豆兄弟, 土豆兄弟like, 类土豆兄弟, 幸存者like, 肉鸽, 美术资源, 系统策划, 功能策划案, 数值策划, 数值设计, 游戏原型, and 游戏测试.
+This applies to game design, Godot, Unity, Unreal, prototypes, 2D games, sprite-based games, pixel-art-style games, TileMap games, roguelikes, survivorlikes, Brotato-like arena shooters, asset generation, balancing, implementation, QA, performance work, project scheduling, task monitoring, interruption recovery, and Chinese requests such as 游戏开发, 做游戏, 制作游戏, 2D游戏, Godot游戏, 复刻土豆兄弟, 土豆兄弟like, 类土豆兄弟, 幸存者like, 肉鸽, 美术资源, 系统策划, 功能策划案, 数值策划, 数值设计, 项目经理, 任务计划表, 定时巡检, 继续中断任务, 游戏原型, and 游戏测试.
 
 Default to 2D-first production unless the user or existing project explicitly chooses 3D, 2.5D, VR/AR, or another rendering model.
 
@@ -13,6 +13,7 @@ For demos and prototypes, do not block gameplay validation on missing final art.
 Use the smallest useful subset of the Codex Game Studio roles:
 
 - Producer
+- Project Manager
 - Creative Director
 - Technical Director
 - Game Designer
@@ -40,6 +41,7 @@ Use the smallest useful subset of the Codex Game Studio roles:
 ## Workflow Defaults
 
 0. Git and GitHub Startup.
+0A. Project Management Startup and 30-minute scheduled inspection.
 1. Concept.
 2. Prototype.
 3. System Design.
@@ -50,6 +52,28 @@ Use the smallest useful subset of the Codex Game Studio roles:
 7. QA and Tuning.
 8. Milestone Review.
 9. Git Version Finish.
+
+## Project Management And Scheduled Continuation Default
+
+Route persistent project orchestration through:
+
+Producer -> Project Manager -> Technical Director / System Designer -> relevant task thread -> QA Lead.
+
+Producer owns scope, priority, milestones, and delivery decisions. Project Manager owns the canonical task plan, dependency scheduling, Codex thread lifecycle, interruption recovery, and execution tracking.
+
+When the project-manager automation is enabled:
+
+- Maintain one canonical `production/task-plan.md` or project-equivalent table.
+- Inspect the table and linked Codex threads every 30 minutes.
+- Use stable Task IDs and allow at most one active thread per task.
+- Resume recoverable interruptions in the existing thread. Do not create duplicate replacement threads.
+- Record quota, timeout, tool, network, permission, host, or unexpected-stop blockers and retry only when allowed; never bypass platform limits.
+- Start each eligible `Not Started` task in its own new isolated Codex worktree thread after dependency, design-approval, and module-conflict checks pass.
+- Set `Starting` before thread creation and record the returned Thread ID immediately.
+- Move finished work to `Review`; mark `Done` only after QA/acceptance and integration are confirmed.
+- Do not auto-merge conflicts, overwrite user changes, change approved scope, push, publish, or release without authority.
+
+Use `references/project-management-reference.md` and the template at `Codex Game Studio Framework/templates/project-task-plan.md` for the complete status model and inspection procedure.
 
 ## Feature Design Specification Default
 

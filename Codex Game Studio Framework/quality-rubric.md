@@ -22,6 +22,10 @@ Use this rubric when reviewing changes to the Codex Game Studio workflow.
 - Godot 4 and GDScript remain the default unless project context says otherwise.
 - CSV remains default for designer-editable content.
 - Concept and System Design include player feedback discovery, feedback synthesis, or a clear feedback plan with testable assumptions.
+- Project Manager owns the canonical task plan, dependency scheduling, 30-minute inspection, thread startup, interruption recovery, duplicate prevention, and execution tracking; Producer retains scope and milestone authority.
+- Scheduled orchestration uses stable Task IDs, at most one active thread per task, existing-thread continuation for recoverable interruptions, and a separate isolated thread for each eligible not-started task.
+- Quota, timeout, permission, authentication, network, host, and external blockers are recorded and retried only when allowed; the workflow never claims to bypass platform limits.
+- Tasks do not auto-start until dependencies, approved design/user-review gates, and module-conflict checks pass.
 - System Designer owns feature-level Word design specs, page UE requirements, transition maps, per-page explanations, data-source maps, implementation follow-through, acceptance criteria, and user revision alignment.
 - Numerical Designer is the current name for numeric, economy, formulas, reward values, progression curves, and tuning work.
 - Every production feature has an independent Word `.docx` design document, per-page Figma/FigJam UE diagrams, written transition map, per-page explanation, data-source map, acceptance checklist, and user review status before implementation.
@@ -49,6 +53,7 @@ Use this rubric when reviewing changes to the Codex Game Studio workflow.
 - README explains what the repo does.
 - AGENTS.md matches SKILL.md.
 - Catalog and docs agree on agent names and routes.
+- Every scheduled project has one canonical task-plan table with thread IDs, dependencies, conflict scopes, status, retry fields, acceptance criteria, and integration state.
 - Formal design docs require Word feature specs plus Figma/FigJam source links or `.fig` source references for every page UE diagram.
 - User-reviewed Word/Figma edits are treated as the source of truth, and substantial changes route back through System Designer before implementation continues.
 - Migration notes exist for breaking workflow changes.

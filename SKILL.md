@@ -1,6 +1,6 @@
 ---
 name: codex-game-studio-default
-description: Default 2D-first Codex Game Studio workflow for all game development projects. Use automatically whenever the user asks to make, design, prototype, modify, review, test, balance, generate assets for, or plan any game project in Godot, Unity, Unreal, browser games, roguelikes, survivorlikes, Brotato-like arena shooters, sprite-based games, pixel-art-style games, TileMap games, side scrollers, top-down games, or any other game-development context. Also use for Chinese game-development requests such as 游戏开发, 做游戏, 制作游戏, 2D游戏, Godot游戏, 复刻土豆兄弟, 土豆兄弟like, 类土豆兄弟, 幸存者like, 肉鸽, roguelike, 美术资源, 生成美术, 角色精灵, sprite sheet, pixel art, TileMap, 2D动画, 地图生成, generate2dsprite, generate2dmap, Sprite Forge, agent-sprite-forge, 系统策划, 功能策划案, 数值策划, 数值设计, 游戏原型, 游戏测试. Applies even when the user does not explicitly mention agents or the Codex Game Studio.
+description: Default 2D-first Codex Game Studio workflow for all game development projects. Use automatically whenever the user asks to make, design, prototype, modify, review, test, balance, generate assets for, plan, schedule, monitor, resume, or coordinate any game project in Godot, Unity, Unreal, browser games, roguelikes, survivorlikes, Brotato-like arena shooters, sprite-based games, pixel-art-style games, TileMap games, side scrollers, top-down games, or any other game-development context. Also use for Chinese game-development requests such as 游戏开发, 做游戏, 制作游戏, 2D游戏, Godot游戏, 复刻土豆兄弟, 土豆兄弟like, 类土豆兄弟, 幸存者like, 肉鸽, roguelike, 美术资源, 生成美术, 角色精灵, sprite sheet, pixel art, TileMap, 2D动画, 地图生成, generate2dsprite, generate2dmap, Sprite Forge, agent-sprite-forge, 系统策划, 功能策划案, 数值策划, 数值设计, 项目经理, 任务计划表, 定时巡检, 继续中断任务, 游戏原型, 游戏测试. Applies even when the user does not explicitly mention agents or the Codex Game Studio.
 ---
 
 # Codex Game Studio Default
@@ -24,6 +24,7 @@ Treat the user as final producer and decision maker. Provide role framing, optio
 Use the smallest useful subset of these roles:
 
 - Producer: scope, milestones, sprint plans, risks, task owners, acceptance criteria.
+- Project Manager: canonical task plan, dependency scheduling, 30-minute inspections, Codex thread startup, interruption recovery, duplicate prevention, and execution tracking.
 - Creative Director: core fantasy, pillars, references, tone, differentiation, anti-copying constraints.
 - Technical Director: architecture, engine decisions, dependencies, performance budgets, technical risk.
 - Game Designer: core loop, weapons, enemies, upgrades, progression, difficulty, content tables.
@@ -51,6 +52,7 @@ Use the smallest useful subset of these roles:
 ## Default Workflow
 
 0. Git and GitHub Startup: initialize or verify Git, `.gitignore`, README, initial checkpoint commit for new projects, and private GitHub origin when possible.
+0A. Project Management Startup: create `production/task-plan.md`, assign stable Task IDs, dependencies, module/conflict scopes, acceptance criteria, and enable the 30-minute Project Manager inspection when requested.
 1. Concept: promise, target player, player-feedback discovery, pillars, anti-pillars, reference principles, and visual-artifact requirements for formal design docs.
 2. Prototype: one risky assumption, minimum test, emoji/SVG demo placeholders where assets are missing, proceed/pivot/cut verdict.
 3. System Design: feature Word design docs, core loop, mechanics, content rules, economy, difficulty ramp, professional flowcharts, and per-page Figma/FigJam UE diagrams.
@@ -67,14 +69,38 @@ Use the smallest useful subset of these roles:
 For implementation tasks, use:
 
 - Goal
+- Task ID and status
 - Owner agent
 - Input docs/files
+- Dependencies and conflict scope
 - Module boundary
 - Module contract
 - Files likely touched
 - Acceptance criteria
 - Verification
 - Risks
+
+## Project Management And Scheduled Continuation Defaults
+
+Route ongoing orchestration through:
+
+Producer -> Project Manager -> Technical Director / System Designer -> relevant task thread -> QA Lead.
+
+Producer owns scope, priority, milestones, and delivery decisions. Project Manager owns the canonical task plan, dependency scheduling, thread lifecycle, interruption recovery, and execution tracking.
+
+When scheduled project management is enabled:
+
+- Keep one canonical task plan at `production/task-plan.md` or the project equivalent.
+- Inspect the task plan and linked Codex threads every 30 minutes.
+- Use a stable Task ID as the idempotency key and allow at most one active thread per task.
+- Reconcile `Starting`, `In Progress`, and `Interrupted` tasks with their recorded thread before starting new work.
+- Resume recoverable interruptions in the existing thread, including quota, timeout, tool, network, host-restart, and unexpected-stop cases when the platform is available again.
+- Never bypass quotas, permissions, authentication, user-review gates, or external blockers. Record the exact blocker and retry time.
+- Start each eligible `Not Started` task in a separate new Codex worktree thread after its dependencies, approved design gates, and module-conflict checks pass.
+- Move completed execution to `Review`; mark `Done` only after acceptance and integration are confirmed.
+- Do not auto-merge conflicting work, overwrite user changes, change approved scope, push, publish, or release without authority.
+
+Read `references/project-management-reference.md` whenever creating or running this scheduled orchestration.
 
 ## Feature Design Specification Defaults
 
@@ -352,6 +378,7 @@ If the user asks for broad work, start with Producer framing. If the user asks f
 When more detail is needed, read these files in this skill folder:
 
 - `references/game-studio-reference.md`
+- `references/project-management-reference.md`
 - `references/2d-game-production-reference.md`
 - `references/master-game-visual-design-reference.md`
 - `references/professional-art-production-reference.md`
@@ -362,6 +389,7 @@ When more detail is needed, read these files in this skill folder:
 - `references/brawler-arcade-ui-core-reference.md`
 - `references/reverse-engineering-reference.md`
 - `agents/art-director.md`
+- `agents/project-manager.md`
 - `agents/system-designer.md`
 - `agents/numerical-designer.md`
 - `agents/ui-programmer.md`

@@ -2,13 +2,13 @@
 
 Turn a single Codex session into a focused indie game studio workflow.
 
-24 core agents. 18 workflow lanes. Feature Word design specs. Per-page Figma/FigJam UE diagrams. 2D-first production. Simple premium visual design. Professional art production. UI mockup-to-engine implementation. Modular implementation. Godot-first defaults. CSV-driven game data. Sprite Forge art handoff. Git version finish.
+25 core agents. 19 workflow lanes. Thirty-minute project management. Feature Word design specs. Per-page Figma/FigJam UE diagrams. 2D-first production. Simple premium visual design. Professional art production. UI mockup-to-engine implementation. Modular implementation. Godot-first defaults. CSV-driven game data. Sprite Forge art handoff. Git version finish.
 
 <p align="center">
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT License"></a>
   <a href="SKILL.md"><img src="https://img.shields.io/badge/Codex%20Skill-ready-green" alt="Codex Skill Ready"></a>
-  <a href="docs/AGENT-CATALOG.md"><img src="https://img.shields.io/badge/agents-24-blueviolet" alt="24 Agents"></a>
-  <a href="docs/WORKFLOW-GUIDE.md"><img src="https://img.shields.io/badge/workflows-18-orange" alt="18 Workflows"></a>
+  <a href="docs/AGENT-CATALOG.md"><img src="https://img.shields.io/badge/agents-25-blueviolet" alt="25 Agents"></a>
+  <a href="docs/WORKFLOW-GUIDE.md"><img src="https://img.shields.io/badge/workflows-19-orange" alt="19 Workflows"></a>
   <a href="docs/CSV-DATA-CONFIG.md"><img src="https://img.shields.io/badge/data-CSV%20first-yellow" alt="CSV First"></a>
 </p>
 
@@ -18,7 +18,7 @@ Turn a single Codex session into a focused indie game studio workflow.
 
 Solo game development with AI is powerful, but a general chat can drift: hardcoded tuning values, unclear ownership, monolithic scripts, weak 2D production rules, weak art direction, flat atmosphere, generic UI visuals, missing professional design diagrams, missing QA, weak asset handoff, and no clean version finish.
 
-**Codex Game Studio Default** gives Codex a small but useful studio structure for game work. It defaults to 2D-first production, player-feedback-informed design, feature Word design specs, per-page Figma/FigJam UE diagrams, simple premium visual design, UI mockup-to-engine implementation, and fast demo placeholders while keeping the user as final decision maker and routing tasks through production, system design, game design, numerical design, programming, master-level art direction, concept art, environment art, UI art, 2D animation, 2D technical art, QA, Godot, GDScript, CSV data, UI implementation, procedural motion, Sprite Forge asset generation, and authorized reverse-engineering gates.
+**Codex Game Studio Default** gives Codex a small but useful studio structure for game work. It defaults to 30-minute task-plan inspection, interruption recovery, isolated task threads, 2D-first production, player-feedback-informed design, feature Word design specs, per-page Figma/FigJam UE diagrams, simple premium visual design, UI mockup-to-engine implementation, and fast demo placeholders while keeping the user as final decision maker and routing tasks through project management, production, system design, game design, numerical design, programming, master-level art direction, concept art, environment art, UI art, 2D animation, 2D technical art, QA, Godot, GDScript, CSV data, UI implementation, procedural motion, Sprite Forge asset generation, and authorized reverse-engineering gates.
 
 This repository is modeled after the studio-template idea of Claude Code Game Studios, adapted for Codex Skill usage and the local `codex-game-studio-default` workflow.
 
@@ -28,10 +28,10 @@ This repository is modeled after the studio-template idea of Claude Code Game St
 
 | Category | Count | Description |
 |---|---:|---|
-| **Core Agents** | 24 | Producer, directors, System Designer, Numerical Designer, Game Designer, programmers, Godot/GDScript/UI specialists, professional art specialists, 2D specialists, Sprite Forge, QA, and reverse engineering |
-| **Workflow Lanes** | 18 | Concept, prototype, feature design specs, system design, professional design artifacts, UI implementation, simple premium 2D visual design, 2D production, professional art production, CSV config, architecture, vertical slice, modular implementation, QA, UI, Sprite Forge, reverse engineering, version finish |
+| **Core Agents** | 25 | Producer, Project Manager, directors, System Designer, Numerical Designer, Game Designer, programmers, Godot/GDScript/UI specialists, professional art specialists, 2D specialists, Sprite Forge, QA, and reverse engineering |
+| **Workflow Lanes** | 19 | Project management, concept, prototype, feature design specs, system design, professional design artifacts, UI implementation, simple premium 2D visual design, 2D production, professional art production, CSV config, architecture, vertical slice, modular implementation, QA, UI, Sprite Forge, reverse engineering, version finish |
 | **Codex Skill** | 1 | Root-level `SKILL.md` with Codex-triggering metadata and progressive references |
-| **References** | 10 | Detailed guides for game studio routing, feature design specs, master-level visual design, 2D production, professional art production, UI implementation, Sprite Forge, CSV config, UI core, and authorized reverse engineering |
+| **References** | 11 | Detailed guides for project management, game studio routing, feature design specs, master-level visual design, 2D production, professional art production, UI implementation, Sprite Forge, CSV config, UI core, and authorized reverse engineering |
 | **Framework Docs** | 1 catalog | Agent and workflow registry for review, extension, and future testing |
 
 ## Studio Hierarchy
@@ -39,6 +39,7 @@ This repository is modeled after the studio-template idea of Claude Code Game St
 ```text
 Tier 1 - Direction
   producer
+  project-manager
   creative-director
   technical-director
 
@@ -73,6 +74,7 @@ Tier 3 - Specialists
 | Work Type | Route |
 |---|---|
 | Broad game project | Producer -> relevant leads -> QA Lead |
+| Scheduled task monitoring and continuation | Producer -> Project Manager -> relevant task thread -> QA Lead |
 | Formal 策划案/GDD | Producer -> System Designer -> Game Designer -> Numerical Designer -> Art Director -> UI Artist -> UI Programmer -> QA Lead |
 | Feature Word design spec | Producer -> System Designer -> Game Designer -> Numerical Designer -> UI Artist -> UI Programmer -> Technical Director -> QA Lead |
 | Godot implementation | Lead Programmer -> Godot Specialist -> GDScript Specialist -> QA Lead |
@@ -97,16 +99,17 @@ See [docs/AGENT-CATALOG.md](docs/AGENT-CATALOG.md) for each agent's responsibili
 ## Default Workflow
 
 1. **Git and GitHub Startup** - initialize or verify Git, ignore files, README, first commit, private GitHub origin where possible.
-2. **Concept** - promise, target player, player feedback discovery, pillars, anti-pillars, reference principles.
-3. **Prototype** - one risky assumption, minimum test, emoji/SVG demo placeholders where assets are missing, proceed/pivot/cut verdict.
-4. **System Design** - feature Word design docs, core loop, mechanics, content rules, economy, difficulty, professional flowcharts, per-page Figma/FigJam UE diagrams, written page transitions, per-page explanations, and data-source maps.
-5. **CSV Data Config** - schemas, starter rows, IDs, validation rules, loading path.
-6. **Technical Architecture** - Godot architecture, module boundaries, data/resources, 2D scene/layer model by default, performance budget.
-7. **Vertical Slice** - playable slice plan, tasks, owners, acceptance criteria.
-8. **Implementation** - modular code, assets, data, per-module verification, and integration.
-9. **QA and Tuning** - smoke checks, playtest notes, bugs, balance notes.
-10. **Milestone Review** - ship/iterate/pivot decision and next sprint.
-11. **Git Version Finish** - verify, commit, push, report commit hash.
+2. **Project Management Startup** - canonical task plan, stable Task IDs, dependencies, conflict scopes, thread registry, and optional 30-minute automation.
+3. **Concept** - promise, target player, player feedback discovery, pillars, anti-pillars, reference principles.
+4. **Prototype** - one risky assumption, minimum test, emoji/SVG demo placeholders where assets are missing, proceed/pivot/cut verdict.
+5. **System Design** - feature Word design docs, core loop, mechanics, content rules, economy, difficulty, professional flowcharts, per-page Figma/FigJam UE diagrams, written page transitions, per-page explanations, and data-source maps.
+6. **CSV Data Config** - schemas, starter rows, IDs, validation rules, loading path.
+7. **Technical Architecture** - Godot architecture, module boundaries, data/resources, 2D scene/layer model by default, performance budget.
+8. **Vertical Slice** - playable slice plan, tasks, owners, dependencies, conflict scopes, and acceptance criteria.
+9. **Implementation** - modular code, assets, data, isolated task threads, per-module verification, and integration.
+10. **QA and Tuning** - smoke checks, playtest notes, bugs, balance notes.
+11. **Milestone Review** - ship/iterate/pivot decision and next sprint.
+12. **Git Version Finish** - verify, commit, push, report commit hash.
 
 Full guide: [docs/WORKFLOW-GUIDE.md](docs/WORKFLOW-GUIDE.md).
 
@@ -137,7 +140,7 @@ agents/                            # Codex skill UI metadata and specialist note
 references/                        # Progressive-disclosure reference docs
 docs/                              # Human-facing guides and catalogs
 design/registry/                   # Design entity registry stubs
-production/                        # Review mode and future sprint state
+production/                        # Review mode, canonical task plan, and sprint state
 Codex Game Studio Framework/        # Agent/workflow catalog for testing and extension
 ```
 
@@ -153,6 +156,7 @@ Codex Game Studio Framework/        # Agent/workflow catalog for testing and ext
 - **Player feedback**: Concept and System Design collect player opinions, playtest notes, review patterns, community comments, or planned feedback channels before locking direction.
 - **Demo placeholders**: demos and prototypes use emoji expressions first; missing resources that emoji cannot represent clearly use simple original SVG drawings.
 - **Implementation**: substantial features must be split into modules with boundaries, contracts, per-module verification, and small integration steps.
+- **Project management**: Project Manager checks `production/task-plan.md` every 30 minutes when enabled, resumes recoverable interruptions in their existing thread, and starts each eligible not-started task in a separate worktree thread without duplicating Task IDs.
 - **Game config**: CSV by default under `config/csv/` or equivalent.
 - **Art direction**: master-level art roles own original concept art, scene art, UI visual design, atmosphere, art bible, readability, market reference decomposition, complexity budgets, and final visual quality before Sprite Forge execution.
 - **References**: prefer well-known company lessons from Nintendo, Supercell, Ubisoft/Rayman, Blizzard/Hearthstone, King, SEGA, Capcom, and durable 2D references such as Monument Valley, Hollow Knight, Celeste, and Dead Cells; never copy proprietary designs.

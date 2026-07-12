@@ -1,12 +1,16 @@
 version: 1
 name: codex-game-studio-default
-summary: 2D-first, Godot-first Codex Game Studio workflow with feature Word design specs, per-page Figma/FigJam UE diagrams, simple premium visual design, master-level art roles, professional art production, modular implementation, CSV data config, Sprite Forge art, procedural motion, QA, and Git version finish.
+summary: 2D-first, Godot-first Codex Game Studio workflow with 30-minute project management, interruption recovery, isolated task threads, feature Word design specs, per-page Figma/FigJam UE diagrams, simple premium visual design, master-level art roles, professional art production, modular implementation, CSV data config, Sprite Forge art, procedural motion, QA, and Git version finish.
 
 agents:
   - id: producer
     tier: direction
     owns: [scope, milestones, risks, task_owners, acceptance_criteria, git_version_finish]
     skills: [sprint_planning, milestone_review, scope_control, delivery_reporting]
+  - id: project-manager
+    tier: direction
+    owns: [canonical_task_plan, dependency_schedule, scheduled_inspections, thread_registry, interruption_recovery, retry_state, conflict_scope, execution_tracking]
+    skills: [task_plan_maintenance, dependency_scheduling, codex_thread_orchestration, quota_aware_retry, duplicate_prevention, module_conflict_control, blocker_escalation]
   - id: creative-director
     tier: direction
     owns: [game_identity, pillars, target_fantasy, references, anti_copying_constraints]
@@ -104,6 +108,9 @@ workflow_lanes:
   - id: git-startup
     route: [producer, technical-director]
     outputs: [git_repo, gitignore, readme, initial_commit, origin_status]
+  - id: project-management
+    route: [producer, project-manager, technical-director, system-designer, relevant_task_thread, qa-lead]
+    outputs: [canonical_task_plan, stable_task_ids, dependency_map, conflict_scopes, thread_registry, thirty_minute_inspection_log, interruption_recovery_notes, started_task_threads, review_integration_queue, blocker_report]
   - id: concept
     route: [producer, creative-director, game-designer]
     outputs: [promise, target_player, player_feedback_sources, feedback_synthesis, design_hypotheses, pillars, anti_pillars, reference_principles, design_visual_artifact_plan]
@@ -162,6 +169,8 @@ gates:
   - id: player-feedback
     verdicts: [approve, concerns, reject]
   - id: technical
+    verdicts: [approve, concerns, reject]
+  - id: project-management-continuity
     verdicts: [approve, concerns, reject]
   - id: demo-placeholder
     verdicts: [approve, concerns, reject]

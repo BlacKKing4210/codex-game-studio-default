@@ -1,6 +1,6 @@
 interface:
   display_name: "Codex Game Studio Default"
-  short_description: "2D-first workflow for game design, professional art production, Godot implementation, CSV config, QA, and Sprite Forge assets."
+  short_description: "2D-first game studio workflow with scheduled project management, professional design/art, implementation, data, and QA."
   default_prompt: "Use $codex-game-studio-default for this game development task."
 
 policy:

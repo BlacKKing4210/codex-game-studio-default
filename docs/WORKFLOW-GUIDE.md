@@ -6,16 +6,18 @@ This is the default Codex Game Studio delivery flow.
 
 1. Confirm whether this is a new project or an existing project.
 2. If it is a new game, initialize Git, `.gitignore`, README, and remote when possible.
-3. Establish concept, engine, first playable target, and confirm the default 2D-first production model unless the project requires another rendering model.
-4. During design, collect player opinions or define a feedback plan before locking the direction.
-5. For demos and prototypes, use emoji placeholders first, then simple original SVG placeholders for missing resources.
-6. For 2D or art-heavy work, define the simple premium visual sentence, complexity budget, reference lessons, and anti-copying notes before asset production.
-7. Keep configuration CSV-first where practical.
-8. For every production feature, create an independent Word `.docx` design spec before implementation, then let the user review/edit it.
-9. For every page, popup, HUD panel, modal, or stateful screen in that feature, create a Figma/FigJam UE diagram, written transition map, per-page explanation, and data-source map.
-10. For UI mockups or Figma screens, require UI Programmer handoff: design tokens, component state matrix, reusable controls, responsive/safe-area rules, screenshot parity, and UI QA checklist.
-11. For 2D work, define sprite specs, animation specs, layer/y-sort/collision rules, atlas/import settings, and QA previews before asset integration.
-12. Implement in small feature batches only after the approved design version is clear, then finish with QA and version finish.
+3. Create the canonical `production/task-plan.md` with stable Task IDs, dependencies, module/conflict scopes, statuses, acceptance criteria, and thread fields.
+4. When persistent execution is wanted, enable the Project Manager's 30-minute inspection automation.
+5. Establish concept, engine, first playable target, and confirm the default 2D-first production model unless the project requires another rendering model.
+6. During design, collect player opinions or define a feedback plan before locking the direction.
+7. For demos and prototypes, use emoji placeholders first, then simple original SVG placeholders for missing resources.
+8. For 2D or art-heavy work, define the simple premium visual sentence, complexity budget, reference lessons, and anti-copying notes before asset production.
+9. Keep configuration CSV-first where practical.
+10. For every production feature, create an independent Word `.docx` design spec before implementation, then let the user review/edit it.
+11. For every page, popup, HUD panel, modal, or stateful screen in that feature, create a Figma/FigJam UE diagram, written transition map, per-page explanation, and data-source map.
+12. For UI mockups or Figma screens, require UI Programmer handoff: design tokens, component state matrix, reusable controls, responsive/safe-area rules, screenshot parity, and UI QA checklist.
+13. For 2D work, define sprite specs, animation specs, layer/y-sort/collision rules, atlas/import settings, and QA previews before asset integration.
+14. Implement in small feature batches only after the approved design version is clear, then finish with QA and version finish.
 
 ## Phase 0: Git and GitHub Startup
 
@@ -32,6 +34,34 @@ Rules:
 - Do not delete `.git`.
 - Do not force-push.
 - Do not commit secrets, `.env`, tokens, local credentials, caches, dependency folders, or build outputs.
+
+## Phase 0A: Project Management Startup
+
+Route:
+
+Producer -> Project Manager -> Technical Director / System Designer -> relevant task thread -> QA Lead.
+
+Outputs:
+
+- One canonical `production/task-plan.md` or project-equivalent task table.
+- Stable Task IDs, milestones, priorities, dependencies, owner routes, module boundaries, and conflict scopes.
+- Status, Thread ID, worktree/branch, last-check, next-retry, retry-count, acceptance, verification, result, and blocker fields.
+- Optional recurring Project Manager automation with a 30-minute interval.
+
+Scheduled inspection rules:
+
+- Reconcile `Starting`, `In Progress`, and `Interrupted` rows with their recorded threads before starting anything new.
+- Resume a recoverable interruption in its existing thread. Quota, timeout, tool, network, and host interruptions may be retried later but platform limits cannot be bypassed.
+- Start each eligible `Not Started` task in a separate isolated Codex worktree thread after dependencies, approved design/user-review gates, and conflict checks pass.
+- Use Task ID as the idempotency key, set `Starting` before thread creation, and record the returned Thread ID immediately.
+- Move completed execution to `Review`; mark `Done` only after acceptance and integration.
+- Keep permission, credential, user-decision, repeated, and external blockers in `Blocked` without prompt loops.
+- Never auto-merge conflicts, overwrite user changes, expand scope, push, publish, or release without authority.
+
+Gate:
+
+- Every executable task is traceable from its Task ID to one task-plan row and at most one active Codex thread.
+- Parallel tasks have satisfied dependencies and non-overlapping conflict scopes.
 
 ## Phase 1: Concept
 
@@ -239,6 +269,7 @@ Outputs:
 
 - Playable slice plan.
 - Task list.
+- Stable Task IDs, dependencies, module/conflict scopes, and initial status.
 - Owners.
 - Acceptance criteria.
 - First QA smoke path.
@@ -262,8 +293,10 @@ Outputs:
 Implementation task format:
 
 - Goal.
+- Task ID and task-plan status.
 - Owner agent.
 - Input docs/files.
+- Dependencies and conflict scope.
 - Module boundary.
 - Module contract.
 - Files likely touched.

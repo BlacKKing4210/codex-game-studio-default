@@ -8,6 +8,7 @@ Use this folder for:
 
 - agent role specs
 - workflow lane specs
+- project task-plan templates and scheduled orchestration audits
 - quality rubrics
 - 2D-first production audits
 - future skill or agent tests

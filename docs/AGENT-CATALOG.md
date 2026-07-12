@@ -5,6 +5,7 @@ Codex Game Studio uses the smallest useful subset of agents for each task. These
 | Agent | Tier | Owns | Core Skills |
 |---|---|---|---|
 | Producer | Direction | Scope, milestones, risks, task owners, acceptance criteria | sprint planning, milestone review, version finish |
+| Project Manager | Direction | Canonical task plan, dependencies, 30-minute inspections, thread startup, interruption recovery, duplicate/conflict prevention | task scheduling, thread orchestration, quota-aware retry, execution tracking, blocker escalation |
 | Creative Director | Direction | Game identity, pillars, target fantasy, anti-copying constraints | concept review, reference interpretation, creative gates |
 | Technical Director | Direction | Architecture, module boundaries, engine decisions, dependencies, performance budget | architecture review, modular boundary review, dependency risk, technical gates |
 | Game Designer | Lead | Core loop, mechanics, weapons, enemies, upgrades, difficulty, gameplay/system flowcharts, player feedback synthesis | system design, gameplay rules, player motivation, feedback discovery, professional flowchart specs |
@@ -34,6 +35,7 @@ Codex Game Studio uses the smallest useful subset of agents for each task. These
 ```text
 Direction
   producer
+  project-manager
   creative-director
   technical-director
 
@@ -68,6 +70,8 @@ Specialists
 | Request | Route |
 |---|---|
 | Make a new game concept | Producer -> Creative Director -> Game Designer |
+| Monitor and continue the project every 30 minutes | Producer -> Project Manager -> relevant task thread -> QA Lead |
+| Start approved not-started tasks | Project Manager -> Technical Director / System Designer -> isolated task thread -> QA Lead |
 | Collect player feedback for design direction | Producer -> Creative Director -> Game Designer -> QA Lead |
 | Build a demo with missing assets | Producer -> Prototyper -> relevant Specialist -> QA Lead |
 | Create a formal 策划案/GDD | Producer -> System Designer -> Game Designer -> Numerical Designer -> Art Director -> UI Artist -> UI Programmer -> QA Lead |

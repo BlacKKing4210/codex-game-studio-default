@@ -21,6 +21,7 @@ A first playable slice should prove the smallest complete player experience for 
 - Creative gate: does this serve pillars and target fantasy?
 - Player feedback gate: has the design direction used real player opinions, playtest notes, review patterns, community comments, or an explicit feedback plan with testable assumptions?
 - Technical gate: is it simple, maintainable, and feasible in the engine?
+- Project management gate: is there one canonical task plan with stable Task IDs, dependencies, conflict scopes, thread IDs, retry state, acceptance criteria, and no duplicate active task threads?
 - Feature design spec gate: does every production feature have an editable Word design spec, per-page Figma/FigJam UE diagrams, written transition map, per-page explanations, data-source map, acceptance checklist, and user review status?
 - Demo placeholder gate: are missing demo resources represented with readable emoji or simple original SVG placeholders instead of blocking gameplay validation?
 - UI implementation gate: did UI效果图/Figma/screenshots become reusable, state-complete, responsive, accessible, and screenshot-checked engine UI rather than a one-off visual approximation?
@@ -37,6 +38,7 @@ A first playable slice should prove the smallest complete player experience for 
 ## Role Routing
 
 - Scope/planning: Producer.
+- Scheduled task planning, thread startup, interruption recovery, and execution tracking: Project Manager.
 - Game identity: Creative Director.
 - Player feedback discovery: Producer + Creative Director + Game Designer + QA Lead.
 - Architecture or dependencies: Technical Director.
@@ -67,6 +69,7 @@ For substantial work, produce:
 
 - goal
 - owner agent or route
+- stable Task ID, task-plan status, dependencies, conflict scope, linked thread ID, and retry state when scheduled project management is enabled
 - files/docs involved
 - feature Word `.docx` source, PDF review export when useful, user review notes, and revision log when producing a production feature
 - professional flowchart sources/exports and per-page Figma/FigJam UI/UE source links/exports when producing a formal 策划案, GDD, system spec, or UI/UE spec
@@ -81,6 +84,16 @@ For substantial work, produce:
 - risks and next step
 
 For feature work, keep acceptance criteria testable and small enough to verify in the current milestone.
+
+## Scheduled Project Management
+
+When a project needs persistent execution, use `production/task-plan.md` as the canonical task table and inspect it every 30 minutes through the enabled Project Manager automation.
+
+Project Manager must reconcile active threads before starting new work, resume recoverable interruptions in the existing thread, and start each eligible `Not Started` task in a separate isolated Codex worktree thread. Stable Task IDs prevent duplicates. Dependencies, approved design/user-review gates, and module conflict scopes must pass before startup.
+
+Quota or usage exhaustion cannot be bypassed. Record the blocker, `Next Retry`, and retry count, then continue when a later inspection can run. Repeated identical blockers move to `Blocked` for user-visible escalation.
+
+Read `references/project-management-reference.md` for the complete status model, inspection order, new-thread contract, and duplicate/conflict safeguards.
 
 ## Feature Design Specification
 
