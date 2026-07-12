@@ -1,7 +1,7 @@
 interface:
   display_name: "Codex Game Studio Default"
-  short_description: "2D-first game studio workflow with scheduled project management, professional design/art, implementation, data, and QA."
-  default_prompt: "Use $codex-game-studio-default for this game development task."
+  short_description: "Game workflow with default animal UI, assets, and motion"
+  default_prompt: "Use $codex-game-studio-default to deliver this game task with the default UI, animal asset, and procedural-motion workflow."
 
 policy:
   allow_implicit_invocation: true

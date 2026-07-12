@@ -31,7 +31,7 @@ This repository is modeled after the studio-template idea of Claude Code Game St
 | **Core Agents** | 25 | Producer, Project Manager, directors, System Designer, Numerical Designer, Game Designer, programmers, Godot/GDScript/UI specialists, professional art specialists, 2D specialists, Sprite Forge, QA, and reverse engineering |
 | **Workflow Lanes** | 19 | Project management, concept, prototype, feature design specs, system design, professional design artifacts, UI implementation, simple premium 2D visual design, 2D production, professional art production, CSV config, architecture, vertical slice, modular implementation, QA, UI, Sprite Forge, reverse engineering, version finish |
 | **Codex Skill** | 1 | Root-level `SKILL.md` with Codex-triggering metadata and progressive references |
-| **References** | 11 | Detailed guides for project management, game studio routing, feature design specs, master-level visual design, 2D production, professional art production, UI implementation, Sprite Forge, CSV config, UI core, and authorized reverse engineering |
+| **References** | 12 | Detailed guides for project management, game studio routing, feature design specs, master-level visual design, 2D production, professional art production, UI implementation, Sprite Forge, CSV config, default and legacy UI cores, and authorized reverse engineering |
 | **Framework Docs** | 1 catalog | Agent and workflow registry for review, extension, and future testing |
 
 ## Studio Hierarchy
@@ -161,9 +161,9 @@ Codex Game Studio Framework/        # Agent/workflow catalog for testing and ext
 - **Art direction**: master-level art roles own original concept art, scene art, UI visual design, atmosphere, art bible, readability, market reference decomposition, complexity budgets, and final visual quality before Sprite Forge execution.
 - **References**: prefer well-known company lessons from Nintendo, Supercell, Ubisoft/Rayman, Blizzard/Hearthstone, King, SEGA, Capcom, and durable 2D references such as Monument Valley, Hollow Knight, Celeste, and Dead Cells; never copy proprietary designs.
 - **2D production**: 2D Animation Specialist and 2D Technical Artist own sprite animation, frame timing, atlases, TileMaps, y-sort, collision, import settings, materials, VFX, and Godot 2D handoff.
-- **UI**: UI Artist owns visual design; UI Programmer implements mobile-first arcade UI through `brawler-arcade-ui-core` when appropriate.
+- **UI**: UI Artist owns visual design; UI Programmer starts unspecified/new UI from `zhanchengdashi-1930s-animal-ui-core`, treats v15 pages as references rather than runtime layers, and keeps `brawler-arcade-ui-core` as an explicit modern-arcade alternate.
 - **UI implementation**: UI Programmer has learned `nextlevelbuilder/ui-ux-pro-max-skill` as a game-adapted design-to-implementation quality system for design tokens, component states, responsive/safe-area layout, accessibility, motion, and screenshot parity.
-- **Motion**: procedural motion first for common feedback.
+- **Motion**: procedural motion first for common feedback; use the shared animal/UI motion helpers when appropriate, preserve logical bounds, reset repeated feedback, and support reduced motion.
 - **2D art**: AI image generation plus deterministic cleanup/QC through Sprite Forge.
 - **Maps**: layered scene mode for survivorlike arenas when collision, props, y-sort, or spawn zones matter.
 - **Version finish**: after meaningful feature batches, verify, commit, and push when a remote exists.

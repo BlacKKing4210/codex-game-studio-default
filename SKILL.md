@@ -311,19 +311,21 @@ Store designer-editable configuration as CSV by default. Use stable `id` columns
 
 Validate required columns, duplicate IDs, missing references, empty required values, and type conversions before gameplay starts.
 
-## Brawler Arcade UI Core Defaults
+## Zhanchengdashi 1930s Animal UI Core Defaults
 
-For reusable high-energy arcade UI, mobile-first lobby/menu UI, shop/upgrade/result screens, Brawl Stars-like broad visual direction, or requests mentioning 荒野乱斗 UI, route through:
+For new or reusable game UI, mobile lobby/menu/shop/deck/battle/result screens, animal-game UI, and unspecified game UI direction, route through:
 
 Art Director -> UI Artist -> UI Programmer -> Godot Specialist -> QA Lead.
 
-Use the shared UI kit at `C:\Users\76398\Documents\Codex\ui-kits\brawler-arcade-ui-core`.
+Use `C:\Users\76398\Documents\Codex\ui-kits\zhanchengdashi-1930s-animal-ui-core` as the default visual language and component starting point.
 
-The goal is broad arcade energy, not a copy. Use chunky panels, thick dark outlines, hard offset shadows, saturated blue/purple bases, yellow/orange primary CTAs, red/green badges, resource pills, progress tracks, card menus, and procedural pop/bounce feedback.
+Use warm paper, deep ink outlines, hand-painted fairground framing, red/gold primary actions, teal secondary actions, stable resource/value slots, readable animal cards, and one dominant CTA per context.
 
-When implementing UI from Figma, screenshots, or style frames, also use the UI implementation handoff rules in `references/ui-implementation-reference.md`.
+Treat the v15 full-page PNGs as visual reference/parity targets, never as clickable runtime UI. Build text-free nine-slice assets, engine-native components, dynamic text, responsive layouts, and all required states. Project `AGENTS.md`, approved Figma/UI-UE, platform/aspect ratio, existing art direction, and explicit user choices take precedence.
 
-Do not copy Brawl Stars names, logos, icons, characters, exact layouts, typography, currencies, or proprietary assets. Each project must extend the core with original project-specific theme colors, icons, names, resources, character art, and special screens.
+When a project has no specified character art and the theme fits, use the kit's 60 animal PNGs as the default internal asset pool. Copy selected files into the target project, retain provenance/catalog records, and never silently overwrite existing project art.
+
+Read `references/zhanchengdashi-1930s-animal-ui-core-reference.md` for adoption rules and `references/ui-implementation-reference.md` for Figma/screenshot handoff. Keep `brawler-arcade-ui-core` only as an explicit alternate for a requested saturated modern arcade/brawler direction.
 
 ## Procedural Motion Defaults
 
@@ -334,6 +336,8 @@ Route this through:
 Art Director -> Gameplay Programmer -> Godot Specialist -> QA Lead.
 
 Use Tween, AnimationPlayer, shader/material modulation, particles, scale, rotation, offset, squash/stretch, flash, knockback, fade, and UI-style feedback first.
+
+For matching projects, start from `godot/scripts/unit_motion_feedback.gd` and `godot/scripts/zhanchengdashi_ui_motion.gd` in the shared kit. Apply motion to visual children, preserve logical coordinates/collision/focus/touch bounds, cancel and reset repeated feedback, stop infinite loops with node lifecycle, and provide reduced-motion behavior.
 
 Use sequence-frame sprites only when the silhouette or pose must visibly change, direction-specific readability matters, a hero/boss/premium enemy needs higher animation quality, gameplay needs anticipation/recovery poses, or playtesting shows tweened motion is unclear.
 
@@ -386,7 +390,8 @@ When more detail is needed, read these files in this skill folder:
 - `references/ui-implementation-reference.md`
 - `references/agent-sprite-forge-reference.md`
 - `references/csv-data-config-reference.md`
-- `references/brawler-arcade-ui-core-reference.md`
+- `references/zhanchengdashi-1930s-animal-ui-core-reference.md`
+- `references/brawler-arcade-ui-core-reference.md` (legacy alternate only)
 - `references/reverse-engineering-reference.md`
 - `agents/art-director.md`
 - `agents/project-manager.md`

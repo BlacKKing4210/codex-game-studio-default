@@ -58,7 +58,7 @@ agents:
   - id: ui-programmer
     tier: specialist
     owns: [reusable_controls, theme_resources, screen_shells, touch_ergonomics, ui_motion, uiue_diagram_review, design_tokens, component_state_matrix, screenshot_parity]
-    skills: [brawler_arcade_ui_core, ui_ux_pro_max_adaptation, design_system_tokens, godot_control_nodes, responsive_layouts, safe_area_layouts, accessibility_contrast, tweened_ui_feedback, uiue_implementability_review, figma_to_engine_handoff, screenshot_parity_review]
+    skills: [zhanchengdashi_1930s_animal_ui_core, reusable_animal_asset_catalog, interruptible_reduced_motion_feedback, ui_ux_pro_max_adaptation, design_system_tokens, godot_control_nodes, responsive_layouts, safe_area_layouts, accessibility_contrast, tweened_ui_feedback, uiue_implementability_review, figma_to_engine_handoff, screenshot_parity_review]
   - id: performance-analyst
     tier: specialist
     owns: [frame_time, collision_cost, memory, stress_checks]
@@ -141,7 +141,7 @@ workflow_lanes:
   - id: simple-premium-2d-visual-design
     route: [creative-director, art-director, relevant_master_art_specialist, 2d-technical-artist, qa-lead]
     outputs: [visual_sentence, complexity_budget, famous_company_reference_decomposition, readability_target, reusable_asset_plan, anti_copying_notes, revision_notes]
-  - id: brawler-arcade-ui
+  - id: zhanchengdashi-1930s-animal-ui
     route: [art-director, ui-artist, ui-programmer, godot-specialist, qa-lead]
     outputs: [figma_uiue_source, exported_uiue_review_copy, screen_spec, design_tokens, component_state_matrix, reusable_controls, theme_notes, screenshot_parity_report, qa_checklist]
   - id: ui-implementation

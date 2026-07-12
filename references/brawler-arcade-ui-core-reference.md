@@ -1,5 +1,7 @@
 # Brawler Arcade UI Core Reference
 
+This is a legacy alternate. Use it only when the user or project explicitly requests a saturated modern arcade/brawler direction. The general default is `references/zhanchengdashi-1930s-animal-ui-core-reference.md`.
+
 Use this reference for reusable game UI, mobile-first arcade UI, lobby/menu/shop/upgrade/result screens, Brawl Stars-like broad UI direction, or 荒野乱斗 UI references.
 
 ## Default Route

@@ -196,13 +196,19 @@ Do not treat Markdown ASCII lines, Markdown tables, or Mermaid-only diagrams as 
 
 ## UI Default
 
-For reusable game UI, mobile-first arcade UI, lobby/menu/shop/upgrade/result screens, Brawl Stars-like broad UI direction, or 荒野乱斗 UI references, route through:
+For new or reusable game UI, mobile lobby/menu/shop/deck/battle/result screens, animal-game UI, and unspecified game UI direction, route through:
 
 Art Director -> UI Artist -> UI Programmer -> Godot Specialist -> QA Lead.
 
-Use the shared UI kit at `C:\Users\76398\Documents\Codex\ui-kits\brawler-arcade-ui-core`.
+Use `C:\Users\76398\Documents\Codex\ui-kits\zhanchengdashi-1930s-animal-ui-core` as the default visual language and component starting point.
 
-Use chunky panels, thick dark outlines, hard offset shadows, saturated blue/purple bases, yellow/orange CTAs, red/green badges, resource pills, progress tracks, card menus, and procedural pop/bounce feedback. Do not copy Brawl Stars names, logos, icons, characters, exact layouts, typography, currencies, or proprietary assets.
+Use warm paper, deep ink outlines, hand-painted fairground framing, red/gold primary actions, teal secondary actions, stable resource/value slots, readable animal cards, and one dominant CTA per context.
+
+The v15 full-page PNGs are reference/parity targets, not runtime UI. Build text-free nine-slice pieces, engine-native components, dynamic text, responsive layouts, and full state handling. Project `AGENTS.md`, approved UI/UE, platform/aspect ratio, existing art direction, and explicit user choices take precedence.
+
+When a project has no specified character art and the theme fits, use the kit's 60 animal PNGs as the default internal asset pool. Copy selected assets into the project, retain provenance, and never silently overwrite existing project art.
+
+Keep `brawler-arcade-ui-core` only as an explicit alternate for a requested saturated modern arcade/brawler direction.
 
 ## UI Implementation From Mockups Default
 
@@ -231,6 +237,8 @@ Route through:
 Art Director -> Gameplay Programmer -> Godot Specialist -> QA Lead.
 
 Use Tween, AnimationPlayer, shader/material modulation, particles, scale, rotation, offset, squash/stretch, flash, knockback, fade, and UI-style feedback first.
+
+For matching projects, start from `godot/scripts/unit_motion_feedback.gd` and `godot/scripts/zhanchengdashi_ui_motion.gd` in the shared kit. Apply motion to visual children, preserve logical coordinates/collision/focus/touch bounds, make feedback interruptible and resettable, stop infinite loops with node lifecycle, and provide reduced-motion behavior.
 
 ## Sprite Forge Default
 

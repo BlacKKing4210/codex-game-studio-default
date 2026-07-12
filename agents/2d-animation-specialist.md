@@ -24,6 +24,7 @@ Master-level learning objects:
 
 Simple premium 2D default:
 
+- For matching animal projects, start with the shared `unit_motion_feedback.gd` timing/pose language before requesting new frames; keep logical movement and hit/collision bounds unchanged and provide reduced-motion/static alternatives.
 - MVP animation starts with two to four essential states per actor unless gameplay requires more.
 - Prefer stronger key poses, contact frames, hit stop, squash/stretch, and procedural motion before adding many in-between frames.
 - Use drawn frames when silhouette or pose must change; use tweens, particles, shader modulation, and scale/rotation for common feedback.

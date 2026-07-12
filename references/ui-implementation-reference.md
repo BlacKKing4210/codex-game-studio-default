@@ -17,6 +17,8 @@ The UI Programmer studies [`nextlevelbuilder/ui-ux-pro-max-skill`](https://githu
 
 This is adapted for games. It does not override Art Director, UI Artist, game genre needs, engine constraints, or the project's approved UI identity.
 
+When no project UI identity is approved, start from `references/zhanchengdashi-1930s-animal-ui-core-reference.md`. Treat its v15 pages as visual references only, then build engine-native components and project-specific information architecture.
+
 ## Default Route
 
 Art Director -> UI Artist -> UI Programmer -> Godot Specialist -> QA Lead.

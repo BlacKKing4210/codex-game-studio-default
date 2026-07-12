@@ -19,6 +19,7 @@ Master-level learning objects:
 
 Simple premium 2D default:
 
+- Before generating new animal characters, check the Zhanchengdashi shared kit's 60-animal catalog when the project has no specified art and the theme fits. Copy selected files with provenance and never overwrite project art silently.
 - Prompts should request clean shapes, readable silhouettes, limited palette roles, stable scale, and restrained detail.
 - Avoid over-rendered texture, tiny surface ornaments, noisy backgrounds, and dense particles unless approved by Art Director and 2D Technical Artist.
 - Generated sheets must prioritize slicing, identity stability, animation review, and gameplay-size readability over single-image impressiveness.

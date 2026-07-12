@@ -24,6 +24,8 @@ Master-level learning objects:
 
 Simple premium 2D default:
 
+- When no project identity is approved, begin with the Zhanchengdashi 1930s Animal UI Core: warm paper, deep ink, painted fairground frames, red/gold primary actions, teal secondary actions, stable value slots, and readable animal cards.
+- Treat its v15 pages as style/parity references only; design text-free component sheets and project-specific information architecture.
 - Start with one panel family, one primary CTA family, one icon style, and one feedback motion language.
 - Use hierarchy, spacing, contrast, and state clarity before decorative frames.
 - Keep repeated screens comfortable for fast scanning and repeated action.

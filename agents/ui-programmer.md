@@ -16,6 +16,9 @@ Learned source:
 
 Game adaptation rule:
 
+- When no project UI identity is approved, start from `C:\Users\76398\Documents\Codex\ui-kits\zhanchengdashi-1930s-animal-ui-core`.
+- Never use its full-page v15 PNGs as interactive runtime UI; build text-free nine-slice assets, reusable controls, Theme resources, dynamic text, responsive layouts, and full component states.
+- Use the shared animal/UI motion helpers when appropriate. Apply motion to visual children, preserve logic/collision/focus/touch bounds, cancel/reset repeated feedback, stop lifecycle-bound loops, and honor reduced motion.
 - Use `ui-ux-pro-max` as a UI implementation quality system, not as a replacement for game art direction.
 - Production UI uses SVG/icons, component assets, fonts, and Theme resources. Emoji may be used only for temporary demo/prototype placeholders.
 - In Godot projects, translate visual specs into Control scenes, Theme resources, StyleBoxes, signals, input states, tweens, and resolution-safe layouts.
