@@ -8,7 +8,8 @@ Codex Game Studio uses the smallest useful subset of agents for each task. These
 | Creative Director | Direction | Game identity, pillars, target fantasy, anti-copying constraints | concept review, reference interpretation, creative gates |
 | Technical Director | Direction | Architecture, module boundaries, engine decisions, dependencies, performance budget | architecture review, modular boundary review, dependency risk, technical gates |
 | Game Designer | Lead | Core loop, mechanics, weapons, enemies, upgrades, difficulty, gameplay/system flowcharts, player feedback synthesis | system design, gameplay rules, player motivation, feedback discovery, professional flowchart specs |
-| Systems Designer | Lead | Economy, formulas, progression, wave pressure, upgrade value | tuning models, balance checks, data table design |
+| System Designer | Lead | Feature Word design docs, feature scope, UE page requirements, page transition maps, per-page explanations, data-source maps, acceptance criteria, user revision alignment | feature system planning, `.docx` specs, Figma UE handoff, information architecture, page documentation, implementation follow-through |
+| Numerical Designer | Lead | Economy, formulas, progression curves, wave pressure, upgrade value, reward values | tuning models, balance checks, economy loops, data table design |
 | Data Config Specialist | Specialist | CSV schemas, starter rows, ID references, validation | CSV design, data loading contract, validation rules |
 | Prototyper | Specialist | Risky-assumption tests, throwaway prototypes, emoji demo placeholders, SVG fallback placeholders | minimum test design, emoji placeholder planning, simple SVG placeholders, proceed/pivot/cut verdicts |
 | Lead Programmer | Lead | Implementation plan, module breakdown, module contracts, integration, review, done criteria | code architecture, modular task breakdown, regression risk |
@@ -38,7 +39,8 @@ Direction
 
 Leads
   game-designer
-  systems-designer
+  system-designer
+  numerical-designer
   lead-programmer
   art-director
   qa-lead
@@ -68,10 +70,11 @@ Specialists
 | Make a new game concept | Producer -> Creative Director -> Game Designer |
 | Collect player feedback for design direction | Producer -> Creative Director -> Game Designer -> QA Lead |
 | Build a demo with missing assets | Producer -> Prototyper -> relevant Specialist -> QA Lead |
-| Create a formal 策划案/GDD | Producer -> Game Designer -> Art Director -> UI Artist -> UI Programmer -> QA Lead |
+| Create a formal 策划案/GDD | Producer -> System Designer -> Game Designer -> Numerical Designer -> Art Director -> UI Artist -> UI Programmer -> QA Lead |
+| Create a feature Word design spec | Producer -> System Designer -> Game Designer -> Numerical Designer -> UI Artist -> UI Programmer -> Technical Director -> QA Lead |
 | Break down implementation modules | Technical Director -> Lead Programmer -> relevant Specialist -> QA Lead |
 | Build a Godot gameplay feature | Lead Programmer -> Gameplay Programmer -> Godot Specialist -> GDScript Specialist -> QA Lead |
-| Add data-driven weapons/enemies/upgrades | Systems Designer -> Data Config Specialist -> Technical Director -> Godot Specialist -> QA Lead |
+| Add data-driven weapons/enemies/upgrades | Numerical Designer -> Data Config Specialist -> Technical Director -> Godot Specialist -> QA Lead |
 | Start a 2D-first project | Producer -> Creative Director -> Art Director -> Technical Director -> 2D Technical Artist -> Godot Specialist -> QA Lead |
 | Define 2D asset pipeline | Technical Director -> 2D Technical Artist -> Godot Specialist -> QA Lead |
 | Create 2D character/enemy/prop animation | Art Director -> Concept Artist -> 2D Animation Specialist -> Sprite Forge Specialist -> 2D Technical Artist -> Godot Specialist -> QA Lead |

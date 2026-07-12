@@ -21,6 +21,7 @@ A first playable slice should prove the smallest complete player experience for 
 - Creative gate: does this serve pillars and target fantasy?
 - Player feedback gate: has the design direction used real player opinions, playtest notes, review patterns, community comments, or an explicit feedback plan with testable assumptions?
 - Technical gate: is it simple, maintainable, and feasible in the engine?
+- Feature design spec gate: does every production feature have an editable Word design spec, per-page Figma/FigJam UE diagrams, written transition map, per-page explanations, data-source map, acceptance checklist, and user review status?
 - Demo placeholder gate: are missing demo resources represented with readable emoji or simple original SVG placeholders instead of blocking gameplay validation?
 - UI implementation gate: did UI效果图/Figma/screenshots become reusable, state-complete, responsive, accessible, and screenshot-checked engine UI rather than a one-off visual approximation?
 - Simple premium 2D gate: is the design readable in three seconds, visually memorable, original, reusable, and not overcomplicated?
@@ -31,7 +32,7 @@ A first playable slice should prove the smallest complete player experience for 
 - Performance gate: can it survive dense enemies/projectiles?
 - Art gate: are silhouettes, palettes, UI visuals, animation frames, scene composition, atmosphere, and map layers readable and professional?
 - Professional art quality gate: do concept art, environment art, UI art, and mood/lighting pass the art bible, originality, readability, and engine handoff standards?
-- Design-document gate: does every formal 策划案/GDD contain professional gameplay/system flowcharts and Figma/FigJam UI/UE diagrams, with editable source links/files and exported review copies?
+- Design-document gate: does every formal 策划案/GDD contain professional gameplay/system flowcharts, per-page Figma/FigJam UI/UE diagrams, page explanations, data-source maps, editable source links/files, and exported review copies?
 
 ## Role Routing
 
@@ -40,9 +41,11 @@ A first playable slice should prove the smallest complete player experience for 
 - Player feedback discovery: Producer + Creative Director + Game Designer + QA Lead.
 - Architecture or dependencies: Technical Director.
 - Module boundaries and contracts: Technical Director + Lead Programmer.
-- Mechanics/content: Game Designer + Systems Designer.
-- Formal design docs, flowcharts, and Figma/FigJam UI/UE diagrams: Producer + Game Designer + Art Director + UI Artist + UI Programmer + QA Lead.
-- Config tables: Systems Designer + Data Config Specialist.
+- Feature system planning and Word design specs: Producer + System Designer + QA Lead.
+- Mechanics/content: System Designer + Game Designer.
+- Numeric/economy/balance: Numerical Designer.
+- Formal design docs, flowcharts, and Figma/FigJam UI/UE diagrams: Producer + System Designer + Game Designer + Numerical Designer + Art Director + UI Artist + UI Programmer + QA Lead.
+- Config tables: Numerical Designer + Data Config Specialist.
 - Code: Lead Programmer + relevant specialist.
 - Godot/GDScript: Godot Specialist + GDScript Specialist.
 - 2D project setup: Technical Director + 2D Technical Artist + Godot Specialist.
@@ -65,7 +68,9 @@ For substantial work, produce:
 - goal
 - owner agent or route
 - files/docs involved
-- professional flowchart sources/exports and Figma/FigJam UI/UE source links/exports when producing a formal 策划案, GDD, system spec, or UI/UE spec
+- feature Word `.docx` source, PDF review export when useful, user review notes, and revision log when producing a production feature
+- professional flowchart sources/exports and per-page Figma/FigJam UI/UE source links/exports when producing a formal 策划案, GDD, system spec, or UI/UE spec
+- written page transition map, per-page UE explanations, and data-source map for every page with displayed information
 - player feedback sources, synthesis, direction decision, and remaining assumptions when producing design work
 - emoji/SVG placeholder plan when producing demos or prototypes with missing assets
 - UI source reference, design tokens, component state matrix, engine UI plan, screenshot parity report, and UI QA checklist when implementing UI mockups or Figma screens
@@ -76,6 +81,28 @@ For substantial work, produce:
 - risks and next step
 
 For feature work, keep acceptance criteria testable and small enough to verify in the current milestone.
+
+## Feature Design Specification
+
+Every production feature needs an independent Word design document before implementation unless the user explicitly labels it as a throwaway prototype.
+
+Required outputs:
+
+- editable Word `.docx` feature design document
+- PDF review export when useful for review/share
+- Figma/FigJam UE source for every page, popup, HUD panel, modal, or stateful screen
+- exported UE review images/PDF
+- written transition map
+- per-page UE explanation
+- data-source map for every displayed value
+- acceptance checklist
+- user review notes and revision log
+
+System Designer owns the feature document, revision, implementation follow-through, and acceptance alignment. Numerical Designer owns formulas, economy, progression curves, reward values, and tuning tables.
+
+Per-page UE explanations must describe each element's meaning, display condition, interaction behavior, data source, fallback/empty/error state, and owner system.
+
+The user's reviewed and edited Word/Figma design is the source of truth. If user changes are large, return to System Designer for a revised design pass before implementation continues.
 
 ## Player Feedback Discovery
 
@@ -166,6 +193,8 @@ Any formal 策划案, GDD, system design document, feature specification, UI flo
 
 - Gameplay/system flowchart: player actions, states, branches, rewards, failure/retry, and completion paths.
 - UI/UE diagram: screen map, user journey, wireframes, interaction states, entry/exit paths, and key feedback.
+- Per-page UE explanation: every information element, meaning, display condition, interaction behavior, owner system, fallback state, and data source when data is displayed.
+- Written transition map: entry/exit paths, page jumps, back/close/confirm/cancel behavior, failure/retry paths, and edge-case transitions.
 
 Gameplay/system flowcharts use professional planning, product, UX, or diagram tools such as Axure RP, Miro, diagrams.net/draw.io, ProcessOn, Visio, MasterGo, Mockplus, FigJam, or the project's approved equivalent.
 

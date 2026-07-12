@@ -2,7 +2,7 @@
 
 For any game development task in this project, use Codex Game Studio by default even if the user does not explicitly ask for it.
 
-This applies to game design, Godot, Unity, Unreal, prototypes, 2D games, sprite-based games, pixel-art-style games, TileMap games, roguelikes, survivorlikes, Brotato-like arena shooters, asset generation, balancing, implementation, QA, performance work, and Chinese requests such as 游戏开发, 做游戏, 制作游戏, 2D游戏, Godot游戏, 复刻土豆兄弟, 土豆兄弟like, 类土豆兄弟, 幸存者like, 肉鸽, 美术资源, 数值设计, 游戏原型, and 游戏测试.
+This applies to game design, Godot, Unity, Unreal, prototypes, 2D games, sprite-based games, pixel-art-style games, TileMap games, roguelikes, survivorlikes, Brotato-like arena shooters, asset generation, balancing, implementation, QA, performance work, and Chinese requests such as 游戏开发, 做游戏, 制作游戏, 2D游戏, Godot游戏, 复刻土豆兄弟, 土豆兄弟like, 类土豆兄弟, 幸存者like, 肉鸽, 美术资源, 系统策划, 功能策划案, 数值策划, 数值设计, 游戏原型, and 游戏测试.
 
 Default to 2D-first production unless the user or existing project explicitly chooses 3D, 2.5D, VR/AR, or another rendering model.
 
@@ -16,7 +16,8 @@ Use the smallest useful subset of the Codex Game Studio roles:
 - Creative Director
 - Technical Director
 - Game Designer
-- Systems Designer
+- System Designer
+- Numerical Designer
 - Data Config Specialist
 - Prototyper
 - Lead Programmer
@@ -49,6 +50,28 @@ Use the smallest useful subset of the Codex Game Studio roles:
 7. QA and Tuning.
 8. Milestone Review.
 9. Git Version Finish.
+
+## Feature Design Specification Default
+
+Every production feature must have its own independent Word design document before implementation unless the user explicitly marks it as a throwaway prototype.
+
+Route through:
+
+Producer -> System Designer -> Game Designer -> Numerical Designer -> Art Director -> UI Artist -> UI Programmer -> Technical Director -> QA Lead.
+
+System Designer owns feature-level system planning, Word design documents, revisions, implementation follow-through, and acceptance alignment. Numerical Designer owns formulas, economy, progression curves, reward values, balance tables, and tuning.
+
+Required outputs for every feature:
+
+- Editable Word `.docx` feature design document.
+- PDF review export when useful for review/share.
+- Figma/FigJam UE diagram for every page, popup, HUD panel, modal, or stateful screen.
+- Written transition map describing page entry, exit, back, close, confirm, cancel, failure, retry, and edge-case jumps.
+- Per-page UE explanation: every information element, what it means, when it appears, how it behaves, and which system owns it.
+- Data-source map for every displayed data value, such as CSV table/column, Resource field, save data, runtime state, inventory/economy service, localization key, platform account data, or remote service.
+- Acceptance checklist for design, UI/UE, data, implementation, and QA.
+
+The user's reviewed and edited Word/Figma design is the source of truth. If the user's changes are substantial, System Designer must revise the spec, UE explanations, data-source map, acceptance criteria, and downstream implementation tasks before coding continues.
 
 For Godot, prefer Godot 4, GDScript, and a 2D-first scene/layer model unless the project already uses another language or rendering model. Use Resources for data, reusable scenes, signals for decoupling, and object pooling for repeated runtime objects.
 
@@ -132,12 +155,14 @@ Prefer small modules such as input, movement, combat, interaction, inventory, ec
 
 For any formal 策划案, GDD, system design document, feature specification, UI flow, onboarding flow, shop flow, combat flow, economy flow, or progression flow, route through:
 
-Producer -> Game Designer -> Art Director -> UI Artist -> UI Programmer -> QA Lead.
+Producer -> System Designer -> Game Designer -> Numerical Designer -> Art Director -> UI Artist -> UI Programmer -> QA Lead.
 
 A formal design document is not complete unless it includes professional visual artifacts:
 
 - Gameplay/system flowchart: player actions, system states, decisions, rewards, failure/retry, and end conditions.
 - UI/UE diagram: screen map, user journey, wireframes, interaction states, entry/exit paths, and key feedback.
+- Per-page UE explanation: every information element, meaning, display condition, interaction behavior, owner system, and data source when data is displayed.
+- Written transition map: page jumps, entry/exit paths, back/close/confirm/cancel behavior, failure/retry paths, and edge-case transitions.
 
 Gameplay/system flowcharts must be created in professional planning, product, UX, or diagram software such as Axure RP, Miro, diagrams.net/draw.io, ProcessOn, Visio, MasterGo, Mockplus, FigJam, or the project's approved equivalent.
 

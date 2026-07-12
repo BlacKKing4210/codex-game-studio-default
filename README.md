@@ -2,13 +2,13 @@
 
 Turn a single Codex session into a focused indie game studio workflow.
 
-23 core agents. 17 workflow lanes. 2D-first production. Simple premium visual design. Professional design artifacts. Professional art production. UI mockup-to-engine implementation. Modular implementation. Godot-first defaults. CSV-driven game data. Sprite Forge art handoff. Git version finish.
+24 core agents. 18 workflow lanes. Feature Word design specs. Per-page Figma/FigJam UE diagrams. 2D-first production. Simple premium visual design. Professional art production. UI mockup-to-engine implementation. Modular implementation. Godot-first defaults. CSV-driven game data. Sprite Forge art handoff. Git version finish.
 
 <p align="center">
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT License"></a>
   <a href="SKILL.md"><img src="https://img.shields.io/badge/Codex%20Skill-ready-green" alt="Codex Skill Ready"></a>
-  <a href="docs/AGENT-CATALOG.md"><img src="https://img.shields.io/badge/agents-23-blueviolet" alt="23 Agents"></a>
-  <a href="docs/WORKFLOW-GUIDE.md"><img src="https://img.shields.io/badge/workflows-17-orange" alt="17 Workflows"></a>
+  <a href="docs/AGENT-CATALOG.md"><img src="https://img.shields.io/badge/agents-24-blueviolet" alt="24 Agents"></a>
+  <a href="docs/WORKFLOW-GUIDE.md"><img src="https://img.shields.io/badge/workflows-18-orange" alt="18 Workflows"></a>
   <a href="docs/CSV-DATA-CONFIG.md"><img src="https://img.shields.io/badge/data-CSV%20first-yellow" alt="CSV First"></a>
 </p>
 
@@ -18,7 +18,7 @@ Turn a single Codex session into a focused indie game studio workflow.
 
 Solo game development with AI is powerful, but a general chat can drift: hardcoded tuning values, unclear ownership, monolithic scripts, weak 2D production rules, weak art direction, flat atmosphere, generic UI visuals, missing professional design diagrams, missing QA, weak asset handoff, and no clean version finish.
 
-**Codex Game Studio Default** gives Codex a small but useful studio structure for game work. It defaults to 2D-first production, player-feedback-informed design, simple premium visual design, UI mockup-to-engine implementation, and fast demo placeholders while keeping the user as final decision maker and routing tasks through production, design, programming, master-level art direction, concept art, environment art, UI art, 2D animation, 2D technical art, QA, Godot, GDScript, CSV data, UI implementation, procedural motion, Sprite Forge asset generation, and authorized reverse-engineering gates.
+**Codex Game Studio Default** gives Codex a small but useful studio structure for game work. It defaults to 2D-first production, player-feedback-informed design, feature Word design specs, per-page Figma/FigJam UE diagrams, simple premium visual design, UI mockup-to-engine implementation, and fast demo placeholders while keeping the user as final decision maker and routing tasks through production, system design, game design, numerical design, programming, master-level art direction, concept art, environment art, UI art, 2D animation, 2D technical art, QA, Godot, GDScript, CSV data, UI implementation, procedural motion, Sprite Forge asset generation, and authorized reverse-engineering gates.
 
 This repository is modeled after the studio-template idea of Claude Code Game Studios, adapted for Codex Skill usage and the local `codex-game-studio-default` workflow.
 
@@ -28,10 +28,10 @@ This repository is modeled after the studio-template idea of Claude Code Game St
 
 | Category | Count | Description |
 |---|---:|---|
-| **Core Agents** | 23 | Producer, directors, designers, programmers, Godot/GDScript/UI specialists, professional art specialists, 2D specialists, Sprite Forge, QA, and reverse engineering |
-| **Workflow Lanes** | 17 | Concept, prototype, system design, professional design artifacts, UI implementation, simple premium 2D visual design, 2D production, professional art production, CSV config, architecture, vertical slice, modular implementation, QA, UI, Sprite Forge, reverse engineering, version finish |
+| **Core Agents** | 24 | Producer, directors, System Designer, Numerical Designer, Game Designer, programmers, Godot/GDScript/UI specialists, professional art specialists, 2D specialists, Sprite Forge, QA, and reverse engineering |
+| **Workflow Lanes** | 18 | Concept, prototype, feature design specs, system design, professional design artifacts, UI implementation, simple premium 2D visual design, 2D production, professional art production, CSV config, architecture, vertical slice, modular implementation, QA, UI, Sprite Forge, reverse engineering, version finish |
 | **Codex Skill** | 1 | Root-level `SKILL.md` with Codex-triggering metadata and progressive references |
-| **References** | 9 | Detailed guides for game studio routing, master-level visual design, 2D production, professional art production, UI implementation, Sprite Forge, CSV config, UI core, and authorized reverse engineering |
+| **References** | 10 | Detailed guides for game studio routing, feature design specs, master-level visual design, 2D production, professional art production, UI implementation, Sprite Forge, CSV config, UI core, and authorized reverse engineering |
 | **Framework Docs** | 1 catalog | Agent and workflow registry for review, extension, and future testing |
 
 ## Studio Hierarchy
@@ -44,7 +44,8 @@ Tier 1 - Direction
 
 Tier 2 - Leads
   game-designer
-  systems-designer
+  system-designer
+  numerical-designer
   lead-programmer
   art-director
   qa-lead
@@ -72,9 +73,10 @@ Tier 3 - Specialists
 | Work Type | Route |
 |---|---|
 | Broad game project | Producer -> relevant leads -> QA Lead |
-| Formal 策划案/GDD | Producer -> Game Designer -> Art Director -> UI Artist -> UI Programmer -> QA Lead |
+| Formal 策划案/GDD | Producer -> System Designer -> Game Designer -> Numerical Designer -> Art Director -> UI Artist -> UI Programmer -> QA Lead |
+| Feature Word design spec | Producer -> System Designer -> Game Designer -> Numerical Designer -> UI Artist -> UI Programmer -> Technical Director -> QA Lead |
 | Godot implementation | Lead Programmer -> Godot Specialist -> GDScript Specialist -> QA Lead |
-| Configurable game systems | Systems Designer -> Data Config Specialist -> Technical Director -> Godot Specialist -> QA Lead |
+| Configurable numeric/balance systems | Numerical Designer -> Data Config Specialist -> Technical Director -> Godot Specialist -> QA Lead |
 | 2D project setup | Technical Director -> 2D Technical Artist -> Godot Specialist -> QA Lead |
 | 2D character/prop/animation production | Art Director -> Concept Artist -> 2D Animation Specialist -> Sprite Forge Specialist -> 2D Technical Artist -> Godot Specialist -> QA Lead |
 | 2D scene/TileMap production | Art Director -> Visual Development Artist -> Environment Artist -> Sprite Forge Specialist -> 2D Technical Artist -> Godot Specialist -> QA Lead |
@@ -97,7 +99,7 @@ See [docs/AGENT-CATALOG.md](docs/AGENT-CATALOG.md) for each agent's responsibili
 1. **Git and GitHub Startup** - initialize or verify Git, ignore files, README, first commit, private GitHub origin where possible.
 2. **Concept** - promise, target player, player feedback discovery, pillars, anti-pillars, reference principles.
 3. **Prototype** - one risky assumption, minimum test, emoji/SVG demo placeholders where assets are missing, proceed/pivot/cut verdict.
-4. **System Design** - core loop, mechanics, content rules, economy, difficulty, professional flowcharts, and Figma/FigJam UI/UE diagrams for formal design docs.
+4. **System Design** - feature Word design docs, core loop, mechanics, content rules, economy, difficulty, professional flowcharts, per-page Figma/FigJam UE diagrams, written page transitions, per-page explanations, and data-source maps.
 5. **CSV Data Config** - schemas, starter rows, IDs, validation rules, loading path.
 6. **Technical Architecture** - Godot architecture, module boundaries, data/resources, 2D scene/layer model by default, performance budget.
 7. **Vertical Slice** - playable slice plan, tasks, owners, acceptance criteria.
@@ -124,7 +126,7 @@ Then use it naturally:
 Use $codex-game-studio-default to plan a Godot survivorlike vertical slice.
 ```
 
-The skill is designed for implicit use on game-development tasks, including Chinese prompts such as `游戏开发`, `制作游戏`, `Godot游戏`, `土豆兄弟like`, `幸存者like`, `美术资源`, `数值设计`, and `游戏测试`.
+The skill is designed for implicit use on game-development tasks, including Chinese prompts such as `游戏开发`, `制作游戏`, `Godot游戏`, `土豆兄弟like`, `幸存者like`, `美术资源`, `系统策划`, `功能策划案`, `数值策划`, `数值设计`, and `游戏测试`.
 
 ## Project Structure
 
@@ -145,7 +147,9 @@ Codex Game Studio Framework/        # Agent/workflow catalog for testing and ext
 - **Visual design**: simple premium 2D by default: clear silhouettes, controlled palettes, restrained detail, reusable UI/components, and polish through timing, spacing, contrast, and feedback.
 - **Engine**: Godot 4 unless the project already uses another engine.
 - **Language**: GDScript unless the project already uses C# or the user chooses it.
+- **Feature specs**: every production feature requires an independent Word `.docx` design document, per-page Figma/FigJam UE diagrams, written transition map, per-page explanation, data-source map, acceptance checklist, and user review/revision log before implementation.
 - **Design docs**: formal 策划案/GDD/system specs require professional gameplay/system flowcharts and Figma/FigJam UI/UE diagrams; Markdown-only diagrams are drafts, not final artifacts.
+- **User review**: the user's edited Word/Figma design is the source of truth; substantial user changes return to System Designer before implementation continues.
 - **Player feedback**: Concept and System Design collect player opinions, playtest notes, review patterns, community comments, or planned feedback channels before locking direction.
 - **Demo placeholders**: demos and prototypes use emoji expressions first; missing resources that emoji cannot represent clearly use simple original SVG drawings.
 - **Implementation**: substantial features must be split into modules with boundaries, contracts, per-module verification, and small integration steps.

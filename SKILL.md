@@ -1,6 +1,6 @@
 ---
 name: codex-game-studio-default
-description: Default 2D-first Codex Game Studio workflow for all game development projects. Use automatically whenever the user asks to make, design, prototype, modify, review, test, balance, generate assets for, or plan any game project in Godot, Unity, Unreal, browser games, roguelikes, survivorlikes, Brotato-like arena shooters, sprite-based games, pixel-art-style games, TileMap games, side scrollers, top-down games, or any other game-development context. Also use for Chinese game-development requests such as 游戏开发, 做游戏, 制作游戏, 2D游戏, Godot游戏, 复刻土豆兄弟, 土豆兄弟like, 类土豆兄弟, 幸存者like, 肉鸽, roguelike, 美术资源, 生成美术, 角色精灵, sprite sheet, pixel art, TileMap, 2D动画, 地图生成, generate2dsprite, generate2dmap, Sprite Forge, agent-sprite-forge, 数值设计, 游戏原型, 游戏测试. Applies even when the user does not explicitly mention agents or the Codex Game Studio.
+description: Default 2D-first Codex Game Studio workflow for all game development projects. Use automatically whenever the user asks to make, design, prototype, modify, review, test, balance, generate assets for, or plan any game project in Godot, Unity, Unreal, browser games, roguelikes, survivorlikes, Brotato-like arena shooters, sprite-based games, pixel-art-style games, TileMap games, side scrollers, top-down games, or any other game-development context. Also use for Chinese game-development requests such as 游戏开发, 做游戏, 制作游戏, 2D游戏, Godot游戏, 复刻土豆兄弟, 土豆兄弟like, 类土豆兄弟, 幸存者like, 肉鸽, roguelike, 美术资源, 生成美术, 角色精灵, sprite sheet, pixel art, TileMap, 2D动画, 地图生成, generate2dsprite, generate2dmap, Sprite Forge, agent-sprite-forge, 系统策划, 功能策划案, 数值策划, 数值设计, 游戏原型, 游戏测试. Applies even when the user does not explicitly mention agents or the Codex Game Studio.
 ---
 
 # Codex Game Studio Default
@@ -27,7 +27,8 @@ Use the smallest useful subset of these roles:
 - Creative Director: core fantasy, pillars, references, tone, differentiation, anti-copying constraints.
 - Technical Director: architecture, engine decisions, dependencies, performance budgets, technical risk.
 - Game Designer: core loop, weapons, enemies, upgrades, progression, difficulty, content tables.
-- Systems Designer: data tables, formulas, economy, wave pressure, upgrade value.
+- System Designer: feature-level system planning, Word design documents, UE page requirements, implementation follow-through, acceptance criteria, and user-revision alignment.
+- Numerical Designer: numeric planning, data tables, formulas, economy, progression curves, wave pressure, reward values, and balance tuning.
 - Data Config Specialist: CSV schemas, starter rows, ID references, validation rules, runtime loading path.
 - Lead Programmer: implementation plan, code integration, review, story readiness and done criteria.
 - Godot Specialist: Godot scenes, nodes, resources, signals, autoloads, export, engine-specific checks.
@@ -52,7 +53,7 @@ Use the smallest useful subset of these roles:
 0. Git and GitHub Startup: initialize or verify Git, `.gitignore`, README, initial checkpoint commit for new projects, and private GitHub origin when possible.
 1. Concept: promise, target player, player-feedback discovery, pillars, anti-pillars, reference principles, and visual-artifact requirements for formal design docs.
 2. Prototype: one risky assumption, minimum test, emoji/SVG demo placeholders where assets are missing, proceed/pivot/cut verdict.
-3. System Design: core loop, mechanics, content rules, economy, difficulty ramp, professional flowcharts, and Figma/FigJam UI/UE diagrams when the output is a formal 策划案/GDD.
+3. System Design: feature Word design docs, core loop, mechanics, content rules, economy, difficulty ramp, professional flowcharts, and per-page Figma/FigJam UE diagrams.
 3A. CSV Data Config: schemas, starter rows, IDs, validation rules, runtime loading path.
 4. Technical Architecture: engine architecture, module boundaries, data/resources, 2D scene/layer model by default, performance budget.
 5. Vertical Slice: playable slice plan, tasks, owners, acceptance criteria.
@@ -74,6 +75,28 @@ For implementation tasks, use:
 - Acceptance criteria
 - Verification
 - Risks
+
+## Feature Design Specification Defaults
+
+Every production feature must have an independent Word design document before implementation unless the user explicitly marks the work as a throwaway prototype.
+
+Route feature design through:
+
+Producer -> System Designer -> Game Designer -> Numerical Designer -> Art Director -> UI Artist -> UI Programmer -> Technical Director -> QA Lead.
+
+Use the smallest useful subset of that route. System Designer owns the feature spec, revision, implementation follow-through, and acceptance alignment. Numerical Designer owns formulas, economy, progression curves, reward values, and tuning tables.
+
+Required outputs for every feature:
+
+- Editable Word `.docx` feature design document.
+- PDF review export when useful for review/share.
+- Figma/FigJam UE diagram for every page, popup, HUD panel, modal, or stateful screen.
+- Written transition map describing page entry, exit, back, close, confirm, cancel, failure, retry, and edge-case jumps.
+- Per-page UE explanation describing every information element, what it means, when it appears, how it behaves, and which system owns it.
+- Data-source map for every displayed data value, such as CSV table/column, Resource field, save data, runtime state, inventory/economy service, localization key, platform account data, or remote service.
+- Acceptance checklist for design, UI/UE, data, implementation, and QA.
+
+The user's reviewed and edited Word/Figma design is the source of truth. If the user's changes are substantial, System Designer must revise the feature spec, UE page explanations, data-source map, acceptance criteria, and downstream implementation tasks before coding continues.
 
 ## Player Feedback Discovery Defaults
 
@@ -136,12 +159,14 @@ Prefer separated modules for input, movement, combat, interaction, inventory, ec
 
 For any formal 策划案, GDD, system design document, feature specification, UI flow, onboarding flow, shop flow, combat flow, economy flow, or progression flow, route through:
 
-Producer -> Game Designer -> Art Director -> UI Artist -> UI Programmer -> QA Lead.
+Producer -> System Designer -> Game Designer -> Numerical Designer -> Art Director -> UI Artist -> UI Programmer -> QA Lead.
 
 A formal design document is not done unless it contains:
 
 - Gameplay/system flowchart: player actions, system states, branches, rewards, failure/retry, and end conditions.
 - UI/UE diagram: screen map, user journey, wireframes, interaction states, entry/exit paths, and key feedback.
+- Per-page UE explanation: every information element on each page, its meaning, display condition, interaction behavior, owner system, and data source when data is displayed.
+- Written transition map: all page jumps, entry/exit paths, back/close/confirm/cancel behavior, failure/retry paths, and edge-case transitions.
 
 Gameplay/system flowcharts must use professional planning, product, UX, or diagram tools such as Axure RP, Miro, diagrams.net/draw.io, ProcessOn, Visio, MasterGo, Mockplus, FigJam, or the project's approved equivalent.
 
@@ -254,7 +279,7 @@ For Godot games, prefer:
 
 For game systems that need configurable content, route through:
 
-Systems Designer -> Data Config Specialist -> Technical Director -> Godot Specialist -> QA Lead.
+Numerical Designer -> Data Config Specialist -> Technical Director -> Godot Specialist -> QA Lead.
 
 Store designer-editable configuration as CSV by default. Use stable `id` columns, one concept per table, ID references between tables, semicolon-separated lists only when needed, formulas in code, and tuning constants in CSV.
 
@@ -330,12 +355,15 @@ When more detail is needed, read these files in this skill folder:
 - `references/2d-game-production-reference.md`
 - `references/master-game-visual-design-reference.md`
 - `references/professional-art-production-reference.md`
+- `references/feature-design-spec-reference.md`
 - `references/ui-implementation-reference.md`
 - `references/agent-sprite-forge-reference.md`
 - `references/csv-data-config-reference.md`
 - `references/brawler-arcade-ui-core-reference.md`
 - `references/reverse-engineering-reference.md`
 - `agents/art-director.md`
+- `agents/system-designer.md`
+- `agents/numerical-designer.md`
 - `agents/ui-programmer.md`
 - `agents/sprite-forge-specialist.md`
 - `agents/2d-animation-specialist.md`

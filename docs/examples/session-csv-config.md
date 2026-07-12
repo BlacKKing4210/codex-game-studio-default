@@ -4,7 +4,7 @@ User asks to add weapons, enemies, and waves.
 
 Route:
 
-Systems Designer -> Data Config Specialist -> Technical Director -> Godot Specialist -> QA Lead.
+Numerical Designer -> Data Config Specialist -> Technical Director -> Godot Specialist -> QA Lead.
 
 Outputs:
 

@@ -11,10 +11,11 @@ This is the default Codex Game Studio delivery flow.
 5. For demos and prototypes, use emoji placeholders first, then simple original SVG placeholders for missing resources.
 6. For 2D or art-heavy work, define the simple premium visual sentence, complexity budget, reference lessons, and anti-copying notes before asset production.
 7. Keep configuration CSV-first where practical.
-8. For formal design docs, create professional flowcharts and Figma/FigJam UI/UE diagrams before implementation handoff.
-9. For UI mockups or Figma screens, require UI Programmer handoff: design tokens, component state matrix, reusable controls, responsive/safe-area rules, screenshot parity, and UI QA checklist.
-10. For 2D work, define sprite specs, animation specs, layer/y-sort/collision rules, atlas/import settings, and QA previews before asset integration.
-11. Implement in small feature batches with QA and version finish.
+8. For every production feature, create an independent Word `.docx` design spec before implementation, then let the user review/edit it.
+9. For every page, popup, HUD panel, modal, or stateful screen in that feature, create a Figma/FigJam UE diagram, written transition map, per-page explanation, and data-source map.
+10. For UI mockups or Figma screens, require UI Programmer handoff: design tokens, component state matrix, reusable controls, responsive/safe-area rules, screenshot parity, and UI QA checklist.
+11. For 2D work, define sprite specs, animation specs, layer/y-sort/collision rules, atlas/import settings, and QA previews before asset integration.
+12. Implement in small feature batches only after the approved design version is clear, then finish with QA and version finish.
 
 ## Phase 0: Git and GitHub Startup
 
@@ -44,7 +45,7 @@ Outputs:
 - Anti-pillars.
 - Reference principles without copying protected content.
 - Simple premium 2D visual sentence and complexity budget when the project uses 2D visuals.
-- Visual-artifact plan for any formal 策划案/GDD: required gameplay/system flowcharts and Figma/FigJam UI/UE diagrams.
+- Visual-artifact plan for any formal 策划案/GDD: required gameplay/system flowcharts, feature Word specs, per-page Figma/FigJam UE diagrams, transition maps, per-page explanations, and data-source maps.
 
 Gate:
 
@@ -72,17 +73,70 @@ Gate:
 
 Outputs:
 
+- Feature Word `.docx` design document for every production feature.
+- PDF review export when useful for review/share.
 - Core loop.
 - Weapons, enemies, upgrades, economy, difficulty.
 - Player feedback synthesis and direction decision.
 - Tuning knobs and acceptance criteria.
 - Gameplay/system flowchart source file and exported review image/PDF.
-- Figma/FigJam UI/UE source link or exported `.fig` reference plus exported review image/PDF when the system has any screen, HUD, menu, onboarding, shop, progression, or decision interface.
+- Per-page Figma/FigJam UE source link or exported `.fig` reference plus exported review image/PDF for every page, popup, HUD panel, modal, or stateful screen.
+- Written transition map for page entry, exit, back, close, confirm, cancel, failure, retry, and edge-case jumps.
+- Per-page UE explanation for every information element.
+- Data-source map for every displayed data value.
+- User review notes and revision log.
 
 Gate:
 
 - Major gameplay systems have testable rules and known dependencies.
-- A formal 策划案/GDD cannot move to architecture or implementation while its required flowchart or Figma/FigJam UI/UE diagram is missing.
+- A production feature cannot move to architecture or implementation while its Word design spec, required flowcharts, per-page Figma/FigJam UE diagrams, transition map, page explanations, data-source map, or user review status is missing.
+
+## Feature Design Specification Gate
+
+This gate applies to every production feature unless the user explicitly labels it as a throwaway prototype.
+
+Route:
+
+Producer -> System Designer -> Game Designer -> Numerical Designer -> Art Director -> UI Artist -> UI Programmer -> Technical Director -> QA Lead.
+
+Required deliverables:
+
+- Editable Word `.docx` feature design document.
+- PDF review export when useful for review/share.
+- Figma/FigJam UE diagram for every page, popup, HUD panel, modal, or stateful screen.
+- Exported UE review images/PDF.
+- Written transition map.
+- Per-page UE explanation.
+- Data-source map for every displayed value.
+- Acceptance checklist for design, UI/UE, data, implementation, and QA.
+- User review notes and revision log.
+
+Per-page UE explanation must include:
+
+- Element id or name.
+- Player-facing meaning.
+- Display condition.
+- Interaction behavior.
+- Data source when the element displays data.
+- Fallback, empty, loading, locked, disabled, or error state.
+- Owner system or module.
+
+Data-source examples:
+
+- CSV table and column.
+- Godot Resource field.
+- Save data field.
+- Runtime state.
+- Inventory, economy, mission, shop, progression, or account service.
+- Localization key.
+- Remote service/API when the project uses one.
+
+User review rule:
+
+- The user's reviewed and edited Word/Figma design is the source of truth.
+- If user changes are small, update the affected spec sections and task cards.
+- If user changes are large, return to System Designer for a revised design pass before implementation continues.
+- Implementation and QA must cite the approved design version they are following.
 
 ## Design Document Visual Artifact Gate
 
@@ -92,6 +146,8 @@ Required artifacts:
 
 - Gameplay/system flowchart: player actions, system states, decision branches, rewards, failure/retry paths, and end conditions.
 - UI/UE diagram: screen map, user journey, wireframes, interaction states, entry/exit paths, and key feedback.
+- Per-page UE explanation: every information element, meaning, display condition, interaction behavior, owner system, and data source when data is displayed.
+- Written transition map: page jumps, entry/exit paths, back/close/confirm/cancel behavior, failure/retry paths, and edge-case transitions.
 
 Tooling rule:
 
@@ -103,13 +159,16 @@ Delivery rule:
 
 - Gameplay/system flowchart editable sources live under `design/flows/`.
 - UI/UE editable Figma/FigJam URLs or exported `.fig` source references live under `design/uiue/`.
+- Feature Word `.docx` specs live under `design/features/` or the project equivalent.
 - Exported PNG/PDF review files live under `design/exports/` or `docs/assets/`.
 - The design document links to the exported diagrams and names the editable source files or Figma/FigJam URLs.
 
 Review rule:
 
 - Producer checks scope and completeness.
+- System Designer checks feature spec completeness, revision status, page explanations, transition maps, data-source maps, and acceptance criteria.
 - Game Designer checks gameplay and system correctness.
+- Numerical Designer checks formulas, economy, progression, reward values, and tuning assumptions.
 - Art Director checks visual communication and readability.
 - UI Artist checks UI visual language, hierarchy, icon/state clarity, and screen readability.
 - UI Programmer checks implementability of UI/UE flow.

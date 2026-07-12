@@ -4,7 +4,7 @@ Use CSV files for designer-editable game content and balance by default.
 
 ## Default Route
 
-Systems Designer -> Data Config Specialist -> Technical Director -> Godot Specialist -> QA Lead.
+Numerical Designer -> Data Config Specialist -> Technical Director -> Godot Specialist -> QA Lead.
 
 ## Table Rules
 

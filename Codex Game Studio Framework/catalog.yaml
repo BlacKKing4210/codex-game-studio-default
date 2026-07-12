@@ -1,6 +1,6 @@
 version: 1
 name: codex-game-studio-default
-summary: 2D-first, Godot-first Codex Game Studio workflow with simple premium visual design, master-level art roles, professional design artifacts, professional art production, modular implementation, CSV data config, Sprite Forge art, procedural motion, QA, and Git version finish.
+summary: 2D-first, Godot-first Codex Game Studio workflow with feature Word design specs, per-page Figma/FigJam UE diagrams, simple premium visual design, master-level art roles, professional art production, modular implementation, CSV data config, Sprite Forge art, procedural motion, QA, and Git version finish.
 
 agents:
   - id: producer
@@ -19,10 +19,14 @@ agents:
     tier: lead
     owns: [core_loop, mechanics, weapons, enemies, upgrades, progression, difficulty, gameplay_flowcharts, player_feedback_synthesis]
     skills: [system_design, gameplay_rules, player_motivation, player_feedback_discovery, feedback_synthesis, acceptance_criteria, professional_flowchart_spec]
-  - id: systems-designer
+  - id: system-designer
+    tier: lead
+    owns: [feature_design_docs, word_design_specs, feature_scope, ue_page_requirements, page_transition_maps, per_page_explanations, data_source_maps, acceptance_criteria, implementation_follow_through, user_revision_alignment]
+    skills: [feature_system_planning, word_docx_specs, figma_uiue_handoff, information_architecture, navigation_flow_spec, page_element_documentation, data_source_mapping, acceptance_criteria, revision_control]
+  - id: numerical-designer
     tier: lead
     owns: [economy, formulas, progression_curves, wave_pressure, upgrade_value]
-    skills: [balance_math, tuning_models, economy_loops, data_table_design]
+    skills: [balance_math, tuning_models, economy_loops, progression_math, reward_value_design, data_table_design]
   - id: data-config-specialist
     tier: specialist
     owns: [csv_schemas, ids, references, starter_rows, validation_rules, loading_path]
@@ -107,10 +111,13 @@ workflow_lanes:
     route: [producer, prototyper, qa-lead]
     outputs: [risky_assumption, minimum_test, emoji_demo_placeholders, svg_placeholder_assets, verdict]
   - id: system-design
-    route: [game-designer, systems-designer, qa-lead]
-    outputs: [core_loop, systems, formulas, player_feedback_synthesis, direction_decision, acceptance_criteria, professional_flowchart_source, figma_uiue_source, exported_diagram_review_copies]
+    route: [system-designer, game-designer, numerical-designer, qa-lead]
+    outputs: [feature_word_design_doc, feature_pdf_review_export, core_loop, systems, formulas, player_feedback_synthesis, direction_decision, acceptance_criteria, professional_flowchart_source, per_page_figma_uiue_sources, page_transition_map, per_page_ue_explanations, data_source_map, exported_diagram_review_copies, user_review_notes]
+  - id: feature-design-spec
+    route: [producer, system-designer, game-designer, numerical-designer, ui-artist, ui-programmer, technical-director, qa-lead]
+    outputs: [feature_word_design_doc, feature_pdf_review_export, per_page_figma_uiue_sources, exported_ue_review_copies, written_transition_map, per_page_ue_explanations, data_source_map, acceptance_checklist, user_revision_log]
   - id: csv-data-config
-    route: [systems-designer, data-config-specialist, technical-director, godot-specialist, qa-lead]
+    route: [numerical-designer, data-config-specialist, technical-director, godot-specialist, qa-lead]
     outputs: [schemas, starter_rows, ids, validation_rules, loading_path]
   - id: technical-architecture
     route: [technical-director, lead-programmer, godot-specialist]
@@ -140,7 +147,7 @@ workflow_lanes:
     route: [lead-programmer, relevant_specialist, qa-lead]
     outputs: [module_breakdown, module_contracts, code_changes, data_changes, per_module_verification, integration_verification]
   - id: qa-tuning
-    route: [qa-lead, systems-designer, performance-analyst]
+    route: [qa-lead, numerical-designer, performance-analyst]
     outputs: [smoke_check, playtest_notes, bug_list, balance_notes]
   - id: reverse-engineering
     route: [technical-director, lead-programmer, reverse-engineering-specialist, qa-lead]
@@ -175,6 +182,10 @@ gates:
   - id: 2d-production-quality
     verdicts: [approve, concerns, reject]
   - id: design-document-artifacts
+    verdicts: [approve, concerns, reject]
+  - id: feature-design-spec
+    verdicts: [approve, concerns, reject]
+  - id: user-review-source-of-truth
     verdicts: [approve, concerns, reject]
   - id: ui-implementation-quality
     verdicts: [approve, concerns, reject]

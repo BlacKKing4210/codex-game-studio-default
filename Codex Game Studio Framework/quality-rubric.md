@@ -22,6 +22,9 @@ Use this rubric when reviewing changes to the Codex Game Studio workflow.
 - Godot 4 and GDScript remain the default unless project context says otherwise.
 - CSV remains default for designer-editable content.
 - Concept and System Design include player feedback discovery, feedback synthesis, or a clear feedback plan with testable assumptions.
+- System Designer owns feature-level Word design specs, page UE requirements, transition maps, per-page explanations, data-source maps, implementation follow-through, acceptance criteria, and user revision alignment.
+- Numerical Designer is the current name for numeric, economy, formulas, reward values, progression curves, and tuning work.
+- Every production feature has an independent Word `.docx` design document, per-page Figma/FigJam UE diagrams, written transition map, per-page explanation, data-source map, acceptance checklist, and user review status before implementation.
 - Demo and prototype work uses emoji placeholders first, then simple original SVG placeholders for missing visual resources that emoji cannot represent clearly.
 - Art-related agents use master-level visual design references as principle studies, with explicit anti-copying constraints.
 - 2D visual direction defaults to simple premium design: readable in seconds, controlled shape/color/UI systems, reusable production pieces, and no added complexity unless it improves gameplay, emotion, or reward.
@@ -46,5 +49,6 @@ Use this rubric when reviewing changes to the Codex Game Studio workflow.
 - README explains what the repo does.
 - AGENTS.md matches SKILL.md.
 - Catalog and docs agree on agent names and routes.
-- Formal design docs require Figma/FigJam source links or `.fig` source references for UI/UE diagrams.
+- Formal design docs require Word feature specs plus Figma/FigJam source links or `.fig` source references for every page UE diagram.
+- User-reviewed Word/Figma edits are treated as the source of truth, and substantial changes route back through System Designer before implementation continues.
 - Migration notes exist for breaking workflow changes.
