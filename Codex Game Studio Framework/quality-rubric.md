@@ -15,6 +15,7 @@ Use this rubric when reviewing changes to the Codex Game Studio workflow.
 - Agents do not claim cross-domain authority.
 - Routes include QA for user-facing work.
 - Specialist additions have a clear need.
+- Framework Designer owns cross-system structure and contracts without duplicating the Technical Director's technology authority or the Lead Programmer's implementation authority.
 
 ## Game Development Defaults
 
@@ -26,6 +27,8 @@ Use this rubric when reviewing changes to the Codex Game Studio workflow.
 - Scheduled orchestration uses stable Task IDs, at most one active thread per task, existing-thread continuation for recoverable interruptions, and a separate isolated thread for each eligible not-started task.
 - Quota, timeout, permission, authentication, network, host, and external blockers are recorded and retried only when allowed; the workflow never claims to bypass platform limits.
 - Tasks do not auto-start until dependencies, approved design/user-review gates, and module-conflict checks pass.
+- Producer, Creative Director, Framework Designer, and relevant department leads raise material objections directly before affected work proceeds; the feedback states objection, reason, impact, recommendation, and decision needed.
+- Affected work remains blocked until the user's decision is recorded; unrelated approved work may continue, and agents do not manufacture ceremonial objections.
 - System Designer owns feature-level Word design specs, page UE requirements, transition maps, per-page explanations, data-source maps, implementation follow-through, acceptance criteria, and user revision alignment.
 - Numerical Designer is the current name for numeric, economy, formulas, reward values, progression curves, and tuning work.
 - Every production feature has an independent Word `.docx` design document, per-page Figma/FigJam UE diagrams, written transition map, per-page explanation, data-source map, acceptance checklist, and user review status before implementation.

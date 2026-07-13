@@ -21,6 +21,7 @@ A first playable slice should prove the smallest complete player experience for 
 - Creative gate: does this serve pillars and target fantasy?
 - Player feedback gate: has the design direction used real player opinions, playtest notes, review patterns, community comments, or an explicit feedback plan with testable assumptions?
 - Technical gate: is it simple, maintainable, and feasible in the engine?
+- Leadership objection gate: have the Producer, Creative Director, Framework Designer, and relevant department leads raised material concerns directly, and has the user confirmed every unresolved affected decision before work continues?
 - Project management gate: is there one canonical task plan with stable Task IDs, dependencies, conflict scopes, thread IDs, retry state, acceptance criteria, and no duplicate active task threads?
 - Feature design spec gate: does every production feature have an editable Word design spec, per-page Figma/FigJam UE diagrams, written transition map, per-page explanations, data-source map, acceptance checklist, and user review status?
 - Demo placeholder gate: are missing demo resources represented with readable emoji or simple original SVG placeholders instead of blocking gameplay validation?
@@ -42,7 +43,8 @@ A first playable slice should prove the smallest complete player experience for 
 - Game identity: Creative Director.
 - Player feedback discovery: Producer + Creative Director + Game Designer + QA Lead.
 - Architecture or dependencies: Technical Director.
-- Module boundaries and contracts: Technical Director + Lead Programmer.
+- Cross-system framework, domain boundaries, lifecycle/state flow, integration contracts, and extension points: Framework Designer.
+- Module boundaries and contracts: Technical Director + Framework Designer + Lead Programmer.
 - Feature system planning and Word design specs: Producer + System Designer + QA Lead.
 - Mechanics/content: System Designer + Game Designer.
 - Numeric/economy/balance: Numerical Designer.
@@ -82,6 +84,17 @@ For substantial work, produce:
 - implementation notes
 - verification performed
 - risks and next step
+- leadership objections, user decision, confirmation date/version, and affected scope when the objection gate is triggered
+
+## Leadership Objection And User Confirmation
+
+The Producer, Creative Director, Framework Designer, and relevant department leads must raise material objections immediately instead of silently following a requirement they professionally judge to be harmful or materially inferior.
+
+Relevant leads include Technical Director, Game Designer, System Designer, Numerical Designer, Lead Programmer, Art Director, QA Lead, and any specialist assigned ownership of a department or workstream.
+
+Trigger conditions include conflicts with player value, approved direction, scope, schedule, framework integrity, feasibility, maintainability, performance, art quality, testability, safety, legal constraints, or a materially better alternative.
+
+The feedback contract is `Objection -> Reason -> Impact -> Recommendation -> Decision needed`. Begin with the conclusion and avoid indirect or diplomatic filler. Pause only the affected scope. After the user confirms, record the decision in the relevant design doc, task plan, ADR/decision log, or review note and continue from that approved state. Do not invent objections or repeatedly relitigate a decision without new evidence.
 
 For feature work, keep acceptance criteria testable and small enough to verify in the current milestone.
 

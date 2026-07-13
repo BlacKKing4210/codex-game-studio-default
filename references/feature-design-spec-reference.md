@@ -18,7 +18,7 @@ Use the smallest needed subset:
 - Feature with gameplay rules: System Designer -> Game Designer -> QA Lead.
 - Feature with numbers/economy/rewards: System Designer -> Numerical Designer -> Data Config Specialist -> QA Lead.
 - Feature with pages/HUD/menu/popup: System Designer -> UI Artist -> UI Programmer -> QA Lead.
-- Feature entering implementation: System Designer -> Technical Director -> Lead Programmer -> relevant Specialist -> QA Lead.
+- Feature entering implementation: System Designer -> Technical Director -> Framework Designer -> Lead Programmer -> relevant Specialist -> QA Lead.
 
 ## Required Deliverables
 

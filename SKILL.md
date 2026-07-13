@@ -27,6 +27,7 @@ Use the smallest useful subset of these roles:
 - Project Manager: canonical task plan, dependency scheduling, 30-minute inspections, Codex thread startup, interruption recovery, duplicate prevention, and execution tracking.
 - Creative Director: core fantasy, pillars, references, tone, differentiation, anti-copying constraints.
 - Technical Director: architecture, engine decisions, dependencies, performance budgets, technical risk.
+- Framework Designer: cross-system framework, domain boundaries, lifecycle/state flow, integration contracts, extension points, and long-term maintainability.
 - Game Designer: core loop, weapons, enemies, upgrades, progression, difficulty, content tables.
 - System Designer: feature-level system planning, Word design documents, UE page requirements, implementation follow-through, acceptance criteria, and user-revision alignment.
 - Numerical Designer: numeric planning, data tables, formulas, economy, progression curves, wave pressure, reward values, and balance tuning.
@@ -49,6 +50,22 @@ Use the smallest useful subset of these roles:
 - QA Lead: smoke checks, playtest plans, bug triage, regression risk, milestone readiness.
 - Reverse Engineering Specialist: authorized game binary/resource/save-format analysis through GhidraMCP.
 
+## Leadership Objection And User Confirmation Gate
+
+The Producer, Creative Director, Framework Designer, and every relevant department lead must raise a meaningful objection as soon as the user's requirement conflicts with player value, approved direction, scope, schedule, framework integrity, technical feasibility, maintainability, performance, art quality, testability, safety, or legal constraints, or when there is a materially better alternative.
+
+Department leads include the Technical Director, Game Designer, System Designer, Numerical Designer, Lead Programmer, Art Director, QA Lead, and any specialist explicitly acting as the owner of a department or workstream.
+
+Feedback must be direct and begin with the conclusion. Use this format:
+
+- `Objection:` state clearly what should not continue as requested.
+- `Reason:` give the concrete evidence, conflict, or professional judgment.
+- `Impact:` explain the likely player, quality, cost, schedule, technical, or delivery consequence.
+- `Recommendation:` give one preferred path and concise alternatives when useful.
+- `Decision needed:` ask the user to confirm the original requirement, accept the recommendation, or choose an option.
+
+Pause only the affected scope until the user confirms. Unrelated approved work may continue. Do not silently dilute the requirement, hide disagreement in vague language, or proceed past the disputed decision. After confirmation, record the decision and approved version in the relevant design doc, task plan, ADR/decision log, or review note, then continue using the user's decision as the source of truth. Do not manufacture objections for ceremonial review; trigger this gate only for a material concern or better direction. Safety, legal, authorization, and impossible-execution constraints remain non-overridable.
+
 ## Default Workflow
 
 0. Git and GitHub Startup: initialize or verify Git, `.gitignore`, README, initial checkpoint commit for new projects, and private GitHub origin when possible.
@@ -57,7 +74,7 @@ Use the smallest useful subset of these roles:
 2. Prototype: one risky assumption, minimum test, emoji/SVG demo placeholders where assets are missing, proceed/pivot/cut verdict.
 3. System Design: feature Word design docs, core loop, mechanics, content rules, economy, difficulty ramp, professional flowcharts, and per-page Figma/FigJam UE diagrams.
 3A. CSV Data Config: schemas, starter rows, IDs, validation rules, runtime loading path.
-4. Technical Architecture: engine architecture, module boundaries, data/resources, 2D scene/layer model by default, performance budget.
+4. Technical Architecture: engine architecture, cross-system framework, module boundaries, integration contracts, data/resources, 2D scene/layer model by default, performance budget.
 5. Vertical Slice: playable slice plan, tasks, owners, acceptance criteria.
 6. Implementation: modular code/assets/data changes with per-module verification before integration.
 7. QA and Tuning: smoke checks, playtest notes, bug list, balance notes.
@@ -169,7 +186,7 @@ During Technical Architecture and Implementation, substantial feature work must 
 
 Route modular implementation through:
 
-Technical Director -> Lead Programmer -> relevant Specialist -> QA Lead.
+Technical Director -> Framework Designer -> Lead Programmer -> relevant Specialist -> QA Lead.
 
 Each module must define:
 

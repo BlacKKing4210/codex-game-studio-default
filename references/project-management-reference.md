@@ -6,7 +6,7 @@ Use this reference when a game project needs scheduled task monitoring, automati
 
 - Producer owns scope, priority, milestones, ship/iterate/pivot decisions, and final delivery direction.
 - Project Manager owns task-plan accuracy, dependency scheduling, thread lifecycle, interruption recovery, and execution tracking.
-- Technical Director and Lead Programmer own module boundaries and conflict scopes for development tasks.
+- Technical Director, Framework Designer, and Lead Programmer own technical direction, cross-system boundaries/contracts, and conflict scopes for development tasks.
 - QA Lead owns acceptance evidence and readiness verdicts.
 - The user remains the final authority for design changes, scope changes, permissions, publishing, merges, and releases.
 
@@ -45,7 +45,7 @@ For each scheduled inspection:
 2. Reconcile every `Starting`, `In Progress`, and `Interrupted` row with its recorded thread.
 3. If a thread is still running, update `Last Check` only.
 4. If a thread stopped because of quota, timeout, tool failure, host restart, network failure, or another recoverable interruption, set `Interrupted`, preserve the blocker, and continue the same thread when retry is allowed.
-5. If a thread needs user input, credentials, approval, a design decision, or an external state change, set `Blocked` and do not loop prompts.
+5. If a thread needs user input, credentials, approval, a design decision, leadership-objection confirmation, or an external state change, set `Blocked` and do not loop prompts.
 6. If work is complete, record its commit/artifacts and move it to `Review`; mark `Done` only after acceptance and integration are confirmed.
 7. Find every `Not Started` task whose dependencies are `Done`, whose required design/user-review gates are satisfied, and whose conflict scope does not overlap active work.
 8. Set the row to `Starting` before creating a thread, then create one new isolated thread for that Task ID and record its thread ID immediately.
@@ -59,7 +59,7 @@ Every new task thread prompt must include:
 - Project and Task ID.
 - Goal and approved design/spec references.
 - Module boundary and files/conflict scope.
-- Dependencies already satisfied.
+- Dependencies already satisfied, including resolved leadership objections and recorded user confirmation for the affected scope.
 - Acceptance criteria and verification.
 - Required artifacts or commit handoff.
 - Instruction to preserve unrelated user changes.

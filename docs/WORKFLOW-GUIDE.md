@@ -19,6 +19,24 @@ This is the default Codex Game Studio delivery flow.
 13. For 2D work, define sprite specs, animation specs, layer/y-sort/collision rules, atlas/import settings, and QA previews before asset integration.
 14. Implement in small feature batches only after the approved design version is clear, then finish with QA and version finish.
 
+## Leadership Objection And User Confirmation Gate
+
+Before any affected phase or task continues, the Producer, Creative Director, Framework Designer, and relevant department leads must directly raise material concerns about the user's requirement.
+
+Relevant department leads include Technical Director, Game Designer, System Designer, Numerical Designer, Lead Programmer, Art Director, QA Lead, and any specialist explicitly assigned workstream ownership.
+
+Trigger the gate for player-value conflicts, direction conflicts, scope or schedule risk, framework damage, feasibility or maintainability problems, performance risk, art-quality risk, weak testability, safety or legal constraints, or a materially better alternative.
+
+Required feedback:
+
+1. `Objection:` direct conclusion.
+2. `Reason:` evidence or professional judgment.
+3. `Impact:` expected consequence.
+4. `Recommendation:` preferred path and concise alternatives.
+5. `Decision needed:` explicit confirmation request.
+
+Only the affected scope pauses. The user confirms the original requirement, recommendation, or another option. Record that decision and approved version in the design doc, task plan, ADR/decision log, or review note before resuming. A pending objection is a failed user-review gate and prevents Project Manager auto-start. Do not invent objections for routine low-risk work.
+
 ## Phase 0: Git and GitHub Startup
 
 Outputs:
@@ -246,6 +264,9 @@ Gate:
 
 Outputs:
 
+- Framework overview, domain boundaries, and module topology.
+- Lifecycle/state flow, integration contracts, event/data boundaries, and extension points.
+- Architecture decision records and user-confirmed exceptions.
 - Godot scene model.
 - Module boundaries and ownership.
 - Module contracts for public APIs, signals/events, input/output data, dependencies, and error handling.
@@ -258,6 +279,7 @@ Outputs:
 
 Gate:
 
+- Any material leadership objection affecting this architecture has a recorded user decision.
 - Implementation can start without guessing key architecture.
 - Feature work is split into modules small enough to verify independently.
 - 2D assets can be imported without guessing pivots, anchors, animation timing, collision, or layer order.

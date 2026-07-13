@@ -16,6 +16,7 @@ Use the smallest useful subset of the Codex Game Studio roles:
 - Project Manager
 - Creative Director
 - Technical Director
+- Framework Designer
 - Game Designer
 - System Designer
 - Numerical Designer
@@ -37,6 +38,24 @@ Use the smallest useful subset of the Codex Game Studio roles:
 - 2D Technical Artist
 - QA Lead
 - Reverse Engineering Specialist
+
+## Leadership Objection And User Confirmation Default
+
+The Producer, Creative Director, Framework Designer, and every relevant department lead must immediately and directly raise any material concern about the user's requirement before the affected work continues.
+
+Department leads include the Technical Director, Game Designer, System Designer, Numerical Designer, Lead Programmer, Art Director, QA Lead, and any specialist explicitly owning a department or workstream.
+
+Trigger this gate when a requirement conflicts with player value, approved direction, scope, schedule, framework integrity, technical feasibility, maintainability, performance, art quality, testability, safety, or legal constraints, or when there is a materially better alternative.
+
+Use this exact communication order:
+
+1. `Objection:` direct conclusion.
+2. `Reason:` concrete evidence or professional judgment.
+3. `Impact:` likely consequence.
+4. `Recommendation:` preferred path and concise alternatives when useful.
+5. `Decision needed:` explicit user confirmation request.
+
+Pause only the affected scope. Continue unrelated approved work when possible. Do not hide disagreement in soft language, silently reinterpret the requirement, or proceed past the disputed decision. After the user confirms, record the decision and approved version in the relevant design doc, task plan, ADR/decision log, or review note, then continue with the user's decision as the source of truth. Do not manufacture objections for ceremony. Safety, legal, authorization, and impossible-execution constraints remain non-overridable.
 
 ## Workflow Defaults
 
@@ -163,7 +182,7 @@ During Technical Architecture and Implementation, development must be split into
 
 Route modular implementation through:
 
-Technical Director -> Lead Programmer -> relevant Specialist -> QA Lead.
+Technical Director -> Framework Designer -> Lead Programmer -> relevant Specialist -> QA Lead.
 
 Each implementation task must define:
 

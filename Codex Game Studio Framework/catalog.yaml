@@ -1,6 +1,6 @@
 version: 1
 name: codex-game-studio-default
-summary: 2D-first, Godot-first Codex Game Studio workflow with 30-minute project management, interruption recovery, isolated task threads, feature Word design specs, per-page Figma/FigJam UE diagrams, simple premium visual design, master-level art roles, professional art production, modular implementation, CSV data config, Sprite Forge art, procedural motion, QA, and Git version finish.
+summary: 2D-first, Godot-first Codex Game Studio workflow with direct leadership objection and user-confirmation gates, 30-minute project management, interruption recovery, isolated task threads, feature Word design specs, per-page Figma/FigJam UE diagrams, simple premium visual design, master-level art roles, professional art production, modular implementation, CSV data config, Sprite Forge art, procedural motion, QA, and Git version finish.
 
 agents:
   - id: producer
@@ -19,6 +19,10 @@ agents:
     tier: direction
     owns: [architecture, module_boundaries, engine_decisions, dependencies, performance_budget, technical_risk]
     skills: [architecture_review, module_boundary_review, dependency_risk, performance_budgeting, technical_gate]
+  - id: framework-designer
+    tier: direction
+    owns: [cross_system_framework, domain_boundaries, module_topology, lifecycle_state_flow, integration_contracts, event_data_boundaries, extension_points, maintainability]
+    skills: [domain_modeling, framework_design, module_topology, contract_design, extension_point_design, architecture_decision_records, maintainability_review, leadership_objection_gate]
   - id: game-designer
     tier: lead
     owns: [core_loop, mechanics, weapons, enemies, upgrades, progression, difficulty, gameplay_flowcharts, player_feedback_synthesis]
@@ -127,8 +131,8 @@ workflow_lanes:
     route: [numerical-designer, data-config-specialist, technical-director, godot-specialist, qa-lead]
     outputs: [schemas, starter_rows, ids, validation_rules, loading_path]
   - id: technical-architecture
-    route: [technical-director, lead-programmer, godot-specialist]
-    outputs: [module_boundaries, module_contracts, scene_model, resource_model, signal_boundaries, default_2d_layer_model, performance_budget]
+    route: [technical-director, framework-designer, lead-programmer, godot-specialist]
+    outputs: [framework_overview, domain_boundaries, module_topology, lifecycle_state_flow, module_contracts, integration_contracts, extension_points, scene_model, resource_model, signal_boundaries, default_2d_layer_model, performance_budget]
   - id: 2d-game-production
     route: [producer, creative-director, art-director, technical-director, 2d-technical-artist, relevant_specialist, godot-specialist, qa-lead]
     outputs: [camera_view, target_resolution, sprite_specs, animation_specs, layer_order, y_sort_rules, collision_layers, atlas_plan, import_settings, vfx_material_rules, qa_previews]
@@ -164,6 +168,8 @@ workflow_lanes:
     outputs: [verification_summary, commit_hash, pushed_branch_or_blocker]
 
 gates:
+  - id: leadership-objection-user-confirmation
+    verdicts: [approve, concerns, blocked_pending_user_confirmation]
   - id: creative
     verdicts: [approve, concerns, reject]
   - id: player-feedback
