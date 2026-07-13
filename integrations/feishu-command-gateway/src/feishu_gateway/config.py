@@ -57,15 +57,19 @@ class Settings:
         if not app_id or not app_secret:
             raise ConfigurationError("FEISHU_APP_ID and FEISHU_APP_SECRET are required")
 
-        bootstrap_token = os.getenv("FEISHU_BOOTSTRAP_TOKEN", "").strip()
-        if not bootstrap_token or bootstrap_token == "change-me":
-            raise ConfigurationError("FEISHU_BOOTSTRAP_TOKEN must be a generated secret")
-
+        authorized_users_file = root / "state" / "authorized_users.json"
         allowed_open_ids = frozenset(
             value.strip()
             for value in os.getenv("FEISHU_ALLOWED_OPEN_IDS", "").split(",")
             if value.strip()
         )
+        bootstrap_token = os.getenv("FEISHU_BOOTSTRAP_TOKEN", "").strip()
+        if bootstrap_token == "change-me":
+            raise ConfigurationError("FEISHU_BOOTSTRAP_TOKEN must be a generated secret")
+        if not bootstrap_token and not allowed_open_ids and not _has_bound_users(authorized_users_file):
+            raise ConfigurationError(
+                "FEISHU_BOOTSTRAP_TOKEN is required until a user is bound or a static allowlist is configured"
+            )
 
         projects_file = Path(os.getenv("CODEX_PROJECTS_FILE", "config/projects.json"))
         if not projects_file.is_absolute():
@@ -91,8 +95,20 @@ class Settings:
             max_queue=_int_env("CODEX_MAX_QUEUE", 10, 1, 100),
             max_reply_chars=_int_env("CODEX_MAX_REPLY_CHARS", 3500, 500, 10000),
             log_level=os.getenv("CODEX_LOG_LEVEL", "INFO").strip().upper(),
-            authorized_users_file=root / "state" / "authorized_users.json",
+            authorized_users_file=authorized_users_file,
         )
+
+
+def _has_bound_users(path: Path) -> bool:
+    if not path.is_file():
+        return False
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, UnicodeError, json.JSONDecodeError):
+        return False
+    if not isinstance(data, dict):
+        return False
+    return any(str(value).strip() for value in data.get("open_ids", []))
 
 
 def _load_projects(path: Path) -> dict[str, Project]:

@@ -21,6 +21,8 @@ class AuthorizedUsers:
     def bind(self, open_id: str, supplied_token: str, is_private_chat: bool) -> tuple[bool, str]:
         if not is_private_chat:
             return False, "绑定只能在与机器人的单聊中进行。"
+        if not self._bootstrap_token:
+            return False, "绑定功能已关闭；请在本机配置授权用户。"
         if not hmac.compare_digest(supplied_token, self._bootstrap_token):
             return False, "绑定口令无效。"
         with self._lock:
@@ -28,7 +30,7 @@ class AuthorizedUsers:
                 return False, "已有用户完成绑定；新增用户请在本机配置白名单。"
             self._bound_ids.add(open_id)
             self._save()
-        return True, "绑定成功。请立即从 .env 中删除或更换 FEISHU_BOOTSTRAP_TOKEN。"
+        return True, "绑定成功。可从 .env 中清空 FEISHU_BOOTSTRAP_TOKEN 并重启网关，以关闭再次绑定。"
 
     def _load(self) -> set[str]:
         if not self._state_file.is_file():

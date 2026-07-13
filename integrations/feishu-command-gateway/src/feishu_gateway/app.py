@@ -56,7 +56,7 @@ class FeishuGateway:
             self._settings.app_id,
             self._settings.app_secret,
             event_handler=event_handler,
-            log_level=lark.LogLevel.INFO,
+            log_level=lark.LogLevel.WARNING,
         )
         LOG.info("Starting Feishu long connection")
         ws_client.start()

@@ -67,7 +67,7 @@ if (-not (Test-Path -LiteralPath $envFile)) {
     $content = Get-Content -Raw -LiteralPath (Join-Path $gatewayRoot ".env.example")
     $content = $content.Replace("FEISHU_BOOTSTRAP_TOKEN=change-me", "FEISHU_BOOTSTRAP_TOKEN=$token")
     $content = $content.Replace("CODEX_EXECUTABLE=", "CODEX_EXECUTABLE=$($codexExe.FullName)")
-    Set-Content -LiteralPath $envFile -Value $content -Encoding utf8
+    [IO.File]::WriteAllText($envFile, $content, (New-Object Text.UTF8Encoding($false)))
 }
 
 $projects = Join-Path $gatewayRoot "config\projects.json"

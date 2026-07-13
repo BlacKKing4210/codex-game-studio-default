@@ -30,7 +30,7 @@ $safeAppId = $appId.Replace('$', '$$')
 $safeAppSecret = $appSecret.Replace('$', '$$')
 $content = [regex]::Replace($content, '(?m)^FEISHU_APP_ID=.*$', "FEISHU_APP_ID=$safeAppId")
 $content = [regex]::Replace($content, '(?m)^FEISHU_APP_SECRET=.*$', "FEISHU_APP_SECRET=$safeAppSecret")
-Set-Content -LiteralPath $envFile -Value $content -Encoding UTF8
+[IO.File]::WriteAllText($envFile, $content, (New-Object Text.UTF8Encoding($false)))
 $appSecret = $null
 
 Write-Output "Credentials saved to the ignored local .env file."

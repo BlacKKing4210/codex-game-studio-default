@@ -94,7 +94,7 @@ Read `FEISHU_BOOTSTRAP_TOKEN` from the ignored local `.env`, then send this to t
 /codex bind <token>
 ```
 
-After binding, remove or rotate the bootstrap token. A second account cannot self-bind after the first binding; add additional `open_id` values to `FEISHU_ALLOWED_OPEN_IDS` locally.
+After binding, clear `FEISHU_BOOTSTRAP_TOKEN` and restart the gateway to disable further bootstrap attempts. A second account cannot self-bind after the first binding; add additional `open_id` values to `FEISHU_ALLOWED_OPEN_IDS` locally.
 
 ## Commands
 
