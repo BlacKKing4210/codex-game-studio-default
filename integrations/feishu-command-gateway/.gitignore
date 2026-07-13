@@ -1,0 +1,6 @@
+.env
+.venv/
+.runtime/
+config/projects.json
+state/
+logs/
