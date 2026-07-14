@@ -5,12 +5,16 @@ import logging
 import re
 import sys
 import threading
+import time
+import uuid
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 import lark_oapi as lark
 from dotenv import load_dotenv
 from lark_oapi.api.im.v1 import (
+    CreateMessageRequest,
+    CreateMessageRequestBody,
     P2ImMessageReceiveV1,
     ReplyMessageRequest,
     ReplyMessageRequestBody,
@@ -46,7 +50,7 @@ class FeishuGateway:
             timeout_seconds=settings.timeout_seconds,
             max_output_chars=settings.max_reply_chars,
         )
-        self._jobs = JobManager(executor, self._conversations, settings.max_queue, self.reply_async)
+        self._jobs = JobManager(executor, self._conversations, settings.max_queue, self.deliver_job_result_async)
 
     def start(self) -> None:
         self._jobs.start()
@@ -198,21 +202,69 @@ class FeishuGateway:
     def reply_async(self, message_id: str, text: str) -> None:
         self._outgoing.submit(self._reply_text, message_id, text)
 
+    def deliver_job_result_async(self, message_id: str, text: str, chat_id: str) -> None:
+        delivery_id = uuid.uuid5(uuid.NAMESPACE_URL, f"feishu-codex:{message_id}:result").hex
+        self._outgoing.submit(self._send_text_to_chat, chat_id, text, delivery_id)
+
     def _reply_text(self, message_id: str, text: str) -> None:
-        request = (
-            ReplyMessageRequest.builder()
-            .message_id(message_id)
-            .request_body(
-                ReplyMessageRequestBody.builder()
-                .msg_type("text")
-                .content(json.dumps({"text": text}, ensure_ascii=False))
+        try:
+            request = (
+                ReplyMessageRequest.builder()
+                .message_id(message_id)
+                .request_body(
+                    ReplyMessageRequestBody.builder()
+                    .msg_type("text")
+                    .content(json.dumps({"text": text}, ensure_ascii=False))
+                    .build()
+                )
                 .build()
             )
-            .build()
+            response = self._api_client.im.v1.message.reply(request)
+            if response.success():
+                LOG.info("Feishu acknowledgement delivered: message_id=%s", message_id)
+            else:
+                LOG.error("Feishu reply failed: code=%s msg=%s", response.code, response.msg)
+        except Exception:
+            LOG.exception("Feishu acknowledgement raised an exception: message_id=%s", message_id)
+
+    def _send_text_to_chat(self, chat_id: str, text: str, delivery_id: str) -> None:
+        last_error = "unknown delivery error"
+        for attempt in range(1, 4):
+            try:
+                request = (
+                    CreateMessageRequest.builder()
+                    .receive_id_type("chat_id")
+                    .request_body(
+                        CreateMessageRequestBody.builder()
+                        .receive_id(chat_id)
+                        .msg_type("text")
+                        .content(json.dumps({"text": text}, ensure_ascii=False))
+                        .uuid(delivery_id)
+                        .build()
+                    )
+                    .build()
+                )
+                response = self._api_client.im.v1.message.create(request)
+                if response.success():
+                    LOG.info("Feishu task result delivered: chat_id=%s delivery_id=%s", chat_id, delivery_id)
+                    return
+                last_error = f"code={response.code} msg={response.msg}"
+            except Exception as exc:
+                last_error = f"{type(exc).__name__}: {exc}"
+            if attempt < 3:
+                LOG.warning(
+                    "Feishu task result delivery failed; retrying: attempt=%s chat_id=%s error=%s",
+                    attempt,
+                    chat_id,
+                    last_error,
+                )
+                time.sleep(attempt)
+        LOG.error(
+            "Feishu task result delivery exhausted retries: chat_id=%s delivery_id=%s error=%s",
+            chat_id,
+            delivery_id,
+            last_error,
         )
-        response = self._api_client.im.v1.message.reply(request)
-        if not response.success():
-            LOG.error("Feishu reply failed: code=%s msg=%s", response.code, response.msg)
 
     def _mark_seen(self, message_id: str) -> bool:
         with self._seen_lock:

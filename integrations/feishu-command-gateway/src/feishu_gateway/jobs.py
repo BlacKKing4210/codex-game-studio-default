@@ -31,6 +31,7 @@ class Job:
     requester_open_id: str
     reply_message_id: str
     conversation_key: str
+    chat_id: str
     conversation_generation: int
     thread_id_hint: str | None
     thread_name: str
@@ -47,7 +48,7 @@ class JobManager:
         executor: CodexExecutor,
         conversations: ConversationStore,
         max_queue: int,
-        reply: Callable[[str, str], None],
+        reply: Callable[[str, str, str], None],
     ):
         self._executor = executor
         self._conversations = conversations
@@ -75,6 +76,7 @@ class JobManager:
             requester_open_id=binding.open_id,
             reply_message_id=message_id,
             conversation_key=binding.key,
+            chat_id=binding.chat_id,
             conversation_generation=binding.generation,
             thread_id_hint=binding.thread_id,
             thread_name=thread_name,
@@ -154,10 +156,14 @@ class JobManager:
                 else:
                     job.state = JobState.FAILED
                     prefix = f"消息 {job.id} 失败 | {task_ref}"
-                self._reply(job.reply_message_id, f"{prefix}\n\n{result.output}")
+                self._reply(job.reply_message_id, f"{prefix}\n\n{result.output}", job.chat_id)
             except Exception as exc:  # Boundary: keep the worker alive and report a sanitized error.
                 job.state = JobState.FAILED
-                self._reply(job.reply_message_id, f"消息 {job.id} 执行失败：{type(exc).__name__}: {exc}")
+                self._reply(
+                    job.reply_message_id,
+                    f"消息 {job.id} 执行失败：{type(exc).__name__}: {exc}",
+                    job.chat_id,
+                )
             finally:
                 job.process = None
                 self._queue.task_done()
