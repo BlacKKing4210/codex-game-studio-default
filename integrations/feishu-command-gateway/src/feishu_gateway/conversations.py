@@ -69,6 +69,16 @@ class ConversationStore:
         with self._lock:
             return self._binding_from(self._load().get(key))
 
+    def list_bindings(self) -> tuple[ConversationBinding, ...]:
+        """Return a stable snapshot of every valid conversation binding."""
+        with self._lock:
+            bindings = (
+                binding
+                for binding in (self._binding_from(value) for value in self._load().values())
+                if binding is not None
+            )
+            return tuple(sorted(bindings, key=lambda item: item.key))
+
     def attach_thread(self, key: str, generation: int, thread_id: str) -> bool:
         with self._lock:
             values = self._load()

@@ -47,9 +47,14 @@ class Settings:
     timeout_seconds: int
     max_queue: int
     max_reply_chars: int
+    sync_interval_seconds: int
+    sync_backfill_turns: int
     log_level: str
     authorized_users_file: Path
     conversation_threads_file: Path
+    thread_sync_file: Path
+    delivery_outbox_file: Path
+    received_messages_file: Path
 
     @classmethod
     def from_env(cls, root: Path) -> "Settings":
@@ -102,9 +107,14 @@ class Settings:
             timeout_seconds=_int_env("CODEX_TIMEOUT_SECONDS", 3600, 30, 14400),
             max_queue=_int_env("CODEX_MAX_QUEUE", 10, 1, 100),
             max_reply_chars=_int_env("CODEX_MAX_REPLY_CHARS", 3500, 500, 10000),
+            sync_interval_seconds=_int_env("CODEX_SYNC_INTERVAL_SECONDS", 2, 1, 60),
+            sync_backfill_turns=_int_env("CODEX_SYNC_BACKFILL_TURNS", 1, 0, 50),
             log_level=os.getenv("CODEX_LOG_LEVEL", "INFO").strip().upper(),
             authorized_users_file=authorized_users_file,
             conversation_threads_file=root / "state" / "conversation_threads.json",
+            thread_sync_file=root / "state" / "thread_sync.json",
+            delivery_outbox_file=root / "state" / "delivery_outbox.json",
+            received_messages_file=root / "state" / "received_messages.json",
         )
 
 

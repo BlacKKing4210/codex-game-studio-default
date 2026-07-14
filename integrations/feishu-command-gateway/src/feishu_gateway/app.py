@@ -6,8 +6,7 @@ import re
 import sys
 import threading
 import time
-import uuid
-from concurrent.futures import ThreadPoolExecutor
+from concurrent.futures import Future, ThreadPoolExecutor
 from pathlib import Path
 
 import lark_oapi as lark
@@ -24,8 +23,11 @@ from .auth import AuthorizedUsers
 from .commands import CommandError, CommandKind, help_text, parse_command
 from .config import ConfigurationError, Settings
 from .conversations import ConversationBinding, ConversationStore
-from .executor import CodexExecutor
+from .delivery import DeliveryOutbox, DeliveryStateError
+from .executor import CodexExecutor, CodexThreadReader
 from .jobs import JobManager
+from .receipts import MessageReceiptStore, ReceiptStateError
+from .sync import SyncStateStore, ThreadTranscriptSync
 
 
 LOG = logging.getLogger("feishu_gateway")
@@ -40,9 +42,9 @@ class FeishuGateway:
             settings.bootstrap_token,
         )
         self._api_client = lark.Client.builder().app_id(settings.app_id).app_secret(settings.app_secret).build()
-        self._outgoing = ThreadPoolExecutor(max_workers=2, thread_name_prefix="feishu-reply")
-        self._seen_messages: set[str] = set()
-        self._seen_lock = threading.Lock()
+        self._outgoing = ThreadPoolExecutor(max_workers=1, thread_name_prefix="feishu-reply")
+        self._api_lock = threading.Lock()
+        self._receipts = MessageReceiptStore(settings.received_messages_file)
         self._conversations = ConversationStore(settings.conversation_threads_file)
         executor = CodexExecutor(
             command_prefix=settings.codex_command,
@@ -50,10 +52,32 @@ class FeishuGateway:
             timeout_seconds=settings.timeout_seconds,
             max_output_chars=settings.max_reply_chars,
         )
-        self._jobs = JobManager(executor, self._conversations, settings.max_queue, self.deliver_job_result_async)
+        self._sync_state = SyncStateStore(settings.thread_sync_file)
+        self._delivery_outbox = DeliveryOutbox(
+            settings.delivery_outbox_file,
+            settings.max_reply_chars,
+            self._send_text_to_chat,
+        )
+        self._jobs = JobManager(
+            executor,
+            self._conversations,
+            self._sync_state,
+            settings.max_queue,
+            self.deliver_job_message_async,
+        )
+        self._sync = ThreadTranscriptSync(
+            reader=CodexThreadReader(settings.codex_command),
+            conversations=self._conversations,
+            state_store=self._sync_state,
+            interval_seconds=settings.sync_interval_seconds,
+            initial_backfill_turns=settings.sync_backfill_turns,
+            deliver=self._deliver_thread_sync,
+        )
 
     def start(self) -> None:
+        self._delivery_outbox.start()
         self._jobs.start()
+        self._sync.start()
         event_handler = (
             lark.EventDispatcherHandler.builder("", "")
             .register_p2_im_message_receive_v1(self._handle_message)
@@ -66,7 +90,12 @@ class FeishuGateway:
             log_level=lark.LogLevel.WARNING,
         )
         LOG.info("Starting Feishu long connection")
-        ws_client.start()
+        try:
+            ws_client.start()
+        finally:
+            self._sync.stop()
+            self._delivery_outbox.stop()
+            self._outgoing.shutdown(wait=False, cancel_futures=True)
 
     def _handle_message(self, data: P2ImMessageReceiveV1) -> None:
         event = data.event
@@ -74,7 +103,13 @@ class FeishuGateway:
             return
         message = event.message
         message_id = message.message_id or ""
-        if not message_id or not self._mark_seen(message_id):
+        if not message_id:
+            return
+        try:
+            if not self._receipts.claim(message_id):
+                return
+        except ReceiptStateError:
+            LOG.exception("Feishu receipt state is invalid; refusing duplicate-prone delivery")
             return
 
         sender_id = event.sender.sender_id
@@ -188,7 +223,17 @@ class FeishuGateway:
             self.reply_async(message_id, str(exc))
             return
         target = binding.thread_id or "新 Codex 任务"
-        self.reply_async(message_id, f"消息已进入队列：{job.id} | {project.alias} | {target}")
+        try:
+            acknowledgement = self.reply_async(
+                message_id,
+                f"⏳ 已收到｜正在排队\n任务：{job.id} | {project.alias} | {target}",
+            )
+        except Exception:
+            self._jobs.release(job.id)
+        else:
+            # Start only after the queue acknowledgement attempt finishes;
+            # actual RUNNING state is then delivered as one Thinking message.
+            acknowledgement.add_done_callback(lambda _future: self._jobs.release(job.id))
 
     @staticmethod
     def _blocked_text(prompt: str) -> str | None:
@@ -199,14 +244,30 @@ class FeishuGateway:
             return f"该远程消息被安全策略阻止：{risk}。请在本机 Codex 中执行。"
         return None
 
-    def reply_async(self, message_id: str, text: str) -> None:
-        self._outgoing.submit(self._reply_text, message_id, text)
+    def reply_async(self, message_id: str, text: str) -> Future[bool]:
+        return self._outgoing.submit(self._reply_text, message_id, text)
 
-    def deliver_job_result_async(self, message_id: str, text: str, chat_id: str) -> None:
-        delivery_id = uuid.uuid5(uuid.NAMESPACE_URL, f"feishu-codex:{message_id}:result").hex
-        self._outgoing.submit(self._send_text_to_chat, chat_id, text, delivery_id)
+    def deliver_job_message_async(
+        self,
+        message_id: str,
+        text: str,
+        chat_id: str,
+        delivery_key: str,
+    ) -> None:
+        event_id = f"feishu-codex:{message_id}:{delivery_key}"
+        try:
+            self._delivery_outbox.enqueue(chat_id, text, event_id)
+        except DeliveryStateError:
+            LOG.exception("Cannot enqueue Feishu job delivery: event_id=%s", event_id)
 
-    def _reply_text(self, message_id: str, text: str) -> None:
+    def _deliver_thread_sync(self, chat_id: str, text: str, event_id: str) -> bool:
+        try:
+            return self._delivery_outbox.enqueue(chat_id, text, event_id)
+        except DeliveryStateError:
+            LOG.exception("Feishu transcript mirror delivery failed: chat_id=%s event_id=%s", chat_id, event_id)
+            return False
+
+    def _reply_text(self, message_id: str, text: str) -> bool:
         try:
             request = (
                 ReplyMessageRequest.builder()
@@ -219,15 +280,18 @@ class FeishuGateway:
                 )
                 .build()
             )
-            response = self._api_client.im.v1.message.reply(request)
+            with self._api_lock:
+                response = self._api_client.im.v1.message.reply(request)
             if response.success():
                 LOG.info("Feishu acknowledgement delivered: message_id=%s", message_id)
+                return True
             else:
                 LOG.error("Feishu reply failed: code=%s msg=%s", response.code, response.msg)
         except Exception:
             LOG.exception("Feishu acknowledgement raised an exception: message_id=%s", message_id)
+        return False
 
-    def _send_text_to_chat(self, chat_id: str, text: str, delivery_id: str) -> None:
+    def _send_text_to_chat(self, chat_id: str, text: str, delivery_id: str) -> bool:
         last_error = "unknown delivery error"
         for attempt in range(1, 4):
             try:
@@ -244,10 +308,11 @@ class FeishuGateway:
                     )
                     .build()
                 )
-                response = self._api_client.im.v1.message.create(request)
+                with self._api_lock:
+                    response = self._api_client.im.v1.message.create(request)
                 if response.success():
-                    LOG.info("Feishu task result delivered: chat_id=%s delivery_id=%s", chat_id, delivery_id)
-                    return
+                    LOG.info("Feishu message delivered: chat_id=%s delivery_id=%s", chat_id, delivery_id)
+                    return True
                 last_error = f"code={response.code} msg={response.msg}"
             except Exception as exc:
                 last_error = f"{type(exc).__name__}: {exc}"
@@ -265,16 +330,7 @@ class FeishuGateway:
             delivery_id,
             last_error,
         )
-
-    def _mark_seen(self, message_id: str) -> bool:
-        with self._seen_lock:
-            if message_id in self._seen_messages:
-                return False
-            self._seen_messages.add(message_id)
-            if len(self._seen_messages) > 5000:
-                self._seen_messages.clear()
-                self._seen_messages.add(message_id)
-            return True
+        return False
 
 
 def main() -> int:

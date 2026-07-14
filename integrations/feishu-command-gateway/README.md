@@ -1,6 +1,6 @@
 # Feishu Codex Conversation Bridge
 
-Map an authorized Feishu chat to a persistent local Codex task. Plain Feishu text becomes a real user turn in that task, Codex replies in the same thread, and the task appears as an independent conversation in Codex Desktop.
+Map an authorized Feishu chat to a persistent local Codex task. Plain Feishu text becomes a real user turn in that task, Codex replies in the same thread, and the task appears as an independent conversation in Codex Desktop. User turns and final replies created from Codex Desktop are also mirrored back to the bound Feishu chat.
 
 ## Conversation Model
 
@@ -9,9 +9,16 @@ Map an authorized Feishu chat to a persistent local Codex task. Plain Feishu tex
 - `/codex new [project]` switches the Feishu chat to a fresh task slot. The old Codex task is preserved.
 - `/codex run <project> <message>` creates a fresh task and sends its first message.
 - Thread mappings persist in ignored `state/conversation_threads.json`, so gateway restarts do not lose the current task.
+- A read-only App Server client polls the mapped task with `thread/read(includeTurns=true)` every two seconds by default.
+- Gateway turns carry a `feishu:<message-id>` source ID, so the monitor does not echo messages that are already visible in Feishu.
+- Desktop-origin user turns are labeled `来自 Codex Desktop` and include one `Thinking` status followed by the final reply. Internal commentary is not forwarded.
+- Synchronization state persists in ignored `state/thread_sync.json`. On the first upgraded start, older history is baselined and only the configured number of recent Desktop turns is backfilled (one by default), avoiding a flood of old messages.
+- Outbound messages first enter ignored `state/delivery_outbox.json`, then retry with stable Feishu delivery IDs until accepted. Received Feishu event IDs persist in `state/received_messages.json` to prevent duplicate turns after reconnects.
 - Every new thread is named `飞书 | <project> | <first-message>` and is visible in Codex Desktop.
 
-The bridge uses the official Codex App Server JSON-RPC protocol (`thread/start`, `thread/resume`, `turn/start`) rather than ephemeral `codex exec` jobs.
+The bridge uses the official Codex App Server JSON-RPC protocol (`thread/start`, `thread/resume`, `turn/start`, `thread/read`) rather than ephemeral `codex exec` jobs.
+
+The reverse mirror reads semantic per-turn history and uses each user message's `clientId` to distinguish Desktop turns from Feishu turns, including when both are running concurrently. It forwards only the Desktop user text, one processing state, and the final answer; reasoning, tool calls, developer instructions, environment context, and commentary are never forwarded. Queue acknowledgements remain Feishu-only operational messages, and long replies are durably split into numbered messages without truncating the Codex response.
 
 ## Security Boundary
 
@@ -58,6 +65,15 @@ Review ignored `config/projects.json`:
 
 Set `CODEX_DEFAULT_PROJECT=studio` in `.env` when the desired default is not the `studio` alias. Arbitrary paths from Feishu are never accepted.
 
+Optional synchronization tuning in `.env`:
+
+```text
+CODEX_SYNC_INTERVAL_SECONDS=2
+CODEX_SYNC_BACKFILL_TURNS=1
+```
+
+The interval accepts 1-60 seconds. Backfill accepts 0-50 turns and applies only when a mapped task is first added to the synchronization ledger.
+
 ## Start And Stop
 
 ```powershell
@@ -88,7 +104,7 @@ Send this in a private chat, then clear `FEISHU_BOOTSTRAP_TOKEN` and restart the
 /codex cancel ab12cd34
 ```
 
-Messages run one at a time. The bot immediately returns a queue ID, then replies with the final response and the persistent Codex Thread ID.
+Feishu-submitted messages run one at a time. The bot first acknowledges that the message is queued; when execution actually begins it sends one `🤔 Thinking…` status and then the exact final answer. Desktop-origin messages normally appear in Feishu within the configured sync interval.
 
 ## Official References
 
