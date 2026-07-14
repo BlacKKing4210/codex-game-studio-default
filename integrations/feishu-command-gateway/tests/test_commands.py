@@ -16,6 +16,12 @@ class CommandTests(unittest.TestCase):
         with self.assertRaises(CommandError):
             parse_command("run game fix it")
 
+    def test_parses_persistent_conversation_commands(self) -> None:
+        new_command = parse_command("/codex new fisher")
+        self.assertEqual(new_command.kind, CommandKind.NEW)
+        self.assertEqual(new_command.project_alias, "fisher")
+        self.assertEqual(parse_command("/codex thread").kind, CommandKind.THREAD)
+
     def test_blocks_dangerous_operations(self) -> None:
         blocked = [
             "完成后关机",

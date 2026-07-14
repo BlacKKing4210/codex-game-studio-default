@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import logging
+import re
 import sys
 import threading
 from concurrent.futures import ThreadPoolExecutor
@@ -18,6 +19,7 @@ from lark_oapi.api.im.v1 import (
 from .auth import AuthorizedUsers
 from .commands import CommandError, CommandKind, help_text, parse_command
 from .config import ConfigurationError, Settings
+from .conversations import ConversationBinding, ConversationStore
 from .executor import CodexExecutor
 from .jobs import JobManager
 
@@ -37,13 +39,14 @@ class FeishuGateway:
         self._outgoing = ThreadPoolExecutor(max_workers=2, thread_name_prefix="feishu-reply")
         self._seen_messages: set[str] = set()
         self._seen_lock = threading.Lock()
+        self._conversations = ConversationStore(settings.conversation_threads_file)
         executor = CodexExecutor(
             command_prefix=settings.codex_command,
             sandbox=settings.sandbox,
             timeout_seconds=settings.timeout_seconds,
             max_output_chars=settings.max_reply_chars,
         )
-        self._jobs = JobManager(executor, settings.max_queue, self.reply_async)
+        self._jobs = JobManager(executor, self._conversations, settings.max_queue, self.reply_async)
 
     def start(self) -> None:
         self._jobs.start()
@@ -78,17 +81,28 @@ class FeishuGateway:
             self.reply_async(message_id, "当前仅允许与机器人单聊发送命令。")
             return
         if message.message_type != "text":
-            self.reply_async(message_id, "当前仅支持文本命令。发送 /codex help 查看用法。")
+            self.reply_async(message_id, "当前仅支持文本消息。发送 /codex help 查看用法。")
             return
 
         try:
             content = json.loads(message.content or "{}")
-            command = parse_command(str(content.get("text", "")))
-        except (json.JSONDecodeError, CommandError) as exc:
+            text = str(content.get("text", "")).strip()
+        except json.JSONDecodeError as exc:
             self.reply_async(message_id, str(exc))
             return
+        if not text:
+            self.reply_async(message_id, "消息不能为空。")
+            return
 
-        if command.kind == CommandKind.BIND:
+        command = None
+        if text.lower().startswith("/codex"):
+            try:
+                command = parse_command(text)
+            except CommandError as exc:
+                self.reply_async(message_id, str(exc))
+                return
+
+        if command is not None and command.kind == CommandKind.BIND:
             ok, response = self._auth.bind(open_id, command.argument or "", is_private)
             self.reply_async(message_id, response)
             if ok:
@@ -98,7 +112,19 @@ class FeishuGateway:
             self.reply_async(message_id, "未授权。请在单聊中发送 /codex bind <绑定口令>。")
             return
 
-        if command.kind == CommandKind.HELP:
+        chat_id = message.chat_id or open_id
+        if command is None:
+            risk = self._blocked_text(text)
+            if risk:
+                self.reply_async(message_id, risk)
+                return
+            binding = self._conversations.get_or_create(
+                chat_id,
+                open_id,
+                self._settings.default_project_alias,
+            )
+            self._submit_message(binding, text, message_id)
+        elif command.kind == CommandKind.HELP:
             self.reply_async(message_id, help_text())
         elif command.kind == CommandKind.PROJECTS:
             projects = "\n".join(
@@ -110,16 +136,64 @@ class FeishuGateway:
         elif command.kind == CommandKind.CANCEL:
             _, response = self._jobs.cancel(command.argument or "", open_id)
             self.reply_async(message_id, response)
+        elif command.kind == CommandKind.THREAD:
+            binding = self._conversations.get_or_create(
+                chat_id,
+                open_id,
+                self._settings.default_project_alias,
+            )
+            thread = binding.thread_id or "尚未创建；发送下一条普通消息后创建"
+            self.reply_async(
+                message_id,
+                f"当前项目：{binding.project_alias}\nCodex 任务：{thread}\n会话代次：{binding.generation}",
+            )
+        elif command.kind == CommandKind.NEW:
+            current = self._conversations.get_or_create(
+                chat_id,
+                open_id,
+                self._settings.default_project_alias,
+            )
+            alias = command.project_alias or current.project_alias
+            if alias not in self._settings.projects:
+                self.reply_async(message_id, "项目别名不在白名单中。发送 /codex projects 查看。")
+                return
+            binding = self._conversations.reset(chat_id, open_id, alias)
+            self.reply_async(
+                message_id,
+                f"已切换到新的独立 Codex 任务槽位：{alias}。下一条普通消息会创建任务并显示在 Codex 桌面端。"
+                f"\n会话代次：{binding.generation}",
+            )
         elif command.kind == CommandKind.RUN:
             project = self._settings.projects.get(command.project_alias or "")
             if project is None:
                 self.reply_async(message_id, "项目别名不在白名单中。发送 /codex projects 查看。")
                 return
-            try:
-                job = self._jobs.submit(project, command.prompt or "", open_id, message_id)
-                self.reply_async(message_id, f"任务已进入队列：{job.id} | {project.alias}")
-            except RuntimeError as exc:
-                self.reply_async(message_id, str(exc))
+            binding = self._conversations.reset(chat_id, open_id, project.alias)
+            self._submit_message(binding, command.prompt or "", message_id)
+
+    def _submit_message(self, binding: ConversationBinding, prompt: str, message_id: str) -> None:
+        project = self._settings.projects.get(binding.project_alias)
+        if project is None:
+            self.reply_async(message_id, "当前项目已不在白名单中，请发送 /codex new <项目别名>。")
+            return
+        title_fragment = re.sub(r"\s+", " ", prompt).strip()[:28]
+        thread_name = f"飞书 | {project.alias} | {title_fragment}"
+        try:
+            job = self._jobs.submit(project, binding, prompt, message_id, thread_name)
+        except RuntimeError as exc:
+            self.reply_async(message_id, str(exc))
+            return
+        target = binding.thread_id or "新 Codex 任务"
+        self.reply_async(message_id, f"消息已进入队列：{job.id} | {project.alias} | {target}")
+
+    @staticmethod
+    def _blocked_text(prompt: str) -> str | None:
+        from .commands import blocked_risk
+
+        risk = blocked_risk(prompt)
+        if risk:
+            return f"该远程消息被安全策略阻止：{risk}。请在本机 Codex 中执行。"
+        return None
 
     def reply_async(self, message_id: str, text: str) -> None:
         self._outgoing.submit(self._reply_text, message_id, text)

@@ -12,6 +12,8 @@ class CommandKind(str, Enum):
     STATUS = "status"
     RUN = "run"
     CANCEL = "cancel"
+    NEW = "new"
+    THREAD = "thread"
 
 
 @dataclass(frozen=True)
@@ -58,6 +60,11 @@ def parse_command(text: str) -> Command:
         return Command(CommandKind.PROJECTS)
     if action == "status":
         return Command(CommandKind.STATUS)
+    if action == "thread":
+        return Command(CommandKind.THREAD)
+    if action == "new":
+        alias = parts[2].lower() if len(parts) >= 3 else None
+        return Command(CommandKind.NEW, project_alias=alias)
     if action == "cancel":
         if len(parts) < 3:
             raise CommandError("用法：/codex cancel <任务ID>")
@@ -87,11 +94,14 @@ def blocked_risk(prompt: str) -> str | None:
 
 def help_text() -> str:
     return (
-        "飞书 Codex 命令\n"
+        "飞书 Codex 持久对话\n"
         "/codex bind <口令> - 首次单聊绑定\n"
         "/codex projects - 查看允许的项目\n"
-        "/codex run <项目别名> <任务> - 启动任务\n"
+        "/codex new [项目别名] - 新建并切换到独立 Codex 任务\n"
+        "/codex thread - 查看当前 Codex 任务\n"
+        "/codex run <项目别名> <任务> - 新建任务并发送第一条消息\n"
         "/codex status - 查看队列\n"
         "/codex cancel <任务ID> - 取消任务\n"
+        "绑定后直接发送普通文本，即可在当前 Codex 任务中连续对话。\n"
         "远程任务固定在项目白名单和 workspace-write 沙箱内；关机、强删、强推、凭证读取和发布命令会被阻止。"
     )

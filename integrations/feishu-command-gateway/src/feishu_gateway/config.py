@@ -41,6 +41,7 @@ class Settings:
     allowed_open_ids: frozenset[str]
     allow_group: bool
     projects: dict[str, Project]
+    default_project_alias: str
     codex_command: tuple[str, ...]
     sandbox: str
     timeout_seconds: int
@@ -48,6 +49,7 @@ class Settings:
     max_reply_chars: int
     log_level: str
     authorized_users_file: Path
+    conversation_threads_file: Path
 
     @classmethod
     def from_env(cls, root: Path) -> "Settings":
@@ -75,6 +77,11 @@ class Settings:
         if not projects_file.is_absolute():
             projects_file = root / projects_file
         projects = _load_projects(projects_file)
+        default_project_alias = os.getenv("CODEX_DEFAULT_PROJECT", "").strip().lower()
+        if not default_project_alias:
+            default_project_alias = "studio" if "studio" in projects else sorted(projects)[0]
+        if default_project_alias not in projects:
+            raise ConfigurationError(f"CODEX_DEFAULT_PROJECT is not allowlisted: {default_project_alias}")
 
         codex_command = _resolve_codex_command(root)
         sandbox = os.getenv("CODEX_SANDBOX", "workspace-write").strip()
@@ -89,6 +96,7 @@ class Settings:
             allowed_open_ids=allowed_open_ids,
             allow_group=_bool_env("FEISHU_ALLOW_GROUP"),
             projects=projects,
+            default_project_alias=default_project_alias,
             codex_command=codex_command,
             sandbox=sandbox,
             timeout_seconds=_int_env("CODEX_TIMEOUT_SECONDS", 3600, 30, 14400),
@@ -96,6 +104,7 @@ class Settings:
             max_reply_chars=_int_env("CODEX_MAX_REPLY_CHARS", 3500, 500, 10000),
             log_level=os.getenv("CODEX_LOG_LEVEL", "INFO").strip().upper(),
             authorized_users_file=authorized_users_file,
+            conversation_threads_file=root / "state" / "conversation_threads.json",
         )
 
 
