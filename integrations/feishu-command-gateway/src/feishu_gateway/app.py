@@ -2,8 +2,8 @@ from __future__ import annotations
 
 import json
 import logging
+import os
 import re
-import sys
 import threading
 import time
 from concurrent.futures import Future, ThreadPoolExecutor
@@ -31,6 +31,70 @@ from .sync import SyncStateStore, ThreadTranscriptSync
 
 
 LOG = logging.getLogger("feishu_gateway")
+
+
+class ReadyAwareFeishuWsClient(lark.ws.Client):
+    """Expose a sanitized readiness signal missing from lark-oapi 1.7.1."""
+
+    async def _connect(self) -> None:
+        was_connected = self._conn is not None
+        await super()._connect()
+        if not was_connected and self._conn is not None:
+            LOG.info("Feishu long connection established")
+
+
+class GatewayAlreadyRunning(RuntimeError):
+    pass
+
+
+class GatewayInstanceLock:
+    """Hold an OS-level lock so only one gateway can use this checkout."""
+
+    def __init__(self, path: Path):
+        self._path = path
+        self._handle = None
+
+    def acquire(self) -> None:
+        self._path.parent.mkdir(parents=True, exist_ok=True)
+        handle = self._path.open("a+b")
+        handle.seek(0, os.SEEK_END)
+        if handle.tell() == 0:
+            handle.write(b"\0")
+            handle.flush()
+        handle.seek(0)
+        try:
+            if os.name == "nt":
+                import msvcrt
+
+                msvcrt.locking(handle.fileno(), msvcrt.LK_NBLCK, 1)
+            else:
+                import fcntl
+
+                fcntl.flock(handle.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except (OSError, BlockingIOError) as exc:
+            handle.close()
+            raise GatewayAlreadyRunning("Another Feishu gateway instance is already running.") from exc
+        self._handle = handle
+
+    def close(self) -> None:
+        handle = self._handle
+        self._handle = None
+        if handle is None:
+            return
+        try:
+            handle.seek(0)
+            if os.name == "nt":
+                import msvcrt
+
+                msvcrt.locking(handle.fileno(), msvcrt.LK_UNLCK, 1)
+            else:
+                import fcntl
+
+                fcntl.flock(handle.fileno(), fcntl.LOCK_UN)
+        except OSError:
+            pass
+        finally:
+            handle.close()
 
 
 class FeishuGateway:
@@ -83,7 +147,7 @@ class FeishuGateway:
             .register_p2_im_message_receive_v1(self._handle_message)
             .build()
         )
-        ws_client = lark.ws.Client(
+        ws_client = ReadyAwareFeishuWsClient(
             self._settings.app_id,
             self._settings.app_secret,
             event_handler=event_handler,
@@ -335,19 +399,48 @@ class FeishuGateway:
 
 def main() -> int:
     root = Path(__file__).resolve().parents[2]
+    log_file = root / "logs" / "gateway.stderr.log"
+    log_file.parent.mkdir(parents=True, exist_ok=True)
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s %(process)d %(levelname)s %(name)s: %(message)s",
+        handlers=[
+            logging.StreamHandler(),
+            logging.FileHandler(log_file, encoding="utf-8"),
+        ],
+        force=True,
+    )
     load_dotenv(root / ".env")
     try:
         settings = Settings.from_env(root)
     except (ConfigurationError, ValueError, json.JSONDecodeError) as exc:
-        print(f"Configuration error: {exc}", file=sys.stderr)
+        LOG.error("Configuration error: %s", exc)
         return 2
 
-    logging.basicConfig(
-        level=getattr(logging, settings.log_level, logging.INFO),
-        format="%(asctime)s %(levelname)s %(name)s: %(message)s",
-    )
-    FeishuGateway(settings).start()
-    return 0
+    logging.getLogger().setLevel(getattr(logging, settings.log_level, logging.INFO))
+    instance_lock = GatewayInstanceLock(root / "state" / "gateway.lock")
+    try:
+        instance_lock.acquire()
+    except GatewayAlreadyRunning as exc:
+        LOG.error("%s", exc)
+        return 3
+
+    pid_file = root / "state" / "gateway.pid"
+    pid_file.parent.mkdir(parents=True, exist_ok=True)
+    process_id = str(os.getpid())
+    try:
+        pid_file.write_text(process_id + "\n", encoding="ascii")
+        try:
+            FeishuGateway(settings).start()
+            return 0
+        finally:
+            try:
+                if pid_file.read_text(encoding="ascii").strip() == process_id:
+                    pid_file.unlink()
+            except (FileNotFoundError, OSError, UnicodeError):
+                pass
+    finally:
+        instance_lock.close()
 
 
 if __name__ == "__main__":

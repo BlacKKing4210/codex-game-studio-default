@@ -83,6 +83,26 @@ powershell -ExecutionPolicy Bypass -File .\scripts\stop.ps1
 
 Runtime logs and the PID file are stored under ignored `logs/` and `state/` directories.
 
+## Automatic Start After Windows Sign-in
+
+Install a current-user scheduled task and start the gateway immediately:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\install-autostart.ps1
+```
+
+The `Codex Feishu Gateway` task runs after this Windows user signs in, starts in a hidden window, and supervises the gateway. If the gateway exits unexpectedly, it is started again automatically. Installation reports success only after the Feishu WebSocket handshake completes. The task uses the current user's Codex authentication and does not require administrator privileges.
+
+`scripts\stop.ps1` stops the current supervisor and gateway process, while keeping the task registered for the next Windows sign-in. To remove automatic startup completely:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\uninstall-autostart.ps1
+```
+
+Removing automatic startup also stops the current supervisor and gateway process.
+
+Supervisor events are written to ignored `logs/autostart.log`.
+
 ## First Bind
 
 Send this in a private chat, then clear `FEISHU_BOOTSTRAP_TOKEN` and restart the gateway:

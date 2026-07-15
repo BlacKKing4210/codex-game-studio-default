@@ -2,64 +2,132 @@ $ErrorActionPreference = "Stop"
 
 $gatewayRoot = (Resolve-Path (Join-Path $PSScriptRoot "..")).Path
 $python = Join-Path $gatewayRoot ".venv\Scripts\python.exe"
+$supervisorScript = Join-Path $PSScriptRoot "run-supervised.ps1"
 $pidFile = Join-Path $gatewayRoot "state\gateway.pid"
-$stdoutLog = Join-Path $gatewayRoot "logs\gateway.stdout.log"
+$supervisorPidFile = Join-Path $gatewayRoot "state\gateway-supervisor.pid"
 $stderrLog = Join-Path $gatewayRoot "logs\gateway.stderr.log"
+$powershell = Join-Path $PSHOME "powershell.exe"
+
 if (-not (Test-Path -LiteralPath $python)) {
     throw "Gateway dependencies are not installed. Run scripts\install.ps1 first."
 }
 
-if (Test-Path -LiteralPath $pidFile) {
-    $existingPid = [int](Get-Content -Raw -LiteralPath $pidFile)
-    if (Get-Process -Id $existingPid -ErrorAction SilentlyContinue) {
-        Write-Output "Gateway is already running with PID $existingPid."
-        exit 0
+function Stop-OwnedProcessTree {
+    param([int]$RootProcessId)
+
+    $descendantIds = New-Object System.Collections.Generic.List[int]
+    $pendingParentIds = New-Object System.Collections.Generic.Queue[int]
+    $pendingParentIds.Enqueue($RootProcessId)
+    while ($pendingParentIds.Count -gt 0) {
+        $parentId = $pendingParentIds.Dequeue()
+        $children = Get-CimInstance Win32_Process -Filter "ParentProcessId=$parentId" -ErrorAction SilentlyContinue
+        foreach ($child in $children) {
+            $childId = [int]$child.ProcessId
+            $descendantIds.Add($childId)
+            $pendingParentIds.Enqueue($childId)
+        }
     }
-    Remove-Item -LiteralPath $pidFile -Force
+    for ($index = $descendantIds.Count - 1; $index -ge 0; $index--) {
+        Stop-Process -Id $descendantIds[$index] -Force -ErrorAction SilentlyContinue
+    }
+    Stop-Process -Id $RootProcessId -Force -ErrorAction SilentlyContinue
 }
 
-New-Item -ItemType Directory -Force -Path (Split-Path $pidFile), (Split-Path $stdoutLog) | Out-Null
-$env:PYTHONPATH = Join-Path $gatewayRoot "src"
-$process = Start-Process `
-    -FilePath $python `
-    -ArgumentList @("-m", "feishu_gateway.app") `
-    -WorkingDirectory $gatewayRoot `
-    -WindowStyle Hidden `
-    -RedirectStandardOutput $stdoutLog `
-    -RedirectStandardError $stderrLog `
-    -PassThru
-$process.Id | Set-Content -LiteralPath $pidFile -Encoding ASCII
-
-$ready = $false
-$startupError = ""
-for ($attempt = 0; $attempt -lt 30; $attempt++) {
-    Start-Sleep -Milliseconds 500
-    $running = Get-Process -Id $process.Id -ErrorAction SilentlyContinue
-    $errorText = Get-Content -Raw -LiteralPath $stderrLog -ErrorAction SilentlyContinue
-    if ($errorText -match "Starting Feishu long connection") {
-        $ready = $true
-        break
+function Get-VerifiedGatewayProcess {
+    if (-not (Test-Path -LiteralPath $pidFile)) {
+        return $null
     }
-    if ($errorText -match "Configuration error:") {
-        $startupError = $errorText
-        break
+    $gatewayPid = 0
+    $pidText = (Get-Content -Raw -LiteralPath $pidFile).Trim()
+    if (-not [int]::TryParse($pidText, [ref]$gatewayPid)) {
+        return $null
     }
-    if (-not $running) {
-        $startupError = $errorText
-        break
+    $candidate = Get-CimInstance Win32_Process -Filter "ProcessId=$gatewayPid" -ErrorAction SilentlyContinue
+    if (
+        $candidate -and
+        $candidate.Name -ieq "python.exe" -and
+        $candidate.CommandLine -match "(?i)(?:^|\s)-m\s+feishu_gateway\.app(?:\s|$)"
+    ) {
+        return $candidate
     }
+    return $null
 }
-if (-not $ready) {
-    $running = Get-Process -Id $process.Id -ErrorAction SilentlyContinue
-    if ($running) {
-        Stop-Process -Id $process.Id -Force
-    }
+
+$existingGateway = Get-VerifiedGatewayProcess
+if (-not $existingGateway) {
     Remove-Item -LiteralPath $pidFile -Force -ErrorAction SilentlyContinue
+}
+
+$existingSupervisor = $null
+$escapedSupervisorScript = [regex]::Escape($supervisorScript)
+if (Test-Path -LiteralPath $supervisorPidFile) {
+    $existingSupervisorPid = 0
+    $supervisorPidText = (Get-Content -Raw -LiteralPath $supervisorPidFile).Trim()
+    if ([int]::TryParse($supervisorPidText, [ref]$existingSupervisorPid)) {
+        $candidate = Get-CimInstance Win32_Process -Filter "ProcessId=$existingSupervisorPid" -ErrorAction SilentlyContinue
+        if (
+            $candidate -and
+            $candidate.Name -ieq "powershell.exe" -and
+            $candidate.CommandLine -match $escapedSupervisorScript
+        ) {
+            $existingSupervisor = $candidate
+        }
+    }
+}
+
+$startedSupervisor = $false
+if (-not $existingSupervisor) {
+    Remove-Item -LiteralPath $supervisorPidFile -Force -ErrorAction SilentlyContinue
+    New-Item -ItemType Directory -Force -Path (Split-Path $pidFile), (Split-Path $stderrLog) | Out-Null
+    $arguments = "-NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass -File `"$supervisorScript`""
+    $existingSupervisor = Start-Process `
+        -FilePath $powershell `
+        -ArgumentList $arguments `
+        -WorkingDirectory $gatewayRoot `
+        -WindowStyle Hidden `
+        -PassThru
+    $startedSupervisor = $true
+}
+
+if ($existingGateway) {
+    Write-Output "Gateway is already running with PID $($existingGateway.ProcessId); supervisor is active."
+    exit 0
+}
+
+$readyProcess = $null
+$startupError = ""
+for ($attempt = 0; $attempt -lt 180; $attempt++) {
+    Start-Sleep -Milliseconds 500
+    $readyProcess = Get-VerifiedGatewayProcess
+    $errorText = Get-Content -Raw -LiteralPath $stderrLog -Encoding UTF8 -ErrorAction SilentlyContinue
+    if ($readyProcess) {
+        $readyPid = [int]$readyProcess.ProcessId
+        $readyPattern = "(?m)\s$readyPid\s+INFO\s+feishu_gateway:\s+Feishu long connection established"
+        $logIsCurrent = (Test-Path -LiteralPath $stderrLog) -and ((Get-Item -LiteralPath $stderrLog).LastWriteTime -ge $readyProcess.CreationDate)
+        if ($logIsCurrent -and $errorText -match $readyPattern) {
+            break
+        }
+    }
+    $supervisorStillRunning = Get-Process -Id ([int]$existingSupervisor.ProcessId) -ErrorAction SilentlyContinue
+    if (-not $supervisorStillRunning) {
+        $startupError = $errorText
+        $readyProcess = $null
+        break
+    }
+    $readyProcess = $null
+}
+
+if (-not $readyProcess) {
+    if ($startedSupervisor) {
+        Stop-OwnedProcessTree -RootProcessId ([int]$existingSupervisor.ProcessId)
+        Remove-Item -LiteralPath $pidFile -Force -ErrorAction SilentlyContinue
+        Remove-Item -LiteralPath $supervisorPidFile -Force -ErrorAction SilentlyContinue
+    }
     if (-not $startupError) {
-        $startupError = "No readiness signal was received within 15 seconds."
+        $startupError = "No readiness signal was received within 90 seconds."
     }
     throw "Gateway failed to start. $startupError"
 }
 
-Write-Output "Gateway started in the background with PID $($process.Id)."
+Write-Output "Gateway started in the background with PID $($readyProcess.ProcessId)."
 Write-Output "Logs: $stderrLog"
