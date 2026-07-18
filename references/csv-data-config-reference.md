@@ -4,7 +4,7 @@ Use CSV files for designer-editable game content and balance by default.
 
 ## Default Route
 
-Numerical Designer -> Data Config Specialist -> Technical Director -> Godot Specialist -> QA Lead.
+Numerical Designer / Balance Agent -> Data Config Specialist -> Technical Director -> Godot Specialist -> QA Lead.
 
 ## Table Rules
 
@@ -15,6 +15,7 @@ Numerical Designer -> Data Config Specialist -> Technical Director -> Godot Spec
 - Keep values human-readable: plain numbers, booleans, enum-like strings, comma-free IDs, and short descriptions.
 - Use semicolon-separated lists inside one cell only when a field truly needs multiple IDs.
 - Keep formulas and derived values in code, but keep tuning constants in CSV.
+- Version the configuration used by every material balance simulation, playtest, experiment, and rollout so results remain reproducible.
 
 ## Starter Schemas
 

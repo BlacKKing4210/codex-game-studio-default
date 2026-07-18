@@ -47,9 +47,9 @@ A first playable slice should prove the smallest complete player experience for 
 - Module boundaries and contracts: Technical Director + Framework Designer + Lead Programmer.
 - Feature system planning and Word design specs: Producer + System Designer + QA Lead.
 - Mechanics/content: System Designer + Game Designer.
-- Numeric/economy/balance: Numerical Designer.
+- Numeric/economy/balance: Numerical Designer / Balance Agent. It owns balance objectives, segmented evidence, simulation/playtest plans, experiment design, and reversible tuning recommendations; Game Designer still owns intended player experience and rules.
 - Formal design docs, flowcharts, and Figma/FigJam UI/UE diagrams: Producer + System Designer + Game Designer + Numerical Designer + Art Director + UI Artist + UI Programmer + QA Lead.
-- Config tables: Numerical Designer + Data Config Specialist.
+- Config tables: Numerical Designer / Balance Agent + Data Config Specialist.
 - Code: Lead Programmer + relevant specialist.
 - Godot/GDScript: Godot Specialist + GDScript Specialist.
 - 2D project setup: Technical Director + 2D Technical Artist + Godot Specialist.
@@ -124,7 +124,7 @@ Required outputs:
 - acceptance checklist
 - user review notes and revision log
 
-System Designer owns the feature document, revision, implementation follow-through, and acceptance alignment. Numerical Designer owns formulas, economy, progression curves, reward values, and tuning tables.
+System Designer owns the feature document, revision, implementation follow-through, and acceptance alignment. Numerical Designer / Balance Agent owns formulas, economy, progression curves, reward values, balance objectives, evidence quality, and tuning recommendations.
 
 Per-page UE explanations must describe each element's meaning, display condition, interaction behavior, data source, fallback/empty/error state, and owner system.
 

@@ -30,7 +30,7 @@ Use the smallest useful subset of these roles:
 - Framework Designer: cross-system framework, domain boundaries, lifecycle/state flow, integration contracts, extension points, and long-term maintainability.
 - Game Designer: core loop, weapons, enemies, upgrades, progression, difficulty, content tables.
 - System Designer: feature-level system planning, Word design documents, UE page requirements, implementation follow-through, acceptance criteria, and user-revision alignment.
-- Numerical Designer: numeric planning, data tables, formulas, economy, progression curves, wave pressure, reward values, and balance tuning.
+- Numerical Designer / Balance Agent: owns evidence-driven combat, meta, economy, progression, probability, difficulty, and live-balance decisions; keeps the stable `numerical-designer` role id.
 - Data Config Specialist: CSV schemas, starter rows, ID references, validation rules, runtime loading path.
 - Lead Programmer: implementation plan, code integration, review, story readiness and done criteria.
 - Godot Specialist: Godot scenes, nodes, resources, signals, autoloads, export, engine-specific checks.
@@ -54,7 +54,7 @@ Use the smallest useful subset of these roles:
 
 The Producer, Creative Director, Framework Designer, and every relevant department lead must raise a meaningful objection as soon as the user's requirement conflicts with player value, approved direction, scope, schedule, framework integrity, technical feasibility, maintainability, performance, art quality, testability, safety, or legal constraints, or when there is a materially better alternative.
 
-Department leads include the Technical Director, Game Designer, System Designer, Numerical Designer, Lead Programmer, Art Director, QA Lead, and any specialist explicitly acting as the owner of a department or workstream.
+Department leads include the Technical Director, Game Designer, System Designer, Numerical Designer / Balance Agent, Lead Programmer, Art Director, QA Lead, and any specialist explicitly acting as the owner of a department or workstream.
 
 Feedback must be direct and begin with the conclusion. Use this format:
 
@@ -72,12 +72,12 @@ Pause only the affected scope until the user confirms. Unrelated approved work m
 0A. Project Management Startup: create `production/task-plan.md`, assign stable Task IDs, dependencies, module/conflict scopes, acceptance criteria, and enable the 30-minute Project Manager inspection when requested.
 1. Concept: promise, target player, player-feedback discovery, pillars, anti-pillars, reference principles, and visual-artifact requirements for formal design docs.
 2. Prototype: one risky assumption, minimum test, emoji/SVG demo placeholders where assets are missing, proceed/pivot/cut verdict.
-3. System Design: feature Word design docs, core loop, mechanics, content rules, economy, difficulty ramp, professional flowcharts, and per-page Figma/FigJam UE diagrams.
+3. System Design: feature Word design docs, core loop, mechanics, content rules, economy, difficulty ramp, balance objectives/guardrails, professional flowcharts, and per-page Figma/FigJam UE diagrams.
 3A. CSV Data Config: schemas, starter rows, IDs, validation rules, runtime loading path.
 4. Technical Architecture: engine architecture, cross-system framework, module boundaries, integration contracts, data/resources, 2D scene/layer model by default, performance budget.
 5. Vertical Slice: playable slice plan, tasks, owners, acceptance criteria.
 6. Implementation: modular code/assets/data changes with per-module verification before integration.
-7. QA and Tuning: smoke checks, playtest notes, bug list, balance notes.
+7. QA and Tuning: smoke checks, playtest notes, bug list, segmented balance scorecard, and ship/iterate/observe/rollback recommendation.
 8. Milestone Review: ship/iterate/pivot decision and next sprint.
 9. Git Version Finish: verify, commit, push current branch to origin, and report commit hash when possible.
 
@@ -125,9 +125,9 @@ Every production feature must have an independent Word design document before im
 
 Route feature design through:
 
-Producer -> System Designer -> Game Designer -> Numerical Designer -> Art Director -> UI Artist -> UI Programmer -> Technical Director -> QA Lead.
+Producer -> System Designer -> Game Designer -> Numerical Designer / Balance Agent -> Art Director -> UI Artist -> UI Programmer -> Technical Director -> QA Lead.
 
-Use the smallest useful subset of that route. System Designer owns the feature spec, revision, implementation follow-through, and acceptance alignment. Numerical Designer owns formulas, economy, progression curves, reward values, and tuning tables.
+Use the smallest useful subset of that route. System Designer owns the feature spec, revision, implementation follow-through, and acceptance alignment. The Numerical Designer / Balance Agent owns formulas, economy, progression curves, reward values, balance objectives, simulations/telemetry plans, and evidence-backed tuning proposals.
 
 Required outputs for every feature:
 
@@ -202,7 +202,7 @@ Prefer separated modules for input, movement, combat, interaction, inventory, ec
 
 For any formal 策划案, GDD, system design document, feature specification, UI flow, onboarding flow, shop flow, combat flow, economy flow, or progression flow, route through:
 
-Producer -> System Designer -> Game Designer -> Numerical Designer -> Art Director -> UI Artist -> UI Programmer -> QA Lead.
+Producer -> System Designer -> Game Designer -> Numerical Designer / Balance Agent -> Art Director -> UI Artist -> UI Programmer -> QA Lead.
 
 A formal design document is not done unless it contains:
 
@@ -322,11 +322,21 @@ For Godot games, prefer:
 
 For game systems that need configurable content, route through:
 
-Numerical Designer -> Data Config Specialist -> Technical Director -> Godot Specialist -> QA Lead.
+Numerical Designer / Balance Agent -> Data Config Specialist -> Technical Director -> Godot Specialist -> QA Lead.
 
-Store designer-editable configuration as CSV by default. Use stable `id` columns, one concept per table, ID references between tables, semicolon-separated lists only when needed, formulas in code, and tuning constants in CSV.
+Store designer-editable configuration as CSV by default. Use stable `id` columns, one concept per table, ID references between tables, semicolon-separated lists only when needed, formulas in code, and tuning constants in CSV. Version the configuration used for every material balance test, simulation, and rollout.
 
 Validate required columns, duplicate IDs, missing references, empty required values, and type conversions before gameplay starts.
+
+## Numerical Balance Defaults
+
+For a material combat, meta, economy, progression, probability, or difficulty change, the Numerical Designer / Balance Agent must provide a balance brief before implementation or approval. It includes the player-experience intent, target cohorts/modes, metrics and practical thresholds, constraints, relevant data/config version, and a reproducible test plan.
+
+Use combined evidence: a baseline segmented by relevant conditions, production-rule simulations with recorded seeds/configuration where practical, controlled human playtests, and live telemetry or an explicitly stated plan to collect it. A global win rate by itself is not sufficient evidence. For PvP, consider skill/rank uncertainty, mode, map, team/role, version, and first-player or spawn-position effects when relevant; analyze team experiments at the room/team level when players influence one another.
+
+Every recommendation must state the hypothesis, smallest reversible parameter change, affected cohorts, expected effect, guardrails, uncertainty/sample limits, stop condition, and rollback path. Valid outcomes are `ship`, `iterate`, `observe`, and `roll back`; low-confidence data must not be forced into a stat change. Do not secretly apply player-specific damage, currency, accuracy, or other competitive modifiers in ranked/PvP modes.
+
+Read `references/numerical-balance-reference.md` and `agents/numerical-designer.md` for the detailed method and templates.
 
 ## Zhanchengdashi 1930s Animal UI Core Defaults
 
@@ -407,6 +417,7 @@ When more detail is needed, read these files in this skill folder:
 - `references/ui-implementation-reference.md`
 - `references/agent-sprite-forge-reference.md`
 - `references/csv-data-config-reference.md`
+- `references/numerical-balance-reference.md`
 - `references/zhanchengdashi-1930s-animal-ui-core-reference.md`
 - `references/brawler-arcade-ui-core-reference.md` (legacy alternate only)
 - `references/reverse-engineering-reference.md`

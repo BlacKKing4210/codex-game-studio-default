@@ -30,7 +30,7 @@ Use this rubric when reviewing changes to the Codex Game Studio workflow.
 - Producer, Creative Director, Framework Designer, and relevant department leads raise material objections directly before affected work proceeds; the feedback states objection, reason, impact, recommendation, and decision needed.
 - Affected work remains blocked until the user's decision is recorded; unrelated approved work may continue, and agents do not manufacture ceremonial objections.
 - System Designer owns feature-level Word design specs, page UE requirements, transition maps, per-page explanations, data-source maps, implementation follow-through, acceptance criteria, and user revision alignment.
-- Numerical Designer is the current name for numeric, economy, formulas, reward values, progression curves, and tuning work.
+- Numerical Designer / Balance Agent is the current name for numeric, economy, formulas, reward values, progression curves, and evidence-driven tuning work. Material balance recommendations include player-experience intent, segmentation, reproducible evidence, guardrails, uncertainty, and rollback.
 - Every production feature has an independent Word `.docx` design document, per-page Figma/FigJam UE diagrams, written transition map, per-page explanation, data-source map, acceptance checklist, and user review status before implementation.
 - Demo and prototype work uses emoji placeholders first, then simple original SVG placeholders for missing visual resources that emoji cannot represent clearly.
 - Art-related agents use master-level visual design references as principle studies, with explicit anti-copying constraints.

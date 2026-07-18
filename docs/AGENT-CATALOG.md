@@ -11,7 +11,7 @@ Codex Game Studio uses the smallest useful subset of agents for each task. These
 | Framework Designer | Direction | Cross-system framework, domain boundaries, lifecycle/state flow, integration contracts, extension points | domain modeling, module topology, contract design, maintainability review, architecture decision records |
 | Game Designer | Lead | Core loop, mechanics, weapons, enemies, upgrades, difficulty, gameplay/system flowcharts, player feedback synthesis | system design, gameplay rules, player motivation, feedback discovery, professional flowchart specs |
 | System Designer | Lead | Feature Word design docs, feature scope, UE page requirements, page transition maps, per-page explanations, data-source maps, acceptance criteria, user revision alignment | feature system planning, `.docx` specs, Figma UE handoff, information architecture, page documentation, implementation follow-through |
-| Numerical Designer | Lead | Economy, formulas, progression curves, wave pressure, upgrade value, reward values | tuning models, balance checks, economy loops, data table design |
+| Numerical Designer / Balance Agent | Lead | Evidence-driven combat/meta balance, economy health, progression curves, reward values, simulation and experiment decisions | balance objectives, segmented analysis, tuning models, economy loops, data-table design, deterministic simulations, playtest synthesis, rollback planning |
 | Data Config Specialist | Specialist | CSV schemas, starter rows, ID references, validation | CSV design, data loading contract, validation rules |
 | Prototyper | Specialist | Risky-assumption tests, throwaway prototypes, emoji demo placeholders, SVG fallback placeholders | minimum test design, emoji placeholder planning, simple SVG placeholders, proceed/pivot/cut verdicts |
 | Lead Programmer | Lead | Implementation plan, module breakdown, module contracts, integration, review, done criteria | code architecture, modular task breakdown, regression risk |
@@ -76,12 +76,13 @@ Specialists
 | Start approved not-started tasks | Project Manager -> Technical Director / System Designer -> isolated task thread -> QA Lead |
 | Collect player feedback for design direction | Producer -> Creative Director -> Game Designer -> QA Lead |
 | Build a demo with missing assets | Producer -> Prototyper -> relevant Specialist -> QA Lead |
-| Create a formal 策划案/GDD | Producer -> System Designer -> Game Designer -> Numerical Designer -> Art Director -> UI Artist -> UI Programmer -> QA Lead |
-| Create a feature Word design spec | Producer -> System Designer -> Game Designer -> Numerical Designer -> UI Artist -> UI Programmer -> Technical Director -> QA Lead |
+| Create a formal 策划案/GDD | Producer -> System Designer -> Game Designer -> Numerical Designer / Balance Agent -> Art Director -> UI Artist -> UI Programmer -> QA Lead |
+| Create a feature Word design spec | Producer -> System Designer -> Game Designer -> Numerical Designer / Balance Agent -> UI Artist -> UI Programmer -> Technical Director -> QA Lead |
 | Break down implementation modules | Technical Director -> Framework Designer -> Lead Programmer -> relevant Specialist -> QA Lead |
 | Design or revise the cross-system framework | Technical Director -> Framework Designer -> Lead Programmer -> QA Lead |
 | Build a Godot gameplay feature | Lead Programmer -> Gameplay Programmer -> Godot Specialist -> GDScript Specialist -> QA Lead |
-| Add data-driven weapons/enemies/upgrades | Numerical Designer -> Data Config Specialist -> Technical Director -> Godot Specialist -> QA Lead |
+| Add data-driven weapons/enemies/upgrades | Numerical Designer / Balance Agent -> Data Config Specialist -> Technical Director -> Godot Specialist -> QA Lead |
+| Diagnose or tune PvP/meta/economy/progression balance | Game Designer -> Numerical Designer / Balance Agent -> Data Config Specialist -> Gameplay Programmer -> QA Lead |
 | Start a 2D-first project | Producer -> Creative Director -> Art Director -> Technical Director -> 2D Technical Artist -> Godot Specialist -> QA Lead |
 | Define 2D asset pipeline | Technical Director -> 2D Technical Artist -> Godot Specialist -> QA Lead |
 | Create 2D character/enemy/prop animation | Art Director -> Concept Artist -> 2D Animation Specialist -> Sprite Forge Specialist -> 2D Technical Artist -> Godot Specialist -> QA Lead |

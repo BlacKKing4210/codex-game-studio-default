@@ -33,8 +33,9 @@ agents:
     skills: [feature_system_planning, word_docx_specs, figma_uiue_handoff, information_architecture, navigation_flow_spec, page_element_documentation, data_source_mapping, acceptance_criteria, revision_control]
   - id: numerical-designer
     tier: lead
-    owns: [economy, formulas, progression_curves, wave_pressure, upgrade_value]
-    skills: [balance_math, tuning_models, economy_loops, progression_math, reward_value_design, data_table_design]
+    display_name: numerical-balance-agent
+    owns: [balance_objectives, combat_meta, economy_health, formulas, progression_curves, wave_pressure, upgrade_value, reward_values, telemetry_analysis, simulation_regression, experiment_decisions, live_balance_operations]
+    skills: [balance_math, tuning_models, economy_loops, progression_math, reward_value_design, data_table_design, metric_dictionary_design, segmented_analysis, matchup_analysis, deterministic_simulation, controlled_playtest_design, experiment_design, statistical_inference, rollback_planning]
   - id: data-config-specialist
     tier: specialist
     owns: [csv_schemas, ids, references, starter_rows, validation_rules, loading_path]
@@ -123,7 +124,7 @@ workflow_lanes:
     outputs: [risky_assumption, minimum_test, emoji_demo_placeholders, svg_placeholder_assets, verdict]
   - id: system-design
     route: [system-designer, game-designer, numerical-designer, qa-lead]
-    outputs: [feature_word_design_doc, feature_pdf_review_export, core_loop, systems, formulas, player_feedback_synthesis, direction_decision, acceptance_criteria, professional_flowchart_source, per_page_figma_uiue_sources, page_transition_map, per_page_ue_explanations, data_source_map, exported_diagram_review_copies, user_review_notes]
+    outputs: [feature_word_design_doc, feature_pdf_review_export, core_loop, systems, formulas, balance_brief, metric_dictionary, simulation_telemetry_plan, player_feedback_synthesis, direction_decision, acceptance_criteria, professional_flowchart_source, per_page_figma_uiue_sources, page_transition_map, per_page_ue_explanations, data_source_map, exported_diagram_review_copies, user_review_notes]
   - id: feature-design-spec
     route: [producer, system-designer, game-designer, numerical-designer, ui-artist, ui-programmer, technical-director, qa-lead]
     outputs: [feature_word_design_doc, feature_pdf_review_export, per_page_figma_uiue_sources, exported_ue_review_copies, written_transition_map, per_page_ue_explanations, data_source_map, acceptance_checklist, user_revision_log]
@@ -159,7 +160,7 @@ workflow_lanes:
     outputs: [module_breakdown, module_contracts, code_changes, data_changes, per_module_verification, integration_verification]
   - id: qa-tuning
     route: [qa-lead, numerical-designer, performance-analyst]
-    outputs: [smoke_check, playtest_notes, bug_list, balance_notes]
+    outputs: [smoke_check, playtest_notes, bug_list, balance_scorecard, segment_analysis, simulation_regression_report, experiment_plan, decision_log, rollback_decision]
   - id: reverse-engineering
     route: [technical-director, lead-programmer, reverse-engineering-specialist, qa-lead]
     outputs: [authorization_basis, evidence, behavior_summary, original_action]

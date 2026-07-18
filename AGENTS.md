@@ -19,7 +19,7 @@ Use the smallest useful subset of the Codex Game Studio roles:
 - Framework Designer
 - Game Designer
 - System Designer
-- Numerical Designer
+- Numerical Designer / Balance Agent
 - Data Config Specialist
 - Prototyper
 - Lead Programmer
@@ -43,7 +43,7 @@ Use the smallest useful subset of the Codex Game Studio roles:
 
 The Producer, Creative Director, Framework Designer, and every relevant department lead must immediately and directly raise any material concern about the user's requirement before the affected work continues.
 
-Department leads include the Technical Director, Game Designer, System Designer, Numerical Designer, Lead Programmer, Art Director, QA Lead, and any specialist explicitly owning a department or workstream.
+Department leads include the Technical Director, Game Designer, System Designer, Numerical Designer / Balance Agent, Lead Programmer, Art Director, QA Lead, and any specialist explicitly owning a department or workstream.
 
 Trigger this gate when a requirement conflicts with player value, approved direction, scope, schedule, framework integrity, technical feasibility, maintainability, performance, art quality, testability, safety, or legal constraints, or when there is a materially better alternative.
 
@@ -100,9 +100,9 @@ Every production feature must have its own independent Word design document befo
 
 Route through:
 
-Producer -> System Designer -> Game Designer -> Numerical Designer -> Art Director -> UI Artist -> UI Programmer -> Technical Director -> QA Lead.
+Producer -> System Designer -> Game Designer -> Numerical Designer / Balance Agent -> Art Director -> UI Artist -> UI Programmer -> Technical Director -> QA Lead.
 
-System Designer owns feature-level system planning, Word design documents, revisions, implementation follow-through, and acceptance alignment. Numerical Designer owns formulas, economy, progression curves, reward values, balance tables, and tuning.
+System Designer owns feature-level system planning, Word design documents, revisions, implementation follow-through, and acceptance alignment. The Numerical Designer / Balance Agent owns formulas, economy, progression curves, reward values, balance objectives, simulations/telemetry plans, and evidence-backed tuning proposals.
 
 Required outputs for every feature:
 
@@ -119,6 +119,12 @@ The user's reviewed and edited Word/Figma design is the source of truth. If the 
 For Godot, prefer Godot 4, GDScript, and a 2D-first scene/layer model unless the project already uses another language or rendering model. Use Resources for data, reusable scenes, signals for decoupling, and object pooling for repeated runtime objects.
 
 For game configuration, use CSV files by default under `config/csv/` or the project equivalent. Treat user-edited CSV files as the source of truth.
+
+## Numerical Balance Default
+
+For a material combat, meta, economy, progression, probability, or difficulty change, route through the Numerical Designer / Balance Agent. Require an experience target, metric dictionary, relevant player/mode segments, configuration version, reproducible simulation or test plan, player-test evidence, guardrails, and a reversible rollout/rollback decision.
+
+Do not use global win rate as the sole PvP verdict. Analyze relevant skill/rank uncertainty, mode, map, team/role, version, and first-player/spawn effects; treat interacting team members as a room/team experiment when applicable. Ranked/PvP values must stay public and versioned rather than secretly changing per player. Read `references/numerical-balance-reference.md` before approving a material balance change.
 
 ## Player Feedback Discovery Default
 
@@ -198,7 +204,7 @@ Prefer small modules such as input, movement, combat, interaction, inventory, ec
 
 For any formal 策划案, GDD, system design document, feature specification, UI flow, onboarding flow, shop flow, combat flow, economy flow, or progression flow, route through:
 
-Producer -> System Designer -> Game Designer -> Numerical Designer -> Art Director -> UI Artist -> UI Programmer -> QA Lead.
+Producer -> System Designer -> Game Designer -> Numerical Designer / Balance Agent -> Art Director -> UI Artist -> UI Programmer -> QA Lead.
 
 A formal design document is not complete unless it includes professional visual artifacts:
 

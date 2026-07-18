@@ -127,6 +127,8 @@ Outputs:
 - Weapons, enemies, upgrades, economy, difficulty.
 - Player feedback synthesis and direction decision.
 - Tuning knobs and acceptance criteria.
+- Balance brief for material combat, meta, economy, progression, probability, or difficulty work: player-experience intent, target cohorts/modes, metrics, practical thresholds, invariants, and guardrails.
+- Simulation/telemetry plan with configuration version, reproducibility requirements, and human-playtest questions.
 - Gameplay/system flowchart source file and exported review image/PDF.
 - Per-page Figma/FigJam UE source link or exported `.fig` reference plus exported review image/PDF for every page, popup, HUD panel, modal, or stateful screen.
 - Written transition map for page entry, exit, back, close, confirm, cancel, failure, retry, and edge-case jumps.
@@ -137,6 +139,7 @@ Outputs:
 Gate:
 
 - Major gameplay systems have testable rules and known dependencies.
+- Material balance work cannot advance without a balance brief, relevant segmentation plan, and a reversible test/rollback path.
 - A production feature cannot move to architecture or implementation while its Word design spec, required flowcharts, per-page Figma/FigJam UE diagrams, transition map, page explanations, data-source map, or user review status is missing.
 
 ## Feature Design Specification Gate
@@ -216,7 +219,7 @@ Review rule:
 - Producer checks scope and completeness.
 - System Designer checks feature spec completeness, revision status, page explanations, transition maps, data-source maps, and acceptance criteria.
 - Game Designer checks gameplay and system correctness.
-- Numerical Designer checks formulas, economy, progression, reward values, and tuning assumptions.
+- Numerical Designer / Balance Agent checks formulas, economy, progression, reward values, balance objectives, relevant segments, uncertainty, simulation/playtest evidence, and tuning assumptions.
 - Art Director checks visual communication and readability.
 - UI Artist checks UI visual language, hierarchy, icon/state clarity, and screen readability.
 - UI Programmer checks implementability of UI/UE flow.
@@ -259,6 +262,19 @@ Outputs:
 Gate:
 
 - Designer-editable values are not hardcoded when they should be data-driven.
+
+## Numerical Balance Protocol
+
+Use this protocol for material combat, card/hero, enemy, economy, progression, probability, difficulty, PvP, or live-balance work.
+
+1. State the player-experience intent, gameplay invariants, target cohort/mode, and project-specific balance objectives.
+2. Define a metric dictionary and baseline. Do not use a global win rate by itself; for PvP, slice by relevant skill/rank uncertainty, mode, map, team/role, version, and first-player/spawn effects.
+3. Keep tuning values data-driven and versioned. Use production-rule simulations where practical, record seeds/configuration/scenarios, and confirm the result with controlled human playtests.
+4. Make the smallest reversible proposal. It must include hypothesis, expected effect, primary metric, guardrails, sample/uncertainty limits, rollout, stop condition, and rollback.
+5. For team modes, analyze and randomize experiments at room/team level when players affect one another. Do not secretly change player-specific values in competitive/ranked play.
+6. Close with a `ship`, `iterate`, `observe`, or `roll back` decision record. Low-confidence evidence is an `observe`, not a forced stat change.
+
+Read `references/numerical-balance-reference.md` for scorecards, experiment fields, and source-backed method details.
 
 ## Phase 4: Technical Architecture
 
@@ -344,12 +360,15 @@ Outputs:
 - Smoke check.
 - Playtest notes.
 - Bug list.
-- Balance notes.
+- Segmented balance scorecard: effect size, interval/uncertainty, sample limit, matchup/economy evidence, and known confounders.
+- Simulation regression report and human-playtest synthesis where balance changed.
+- Experiment/rollout plan, guardrails, and ship/iterate/observe/rollback decision.
 - Performance notes where relevant.
 
 Gate:
 
 - Known issues are triaged and the feature is safe enough for its milestone.
+- A material balance change has evidence across appropriate segments, no unresolved guardrail breach, and a documented rollback path.
 
 ## Phase 8: Milestone Review
 

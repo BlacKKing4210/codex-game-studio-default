@@ -2,7 +2,7 @@
 
 Turn a single Codex session into a focused indie game studio workflow.
 
-26 core agents. 19 workflow lanes. Direct leadership objection and user-confirmation gates. Thirty-minute project management. Feature Word design specs. Per-page Figma/FigJam UE diagrams. 2D-first production. Simple premium visual design. Professional art production. UI mockup-to-engine implementation. Modular implementation. Godot-first defaults. CSV-driven game data. Sprite Forge art handoff. Git version finish.
+26 core agents. 19 workflow lanes. Evidence-driven numerical balance. Direct leadership objection and user-confirmation gates. Thirty-minute project management. Feature Word design specs. Per-page Figma/FigJam UE diagrams. 2D-first production. Simple premium visual design. Professional art production. UI mockup-to-engine implementation. Modular implementation. Godot-first defaults. CSV-driven game data. Sprite Forge art handoff. Git version finish.
 
 <p align="center">
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT License"></a>
@@ -28,7 +28,7 @@ This repository is modeled after the studio-template idea of Claude Code Game St
 
 | Category | Count | Description |
 |---|---:|---|
-| **Core Agents** | 26 | Producer, Project Manager, Creative/Technical Directors, Framework Designer, System Designer, Numerical Designer, Game Designer, programmers, Godot/GDScript/UI specialists, professional art specialists, 2D specialists, Sprite Forge, QA, and reverse engineering |
+| **Core Agents** | 26 | Producer, Project Manager, Creative/Technical Directors, Framework Designer, System Designer, Numerical Designer / Balance Agent, Game Designer, programmers, Godot/GDScript/UI specialists, professional art specialists, 2D specialists, Sprite Forge, QA, and reverse engineering |
 | **Workflow Lanes** | 19 | Project management, concept, prototype, feature design specs, system design, professional design artifacts, UI implementation, simple premium 2D visual design, 2D production, professional art production, CSV config, architecture, vertical slice, modular implementation, QA, UI, Sprite Forge, reverse engineering, version finish |
 | **Codex Skill** | 1 | Root-level `SKILL.md` with Codex-triggering metadata and progressive references |
 | **References** | 12 | Detailed guides for project management, game studio routing, feature design specs, master-level visual design, 2D production, professional art production, UI implementation, Sprite Forge, CSV config, default and legacy UI cores, and authorized reverse engineering |
@@ -80,7 +80,8 @@ Tier 3 - Specialists
 | Feature Word design spec | Producer -> System Designer -> Game Designer -> Numerical Designer -> UI Artist -> UI Programmer -> Technical Director -> QA Lead |
 | Cross-system framework design | Technical Director -> Framework Designer -> Lead Programmer -> QA Lead |
 | Godot implementation | Lead Programmer -> Godot Specialist -> GDScript Specialist -> QA Lead |
-| Configurable numeric/balance systems | Numerical Designer -> Data Config Specialist -> Technical Director -> Godot Specialist -> QA Lead |
+| Configurable numeric/balance systems | Numerical Designer / Balance Agent -> Data Config Specialist -> Technical Director -> Godot Specialist -> QA Lead |
+| Competitive/meta/economy balance | Game Designer -> Numerical Designer / Balance Agent -> Data Config Specialist -> Gameplay Programmer -> QA Lead |
 | 2D project setup | Technical Director -> 2D Technical Artist -> Godot Specialist -> QA Lead |
 | 2D character/prop/animation production | Art Director -> Concept Artist -> 2D Animation Specialist -> Sprite Forge Specialist -> 2D Technical Artist -> Godot Specialist -> QA Lead |
 | 2D scene/TileMap production | Art Director -> Visual Development Artist -> Environment Artist -> Sprite Forge Specialist -> 2D Technical Artist -> Godot Specialist -> QA Lead |

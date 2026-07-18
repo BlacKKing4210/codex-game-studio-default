@@ -10,13 +10,13 @@ The user's reviewed and edited design is the source of truth. If the user change
 
 ## Default Route
 
-Producer -> System Designer -> Game Designer -> Numerical Designer -> Art Director -> UI Artist -> UI Programmer -> Technical Director -> QA Lead.
+Producer -> System Designer -> Game Designer -> Numerical Designer / Balance Agent -> Art Director -> UI Artist -> UI Programmer -> Technical Director -> QA Lead.
 
 Use the smallest needed subset:
 
 - Pure feature/system spec: Producer -> System Designer -> QA Lead.
 - Feature with gameplay rules: System Designer -> Game Designer -> QA Lead.
-- Feature with numbers/economy/rewards: System Designer -> Numerical Designer -> Data Config Specialist -> QA Lead.
+- Feature with numbers/economy/rewards: System Designer -> Numerical Designer / Balance Agent -> Data Config Specialist -> QA Lead.
 - Feature with pages/HUD/menu/popup: System Designer -> UI Artist -> UI Programmer -> QA Lead.
 - Feature entering implementation: System Designer -> Technical Director -> Framework Designer -> Lead Programmer -> relevant Specialist -> QA Lead.
 
@@ -44,7 +44,7 @@ Use the smallest needed subset:
 - Written transition map.
 - Per-page explanation.
 - Data-source map.
-- Numerical rules or link to Numerical Designer table when needed.
+- Numerical rules plus balance brief or link to the Numerical Balance Agent table when needed; material balance work names target cohorts, metrics, guardrails, and rollback conditions.
 - Error, empty, loading, locked, disabled, unaffordable, and edge states.
 - Audio/VFX/UI feedback requirements.
 - Implementation notes and module boundary.
