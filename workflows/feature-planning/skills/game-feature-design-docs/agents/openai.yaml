@@ -1,0 +1,4 @@
+interface:
+  display_name: "游戏功能策划案"
+  short_description: "区分简化评审案与最终实现案，按阶段和复杂度生成游戏功能策划案"
+  default_prompt: "Use $game-feature-design-docs to select a review-only or implementation-contract document class, then create the appropriate game feature design document."

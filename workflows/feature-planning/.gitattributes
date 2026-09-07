@@ -1,0 +1,4 @@
+* -text
+*.docx -diff
+*.png -diff
+skills/game-feature-design-docs/references/feature-design-document-standard.md whitespace=-blank-at-eol

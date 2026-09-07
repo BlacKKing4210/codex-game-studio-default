@@ -1,0 +1,47 @@
+{
+  "date": "2026-09-07",
+  "manual_pages": 7,
+  "manual_visual_review": "PASS full-page PNG inspection; final pages 1-6 byte-identical to reviewed render and page 7 reviewed again",
+  "general_template_pages": 7,
+  "general_template_visual_review": "PASS full-page PNG inspection",
+  "simple_template_pages": 7,
+  "simple_template_visual_review": "PASS full-page PNG inspection; orphan header corrected; final page 4 border verified and other six page images byte-identical to reviewed render",
+  "render_method": "Microsoft Word 16 COM and Poppler 120 dpi after packaged LibreOffice renderer unavailable",
+  "temporary_pdf": "system temp only; deleted by renderer finally block",
+  "source_comparison": [
+    {
+      "path": "skills/artifact-template-game-feature-design-general/assets/reference.docx",
+      "unchanged_rule_text": true,
+      "changed_parts": [
+        "docProps/core.xml"
+      ]
+    },
+    {
+      "path": "skills/artifact-template-game-feature-design-simple/assets/reference.docx",
+      "unchanged_rule_text": true,
+      "changed_parts": [
+        "docProps/core.xml",
+        "word/document.xml"
+      ]
+    },
+    {
+      "path": "skills/game-feature-design-docs/assets/general-feature-design-template.docx",
+      "unchanged_rule_text": true,
+      "changed_parts": [
+        "docProps/core.xml"
+      ]
+    },
+    {
+      "path": "skills/game-feature-design-docs/assets/simple-feature-design-template.docx",
+      "unchanged_rule_text": true,
+      "changed_parts": [
+        "docProps/core.xml",
+        "word/document.xml"
+      ]
+    }
+  ],
+  "content_review": "independent source audit; cross-system restriction and general 3-8 rules corrected",
+  "source_standard_global_match": true,
+  "source_files_untouched": true,
+  "reusable_method_candidate": "none"
+}

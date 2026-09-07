@@ -1,0 +1,7 @@
+interface:
+  display_name: "Game Feature Design General"
+  short_description: "Create documents with the Game Feature Design General template"
+  icon_large: "./assets/preview.png"
+  default_prompt: "Use $artifact-template-game-feature-design-general to create a document with this template."
+policy:
+  allow_implicit_invocation: true

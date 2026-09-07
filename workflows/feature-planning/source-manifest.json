@@ -1,0 +1,199 @@
+{
+  "snapshot_date": "2026-09-07",
+  "standard_version": "1.6",
+  "scope": [
+    "general",
+    "simple"
+  ],
+  "source_authority": "current installed personal game-feature-design-docs; global standard matched by SHA-256",
+  "dependencies_not_bundled": [
+    "game-studio-orchestrator",
+    "game-project-control-plane",
+    "game-project-rag when project contract applies",
+    "Documents",
+    "authorized editable design tool"
+  ],
+  "publication_changes": [
+    "DOCX personal editor metadata removed",
+    "Simple DOCX table rows kept together and page UE table header attached to following content; flow placeholder upper border restored",
+    "No rule text or installed source changed"
+  ],
+  "files": [
+    {
+      "path": ".gitattributes",
+      "bytes": 137,
+      "sha256": "37a68140676a6bc81f8d2c914ca852010866f175f014026fc9c40954227e1b32",
+      "source_sha256": null,
+      "origin": "task-authored",
+      "source_locator": "current-source-synthesis"
+    },
+    {
+      "path": "prompts/general.md",
+      "bytes": 693,
+      "sha256": "04a886cc60a977d22db02040c8ca02546fe97a2388595627965407f5d935905f",
+      "source_sha256": null,
+      "origin": "task-authored",
+      "source_locator": "current-source-synthesis"
+    },
+    {
+      "path": "prompts/simple-final.md",
+      "bytes": 590,
+      "sha256": "2118c3986a0b0af0e2fcb30944014b487f9fd034db1900f1944bd3659e1f8f71",
+      "source_sha256": null,
+      "origin": "task-authored",
+      "source_locator": "current-source-synthesis"
+    },
+    {
+      "path": "prompts/simple-review.md",
+      "bytes": 679,
+      "sha256": "f00905f2102ae4108a11e54e1aea8357643f29a374609094565fc4582f7d4c88",
+      "source_sha256": null,
+      "origin": "task-authored",
+      "source_locator": "current-source-synthesis"
+    },
+    {
+      "path": "README.md",
+      "bytes": 1862,
+      "sha256": "0b9f0687f01aeb5013e4c22ea2919fae87c33f38a0c128d86d4ac666da6d5dc4",
+      "source_sha256": null,
+      "origin": "task-authored",
+      "source_locator": "current-source-synthesis"
+    },
+    {
+      "path": "skills/artifact-template-game-feature-design-general/agents/openai.yaml",
+      "bytes": 334,
+      "sha256": "b067f2359dac1aa0f24ea9960373136eab4956cac57309957c629c74f9f52653",
+      "source_sha256": "b067f2359dac1aa0f24ea9960373136eab4956cac57309957c629c74f9f52653",
+      "origin": "installed-skill-byte-identical",
+      "source_locator": "personal-skills/artifact-template-game-feature-design-general/agents/openai.yaml"
+    },
+    {
+      "path": "skills/artifact-template-game-feature-design-general/artifact-template.json",
+      "bytes": 122,
+      "sha256": "54586c722449d873eb16ed211e8591a179f31da5e245dcc82800df649380b127",
+      "source_sha256": "54586c722449d873eb16ed211e8591a179f31da5e245dcc82800df649380b127",
+      "origin": "installed-skill-byte-identical",
+      "source_locator": "personal-skills/artifact-template-game-feature-design-general/artifact-template.json"
+    },
+    {
+      "path": "skills/artifact-template-game-feature-design-general/assets/preview.png",
+      "bytes": 152179,
+      "sha256": "e3017a060b55e3ab169715aefc6f1cbcf4cabf3e5c567741bc78de702a6ce13e",
+      "source_sha256": "e3017a060b55e3ab169715aefc6f1cbcf4cabf3e5c567741bc78de702a6ce13e",
+      "origin": "installed-skill-byte-identical",
+      "source_locator": "personal-skills/artifact-template-game-feature-design-general/assets/preview.png"
+    },
+    {
+      "path": "skills/artifact-template-game-feature-design-general/assets/reference.docx",
+      "bytes": 42950,
+      "sha256": "6f77d7bd41bbb149a683558241f226951168a51bea51611ea656e45f376e82da",
+      "source_sha256": "18c92bd5e64b5eb5fd35cf73c9f3bedfc58f94b6282af98b76c8b8b6edd9747b",
+      "origin": "installed-skill-publication-copy",
+      "source_locator": "personal-skills/artifact-template-game-feature-design-general/assets/reference.docx"
+    },
+    {
+      "path": "skills/artifact-template-game-feature-design-general/SKILL.md",
+      "bytes": 1439,
+      "sha256": "bf4abff523d3b612e6097a23ac512f94a9720692d68ed10c5edaabe60eee75df",
+      "source_sha256": "bf4abff523d3b612e6097a23ac512f94a9720692d68ed10c5edaabe60eee75df",
+      "origin": "installed-skill-byte-identical",
+      "source_locator": "personal-skills/artifact-template-game-feature-design-general/SKILL.md"
+    },
+    {
+      "path": "skills/artifact-template-game-feature-design-simple/agents/openai.yaml",
+      "bytes": 331,
+      "sha256": "03534f84d2543b67d700a880a2935a4c7d8d2e85243a46611de7630228e71d5b",
+      "source_sha256": "03534f84d2543b67d700a880a2935a4c7d8d2e85243a46611de7630228e71d5b",
+      "origin": "installed-skill-byte-identical",
+      "source_locator": "personal-skills/artifact-template-game-feature-design-simple/agents/openai.yaml"
+    },
+    {
+      "path": "skills/artifact-template-game-feature-design-simple/artifact-template.json",
+      "bytes": 122,
+      "sha256": "54586c722449d873eb16ed211e8591a179f31da5e245dcc82800df649380b127",
+      "source_sha256": "54586c722449d873eb16ed211e8591a179f31da5e245dcc82800df649380b127",
+      "origin": "installed-skill-byte-identical",
+      "source_locator": "personal-skills/artifact-template-game-feature-design-simple/artifact-template.json"
+    },
+    {
+      "path": "skills/artifact-template-game-feature-design-simple/assets/preview.png",
+      "bytes": 152249,
+      "sha256": "745a72a299fa8915135fe33280744263679e0a708bab04d5ed6ff06c300d24eb",
+      "source_sha256": "745a72a299fa8915135fe33280744263679e0a708bab04d5ed6ff06c300d24eb",
+      "origin": "installed-skill-byte-identical",
+      "source_locator": "personal-skills/artifact-template-game-feature-design-simple/assets/preview.png"
+    },
+    {
+      "path": "skills/artifact-template-game-feature-design-simple/assets/reference.docx",
+      "bytes": 41988,
+      "sha256": "a26f52cd517db71ce31c0ba11b6850987cc691bfc811a50376a35a6056fbf607",
+      "source_sha256": "150345c7a59d6392ef5459bd3c1ee86e2021407293fa4ea313abac2aecb881b9",
+      "origin": "installed-skill-publication-copy",
+      "source_locator": "personal-skills/artifact-template-game-feature-design-simple/assets/reference.docx"
+    },
+    {
+      "path": "skills/artifact-template-game-feature-design-simple/SKILL.md",
+      "bytes": 1427,
+      "sha256": "360aed2557e290126d39c1f9e959d93ac4e3d12676c874274051fdce8a6910ff",
+      "source_sha256": "360aed2557e290126d39c1f9e959d93ac4e3d12676c874274051fdce8a6910ff",
+      "origin": "installed-skill-byte-identical",
+      "source_locator": "personal-skills/artifact-template-game-feature-design-simple/SKILL.md"
+    },
+    {
+      "path": "skills/game-feature-design-docs/agents/openai.yaml",
+      "bytes": 340,
+      "sha256": "bf79d52afd6a2755b29c931646586f7fc4837a46d1cc733ef0f12660ed44d819",
+      "source_sha256": "bf79d52afd6a2755b29c931646586f7fc4837a46d1cc733ef0f12660ed44d819",
+      "origin": "installed-skill-byte-identical",
+      "source_locator": "personal-skills/game-feature-design-docs/agents/openai.yaml"
+    },
+    {
+      "path": "skills/game-feature-design-docs/assets/general-feature-design-template.docx",
+      "bytes": 42950,
+      "sha256": "6f77d7bd41bbb149a683558241f226951168a51bea51611ea656e45f376e82da",
+      "source_sha256": "18c92bd5e64b5eb5fd35cf73c9f3bedfc58f94b6282af98b76c8b8b6edd9747b",
+      "origin": "installed-skill-publication-copy",
+      "source_locator": "personal-skills/game-feature-design-docs/assets/general-feature-design-template.docx"
+    },
+    {
+      "path": "skills/game-feature-design-docs/assets/simple-feature-design-template.docx",
+      "bytes": 41988,
+      "sha256": "a26f52cd517db71ce31c0ba11b6850987cc691bfc811a50376a35a6056fbf607",
+      "source_sha256": "150345c7a59d6392ef5459bd3c1ee86e2021407293fa4ea313abac2aecb881b9",
+      "origin": "installed-skill-publication-copy",
+      "source_locator": "personal-skills/game-feature-design-docs/assets/simple-feature-design-template.docx"
+    },
+    {
+      "path": "skills/game-feature-design-docs/references/feature-design-document-standard.md",
+      "bytes": 21338,
+      "sha256": "ac29fe4c3238dadf03e0f50d68eae9235dc0510d7d1286e06d7ec9e94441bfa7",
+      "source_sha256": "ac29fe4c3238dadf03e0f50d68eae9235dc0510d7d1286e06d7ec9e94441bfa7",
+      "origin": "installed-skill-byte-identical",
+      "source_locator": "personal-skills/game-feature-design-docs/references/feature-design-document-standard.md"
+    },
+    {
+      "path": "skills/game-feature-design-docs/SKILL.md",
+      "bytes": 13986,
+      "sha256": "2ac8118f87f784c9bec210d6b44bcebb0aefb8e27f050779eeb7398d691bf01b",
+      "source_sha256": "2ac8118f87f784c9bec210d6b44bcebb0aefb8e27f050779eeb7398d691bf01b",
+      "origin": "installed-skill-byte-identical",
+      "source_locator": "personal-skills/game-feature-design-docs/SKILL.md"
+    },
+    {
+      "path": "validation.json",
+      "bytes": 1793,
+      "sha256": "fcb015eb838c2fc3b9f9c3a39cc4e10782b27903728d5c52d57533deed272949",
+      "source_sha256": null,
+      "origin": "task-authored",
+      "source_locator": "current-source-synthesis"
+    },
+    {
+      "path": "策划案工作流程_通用版与简化版_v1.0.docx",
+      "bytes": 47257,
+      "sha256": "9cb882771d43ce47ff7e9d28c7fd5c321258595d629b91fda17296dc8afd0bd3",
+      "source_sha256": null,
+      "origin": "task-authored",
+      "source_locator": "current-source-synthesis"
+    }
+  ]
+}

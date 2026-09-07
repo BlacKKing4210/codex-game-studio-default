@@ -1,5 +1,9 @@
 # Codex Game Studio Default
 
+## 功能策划案工作流程
+
+[通用版与简化版整理包](workflows/feature-planning/README.md)包含可编辑 Word 手册、两份母版、三个 Skill、调用示例与来源校验，依据当前功能策划案标准 v1.6。
+
 Turn a single Codex session into a focused indie game studio workflow.
 
 17 core agents. 12 workflow lanes. Godot-first defaults. CSV-driven game data. Sprite Forge art handoff. Git version finish.
